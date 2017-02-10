@@ -1,0 +1,21 @@
+.coffeekraken-logo {
+	@include s-coffeekraken-logo(
+		$color : s-color(secondary),
+		$accent : s-color(primary)
+	);
+	max-width:120px;
+}
+.coffeekraken-logo--white {
+	@include s-coffeekraken-logo(
+		$color : white,
+		$accent : white
+	);
+	max-width:120px;
+}
+.coffeekraken-logo--footer {
+	@include s-coffeekraken-logo(
+		$color : s-color(secondary, -lighten 40%),
+		$accent : s-color(primary)
+	);
+	max-width:120px;
+}

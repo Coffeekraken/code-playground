@@ -1,0 +1,1380 @@
+@charset "UTF-8";
+/** Vendors All external librarie needed in the project. */
+/** Vendors All external librarie needed in the project. */
+/*
+
+    Name:       material
+    Author:     Michael Kaminsky (http://github.com/mkaminsky11)
+
+    Original material color scheme by Mattia Astorino (https://github.com/equinusocio/material-theme)
+
+*/
+.cm-s-material { background-color: #263238; color: #e9eded; }
+
+.cm-s-material .CodeMirror-gutters { background: #263238; color: #537f7e; border: none; }
+
+.cm-s-material .CodeMirror-guttermarker, .cm-s-material .CodeMirror-guttermarker-subtle, .cm-s-material .CodeMirror-linenumber { color: #537f7e; }
+
+.cm-s-material .CodeMirror-cursor { border-left: 1px solid #f8f8f0; }
+
+.cm-s-material div.CodeMirror-selected { background: rgba(255, 255, 255, 0.15); }
+
+.cm-s-material.CodeMirror-focused div.CodeMirror-selected { background: rgba(255, 255, 255, 0.1); }
+
+.cm-s-material .CodeMirror-line::selection, .cm-s-material .CodeMirror-line > span::selection, .cm-s-material .CodeMirror-line > span > span::selection { background: rgba(255, 255, 255, 0.1); }
+
+.cm-s-material .CodeMirror-line::-moz-selection, .cm-s-material .CodeMirror-line > span::-moz-selection, .cm-s-material .CodeMirror-line > span > span::-moz-selection { background: rgba(255, 255, 255, 0.1); }
+
+.cm-s-material .CodeMirror-activeline-background { background: transparent; }
+
+.cm-s-material .cm-keyword { color: #c792ea; }
+
+.cm-s-material .cm-operator { color: #e9eded; }
+
+.cm-s-material .cm-variable-2 { color: #80CBC4; }
+
+.cm-s-material .cm-variable-3 { color: #82B1FF; }
+
+.cm-s-material .cm-builtin { color: #DECB6B; }
+
+.cm-s-material .cm-atom { color: #F77669; }
+
+.cm-s-material .cm-number { color: #F77669; }
+
+.cm-s-material .cm-def { color: #e9eded; }
+
+.cm-s-material .cm-string { color: #C3E88D; }
+
+.cm-s-material .cm-string-2 { color: #80CBC4; }
+
+.cm-s-material .cm-comment { color: #546E7A; }
+
+.cm-s-material .cm-variable { color: #82B1FF; }
+
+.cm-s-material .cm-tag { color: #80CBC4; }
+
+.cm-s-material .cm-meta { color: #80CBC4; }
+
+.cm-s-material .cm-attribute { color: #FFCB6B; }
+
+.cm-s-material .cm-property { color: #80CBAE; }
+
+.cm-s-material .cm-qualifier { color: #DECB6B; }
+
+.cm-s-material .cm-variable-3 { color: #DECB6B; }
+
+.cm-s-material .cm-tag { color: #ff5370; }
+
+.cm-s-material .cm-error { color: white; background-color: #EC5F67; }
+
+.cm-s-material .CodeMirror-matchingbracket { text-decoration: underline; color: white !important; }
+
+/** @name 	Functions API This are all the API functions that are exposed by gridle. */
+/** Get states count @return 	{Integer} 	The number of states defined @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Get the current state map @return 		{Map} 	The current state map @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Get the current state name @return 		{String} 	The current state name @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Get the column width in percent for the global or a specific context @param 	{Integer} 		[$columns=1] 							The number of columns to calculate @param 	{Integer} 		[$stateMap-or-stateName=current] 	 	The state to calculate the column width for @return 	{Percent} 												The width in percent @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/* Get a state map @param 	{String|Map} 		[$state=current] 		The name or map of the state to get @return 	{Map} 				A state map object @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Check if a state exist : @param 	{String} 		$name 		The name of the state to check @return 	{Boolean} 					true if exist @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Get a state variable @param 	{String} 		$varName 								The variable name @param  	{String} 		[$stateMap-or-stateName=current] 	 	The state name or a map state value @return 	{Mixed} 												The finded value */
+/** Set a variable in a state @param  		{String} 	$var                    	Variable name to assign @param  		{Mixed} 	$newValue          			The new value to assign @param 		{String} 	[$state=current] 			The state to apply the variable for @return 		{List}                         			The states list (full) @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** get the registered gridle states @return 	{Map} 		All the registered states @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** get the registered gridle states names @return 	{List} 		All the registered states names @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Get the register columns map @param 	{String|List<String>} 		[$state=current] 		The state name or map @return 	{Map} 												The map of registered columns for the specified state @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Will return the generated selector depending on the "package" wanted, the state and some optional values that might be needed by the package (like for row-align that need a "side" value) @param 		{String} 							$package 			The package to generate the selector for (see _settings.scss file) @param 		{String|List<String} 				[$states=null] 		The list of state to generate the selector for. If not specified, will generate for all registered states @param 		{Mixed} 							[$value=null] 		The value that will be used to replace the "%{tokenName}" inside the package pattern @example 	scss g-selector(grid, mobile, 2) { // your code here // The selector will be .gr-2@mobile } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the current used driver @return 	{String} 		The used driver like default or driver @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Check if the used driver is the specified one @param 		{String} 		$driver 	The driver to check @return 		{Boolean} 					True if is the current driver @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Get the media query for a particular state, or width, etc... @param 	{Mixed} 		[$stateName-or-stateMap=current] 		The state name of the min width @return 	{String} 												The media query string without the @media */
+/** @name 	Setting mixins This are all the mixins that are exposed by gridle for the setting up your grid. */
+/** Setting up your grid @param 		{Map} 		$settings 		Your default grid settings @example 	scss // default settings $_gridle-settings : ( name : default, min-width : null, max-width : null, query : null, classes : true, context : 12, column-width : null, gutter-width : 20px, gutter-height : 0, gutter-top : 0, gutter-right : 10px, gutter-bottom : 0, gutter-left : 10px, direction : ltr, dir-attribute : false, name-multiplicator : 1, states-classes : false, classes-prefix : null ); // setting up your grid \@include g-setup(( context : 12 // other settings )); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register a new state with some settings @param 		{String} 		$name 		The new state name @param 		{Map} 			$settings 	The state settings @example 	scss \@include g-register-state(mobile, ( max-width : 600px )); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register some clear each that will been generated in classes @param 		{Integer} 		$count 		The n each item to clear @param 		{String} 		$what 		What to clear (left, right, both) @example 	scss \@include g-register-clear-each(2, left); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register a new custom column in case the generated ones are not enough. This is useful when you have a 12 columns grid and you need some 1/5 ones. @param 		{String} 		$name 		The column name @param 		{Integer} 		$columns 	The column width @param 		{Integer} 		$context 	The context on which to calculate the column width @example 	scss \@include g-register-column(1on5, 1, 5); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set a pattern for a specified package used to generate the classnames @param 		{String} 	$package 		The package name to specify the pattern for @param 		{List} 		$pattern 		The new classname pattern @example 	scss \@include g-set-classname-map(grid, ('grid','-','%count','@','%state')); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set a generic selector for a specific package. This generic selector will be used to target some elements like [class*="gr-"]. If not specified for a package, the generic selector will be generated automatically but sometimes it's better to hardcode it. @param 		{String} 		$package 		The package to specify the generic selector for @param 		{String} 		$selector 		The generic selector like [class*="gr-"], or whatever... @example 	scss \@include g-set-generic-selector(grid, '[class*="gr-"]'); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register some basics states: - mobile : 0 to 480px - tablet : 481px to 1024px @example 	scss \@include g-register-default-states(); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register some basics mobile first states: - mobile : 320px to infinite - tablet : 640px to infinite - desktop : 992px to infinite - large : 1200px to infinite @example 	scss \@include g-register-mobile-first-states(); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register bootstrap 3 states - xs : 0 to 750px - sm : 750px to infinite - md : 970px to infinite - lg : 1170px to infinite @example 	scss \@include g-register-bootstrap3-states(); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register bootstrap 4 states - xs : 0 to 576px - sm : 576px to infinite - md : 970px to infinite - lg : 1200px to infinite @example 	scss \@include g-register-bootstrap4-states(); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	Base API This are all the base API mixins that are exposed by gridle. */
+/** Specify a layout using a single call like in the example bellow @param 		{Map} 				$layout 				The map layout wanted @param 		{Map|List|String} 	[$context=null] 		The context in which to apply the layout @example 	scss body { \@include g-layout(( '#header' : 12, '#sidebar' : 4 mobile 12, '#content' : 8 mobile 12, '#footer' : 12 )); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply some styling in a passed state @param 		{Map|List|String} 		$states 		The states to apply the css for. Can be a state map, a list of states or a state name @example 	scss .my-cool-element { // specify a register state name \@include g-state(mobile) { // your css code here... } // specify more than one register states \@include g-state(mobile tablet) { // your css code here... } // specify a min and max width \@include g-state(200px, 500px) { // your css code here... } // passing a state map (complexe usage) \@include g-state(( query : 'print only' )) { // your code here... } } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply some css depending on the element size (element queries) Using this mixin requires that you import the ```gridle-eq.js``` file into your javascript code** @param 	{Number} 	$size 				The size to take care of. If negative, mean lower than, if positive, mean greater than. @param 	{Boolean} 	[$height=false] 	Set to true to handle height instead of width @example 	scss .my-cool-element { \@include g-eq(-400px) { // your css that will be applied when element // is between 0 and 399px wide } } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Basically, this is the same as the ```g-state``` mixin, with the difference that it will not print any media queries. It will just create a state context in which your inside code will refer. @param 		{Map|List|String} 		$states 		The states to apply the css for. Can be a state map, a list of states or a state name @example 	scss @warn(g-get-state-var(min-width)); // will output the min-width of the default state \@include g-state-context(mobile) { @warn(g-get-state-var(min-width)); // will output the min-width of the mobile state } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Will print the generated selector depending on the "package" wanted, the state and some optional values that might be needed by the package (like for row-align that need a "side" value) @param 		{String} 							$package 			The package to generate the selector for (see _settings.scss file) @param 		{String|List<String} 				[$states=null] 		The list of state to generate the selector for. If not specified, will generate for all registered states @param 		{Mixed} 							[$value=null] 		The value that will be used to replace the "%{tokenName}" inside the package pattern @example 	scss \@include g-selector(grid, mobile, 2) { // your code here // The selector will be .gr-2@mobile } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Helper gridle mixin that let you specify the grid properties through ```g-set``` map, or a list of properties like "8 push 2 mobile 12 push 0" @param 		{Map|List} 			$properties 			The grid properties to apply @example 	scss #content { // using list \@include gridle(8 mobile 12); // using a map \@include gridle(( grid : 8, mobile : ( grid : 12 ) )); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Helper mixin that let you specify the grid properties through map formated like in the example bellow. Here's the possible properties: - ```grid``` {Integer} : The grid column count - ```container``` {Boolean} : Set the element as container - ```grid-grow``` {Boolean} : Set the element a grid column that grow - ```grid-adapt``` {Boolean} : Set the element a grid column that adapt - ```grid-table``` {Boolean} : Set the element a grid column of type table - ```push``` {Integer} : Set the push count - ```pull``` {Integer} : Set the pull count - ```prefix``` {Integer} : Set the prefix count - ```suffix``` {Integer} : Set the suffix count - ```clear-each``` {Integer} : Set the clear each count - ```grid-centered``` {Boolean} : Set the grid column as centered - ```row``` {Boolean} : Set the element as a grid row - ```row-full``` {Boolean} : Set the element as a grid row full - ```col``` {Boolean} : Set the element as a grid column (vertical) - ```row-align``` {String} : Set the row alignement - ```row-no-gutter``` {Boolean} : Remove the gutters on columns inside this row - ```nowrap``` {Boolean} : Set a nowrap on the row - ```wrap``` {Boolean} : Reset the wrap property on the row - ```order``` {Integer} : Set the order of the column (flex driver) - ```hide``` {Boolean} : Hide the element - ```show``` {Boolean} : Show the element - ```visible``` {Boolean} : Set the visibility of the element to visible - ```not-visible``` {Boolean} : Set the visibility of the element to hidden - ```invisible``` {Boolean} : Set the visibility of the element to hidden - ```show-inline``` {Boolean} : Set the display of the element to inline-block - ```float``` {String} : Set the specified float of the element - ```clear``` {String} : Clear the specified float of the element - ```no-gutter``` {Boolean|String|List<String>} : Remove the specified gutters - ```gutter``` {Boolean|String|List<String>} : Apply the specified gutters @param 		{Map} 			$properties 			The grid map properties to apply @example 	scss #content { // using a map \@include gridle(( grid : 8, push : 2 mobile : ( grid : 12 ), {stateName} : {mapProperties} )); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the push count for the column @param 		{Integer} 		$columns 			The number of columns to push this column @param 		{Integer} 		[$context=null]  	The context on which to calculate the push value. By default, it is the default context setted with ```g-setup```. @example 	scss .my-cool-column { \@include g-push(2); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the pull count for the column @param 		{Integer} 		$columns 			The number of columns to pull this column @param 		{Integer} 		[$context=null]  	The context on which to calculate the pull value. By default, it is the default context setted with ```g-setup```. @example 	scss .my-cool-column { \@include g-pull(2); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the prefix count for the column @param 		{Integer} 		$columns 			The number of columns to prefix this column @param 		{Integer} 		[$context=null]  	The context on which to calculate the prefix value. By default, it is the default context setted with ```g-setup```. @example 	scss .my-cool-column { \@include g-prefix(2); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the suffix count for the column @param 		{Integer} 		$columns 			The number of columns to suffix this column @param 		{Integer} 		[$context=null]  	The context on which to calculate the suffix value. By default, it is the default context setted with ```g-setup```. @example 	scss .my-cool-column { \@include g-suffix(2); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Display a debug grid on top of the row @example 	scss .my-row { \@include g-row-debug(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Make the element a grid container @example 	scss .my-cool-container { \@include g-container(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Remove the gutters on each columns inside the row @param 		{String|List<String>} 		[$sides=top right bottom left] 		The sides to clear @example 	scss .my-cool-row { \@include g-row-no-gutter(left right); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Make a column centered @example 	scss .my-cool-column { \@include g-grid-centered(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Hide an element @example 	scss .my-cool-element { \@include g-hide(); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the visibility of an element to hidden @example 	scss .my-cool-element { \@include g-not-visible(); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the visibility of an element to hidden @example 	scss .my-cool-element { \@include g-invisible(); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the display of an element to block @example 	scss .my-cool-element { \@include g-show(); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the display of an element to inline-block @example 	scss .my-cool-element { \@include g-show(); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the visibility of an element to visible @example 	scss .my-cool-element { \@include g-show(); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the float property of the element to the specified direction @param 		{String} 		[$float=left] 		The float direction to set @example 	scss .my-cool-element { \@include g-float(right); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Clear the float property of the element to the specified direction @param 		{String} 		[$float=left] 		The float direction to clear @example 	scss .my-cool-element { \@include g-clear(right); } @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** Remove the gutters on the column @param 		{String|List<String>} 		[$sides=top right bottom left] 		The sides to clear @example 	scss .my-cool-column { \@include g-no-gutter(left right); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the gutters on the column @param 		{String|List<String>} 		[$sides=top right bottom left] 		The sides to apply gutters on @example 	scss .my-cool-column { \@include g-gutter(left right); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	Generate mixins This are all the mixins that you can use to generate classes to use inside your HTML codebase */
+/** Generate a custom class for all the states @param 	{List} 	$pattern 					The name pattern of the class @param 	{List} 	[$statesNames=null] 		The states names to generate. If null or all, will generate the class for all registered states @example 	scss \@include g-generate-custom-class(('my','-','cool','-','class','-','%state')) { color: pink; padding: g-get-state-var(gutter-left); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generate all the classes depending on the packages you have specified like: - ```.container@{state}``` : default container - ```.row@{state}``` : default row - ```.row-align-{align}@{state}``` : default row-align - ```.row-full@{state}``` : default row-full - ```.row-debug@{state}``` : default row-debug - ```.row-no-gutter@{state}``` : default row-no-gutter - ```.nowrap@{state}``` : default nowrap - ```.wrap@{state}``` : default wrap - ```.col@{state}``` : default col - ```.gr-{column}@{state}``` : default grid - ```.gr-table@{state}``` : default gr-table - ```.gr-grow@{state}``` : default gr-grow - ```.gr-adapt@{state}``` : default gr-adapt - ```.gr-centered@{state}``` : default gr-centered - ```.push@{state}``` : default push - ```.pull@{state}``` : default pull - ```.prefix@{state}``` : default prefix - ```.suffix@{state}``` : default suffix - ```.hide@{state}``` : helpers hide - ```.show@{state}``` : helpers show - ```.show-inline@{state}``` : helpers show-inline - ```.not-visible@{state}``` : helpers not-visible - ```.visible@{state}``` : helpers visible - ```.float-{%float}@{state}``` : helpers float - ```.clear-{%float}@{state}``` : helpers clear - ```.clear-each-{%count}@{state}``` : helpers clear-each - ```.gutter-{%side}@{state}``` : helpers gutter - ```.no-gutter-{%side}@{state}``` : helpers no-gutter - ```.auto-height@{state}``` : helpers auto-height - ```.order-{%column-count}@{state}``` : helpers order @param 		{String|List<String>} 		[$states=all] 		The states to generate the classes for @param 		{String|List<String>} 		[$package=all] 		The packages to generate the classes for @param 		{String} 					[$scope=null] 		A classname to scope the classes in @example 	scss // generate all the classes \@include g-generate-classes(); // generate only certain states \@include g-generate-classes(mobile tablet); // generate only the helpers for all the states \@include g-generate-classes(all, helpers); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	Default driver API This are all the API mixins that are exposed by gridle for the default driver. */
+/** Set the element as a row @param 		{Boolean} 		[$reverse=false] 		Revert the columns order if true @example 	scss .my-cool-row { \@include g-row(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the element as a col @param 		{Boolean} 		[$reverse=false] 		Revert the columns order if true @example 	scss .my-cool-col { \@include g-col(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply a nowrap on the element @example 	scss .my-cool-element { \@include g-nowrap(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Reset the nowrap on the element @example 	scss .my-cool-element { \@include g-wrap(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply a column width on the element @param 		{Integer|String} 		$columns 			The column count to apply or a registered column name @param 		{Integer} 				[$context=null]  	The context on which to calculate the column width. If null, take the context setted with ```g-setup``` @example 	scss .my-cool-column { \@include g-grid(2); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the grid element as a table display type @example 	scss .my-cool-column { \@include g-grid(2); \@include g-grid-table(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the width of the row element to full viewport width @example 	scss .my-cool-row { \@include g-row(); \@include g-row-full(); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the width of the grid element to adapt to his content @example 	scss .my-cool-column { \@include g-grid-adapt(); // or \@include g-grid(adapt); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the width of the grid element to grow depending on the place it has at disposal @example 	scss .my-cool-column { \@include g-grid-grow(); // or \@include g-grid(grow); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Clear each n childs @example 	scss .my-cool-row { \@include g-clear-each(2); } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the alignement of the columns inside the row using these alignement properties: - top : Align vertical top - middle : Align vertical middle - bottom : Align vertical bottom - left : Align horizontal left - center : Align horizontal center - right : Align horizontal right @example 	scss .my-cool-row { \@include g-row-align(middle center); \@include g-row-align(right); \@include g-row-align(middle); // etc... } @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Parse and return the Map respresentation of a border property The $border argument will be parsed with the [s-parse-properties](../core/functions/_s-parse-properties.scss) function. @param 		{List} 			$border 			The border property to parse @return 		{Map} 								The Map represenration of the border @example s-border(1px solid white); // return // ( // 	width : 1px, // 	color : white, // 	style : solid // ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the Map representation of a columns properties @param  		{Interger} 			[$count=null] 			The number of columns @param 		{Number} 			[$gap=null] 			The gap width between each columns @param 		{String} 			[$fill=null] 			The fill property (balance,auto,initial,inherit) @param 		{Number} 			[$width=null] 			The width of the columns @param 		{Integer|String} 	[$span=null] 			The column-span property (1,all,initial,inherit) @param 		{List} 				[$rule=null] 			The column-rule property @param 		{String} 			[$rule-style=null]  	The column-rule-style property @param 		{Color} 			[$rule-color=null] 		The column-rule-color property @param 		{Number} 			[$rule-width=null] 		The column-rule-width property @return 		{Map} 										The map representation or the columns properties @example s-columns(2, 20px); // return // ( // 	column-count : 2, // 	column-gap : 20px // ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Parse and return the Map respresentation of a margin property The $margin argument will be parsed with the [s-parse-properties](../core/functions/_s-parse-properties.scss) function. @param 			{List|Number} 			$margin 			The margin property to parse @return 			{Map} 										The map representation @example s-margin(10px); // => ( top:10px, right:10px, bottom:10px, left:10px ) s-margin(10px 20px); // => ( top:10px, right:20px, bottom:10px, left:20px ) s-margin(5px 10px 15px 20px); // => ( top:5px, right:10px, bottom:15px, left:20px ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the representation of a position styling like position:absolute; top:0; left:100%; etc... This function gives you some shortcuts to align your element top, bottom, middle, center, etc... @param 		{String} 			[$position=absolute] 			The position css property @param 		{String} 			[$vertical-align=top] 			The vertical alignement wanted (top,middle,bottom) @param 		{String} 			[$align=left] 					The horizontal alignement wanted (left,center,right) @param 		{Number} 			[$top=null] 					The top property wanted @param 		{Number} 			[$right=null] 					The right property wanted @param 		{Number} 			[$bottom=null] 					The bottom property wanted @param 		{Number} 			[$left=null] 					The left property wanted @return 		{Map} 												The map representation of the position wanted @example s-position(absolute, top, right); s-position(absolute, middle, center); s-position(relative, bottom, right); s-position(absolute, bottom, center); // etc... @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the Map properties representation for the rhythme width The rhythme width is the width of an element that target a certain number of letters by line @param 			{Integer} 			[$letters-count=settings.typography.line-letters-count] 		The number of letters to target by line @return 			{Map} 																		The Map properties representation @example s-rhythme-width(50); // return // ( // 	display : block, // 	max-width : 50ex // ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the Map properties representation of a translate x,y and z @param 			{Number} 			[$x=0] 			The x translate value @param 			{Number} 			[$y=0] 			The y translate value @param 			{Number} 			[$z=0] 			The z translate value @return 			{Map} 								The translate Map representation @example s-translate(10px,20px); // return // ( // 	transform: translateX(10px) translateY(20px) translateZ(0) // ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the settings.vertical-rhythme.scope-class value @return 			{String} 			The settings.vertical-rhythme.scope-class value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Helper mixin to set a background image @param 			{String} 				[$repeat=null] 				The background-repeat property @param 			{String} 				[$size=null] 				The background-size property @param 			{String} 				[$attachment=null] 			The background-attachment property @param 			{String} 				[$blend-mode=null] 			The background-blend-mode property @param 			{String} 				[$clip=null] 				The background-clip property @param 			{String} 				[$url=null] 				The background-image url property @param 			{Number} 				[$width=null] 				The background-size width property @param 			{Number} 				[$height=null] 				The background-size height property @param 			{Number} 				[$top=null] 				The background-position top property @param 			{Number} 				[$left=null] 				The background-position left property @param 			{String} 				[$suffix2x=@2x] 			The suffix to add the the url if the 2x resolution if wanted @param 			{String} 				[$suffix3x=@3x] 			The suffix to add the the url if the 3x resolution if wanted @param 			{String} 				[$suffix4x=@4x] 			The suffix to add the the url if the 4x resolution if wanted @param 			{List} 					[$resolution=null] 			The resolution wanted like 2x, 3x and 4x @param 			{List} 					[$position=null] 			The background-position property @example .my-cool-element { \@include s-background( $url : 'img/my-cool-image.jpg', $size : cover, resolution : 2x 3x 4x ); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Center block */
+/* # CLEARFIX More infos to come.. https://github.com/stubbornella/oocss/blob/master/oocss/src/components/utils/_clearfix-me.scss clearfix   used project wide to clear floats and create a new formatting context usage      @include clearfix-me(<empty|overflow|facebook|micro|stubborn>) $clearfix-method sets default method */
+.clearfix-overflow { overflow: hidden; }
+
+.clearfix-facebook { display: table-cell; vertical-align: top; width: 10000px !important; }
+
+.clearfix-float { float: left; width: 100%; }
+
+.clearfix, .clearfix-micro { zoom: 1; }
+
+.clearfix:before, .clearfix-micro:before, .clearfix:after, .clearfix-micro:after { content: " "; display: table; }
+
+.clearfix:after, .clearfix-micro:after { clear: both; }
+
+@keyframes s-DOMNodeInserted { from { opacity: .99; }
+  to { opacity: 1; } }
+
+/** Get a registered color by name or wrap a new color into a s-color call to manipulate it with ease. Supported actions : - hue {Deg} - lighten {Percent} - darken {Percent} - saturate {Percent} - desaturate {Percent} - grayscale {Boolean} - complement {Boolean} - invert {Boolean} - opacity {Percent} - mix {Color} @param 		{String|Color} 		$color 				The color name or the color value to manipulate @param 		{String|List} 			[$modifier=null] 	The color modifier to apply. Can be a registered modifier name or a modifier list @return 		{Color} 									The actual color value @example 	 	scss // default color (settings.colors.default) $myColor : s-color(default); // primary color (settings.colors.primary) $primary : s-color(primary); // manipulate $primary-dark : s-color(primary, -darken 10%); // registered modifier $primary-light : s-color(primary, light); // $name as list $modified primary : s-color((primary, -darken 10%)); @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the color in a modifier list @param 			{List} 			$modifiers 		The modifiers list @return 			{String} 						The color name @example $my-color : s-color-modifier(outline primary); // => primary @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the css class selector for the current component setted by the [core/mixins/_s-component.scss] mixin and build with the passed arguments. @param 			{String} 			[$element=null] 		The element name of the class selector | '&' if target the same element like `&s-component-selector("&", ) {}` @param 			{String} 			[$modifier=null] 		The modifier name of the class selector @param 			{String} 			[$state=null] 			The state name of the class selector @return 			{String} 									The generated class selector @example \@incluse s-component('my-component') { // if settings.selector.method === 'BEM' s-component-selector('item') // => '.my-component__item' s-component-selector(null, 'red') // => '.my-component--red' s-component-selector('coco',null,'active') // => '.my-component__coco--active' } // if target the same element with & : \@include s-component('my-component') { s-component-selector(, red, , "color") { &s-component-selector("&", , "active") { // something here... } } } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the name of the top level component setted with the [../mixins/_s-component.scss] mixin @param 			{String} 			[$default=null] 		The name to return if no top component name exist @return 			{String} 									The component name @example s-component('hello') // => 'hello' \@include s-component('my-component') { s-component('hello') // => 'my-component' \@include s-component('another-component') { s-component('hello') // => 'my-component' } } @author 			Olivier Bossel <olivier.bossel@gmail.com>; */
+/** Convert a passed value to the wanted unit The conversion between some units that depends on a font-size will take the settings.typography.font-size value as reference. Available conversions - from px - to em - to rem - to pt - to % - from em - to rem - to px - to pt - to % - from pt - to em - to rem - to px - to pt - to % - from rem - to em - to px - to pt - to % @param 			{Number} 		$value 			The value to convert @param 			{String} 		$unit 			The unit in which to convert the value @return 			{Number} 						The converted value @example // if the settings.typography.font-size === 16px s-convert(24px, rem) // 1.5rem s-convert(3rem, pt) // 36pt @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Transform a dash notation value into a map Dash notation value is : -key1 value1 -key2 value2 @param 			{List} 			$dash 			The dash list notation to transform @return 			{Map} 							The map generated @example $dash : -hello world -coco universe s-dash-to-map($dash); // ( // 	hello : world, // 	coco : universe // ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Convert the passed value to em @param 			{Number} 		$value 		The value to convert @return 			{Number} 					The em converted value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Convert the passed value to the closest even value @param 			{Number} 		$value 		The value to convert @return 			{Number} 					The closest even converted value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Take a filter as parameter and parse it to return the {Map} corresponding The $filter parameter can be either a registered filter name or a filter formated like `filterName(filterValue)` @param 			{List}<String> 			$filter 			The registered filter name or the filter string to transform into map @return 			{Map} 										The corresponding filter map properties @example // register a filter \@include s-setup(( filters : ( myCoolFilter : box-shadow(#000 0 0 10px) blur(30px), // other filters... ) )); // registered filter s-filter-map(myCoolFilter); // { // 	box-shadow : #000 0 0 10px, // 	blur : 30px // } // custom filter s-filter-map(blur(10px)); // { // 	blur : 10px // } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return a list with all the filters that are passed as argument This will use the [./_s-filter-map.scss] function to parse the filters @param 	 	{List}<String> 			$filters 			The registered filter(s) name(s) or the filter(s) string(s) to transform into list @return 		{List} 										The converted filters list to use as css property @example // register a filter \@include s-setup(( filters : ( myCoolFilter : box-shadow(#000 0 0 10px) blur(30px), // other filters... ) )); // registered filter .my-cool-elememt { filter : s-filter(myCoolFilter); // filter : box-shadow(#000 0 0 10px) blur(30px); } // custom filter .my-cool-element { filter : s-filter(myCoolFilter invert(100%)); // filter : box-shadow(#000 0 0 10px) blur(30px) invert(100%); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the font-family string or a registered font @param 			{String} 		$name 		The name of the registered font @return 			{String} 					The corresponding font-family property to set in your css @example // register a font \@include s-setup(( fonts : ( myCoolFont : ( font-family : 'Helvetica Neue', font-weight : 'bold', // etc... ), // other fonts... ) )); // apply the font .my-cool-element { font-family : s-font-family(myCoolFont); // font-family : 'Helvetica Neue'; } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the font {Map} that correspond to the passed arguments @param 		{String} 			[$family=null] 			The font family wanted (can be a registered font name) @param 		{Color} 			[$color=null] 			The color wanted (can be a registered color name) @param 		{Number} 			[$size=null] 			The font-size wanted @param 		{String} 			[$style=null] 			The font-style wanted @param 		{String} 			[$variant=null] 		The font-variant wanted @param 		{String|Number} 	[$weight=null] 			The font-weight wanted @param 		{String} 			[$decoration=null] 		The text-decoration wanted @param 		{String} 			[$align=null] 			The text-align wanted @param 		{String} 			[$transform=null] 		The text-transform wanted @param 		{String} 			[$stretch=null] 		The font-stretch wanted @param 		{String} 			[$white-space=null] 	The white-space wanted @param 		{Number} 			[$height=null] 			The line-height wanted @param 		{Number} 			[$spacing=null] 		The letter-spacing wanted @param 		{Number} 			[$indent=null] 			The text-indent wanted @param 		{String} 			[$break=null] 			The line-break wanted @param 		{String} 			[$wrap=null] 			The word-wrap wanted @return 		{Map} 										The corresponding font map @example s-font( $family : 'Helvetica Neue', $size : 12px, $wrap : norwap ); // ( font-family : 'Helvetica Neue', font-size : 12px, word-wrap : nowrap // ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the specified or calculated value of the given stack and size depending on the settings.sizes ratios stack @param 		{Map} 			$stack 			The stack from which to interpolate the value @param 		{String} 		$size 			The size wanted (has to exist in the settings.sizes stack) @return 		{Number} 						The $stack.$size value or the interpolated one depending on the settings.sizes ratios @example // settings.sizes \@include s-setup(( sizes : ( small : 0.5, default : 1, // default is ALWAYS 1 big : 1.5 ) )); $myStack : ( default : 3rem, big : 6rem ) s-interpolate($myStack, big) // 6rem cause specified in the $myStack value s-interpolate($myStack, small) // 1.5rem => calculated like : 3rem * 0.5 = 1.5rem @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Check if the passed value is of a certain type Here's the available types that you can check - mixed => mean anything - null - url - px - pt - rem - em - percent | % - vw - vh - ex - ch - cm - mm - in - pc - s | second - boolean | bool - function - number - int | integer - string - color - list - map - deg | degree - list-{type} => check if is a list of the specified type - map-{type} => check if is a map of the specified type @param 			{Mixed} 			$value 			The value to check @param 			{String} 			$type 			The type to check @return 			{Boolean} 							true if match the type, false if not @example s-is(hello, string) // => true s-is('hello', string) // => true s-is(#fff, color) // => true s-is(hello #fff, list-color) // => false s-is(#fff #ddd, list-color) // => true // etc... @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Alias to the [./_s-look-and-feel.scss] function Return a settings.look-and-feel stack value @param 		{String} 		$name					The look and feel value name @return 		{Number} 								The look and feel value in em @example .my-cool-element { padding : s-lnf(padding-horizontal) s-lnf(padding-vertical); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return a settings.look-and-feel stack value @param 		{String} 		$name					The look and feel value name @return 		{Number} 								The look and feel value in em @example .my-cool-element { padding : s-look-and-feel(padding-horizontal) s-look-and-feel(padding-vertical); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the modular scale value based on the settings ```modular-scale.base``` and ```modular-scale.ratio```. @param 			{Number} 		$scale 		The wanted scale @param 			{Number} 		[$base=settings.modular-scale.base] 	The base of calculation @return 			{Number} 					The calculated resulting value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Convert the passed value to the closest odd value @param 			{Number} 		$value 		The value to convert @return 			{Number} 					The closest odd converted value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Parse a given string/list properties and return the Map corresponding to the Map description @param 				{List} 				$properties 			The properties to parse @param 				{Map} 				$descriptor 			The descriptor map to use to parse the properties @return 				{Map} 										The properties in map format @example s-parse-properties(10px hello -delay 20s, ( myNumber : Number, myOtherNumber : Number, myString : String, myCoolVar : String, delay : second )); // => ( //  	myNumber : 10px, // 	myString : hello, // 	delay : 20s // ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Convert the passed value to % @param 			{Number} 		$value 		The value to convert @return 			{Number} 					The % converted value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Convert the passed value to pt @param 			{Number} 		$value 		The value to convert @return 			{Number} 					The pt converted value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Convert the passed value to px @param 			{Number} 		$value 		The value to convert @return 			{Number} 					The px converted value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Convert the passed value to rem @param 			{Number} 		$value 		The value to convert @return 			{Number} 					The rem converted value @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the passed values in the same unit but that has been even rounded on the corresponding px value This ensure that your passed value will be a round px value for final rander in the viewport @param 		{Number} 		$value 			The value to process @return 		{Number} 						The rounded value in same input unit but px rounded @example // if settings.typography.font-size == 16px s-render-round-even(5.2rem); // 1. transform to px values : 5.2 * 16px = 83.2px // 2. round even the px value : 84px // 3. transform to passed unit value : 84px / 16px = 5.25rem @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the passed values in the same unit but that has been odd rounded on the corresponding px value This ensure that your passed value will be a round px value for final rander in the viewport @param 		{Number} 		$value 			The value to process @return 		{Number} 						The rounded value in same input unit but px rounded @example // if settings.typography.font-size == 16px s-render-round-odd(5.2rem); // 1. transform to px values : 5.2 * 16px = 83.2px // 2. round odd the px value : 83px // 3. transform to passed unit value : 84px / 16px = 5.1875rem @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the passed values in the same unit but that has been rounded on the corresponding px value This ensure that your passed value will be a round px value for final rander in the viewport @param 		{Number} 		$value 			The value to process @return 		{Number} 						The rounded value in same input unit but px rounded @example // if settings.typography.font-size == 16px s-render-round(5.2rem); // 1. transform to px values : 5.2 * 16px = 83.2px // 2. round even the px value : 83px // 3. transform to passed unit value : 84px / 16px = 5.1875rem @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Search and replace tokens like colors #primary in a passed string, list or map Supported tokens types : 1. Colors : colorName @example s-replace-tokens(12px #primary hello #secondary); // > 12px #ddd hello #fff; @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Process selector to avoid having --default, etc... @param 		{String} 		$selector 		The selector to process @return 		{String} 						The processed selector @example 	scss s-selector('.input--default'); // => .input s-selector('.input-default'); // => .input s-selector('.input.default'); // => .input */
+/** Get a settings from the global settings stack @param 				{String} 			$path 						The setting path wanted separated by dots @param 				{String} 			[$context=s-context()] 		The context name to get the setting @return 				{Mixed} 										The setting value¨ @example $font-size : s-setting('typography.font-size'); // etc... @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return a value interpolated from the settings.spaces stack @param 			{String} 			$size 			The space size wanted. Must exist in the settings.sizes stack @return 			{Number} 							The actual space value @example .my-cool-section { padding : s-pace(big); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return a number without any units @param 			{Number} 		$number 		The number to process @return 			{Number} 						The number without units @example s-strip-units(12px); // => 12 s-strip-units(30rem); // => 30 @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Test an argument passed to a function or a mixin to ensure his type, value, etc... If the argument does not pass the test, an error will be thrown, unless the $check-only argument is true @param 				{String} 				$method 				The function/mixin name (debug purpose) @param 				{String} 				$argument 				The argument name to test (debug purpose) @param 				{List|String} 			$type-or-values 		If string, the type(s) that the argument must match, if list, the possible values that the argument can take @param 				{Mixed} 				$value 					The actual argument value @param 				{Boolean} 				[$check-only=false]		If this is true, will not thrown any error @return 				{Mixed} 										The value if ok, false if not @example \@mixin my-cool-mixin($argument1, $argument2) { $argument1 : s-test-argument(my-cool-mixin, argument1, string, $argument1); $argument2 : s-test-argument(my-cool-mixin, argument2, (hello,world,12), $argument2); } \@mixin my-cool-mixin(hello, world); // ok \@mixin my-cool-mixin(hello, universe); // throw an error \@mixin my-cool-mixin(12, world); // throw an error @author 				Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the text-format setting scope class @return 		{String} 		The text-format scope class from settings.text-format.scope-class @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Take a transition as parameter and parse it to return the {Map} corresponding The $transition parameter can be either a registered transition name or a custom css transition like : all .2s ease-in-out 2s The $transition argument will be parsed with the [./_s-parse-properties.scss] function. @param 			{List} 				$transition 			The registered transition name or the transition string to transform into map @return 			{Map} 										The corresponding transition map properties @example // register a transition \@include s-setup(( transitions : ( fast : all .2s ease-in-out, // other transitions... ) )); // registered transition s-transition-map(fast); // { // 	property : all, // 	duration : .2s, // 	ease : ease-in-out // } // custom transition s-transition-map(fast -delay .5s); // { // 	property : all, // 	duration : .2s, // 	ease : ease-in-out, // 	delay : .5s // } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Take a transition as parameter and parse it to return the {List} corresponding The $transitions parameter can be either a registered transition name or a custom css transition like : all .2s ease-in-out 2s The $transitions argument will be parsed with the [./_s-parse-properties.scss] function. @param 			{List} 				$transitions 			The registered transition(s) name(s) or the transition(s) strings(s) to transform into list @return 			{List} 										The corresponding transition list properties @example // register a transition \@include s-setup(( transitions : ( fast : all .2s ease-in-out 0s, // other transitions... ) )); // registered transition .my-cool-element { transition : s-transition(fast); // transition : all .2s ease-in-out 0s; } // custom transition .my-cool-element { transition : s-transition(fast -delay .5s, fast width ease-in); // transition : all .2s ease-in-out .5s, width .2s ease-in 0s; } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the unit context if has been set by the [s-unit-context mixin](../mixins/_s-unit-context.scss) @return 		{String} 				The unit context setted @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the generated vertical rhythme properties map calculated depending on the passed arguments @param 			{Number} 				[$font-size=settings.typography.font-size] 			The font size wanted @param 			{String} 				[$font-family=settings.typography.font-family] 		The font family to use @param 			{Number} 				[$line-height=null] 							The line height to use @param 			{Number} 				[$margin-top=0] 								The targeted margin-top @param 			{Number} 				[$margin-bottom=0] 								The targeted margin-bottom @param 			{Number} 				[$padding-top=0] 								The targeted padding-top @param 			{Number} 				[$padding-bottom=0] 							The targeted padding-bottom @param 			{List} 					[$margin=null] 									The targeted margin property @param 			{List} 					[$padding=null] 								The targeted padding property @param 			{List} 					[$border-top=null] 								The targeted border-top property @param 			{List} 					[$border-bottom=null] 							The targeted border-bottom property @param 			{Number} 				[$border-top-width=0] 							The targeted border-top-width property @param 			{Number} 				[$border-bottom-width=0] 						The targeted border-bottom-width property @param 			{Number} 				[$border=null] 									The targeted border property @param 			{Number} 				[$cap-height=null] 								The font cap-height used to calculate the vertical ryhthme @param 			{Boolean|String} 		[$calculate-height=false] 						If true|min-height|max-height|height, will return the corresponding absolute height value in the map @TODO example @see 			https://medium.com/written-in-code/aligning-type-to-baseline-the-right-way-using-sass-e258fce47a9b#.lck2lgbni @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Return the vertical-rhythme setting scope class @return 		{String} 		The vertical-rhythme scope class from settings.vertical-rhythme.scope-class @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generic sugar function can return multiple settings types like: - any settings : s('settings.{path}') - look and feel : s('look-and-feel.{property}', $size) - s('lnf.{property}', $size) - space : s('space.{size}') - color : s('color.{name}', $modifier) - transition : s('transition.{name}') - filter : s('filter.{name}') @example $my-color : s('color.primary'); $my-transition : s('transition.fast'); $my-font-size : s('settings.typography.font.size') // etc... @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Print out the animation property calculated with the passed arguments This mixin support all the standard css animation properties like name, duration, delay, ease, direction and fill-mode. The $animations argument will be parsed with the [../functions/_s-parse-properties.scss] function. If you specify multiple animations at a time, this mixin will take care of the delay calculation for each animations and make them play one after another @param 			{List} 				$animations 			The animations wanted like : coco .2s ease-in-out reverse @example .my-cool-element { @include s-animation(my-animation 1s ease-in-out, another-animation 4s); // animation : my-animation 1s 0s ease-in-out 1 normal forwards, another-animation 4s 1s ease-in-out 1 normal forwards; } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Print out all wanted registered classes like padding helpers, margin helpers, font helpers, etc... Available namespaces - sugar.filter.{name} : .fi-{name} - sugar.transition.{name} : .tr-{name} - sugar.font.family.{name} : .f-{name} - sugar.margin.bottom.{size} : .m-b-{size} - sugar.margin.top.{size} : .m-t-{size} - sugar.margin.left.{size} : .m-l-{size} - sugar.margin.right.{size} : .m-r-{size} - sugar.margin.side.{size} : .m-s-{size} - sugar.padding.all.{size} : .p-{size} - sugar.padding.top.{size} : .p-t-{size} - sugar.padding.bottom.{size} : .p-b-{size} - sugar.padding.left.{size} : .p-l-{size} - sugar.padding.right.{size} : .p-r-{size} - sugar.padding.side.{size} : .p-s-{size} - sugar.size.{size} : .s-{size} - sugar.size.rel.{size} : .s-{size}-rel - sugar.padding.no.top : .no-p-t - sugar.padding.no.bottom : .no-p-b - sugar.padding.no.left : .no-p-l - sugar.padding.no.right : .no-p-r - sugar.padding.no.side : .no-p-s - sugar.margin.no.top : .no-m-t - sugar.margin.no.bottom : .no-m-b - sugar.margin.no.left : .no-m-l - sugar.margin.no.right : .no-m-r - sugar.margin.no.side : .no-m-s - sugar.color.{name}.color` .c-{name} - sugar.color.{name}.bkg : .bkg-{name} - sugar.color.{name}.modifier.{mod-name}.color : .c-{name}--{mod-name} - sugar.color.{name}.modifier.{mod-name}.bkg : .bkg-{name}--{mod-name} - sugar.pull.left : .pull-left - sugar.pull.right : .pull-right - sugar.position.relative : .relative - sugar.position.absolute : .absolute - sugar.clear.left : .clear-left - sugar.clear.right : .clear-right - sugar.clear.both : .clear - sugar.pointer.events.all : .pointer-events-all - sugar.pointer.events.none : .pointer-events-none - sugar.display.show : .show - sugar.display.show-inline : .show-inline - sugar.display.hidden : .hidden - sugar.display.hide : .hide - sugar.display.visible : .visible - sugar.display.invisible : .invisible - sugar.display.visually-hidden : .visually-hidden - sugar.text.hidden : .t-hidden - sugar.text.truncate : .t-truncate - sugar.text.align.left : .t-left - sugar.text.align.right : .t-right - sugar.text.align.center : .t-center - sugar.text.align.justify : .t-justify - sugar.text.transform.lowercase : .t-lowercase - sugar.text.transform.uppercase : .t-uppercase - sugar.text.transform.capitalize : .t-capitalize - sugar.font.weight.bold : .f-bold - sugar.font.weight.lighter : .f-lighter - sugar.font.weight.bolder : .f-bolder - sugar.font.weight.normal : .f-normal - sugar.font.style.italic : .f-italic - sugar.font.style.oblique : .f-oblique - sugar.font.variant.small-caps : .f-small-caps - sugar.block.align.center : .block-center - sugar.ratio.16-9 : ```.ratio-16-9``` - sugar.ratio.4-3 : ```.ratio-4-3``` - sugar.ratio.1-1 : ```.ratio-1-1``` - sugar.size.abs.cover : ```.abs-cover``` - sugar.size.abs.contain : ```.abs-contain``` - sugar.clearfix.default : .clearfix - sugar.clearfix.float : .clearfix-float - sugar.clearfix.micro : .clearfix-micro - sugar.clearfix.overflow : .clearfix-overflow - sugar.clearfix.facebook : .clearfix-facebook - sugar.no-transitions : .no-transitions - sugar.clear-transitions : .clear-transitions - sugar.no-animations : .no-animations - sugar.clear-animations : .clear-animations - sugar.no-transmations : .no-transmations - sugar.clear-transmations : .clear-transmations @param 			{List}<string> 			$namespaces 		The classes namespaces wanted @example \@include s-classes(); // will print out all the classes \@include s-classes('sugar.font'); // will print all the font classes \@include s-classes('sugar.clearfix' 'sugar.pull'); // the clearfixes and the pull classes // etc... @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Print out the scoped color schema css @param 		{String} 			$name 			The color schema name @example \@include s-color-schema(light) { h1, h2 { color : white; } } // will print .cs-light h1, .cs-light h2 { color : white; } h1, h2 { \@include s-color-schema(light) { color : white; } } // will print .cs-light h1, h1.cs-light, .cs-light h2, h2.cs-light { color : white; } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the name of the component that will be handled inside the mixin @param 			{String} 			[$name=null] 			The name of the component to set @param 			{String|Map} 		[$context=null] 		A context name or map to use inside the mixin @example \@include s-component('my-component') { s-component('hello') // => 'my-component' \@include s-component('another-component') { s-component('hello') // => 'my-component' } } @author 			Olivier Bossel <olivier.bossel@gmail.com>; */
+/** Register a context with a name to use it later @param 			{String} 		$name 			The context name @param 			{Map} 			$settings 		The settings to override for this context @example \@include s-context-setup(my-cool-context, ( look-and-feel : ( padding-vertical : ( default : 0.6em ) ) )); // using your context \@include s-context(my-cool-context) { s-look-and-feel(padding-vertical); // => 0.6em } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set a context to be used inside the mixin @param 			{String|Map} 			$name-or-map 		The name of a registered context or a map @example // register a context \@include s-context-setup(my-cool-context, ( look-and-feel : ( padding-vertical : ( default : 0.6em ) ) )); // registered context \@include s-context(my-cool-context) { // your code here... } // inline context \@include s-context(( look-and-feel : ( padding-vertical : ( default : .3em ) ) )) { // your code here... } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Print out a list with all the filters that are passed as argument This will use the [../functions/_s-filter-map.scss] function to parse the filters @param 	 	{List}<String> 			$filters 			The registered filter(s) name(s) or the filter(s) string(s) to transform into list @example // register a filter \@include s-setup(( filters : ( myCoolFilter : box-shadow(#000 0 0 10px) blur(30px), // other filters... ) )); // registered filter .my-cool-elememt { \@include s-filter(myCoolFilter); // filter : box-shadow(#000 0 0 10px) blur(30px); } // custom filter .my-cool-element { \@include s-filter(myCoolFilter invert(100%)); // filter : box-shadow(#000 0 0 10px) blur(30px) invert(100%); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Helper to print a font-face @param 			{String} 		$font-family 			The font-family @param 			{String} 		$src 					The source url (only 1 extension) @param 			{List} 			[$extensions=woff2] 	The extensions list that you have available @param 			{String} 		[$font-weight=normal] 	The font-weight property @param 			{String} 		[$font-style=normal] 	The font-style property @example // if you have these extensions files : .woff .eot .woff2 \@include s-font-face( $name : my-cool-font, $src : '/fonts/my-font.eot', $extensions : eot woff woff2 ) @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Print all the fonts properties that correspond to the passed arguments @param 		{String} 			[$family=null] 			The font family wanted (can be a registered font name) @param 		{Color} 			[$color=null] 			The color wanted (can be a registered color name) @param 		{Number} 			[$size=null] 			The font-size wanted @param 		{String} 			[$style=null] 			The font-style wanted @param 		{String} 			[$variant=null] 		The font-variant wanted @param 		{String|Number} 	[$weight=null] 			The font-weight wanted @param 		{String} 			[$decoration=null] 		The text-decoration wanted @param 		{String} 			[$align=null] 			The text-align wanted @param 		{String} 			[$transform=null] 		The text-transform wanted @param 		{String} 			[$stretch=null] 		The font-stretch wanted @param 		{String} 			[$white-space=null] 	The white-space wanted @param 		{Number} 			[$height=null] 			The line-height wanted @param 		{Number} 			[$spacing=null] 		The letter-spacing wanted @param 		{Number} 			[$indent=null] 			The text-indent wanted @param 		{String} 			[$break=null] 			The line-break wanted @param 		{String} 			[$wrap=null] 			The word-wrap wanted @return 		{Map} 										The corresponding font map @example .my-cool-elememt { \@include s-font( $family : 'Helvetica Neue', $size : 12px, $wrap : norwap ); // print font-family : 'Helvetica Neue', font-size : 12px, word-wrap : nowrap } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Init the sugar toolkit. This has to be called **AFTER** all the [./_s-setup.scss] mixin call and **BEFORE** all the others sugar mixins and functions calls @example \@include s-init(); @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register all the dynamic helper classes that depends on the settings, etc... This is used internaly @example \@include s-init-classes(); @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Register a helper class under a certain namespace @param 			{String} 		$classname 		The classname that will be printed out @param 			{String} 		$namespace 		The dots separated namespace under which the class will live @example \@include s-register-class(my-cool-class, 'my.cool.namespace') { background : pink; } \@include s-register-class(another-cool-class, 'my.another.namespace') { background : red; } // print out my helpers classes \@include s-classes('my'); @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Setup sugar toolkit by overriding the default [settings](../_settings.scss) This has to be called **BEFORE** the [s-init mixin](./_s-init.scss) @param 			{Map} 			$settings 		The settings to override @example \@include s-setup(( typo : ( font-size : 12px ), sizes : ( small : 0.5, big : 1.5 ) )); // this mixin can be called as many times as you need // this allows you to separate your configs setup into multiple // files... @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Display the vertical rhythme @param 			{Color} 		The color wanted @example body { @include s-show-vertical-rhythme(); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Take a transition as parameter and print the corresponding transition property The $transitions parameter can be either a registered transition name or a custom css transition like : all .2s ease-in-out 2s The $transitions argument will be parsed with the [./_s-parse-properties.scss] function. @param 			{List} 				$transitions 			The registered transition(s) name(s) or the transition(s) strings(s) to transform into list @return 			{List} 										The corresponding transition list properties @example // register a transition \@include s-setup(( transitions : ( fast : all .2s ease-in-out 0s, // other transitions... ) )); // registered transition .my-cool-element { \@include s-transition(fast>); // transition : all .2s ease-in-out 0s; } // custom transition .my-cool-element { \@include s-transition(fast -delay .5s, fase width ease-in); // transition : all .2s ease-in-out .5s, width .2s ease-in 0s; } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Set the unit context to use inside the mixin. This mean that if you set a unit context, then get a number setting through the [s-setting function](../functions/_s-setting.scss), The value that will be returned will be converted into the unit context if possible @param 			{String} 			$unit 			The unit wanted @example // if settings.typography.font-size == 16px s-setting('typography.font-size'); // => 16px \@incluse s-unit-context(rem) { s-setting('typography.font-size'); // => 1rem } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Print out the vertical rhythme properties map calculated depending on the passed arguments @param 			{Number} 				[$font-size=settings.typography.font-size] 			The font size wanted @param 			{String} 				[$font-family=settings.typography.font-family] 		The font family to use @param 			{Number} 				[$line-height=null] 							The line height to use @param 			{Number} 				[$margin-top=0] 								The targeted margin-top @param 			{Number} 				[$margin-bottom=0] 								The targeted margin-bottom @param 			{Number} 				[$padding-top=0] 								The targeted padding-top @param 			{Number} 				[$padding-bottom=0] 							The targeted padding-bottom @param 			{List} 					[$margin=null] 									The targeted margin property @param 			{List} 					[$padding=null] 								The targeted padding property @param 			{List} 					[$border-top=null] 								The targeted border-top property @param 			{List} 					[$border-bottom=null] 							The targeted border-bottom property @param 			{Number} 				[$border-top-width=0] 							The targeted border-top-width property @param 			{Number} 				[$border-bottom-width=0] 						The targeted border-bottom-width property @param 			{Number} 				[$border=null] 									The targeted border property @param 			{Number} 				[$cap-height=null] 								The font cap-height used to calculate the vertical ryhthme @param 			{Boolean|String} 		[$calculate-height=false] 						If true|min-height|max-height|height, will return the corresponding absolute height value in the map @TODO example @see 			https://medium.com/written-in-code/aligning-type-to-baseline-the-right-way-using-sass-e258fce47a9b#.lck2lgbni @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	Helper Classes This file is responsible to register the static helper classes like: - sugar.pull.left : ```.pull-left``` - sugar.pull.right : ```.pull-right``` - sugar.position.relative : ```.relative``` - sugar.position.absolute : ```.absolute``` - sugar.clear.left : ```.clear-left``` - sugar.clear.right : ```.clear-right``` - sugar.clear.both : ```.clear``` - sugar.pointer.events.all : ```.pointer-events-all``` - sugar.pointer.events.none : ```.pointer-events-none``` - sugar.display.show : ```.show``` - sugar.display.show-inline : ```.show-inline``` - sugar.display.hidden : ```.hidden``` - sugar.display.hide : ```.hide``` - sugar.display.visible : ```.visible``` - sugar.display.invisible : ```.invisible``` - sugar.display.visually-hidden : ```.visually-hidden``` - sugar.text.hidden : ```.t-hidden``` - sugar.text.truncate : ```.t-truncate``` - sugar.text.align.left : ```.t-left``` - sugar.text.align.right : ```.t-right``` - sugar.text.align.center : ```.t-center``` - sugar.text.align.justify : ```.t-justify``` - sugar.text.transform.lowercase : ```.t-lowercase``` - sugar.text.transform.uppercase : ```.t-uppercase``` - sugar.text.transform.capitalize : ```.t-capitalize``` - sugar.font.weight.bold : ```.f-bold``` - sugar.font.weight.lighter : ```.f-lighter``` - sugar.font.weight.bolder : ```.f-bolder``` - sugar.font.weight.normal : ```.f-normal``` - sugar.font.style.italic : ```.f-italic``` - sugar.font.style.oblique : ```.f-oblique``` - sugar.font.variant.small-caps : ```.f-small-caps``` - sugar.block.align.center : ```.block-center``` - sugar.ratio.16-9 : ```.ratio-16-9``` - sugar.ratio.4-3 : ```.ratio-4-3``` - sugar.ratio.1-1 : ```.ratio-1-1``` - sugar.size.abs.cover : ```.abs-cover``` - sugar.size.abs.contain : ```.abs-contain``` - sugar.clearfix.default : ```.clearfix``` - sugar.clearfix.float : ```.clearfix-float``` - sugar.clearfix.micro : ```.clearfix-micro``` - sugar.clearfix.overflow : ```.clearfix-overflow``` - sugar.clearfix.facebook : ```.clearfix-facebook``` - sugar.no-transitions : ```.no-transitions``` - sugar.clear-transitions : ```.clear-transitions``` - sugar.no-animations : ```.no-animations``` - sugar.clear-animations : ```.clear-animations``` - sugar.no-transmations : ```.no-transmations``` - sugar.clear-transmations : ```.clear-transmations``` @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+.pull-left { /** @name 		```.pull-left``` Allows you to pull an element to the left side @styleguide 	Helpers / Pull @example 	html <span class="pull-left">Hello world</span> </div> */ float: left; }
+
+.pull-right { /** @name 		```.pull-right``` Allows you to pull an element to the right side @styleguide 	Helpers / Pull @example 	html <span class="pull-right">Hello world</span> </div> */ float: right; }
+
+.relative { /** @name 		```.relative``` Set an element position as ```relative``` @styleguide 	Helpers / Position @example 	html <div class="relative"> I'm relative now </div> */ position: relative; }
+
+.absolute { /** @name 		```.absolute``` Set an element position as ```absolute``` @styleguide 	Helpers / Position @example 	html <div class="absolute"> I'm absolute now </div> */ position: absolute; }
+
+.clear-left { /** @name 		```.clear-left``` Clear the left float on the element @styleguide 	Helpers / Float @example 	html <div class="clear-left"> I clear the left float </div> */ clear: left; }
+
+.clear-right { /** @name 		```.clear-right``` Clear the right float on the element @styleguide 	Helpers / Float @example 	html <div class="clear-right"> I clear the right float </div> */ clear: right; }
+
+.clear { /** @name 		```.clear``` Clear both float on the element @styleguide 	Helpers / Float @example 	html <div class="clear"> I clear both floats </div> */ clear: both; }
+
+.pointer-events-none { /** @name 		```.pointer-events-none``` Disable any pointer events @styleguide 	Helpers / Pointer events @example 	html <div class="pointer-events-none"> I will not react to any pointer events </div> */ pointer-events: none; }
+
+.pointer-events-all { /** @name 		```.pointer-events-all``` Disable any pointer events @styleguide 	Helpers / Pointer events @example 	html <div class="pointer-events-all"> I will not react to any pointer events </div> */ pointer-events: all; }
+
+.block { /** @name 		```.block``` Display the element as ```block``` @styleguide 	Helpers / Display @example 	html <div class="block"> I'm displayed as block </div> */ display: block; }
+
+.inline { /** @name 		```.inline``` Display the element as ```inline``` @styleguide 	Helpers / Display @example 	html <div class="inline"> I'm displayed as inline </div> */ display: inline; }
+
+.inline-block { /** @name 		```.inline-block``` Display the element as ```inline-block``` @styleguide 	Helpers / Display @example 	html <div class="inline-block"> I'm displayed as inline-block </div> */ display: inline-block; }
+
+.show { /** @name 		```.show``` Display the element as ```block``` @styleguide 	Helpers / Display @example 	html <div class="show"> I'm displayed </div> */ display: block; }
+
+.show-inline { /** @name 		```.show-inline``` Display the element as ```inline-block``` @styleguide 	Helpers / Display @example 	html <div class="show-inline"> I'm inline displayed </div> */ display: inline-block; }
+
+.hidden { /** @name 		```.hidden``` Hide the element by setting the display to ```none``` @styleguide 	Helpers / Display @example 	html <div class="hidden"> I'm hidden </div> */ display: none; }
+
+.hide { /** @name 		```.hide``` Hide the element by setting the display to ```none``` @styleguide 	Helpers / Display @example 	html <div class="hide"> I'm hidden </div> */ display: none; }
+
+.visible { /** @name 		```.visible``` Display the element by setting the visibility to ```visible``` @styleguide 	Helpers / Display @example 	html <div class="visible"> I'm visible </div> */ visibility: visible; }
+
+.invisible { /** @name 		```.invisible``` Display the element by setting the visibility to ```hidden``` @styleguide 	Helpers / Display @example 	html <div class="invisible"> I'm invisible </div> */ visibility: hidden; }
+
+.visually-hidden { /** @name 		```.visually-hidden``` Hide the element from display but not for SEO. This class use some tricks to make the element dissapear without using some ```display:none;```, etc... @styleguide 	Helpers / Display @example 	html <div class="visually-hidden"> I'm only visually hidden </div> */ margin: -1px; padding: 0; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip: rect(0, 0, 0, 0); position: absolute; }
+
+.t-hidden { /** @name 		```.t-hidden``` Hide the text @styleguide 	Helpers / Text @example 	html <div class="t-hidden"> I'm not visible </div> */ overflow: hidden; text-indent: -9000px; display: block; }
+
+.t-truncate { /** @name 		```.t-truncate``` Hide the text @styleguide 	Helpers / Text @example 	html <div class="t-truncate"> I'm truncated cause I talk a lot too much Nulla mauris eros, finibus ac faucibus et, tempus quis risus. Praesent sit amet nulla vel libero euismod sodales eu nec. </div> */ display: inline-block; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.t-truncate > * { text-overflow: ellipsis; overflow: hidden; }
+
+.t-left { /** @name 		```.t-left``` Align the text to the left @styleguide 	Helpers / Text @example 	html <div class="t-left"> I'm left aligned </div> */ text-align: left; }
+
+.t-right { /** @name 		```.t-right``` Align the text to the right @styleguide 	Helpers / Text @example 	html <div class="t-right"> I'm right aligned </div> */ text-align: right; }
+
+.t-center { /** @name 		```.t-center``` Align the text to the center @styleguide 	Helpers / Text @example 	html <div class="t-center"> I'm centered </div> */ text-align: center; }
+
+.t-justify { /** @name 		```.t-justify``` Make the text justified @styleguide 	Helpers / Text @example 	html <div class="t-justify"> Nullam vel feugiat nunc. Phasellus facilisis, nisi sit amet viverra rhoncus, arcu risus volutpat dolor, sed euismod magna tellus ac purus. Praesent augue lorem, ullamcorper ac accumsan nec, suscipit eu. </div> */ text-align: justify; }
+
+.t-lowercase { /** @name 		```.t-lowercase``` Transform the text to lowercase @styleguide 	Helpers / Text @example 	html <div class="t-lowercase"> I'M LOWERCASE </div> */ text-transform: lowercase; }
+
+.t-uppercase { /** @name 		```.t-uppercase``` Transform the text to uppercase @styleguide 	Helpers / Text @example 	html <div class="t-uppercase"> I'm uppercase </div> */ text-transform: uppercase; }
+
+.t-capitalize { /** @name 		```.t-capitalize``` Capizalize the words @styleguide 	Helpers / Text @example 	html <div class="t-capitalize"> I'm capitalized </div> */ text-transform: capitalize; }
+
+.f-bold { /** @name 		```.f-bold``` Set the font-weight to ```bold``` @styleguide 	Helpers / Font @example 	html This <span class="f-bold">word</span> is bold */ font-weight: bold; }
+
+.f-lighter { /** @name 		```.f-lighter``` Set the font-weight to ```lighter``` @styleguide 	Helpers / Font @example 	html This <span class="f-lighter">word</span> is lighter */ font-weight: lighter; }
+
+.f-bolder { /** @name 		```.f-bolder``` Set the font-weight to ```bolder``` @styleguide 	Helpers / Font @example 	html This <span class="f-bolder">word</span> is bolder */ font-weight: bolder; }
+
+.f-normal { /** @name 		```.f-normal``` Set the font-weight to ```normal``` @styleguide 	Helpers / Font @example 	html <div class="f-bold"> This <span class="f-normal">word</span> is normal </div> */ font-weight: normal; font-style: normal; }
+
+.f-italic { /** @name 		```.f-italic``` Set the font-style to ```italic``` @styleguide 	Helpers / Font @example 	html This <span class="f-italic">word</span> is italic */ font-style: italic; }
+
+.f-oblique { /** @name 		```.f-oblique``` Set the font-style to ```oblique``` @styleguide 	Helpers / Font @example 	html This <span class="f-oblique">word</span> is oblique */ font-style: oblique; }
+
+.f-small-caps { /** @name 		```.f-small-caps``` Set the font-variant to ```small-caps``` @styleguide 	Helpers / Font @example 	html This <span class="f-small-caps">word</span> is small-caps */ font-variant: small-caps; }
+
+.block-center { /** @name 		```.block-center``` Set the element to as ```display:block``` and center it @styleguide 	Helpers / Block @example 	html <div class="block-center bkg-primary" style="width:100px;"> I'm a centered block </div> */ display: block; margin-left: auto; margin-right: auto; }
+
+.abs-cover { /** @name 		```.abs-cover``` Set a size that will cover the entire parent surface by positionning it in absolute @styleguide 	Helpers / Sizes @example 	html <div class="ratio-16-9"> <img src="http://eskipaper.com/images/landscape-3.jpg" class="abs-cover" /> </div> */ position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); min-width: 100%; min-height: 100%; }
+
+.abs-contain { /** @name 		```.abs-contain``` Set a size that will contain the entire parent surface by positionning it in absolute @styleguide 	Helpers / Sizes @example 	html <div class="ratio-16-9"> <img src="http://eskipaper.com/images/landscape-3.jpg" class="abs-contain" /> </div> */ position: absolute; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); max-width: 100%; max-height: 100%; }
+
+.clearfix { /** @name 		```.clearfix``` Apply the micro clearfix on the element @styleguide 	Helpers / Clearfix @example 	html <div class="clearfix bkg-primary"> <div class="pull-right">right pulled</div> </div> <div class="bkg-primary"> <div class="pull-right">right pulled without clearfix</div> </div> */ }
+
+.clearfix-float { /** @name 		```.clearfix-float``` Apply the float clearfix on the element @styleguide 	Helpers / Clearfix @example 	html <div class="clearfix-float bkg-primary"> <div class="pull-right">right pulled</div> </div> <div class="bkg-primary"> <div class="pull-right">right pulled without clearfix</div> </div> */ }
+
+.clearfix, .clearfix-micro { /** @name 		```.clearfix``` Apply the micro clearfix on the element @styleguide 	Helpers / Clearfix @example 	html <div class="clearfix bkg-primary"> <div class="pull-right">right pulled</div> </div> <div class="bkg-primary"> <div class="pull-right">right pulled without clearfix</div> </div> */ }
+
+.clearfix-overflow { /** @name 		```.clearfix-overflow``` Apply the overflow clearfix on the element @styleguide 	Helpers / Clearfix @example 	html <div class="clearfix-overflow bkg-primary"> <div class="pull-right">right pulled</div> </div> <div class="bkg-primary"> <div class="pull-right">right pulled without clearfix</div> </div> */ }
+
+.clearfix-facebook { /** @name 		```.clearfix-facebook``` Apply the facebook clearfix on the element @styleguide 	Helpers / Clearfix @example 	html <div class="clearfix-facebook bkg-primary"> <div class="pull-right">right pulled</div> </div> <div class="bkg-primary"> <div class="pull-right">right pulled without clearfix</div> </div> */ }
+
+.ratio-16-9 { /** @name 		```.ratio-16-9``` Keep a 16/9 ratio on a particular element. Applied by setting height to 0 and paddingtop to 100% / 16 * 9 @styleguide 	Helpers / Ratios @example 	html <div class="ratio-16-9"> I will keep my ratio </div> */ position: relative; overflow: hidden; }
+
+.ratio-16-9:before { content: ''; display: block; height: 0; padding-top: 56.25%; }
+
+.ratio-4-3 { /** @name 		```.ratio-4-3``` Keep a 4/3 ratio on a particular element. Applied by setting height to 0 and paddingtop to 100% / 4 * 3 @styleguide 	Helpers / Ratios @example 	html <div class="ratio-4-3"> I will keep my ratio </div> */ position: relative; overflow: hidden; }
+
+.ratio-4-3:before { content: ''; display: block; height: 0; padding-top: 75%; }
+
+.ratio-1-1 { /** @name 		```.ratio-1-1``` Keep a 1/1 ratio on a particular element. Applied by setting height to 0 and paddingtop to 100% @styleguide 	Helpers / Ratios @example 	html <div class="ratio-1-1"> I will keep my ratio </div> */ position: relative; overflow: hidden; }
+
+.ratio-1-1:before { content: ''; display: block; height: 0; padding-top: 75%; }
+
+.no-transitions { /** @name 		```.no-transitions``` Disable the transitions <span class="f-bold">only on the element</span> @styleguide 	Helpers / Transitions @example 	html <div class="no-transitions"> I have no more transitions <div>But I have</div> </div> */ }
+
+.no-transitions, .no-transitions:before, .no-transitions:after { transition: none !important; }
+
+.clear-transitions { /** @name 		```.clear-transitions``` Disable the transitions <span class="f-bold">on the element and all his children</span> @styleguide 	Helpers / Transitions @example 	html <div class="clear-transitions"> I have no more transitions <div>Me neither</div> </div> */ }
+
+.clear-transitions, .clear-transitions:before, .clear-transitions:after, .clear-transitions *, .clear-transitions *:before, .clear-transitions *:after { transition: none !important; }
+
+.no-animations { /** @name 		```.no-animations``` Disable the animations <span class="f-bold">only on the element</span> @styleguide 	Helpers / Animations @example 	html <div class="no-animations"> I have no more animations <div>But I have</div> </div> */ }
+
+.no-animations, .no-animations:before, .no-animations:after { animation: none !important; }
+
+.clear-animations { /** @name 		```.clear-animations``` Disable the transitions <span class="f-bold">on the element and all his children</span> @styleguide 	Helpers / Animations @example 	html <div class="clear-animations"> I have no more animations <div>Me neither</div> </div> */ }
+
+.clear-animations, .clear-animations:before, .clear-animations:after, .clear-animations *, .clear-animations *:before, .clear-animations *:after { animation: none !important; }
+
+.no-transmations { /** @name 		```.no-transmations``` Disable the animations and transitions <span class="f-bold">only on the element</span> @styleguide 	Helpers / Transmations @example 	html <div class="no-transmations"> I have no more animations or transitions <div>But I have</div> </div> */ }
+
+.no-transmations, .no-transmations:before, .no-transmations:after { transition: none !important; animation: none !important; }
+
+.clear-transmations { /** @name 		```.clear-transmations``` Disable the animations and transitions <span class="f-bold">on the element and all his children</span> @styleguide 	Helpers / Transmations @example 	html <div class="clear-transmations"> I have no more animations or transitions <div>Me neither</div> </div> */ }
+
+.clear-transmations, .clear-transmations:before, .clear-transmations:after, .clear-transmations *, .clear-transmations *:before, .clear-transmations *:after { transition: none !important; animation: none !important; }
+
+/** This file contains all the default settings that can be overrided by the [s-setup mixin](./mixins/_s-setup.scss). @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Create an arrow bubble effect @param 		{String} 			[$side=bottom] 				The side (top,right,bottom,left) @param 		{String} 			[$align=center] 			The alignement (left,center,right,top,middle,bottom) @param 		{Number} 			[$size=10px] 				The size of the arrow @param 		{Color} 			[$color=s-color(primary)] 	The color of the bubble @param 		{Number} 			[$arrow-offset=10px] 		The arrow offset from the side of the bubble @param 		{Number} 			[$border-width=0] 			The border width of the bubble @param 		{Color} 			[$border-color=null] 		The border color of the bubble @example .my-cool-bubble { \@include s-bubble( $color : s-color(secondary) ); color : white; } @see 			https://codepen.io/kirkas/pen/otqyJ @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generate a drop shadow depending on the depth specified @param 		{Integer} 			$depth 							The depth wanted (1,2,3,4,etc...) @param 		{Color} 			[$color=rgba(0,0,0,.2)] 		The drop shadow color @example .my-cool-element { \@include s-depth(2); } @author 	 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Create a poping dot effect to catch user attention on a particular item This mixin affect the :before and :after pseudo selector of the item @param 		{String} 		[$vertical-align=top] 			Where to put the dot verticaly (top,middle,bottom) @param 		{String} 		[$align=left] 					Where to put the dot horizontaly (left,center,right) @param 		{Number} 		[$size=20px] 					The size of the dot @param 		{Color} 		[$color=primary] 				The color of the dot @param 		{Number} 		[$offset-top=0] 				The offset top @param 		{Number} 		[$offset-right=0] 				The offset right @param 		{Number} 		[$offset-bottom=0] 				The offset bottom @param 		{Number} 		[$offset-left=0] 				The offset left @example .my-cool-element { \@include s-hey( $align : right, $color : secondary, $size : 10px, $offset-top : -10px, $offset-right : -10px ); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generate a full animated, single element, bars loader @param 			{String} 			[$shape=rect] 				The shape of the bars (rect,circle) @param 			{Color} 			[$color=primary] 			The color(s) of the loader. Can be a list of colors @param 			{Number} 			[$width=.5em] 				The width of each bars @param 			{Number} 			[$height=2em] 				The height of each bars @param 			{Integer} 			[$count=5] 					How many bars you want @param 			{Number} 			[$gap=.5em] 				The gap between each bars @param 			{Number} 			[$opacity=1] 				The initial opacity of each bars @param 			{Number} 			[$a-opacity=null] 			The opacity of the animated bars @param 			{Second} 			[$a-duration=1s] 			The overall animation duration @param 			{Second} 			[$a-delay=0s] 				The delay between two animation cycle @param 			{Integer} 			[$a-near=1] 				How many bars are affected by the animated one @param 			{String} 			[$a-ease=ease-in-out] 		The ease to use to animate each bars @param 			{Number} 			[$a-offset=null] 			The offset to move the animated bar @param 			{String} 			[$a-direction=both] 		The direction in which to move the bars (up,down,both) @param 			{Boolean} 			[$a-continuous=true] 		If true, the first bars will be animated at same time at the last ones @example .my-cool-loader { \@include s-loader-bars( $color : primary, $a-offset : .5em ); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generate a full animated, single element, circle loader @param 			{Color} 			[$color=primary] 			The color(s) of the loader. Can be a list of colors @param 			{Number} 			[$size=.33em] 				The size of each dot @param 			{Number} 			[$radius=1em] 				The distance of each dot from the center of the loader @param 			{Integer} 			[$count=5] 					How many bars you want @param 			{Number} 			[$opacity=1] 				The initial opacity of each bars @param 			{Number} 			[$a-opacity=null] 			The opacity of the animated bars @param 			{Second} 			[$a-duration=1s] 			The overall animation duration @param 			{Second} 			[$a-delay=0s] 				The delay between two animation cycle @param 			{Integer} 			[$a-near=1] 				How many bars are affected by the animated one @param 			{String} 			[$a-ease=ease-in-out] 		The ease to use to animate each bars @TODO finish documentation @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generate a full animated, single element, couch-potato style loader @param 		{Number} 		[$size=1em] 				The size of the loader @param 		{Color} 		[$color=primary] 			The color of the loader @param 		{Second} 		[$a-duration=1s] 			The overall animation duration @param 		{Second} 		[$a-delay=0s] 				The delay between two animation cycle @param 		{String} 		[$a-ease=ease-in-out]		The ease to use for the animation @param 		{Degree}		[$a-rotate=360deg] 			The animation rotation @param 		{Number} 		[$a-scale=.7] 				The animation scale @example .my-cool-loader { \@include s-loader-couch-potato(); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generate a full animated, single element, flip ball style loader @param 		{String} 		[$shape=circle] 			The shape of the loader (circle,rect) @param 		{Number} 		[$size=1em] 				The size of the loader @param 		{Color} 		[$color=primary] 			The color of the loader. Can be a list of colors @param 		{Second} 		[$a-duration=1s] 			The overall animation duration @param 		{Second} 		[$a-delay=0s] 				The delay between two animation cycle @param 		{String} 		[$a-ease=ease-in-out]		The ease to use for the animation @example .my-cool-loader { \@include s-loader-flip-ball(); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Generate a long shadow effect like [this](https://www.google.ch/search?q=long+shadow&espv=2&biw=2560&bih=1316&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjjne6x49LPAhVBHRQKHat8AW8Q_AUIBigB) @param 		{Color} 		[$color=rgba(0,0,0,.3)] 			The shadow color @param 		{String} 		[$type=text] 						The shadow type (text,box) @param 		{Degree} 		[$angle=135deg] 					The shadow angle @param 		{Integer} 		[$depth=20] 						The shadow depth @param 		{Boolean} 		[$fade=false] 						If true, the shadow will fade itself @param 		{Number} 		[$blur=0] 							The blur amount of the shadow @param 		{Number} 		[$blur-ratio=0] 					The ratio to blur each depth more @example .my-cool-title { \@include s-long-shadow( $depth : 10 ); } .my-cool-box { \@include s-long-shadow( $type : box ); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** Create side lines around an item @param 			{String} 		[$style=solid] 			The line style, same possible values as the border-style property @param 			{String} 		[$side=both] 			The side where to put lines (left,right,both) @param 			{Number} 		[$height=1px] 			The lines height @param 			{Number} 		[$width=50%] 			The width of the lines @param 			{Color} 		[$color=text]			The color of the lines @param 			{Number} 		[$padding=0] 			The padding between the lines and the content @param 			{Number} 		[$offset-top=null] 		The line offset top @example h1 { \@include s-side-lined( $padding : 20px, $side : right, $width : 100% ); } @author 			Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	SButtonComponent Provide ability to generate buttons that follow your settings like colors, look and feel, etc... - ```.btn``` - ```.btn--block``` - ```.btn--{color}``` - ```.btn--outline``` - ```.btn--link``` - ```.btn:disabled``` - ```.btn--hover-{$color}``` See: - [Element level mixins API](./sass/_main.md) - [Classes level mixins API](./sass/_classes.md) @example 	scss // apply the button bare and style to my custom element .my-cool-element { \@include s-button(); } // apply only the bare styling to my custom element .my-cool-element { \@include s-button-bare(); } // apply only the style styling to my custom element .my-cool-element { \@include s-button-style(); } // will print out classes for the button including bare and style part \@include s-button-classes( $colors : default primary secondary ); // will print out classes for the button including only bare part \@include s-button-classes-bare(); // will print out classes for the button including only style part \@include s-button-classes-style( $colors : default primary secondary ); @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	SButtonComponent This file provide the mixins to create buttons */
+button { line-height: 1; }
+
+/** Apply the button css @param 		{Number} 		[$modifiers=null] 			The modifiers that represent the button you want. Available : {color} outline link @param 		{Integer}		[$state=null] 				The state of the button you want like. Available : disabled @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the button bare css @param 		{Number} 		[$modifiers=null] 			The modifiers that represent the button you want. Available : {color} outline link @param 		{Integer}		[$state=null] 				The state of the button you want like. Available : disabled @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the button style css @param 		{Number} 		[$modifiers=null] 			The modifiers that represent the button you want. Available : {color} outline link @param 		{Integer}		[$state=null] 				The state of the button you want like. Available : disabled @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	SButtonComponent Classes This file provide the mixins to generate button classes */
+/** Provide all the classes of the button component like .btn, .btn--outline, etc... - ```.btn``` - ```.btn--{color}``` - ```.btn--outline``` - ```.btn--link``` - ```.btn--block``` @param 		{List<Color>} 		[$colors=default primary secondary] 		The colors to generate @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the buttons classes - ```.btn``` - ```.btn--block``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the style styling for the buttons classes - ```.btn--{color}``` - ```.btn--outline``` - ```.btn--link``` - ```.btn:disabled``` - ```.btn--hover-{$color}``` @param 		{List<Color>} 		[$colors=default primary secondary] 		The colors to generate @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	SCornerBadgeComponent Provide ability to generate corner badges that follow your settings like colors. - ```.corner-badge``` - ```.corner-badge--tl``` - ```.corner-badge--tr``` - ```.corner-badge--bl``` - ```.corner-badge--br``` - ```.corner-badge--{color}``` See: - [Element level mixins API](./sass/_main.md) - [Classes level mixins API](./sass/_classes.md) @example 	scss // apply the corner badge bare and style to my custom element .my-cool-element { \@include s-corner-badge(primary tr); } // apply only the bare styling to my custom element .my-cool-element { \@include s-corner-badge-bare(tr); } // apply only the style styling to my custom element .my-cool-element { \@include s-corner-badge-style(primary); } // will print out classes for the corner badges including bare and style part \@include s-corner-badge-classes( $corners : tr tl br bl, $colors : default primary secondary ); // will print out classes for the button including only bare part \@include s-button-classes-bare( $corners : tr tl br bl ); // will print out classes for the button including only style part \@include s-button-classes-style( $colors : default primary secondary ); @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	SCornerBadgeComponent This file provide the mixins to create corner badges */
+/** Apply the corner badge css @param 		{Number} 		[$modifiers=default tr] 			The modifiers that represent the corner badge you want. Available : {color} tl tr bl br @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the corner badge bare css @param 		{Number} 		[$modifiers=tr] 			The modifiers that represent the corner badge you want. Available : tl tr bl br @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the corner badge style css @param 		{Number} 		[$modifiers=default] 			The modifiers that represent the corner badge you want. Available : {color} @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	SCornerBadgeComponent Classes This file provide the mixins to generate corner badge classes */
+/** Provide all the classes of the corner badge component like: - ```.corner-badge``` - ```.corner-badge--tl``` - ```.corner-badge--tr``` - ```.corner-badge--bl``` - ```.corner-badge--br``` - ```.corner-badge--{color}``` @param 		{List<String>} 		[$corners=tl tr bl br] 						The corners to generate @param 		{List<Color>} 		[$colors=default primary secondary] 		The colors to generate @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide all the bare classes of the corner badge component like: - ```.corner-badge``` - ```.corner-badge--tl``` - ```.corner-badge--tr``` - ```.corner-badge--bl``` - ```.corner-badge--br``` @param 		{List<String>} 		[$corners=tl tr bl br] 						The corners to generate @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide all the style classes of the corner badge component like: - ```.corner-badge--{color}``` @param 		{List<Color>} 		[$colors=default primary secondary] 		The colors to generate @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	SDropdownComponent Documentation coming soon... */
+/** @name 	SFormComponent Documentation coming soon... */
+/** @name 	SNavComponent Documentation coming soon... */
+.nav--justify, .nav--inline, .nav--topbar { list-style: none; padding: 0; margin: 0; user-select: none; }
+
+/** @name 	STableComponent Documentation coming soon... */
+/** @name 	STypographyComponent Provide ability to generate base typography classes for: - Titles: - ```.h1-h6``` - ```.tf h1-h6``` - Paragraphs - ```.p```, ```.tf p``` - ```.p--lead```, ```.tf p.p--lead``` - Links - ```.link```, ```.tf a``` - Inline text elements - ```.mark```, ```.tf mark``` - ```.del```, ```.tf del``` - ```.s```, ```.tf s``` - ```.ins```, ```.tf ins``` - ```.u```, ```.tf u``` - ```.small```, ```.tf small``` - ```.strong```, ```.tf strong``` - ```.em```, ```.tf em``` - Lists - ```.dl```, ```.tf dl``` - ```.dt```, ```.tf dt``` - ```.dd```, ```.tf dd``` - ```.ul```, ```.tf ul``` - ```.li```, ```.tf li``` - ```.ol```, ```.tf ol``` - ```.li```, ```.tf li``` - Captions - ```.caption```, ```.tf caption```, ```.tf figcaption``` - Quotes - ```.quote```, ```.tf quote``` - ```.blockquote```, ```.tf blockquote``` See: - [Element level mixins API](./sass/_main.md) - [Classes level mixins API](./sass/_classes.md) @example 	scss // apply the title bare and style to my custom element h1 { \@include s-typography-title(4em); } // apply only the bare styling to my custom title h1 { \@include s-typography-title-bare(4em); } // apply only the style styling to my custom title h1 { \@include s-typography-title-style(4em); } // provide classes for all the typography elements \@include s-typography-classes(); @author 	Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	STypographyComponent This file provide the mixins to create typography elements */
+/** Apply the title css @param 		{Number} 		$size 		The size wanted. If unitless, will use modular scale to calculate size @param 		{Integer}		[$base=null] 		The base on which to calculate the modular scale if needed @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the title bare css @param 		{Number} 		$size 				The size wanted. If unitless, will use modular scale to calculate size @param 		{Integer}		[$base=null] 		The base on which to calculate the modular scale if needed @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the title style css @param 		{Number} 		$size 				The size wanted. If unitless, will use modular scale to calculate size @param 		{Integer}		[$base=null] 		The base on which to calculate the modular scale if needed @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the paragraph bare css @param 		{Number} 		$size 				The size wanted @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the paragraph style css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the link css @param 		{Color} 		[$color=primary] 		The color used to style link @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the link bare css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the link style css @param 		{Color} 		[$color=primary] 		The color used to style link @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the inline-text css @param 		{String} 		$tag 		The tag to use the style for @param 		{Color} 		[$color=primary] 		The color used to style different inline text elements @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the inline-text bare css @param 		{String} 		$tag 		The tag to use the style for @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the inline-text css @param 		{String} 		$tag 		The tag to use the style for @param 		{Color} 		[$color=primary] 		The color used to style different inline text elements @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the list css @param 		{String|List} 		$tag 				The tag to style like "ul", "ol li" or "dl dt" @param 		{Color} 			[$color=primary] 	The color used for styling bullets @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the list bare css @param 		{String|List} 		$tag 				The tag to style like "ul", "ol li" or "dl dt" @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the list style css @param 		{String|List} 		$tag 				The tag to style like "ul", "ol li" or "dl dt" @param 		{Color} 			[$color=primary] 	The color used for styling bullets @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the caption css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the caption bare css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the caption style css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the quote css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the quote bare css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Apply the quote style css @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** @name 	STypographyComponent Classes This file provide the mixins to generate typography classes */
+/** Provide all the classes of the typography component like titles, paragraphs, lists, etc.. @param 		{Color} 	[$color=primary] 		The main color used to generate the texts styles @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the styling for the titles classes: - ```.h1-h6``` - ```.tf h1-h6``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the titles classes - ```.h1-h6``` - ```.tf h1-h6``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the style styling for the titles classes - ```.h1-h6``` - ```.tf h1-h6``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the styling for the paragraphs classes - ```.p```, ```.tf p``` - ```.p--lead```, ```.tf p.p--lead``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the ```.p``` and ```.p--lead``` classes - ```.p```, ```.tf p``` - ```.p--lead```, ```.tf p.p--lead``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the ```.p``` class - ```.p```, ```.tf p``` - ```.p--lead```, ```.tf p.p--lead``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the styling for the links classes - ```.link```, ```.tf a``` @param 		{Color} 		[$color=primary] 		The color used to style links @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the links classes - ```.link```, ```.tf a``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the style styling for the links classes - ```.link```, ```.tf a``` @param 		{Color} 		[$color=primary] 		The color used to style links @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the styling for the inline-text classes - ```.mark```, ```.tf mark``` - ```.del```, ```.tf del``` - ```.s```, ```.tf s``` - ```.ins```, ```.tf ins``` - ```.u```, ```.tf u``` - ```.small```, ```.tf small``` - ```.strong```, ```.tf strong``` - ```.em```, ```.tf em``` @param 		{Color} 		[$color=primary] 		The color used to style different inline text elements @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the inline-text classes - ```.mark```, ```.tf mark``` - ```.del```, ```.tf del``` - ```.s```, ```.tf s``` - ```.ins```, ```.tf ins``` - ```.u```, ```.tf u``` - ```.small```, ```.tf small``` - ```.strong```, ```.tf strong``` - ```.em```, ```.tf em``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the style styling for the inline-text classes - ```.mark```, ```.tf mark``` - ```.del```, ```.tf del``` - ```.s```, ```.tf s``` - ```.ins```, ```.tf ins``` - ```.u```, ```.tf u``` - ```.small```, ```.tf small``` - ```.strong```, ```.tf strong``` - ```.em```, ```.tf em``` @param 		{Color} 		[$color=primary] 		The color used to style different inline text elements @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the styling for the lists classes - ```.dl```, ```.tf dl``` - ```.dt```, ```.tf dt``` - ```.dd```, ```.tf dd``` - ```.ul```, ```.tf ul``` - ```.li```, ```.tf li``` - ```.ol```, ```.tf ol``` - ```.li```, ```.tf li``` @param 		{Color} 		[$color=primary] 		The color used to style bullets @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the lists classes - ```.dl```, ```.tf dl``` - ```.dt```, ```.tf dt``` - ```.dd```, ```.tf dd``` - ```.ul```, ```.tf ul``` - ```.li```, ```.tf li``` - ```.ol```, ```.tf ol``` - ```.li```, ```.tf li``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the style styling for the lists classes - ```.dl```, ```.tf dl``` - ```.dt```, ```.tf dt``` - ```.dd```, ```.tf dd``` - ```.ul```, ```.tf ul``` - ```.li```, ```.tf li``` - ```.ol```, ```.tf ol``` - ```.li```, ```.tf li``` @param 		{Color} 		[$color=primary] 		The color used to style bullets @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the styling for the captions classes - ```.caption```, ```.figcaption```, ```.tf caption```, ```.tf figcaption``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the captions classes - ```.caption```, ```.figcaption```, ```.tf caption```, ```.tf figcaption``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the style styling for the captions classes - ```.caption```, ```.figcaption```, ```.tf caption```, ```.tf figcaption``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the styling for the quotes classes - ```.quote```, ```.tf quote``` - ```.blockquote```, ```.tf blockquote``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the bare styling for the quotes classes - ```.quote```, ```.tf quote``` - ```.blockquote```, ```.tf blockquote``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Provide the style styling for the quotes classes - ```.quote```, ```.tf quote``` - ```.blockquote```, ```.tf blockquote``` @author 		Olivier Bossel <olivier.bossel@gmail.com> */
+/** Setup Setup all the different parts/modules/libraries. */
+/** Setup Setup all the different parts/modules/libraries. */
+/** @name 	default State Here's the settings for the **default** state. @styleguide 	Gridle / States @display 	gridle-settings @gridle-name 	default @gridle-min-width 	 @gridle-max-width 	 @gridle-query 	 @gridle-classes 	true @gridle-context 	12 @gridle-gutter-width 	20px @gridle-gutter-height 	0 @gridle-gutter-top 	0 @gridle-gutter-right 	10px @gridle-gutter-bottom 	0 @gridle-gutter-left 	10px @gridle-direction 	ltr @gridle-dir-attribute 	false @gridle-name-multiplicator 	1 @gridle-states-classes 	false @gridle-classes-prefix 	 */
+/** Utils Import all the different utils functions, mixins, classes, etc... */
+/** Utils Import all the different utils functions, mixins, classes, etc... */
+/** Generic All the generic codebase for the project like typography, resets, etc... */
+/** Generic All the generic codebase for the project like typography, resets, etc... */
+.container:after { content: ""; display: table; clear: both; }
+
+.row:before, .row-reverse:before, .row:after, .row-reverse:after { content: ""; display: table; }
+
+.row:after, .row-reverse:after { clear: both; }
+
+.row, .row-reverse { zoom: 1; }
+
+.gr-0, .gr-1, .gr-2, .gr-3, .gr-4, .gr-5, .gr-6, .gr-7, .gr-8, .gr-9, .gr-10, .gr-11, .gr-12 { display: inline-block; min-height: .5px; line-height: 1; float: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; vertical-align: top; padding-right: 10px; padding-left: 10px; }
+
+.gr-adapt { display: table-cell; width: 1px; white-space: nowrap !important; line-height: 1; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding-right: 10px; padding-left: 10px; }
+
+.gr-grow { display: table-cell; width: 99999px; line-height: 1; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; padding-right: 10px; padding-left: 10px; }
+
+.push-0, .push-1, .push-2, .push-3, .push-4, .push-5, .push-6, .push-7, .push-8, .push-9, .push-10, .push-11, .push-12 { position: relative; }
+
+.pull-0, .pull-1, .pull-2, .pull-3, .pull-4, .pull-5, .pull-6, .pull-7, .pull-8, .pull-9, .pull-10, .pull-11, .pull-12 { position: relative; }
+
+.nowrap { white-space: nowrap; }
+
+.nowrap > * { white-space: normal; }
+
+.wrap { white-space: normal; }
+
+.gr-centered { display: block !important; float: none !important; margin-left: auto !important; margin-right: auto !important; clear: both !important; }
+
+@media screen and (max-width: 400px) { @-ms-viewport { width: device-width; } }
+
+#gridle-settings { content: '{ "version" : "3.0.0", "states" : { "default":{ "name" : "default", "min-width" : null, "max-width" : null, "query" : null, "classes" : true, "context" : "12", "column-width" : null, "gutter-width" : "20px", "gutter-height" : "0", "gutter-top" : "0", "gutter-right" : "10px", "gutter-bottom" : "0", "gutter-left" : "10px", "direction" : "ltr", "dir-attribute" : false, "name-multiplicator" : "1", "states-classes" : false, "classes-prefix" : null, "_" : true }} }'; }
+
+/** @name 	Columns Grid columns available @styleguide 	Gridle / Columns @example 	html <style> .row.gridle-styleguide { margin-bottom: 20px; } [class*="gr-"].gridle-styleguide { background:#eee; padding:20px; } </style> <div class="gridle-styleguide .container"> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-1"> .gr-1 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-2"> .gr-2 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-3"> .gr-3 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-4"> .gr-4 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-5"> .gr-5 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-6"> .gr-6 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-7"> .gr-7 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-8"> .gr-8 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-9"> .gr-9 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-10"> .gr-10 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-11"> .gr-11 </div> </div> <div class="gridle-styleguide row row-debug"> <div class="gridle-styleguide gr-12"> .gr-12 </div> </div> </div> */
+.gr-0 { width: 0%; }
+
+.push-0 { left: 0%; right: auto; }
+
+.pull-0 { right: 0%; left: auto; }
+
+.prefix-0 { margin-left: 0%; }
+
+.suffix-0 { margin-right: 0%; }
+
+.gr-1 { width: 8.33333%; }
+
+.push-1 { left: 8.33333%; right: auto; }
+
+.pull-1 { right: 8.33333%; left: auto; }
+
+.prefix-1 { margin-left: 8.33333%; }
+
+.suffix-1 { margin-right: 8.33333%; }
+
+.gr-2 { width: 16.66667%; }
+
+.push-2 { left: 16.66667%; right: auto; }
+
+.pull-2 { right: 16.66667%; left: auto; }
+
+.prefix-2 { margin-left: 16.66667%; }
+
+.suffix-2 { margin-right: 16.66667%; }
+
+.gr-3 { width: 25%; }
+
+.push-3 { left: 25%; right: auto; }
+
+.pull-3 { right: 25%; left: auto; }
+
+.prefix-3 { margin-left: 25%; }
+
+.suffix-3 { margin-right: 25%; }
+
+.gr-4 { width: 33.33333%; }
+
+.push-4 { left: 33.33333%; right: auto; }
+
+.pull-4 { right: 33.33333%; left: auto; }
+
+.prefix-4 { margin-left: 33.33333%; }
+
+.suffix-4 { margin-right: 33.33333%; }
+
+.gr-5 { width: 41.66667%; }
+
+.push-5 { left: 41.66667%; right: auto; }
+
+.pull-5 { right: 41.66667%; left: auto; }
+
+.prefix-5 { margin-left: 41.66667%; }
+
+.suffix-5 { margin-right: 41.66667%; }
+
+.gr-6 { width: 50%; }
+
+.push-6 { left: 50%; right: auto; }
+
+.pull-6 { right: 50%; left: auto; }
+
+.prefix-6 { margin-left: 50%; }
+
+.suffix-6 { margin-right: 50%; }
+
+.gr-7 { width: 58.33333%; }
+
+.push-7 { left: 58.33333%; right: auto; }
+
+.pull-7 { right: 58.33333%; left: auto; }
+
+.prefix-7 { margin-left: 58.33333%; }
+
+.suffix-7 { margin-right: 58.33333%; }
+
+.gr-8 { width: 66.66667%; }
+
+.push-8 { left: 66.66667%; right: auto; }
+
+.pull-8 { right: 66.66667%; left: auto; }
+
+.prefix-8 { margin-left: 66.66667%; }
+
+.suffix-8 { margin-right: 66.66667%; }
+
+.gr-9 { width: 75%; }
+
+.push-9 { left: 75%; right: auto; }
+
+.pull-9 { right: 75%; left: auto; }
+
+.prefix-9 { margin-left: 75%; }
+
+.suffix-9 { margin-right: 75%; }
+
+.gr-10 { width: 83.33333%; }
+
+.push-10 { left: 83.33333%; right: auto; }
+
+.pull-10 { right: 83.33333%; left: auto; }
+
+.prefix-10 { margin-left: 83.33333%; }
+
+.suffix-10 { margin-right: 83.33333%; }
+
+.gr-11 { width: 91.66667%; }
+
+.push-11 { left: 91.66667%; right: auto; }
+
+.pull-11 { right: 91.66667%; left: auto; }
+
+.prefix-11 { margin-left: 91.66667%; }
+
+.suffix-11 { margin-right: 91.66667%; }
+
+.gr-12 { width: 100%; }
+
+.push-12 { left: 100%; right: auto; }
+
+.pull-12 { right: 100%; left: auto; }
+
+.prefix-12 { margin-left: 100%; }
+
+.suffix-12 { margin-right: 100%; }
+
+.float-left { float: left; }
+
+.float-right { float: right; }
+
+.clear { clear: both; }
+
+.clear-left { clear: left; }
+
+.clear-right { clear: right; }
+
+.auto-height { height: inherit; min-height: inherit; max-height: inherit; }
+
+.row { padding-left: 0 !important; padding-right: 0 !important; margin-left: -10px; margin-right: -10px; }
+
+[class*="no-gutter"] > .row { margin-left: 0 !important; margin-right: 0 !important; }
+
+.row-reverse { padding-left: 0 !important; padding-right: 0 !important; margin-left: -10px; margin-right: -10px; transform: rotateY(180deg); }
+
+.row-reverse > [class*="gr-"] { transform: rotateY(-180deg); }
+
+[class*="no-gutter"] > .row-reverse { margin-left: 0 !important; margin-right: 0 !important; }
+
+.row-full { width: 100vw; margin-left: 50% !important; margin-right: 0 !important; -webkit-transform: translateX(-50%); -moz-transition: translateX(-50%); -ms-transform: translateX(-50%); -o-transform: translateX(-50%); transform: translateX(-50%); }
+
+.col { padding-left: 0 !important; padding-right: 0 !important; margin-left: -10px; margin-right: -10px; }
+
+.col-reverse { padding-left: 0 !important; padding-right: 0 !important; margin-left: -10px; margin-right: -10px; transform: rotateX(180deg); }
+
+.col-reverse > [class*="gr-"] { transform: rotateX(-180deg); }
+
+.gr-table { display: table-cell; float: none; vertical-align: top; }
+
+.row-no-gutter { margin-left: 0; margin-right: 0; }
+
+.row-no-gutter > [class*="gr-"] { padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; }
+
+.row-no-gutter-top { margin-left: 0; margin-right: 0; }
+
+.row-no-gutter-top > [class*="gr-"] { padding-top: 0; }
+
+.row-no-gutter-right { margin-left: 0; margin-right: 0; }
+
+.row-no-gutter-right > [class*="gr-"] { padding-right: 0; }
+
+.row-no-gutter-bottom { margin-left: 0; margin-right: 0; }
+
+.row-no-gutter-bottom > [class*="gr-"] { padding-bottom: 0; }
+
+.row-no-gutter-left { margin-left: 0; margin-right: 0; }
+
+.row-no-gutter-left > [class*="gr-"] { padding-left: 0; }
+
+.row-align-left { font-size: 0; word-spacing: 0; letter-spacing: 0; clear: both; text-align: left; }
+
+.row-align-left > * { word-spacing: normal; letter-spacing: normal; float: none !important; vertical-align: top; font-size: 1rem; }
+
+.row-align-center { font-size: 0; word-spacing: 0; letter-spacing: 0; clear: both; text-align: center; }
+
+.row-align-center > * { word-spacing: normal; letter-spacing: normal; float: none !important; vertical-align: top; font-size: 1rem; }
+
+.row-align-center > * { text-align: left; }
+
+.row-align-right { font-size: 0; word-spacing: 0; letter-spacing: 0; clear: both; text-align: right; }
+
+.row-align-right > * { word-spacing: normal; letter-spacing: normal; float: none !important; vertical-align: top; font-size: 1rem; }
+
+.row-align-right > * { text-align: left; }
+
+.row-align-middle { font-size: 0; word-spacing: 0; letter-spacing: 0; clear: both; vertical-align: middle; }
+
+.row-align-middle > * { word-spacing: normal; letter-spacing: normal; float: none !important; vertical-align: middle; font-size: 1rem; }
+
+.row-align-top { font-size: 0; word-spacing: 0; letter-spacing: 0; clear: both; vertical-align: top; }
+
+.row-align-top > * { word-spacing: normal; letter-spacing: normal; float: none !important; vertical-align: top; font-size: 1rem; }
+
+.row-align-bottom { font-size: 0; word-spacing: 0; letter-spacing: 0; clear: both; vertical-align: bottom; }
+
+.row-align-bottom > * { word-spacing: normal; letter-spacing: normal; float: none !important; vertical-align: bottom; font-size: 1rem; }
+
+.no-gutter { padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; }
+
+.no-gutter-left { padding-left: 0; }
+
+.no-gutter-right { padding-right: 0; }
+
+.no-gutter-top { padding-top: 0; }
+
+.no-gutter-bottom { padding-bottom: 0; }
+
+.gutter { padding-right: 10px; padding-left: 10px; }
+
+.gutter-left { padding-left: 10px; }
+
+.gutter-right { padding-right: 10px; }
+
+.hide { display: none !important; }
+
+.not-visible { visibility: hidden; }
+
+.show { display: block !important; }
+
+.show-inline { display: inline-block !important; }
+
+.visible { visibility: visible; }
+
+.row-debug { position: relative; z-index: 99999; overflow: hidden; }
+
+.row-debug:before { pointer-events: none; content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 99999px; background: linear-gradient(to right, transparent 50%, rgba(0, 0, 0, 0.02) 50%); background-size: 16.66667% 100%; z-index: 99999; }
+
+body { direction: ltr; }
+
+[class*="gr-"] > [class^="row"], [class*="gr-"] > [class^="col"] { margin-left: -10px; margin-right: -10px; }
+
+.container { padding: 0 10px; }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+body { line-height: 1; }
+
+ol, ul { list-style: none; }
+
+blockquote, q { quotes: none; }
+
+blockquote:before, blockquote:after { content: ''; content: none; }
+
+q:before, q:after { content: ''; content: none; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+/** @styleguide 	Colors / Swatches @name 		default @color 		#848e91 @display 	color */
+/** @styleguide 	Colors / Swatches @name 		title @color 		#2b3438 @display 	color */
+/** @styleguide 	Colors / Swatches @name 		text @color 		#848e91 @display 	color */
+/** @styleguide 	Colors / Swatches @name 		link @color 		#f2bc2b @display 	color */
+/** @styleguide 	Colors / Swatches @name 		primary @color 		#f2bc2b @display 	color */
+/** @styleguide 	Colors / Swatches @name 		secondary @color 		#2b3438 @display 	color */
+/** @styleguide 	Colors / Swatches @name 		success @color 		#5cb85c @display 	color */
+/** @styleguide 	Colors / Swatches @name 		warning @color 		#f0ad4e @display 	color */
+/** @styleguide 	Colors / Swatches @name 		error @color 		#d9534f @display 	color */
+/** @styleguide 	Colors / Swatches @name 		info @color 		#2199e8 @display 	color */
+.s-settings:after { content: '{"unit": "rem", "reset": true, "border-box": true, "sizes": {"smaller": 0.3, "small": 0.6, "default": 1, "medium": 1.4, "big": 2, "bigger": 3}, "typography": {"font-family": "default", "font-size": "14px", "font-sizes": null, "line-letters-count": 55, "font-format": {"eot": "embedded-opentype", "woff2": "woff2", "woff": "woff", "ttf": "truetype", "otf": "opentype", "svg": "svg", "svgz": "svgz"}}, "look-and-feel": {"border-radius": "0em", "padding-vertical": "1.4em", "padding-horizontal": "0.8em", "disabled-opacity": 0.5, "line-height": 1.4}, "spaces": {"default": "1rem"}, "colors": {"default": {"color": "#848e91"}, "title": {"color": "#2b3438"}, "text": {"color": "default"}, "link": {"color": "primary"}, "primary": {"color": "#f2bc2b"}, "secondary": {"color": "#2b3438"}, "success": {"color": "#5cb85c"}, "warning": {"color": "#f0ad4e"}, "error": {"color": "#d9534f"}, "info": {"color": "#2199e8"}}, "modular-scale": {"base": "1rem", "ratio": 1.33}, "text-format": {"scope-class": "tf"}, "vertical-rhythme": {"enabled": true, "scope-class": "vr"}, "BEM": {"standelone-modifier": false, "element-separator": "__", "modifier-separator": "--"}, "fonts": {"default": {"font-family": ["Helvetica Neue", "Helvetica", "Verdana", "Arial", "sans-serif"], "font-weight": "normal", "cap-height": 0.65}, "quote": {"font-family": ["Palatino", "Times", "Georgia", "serif"], "font-weight": "normal", "cap-height": 0.65}, "code": {"font-family": ["Menlo", "Monaco", "Consolas", "Courier New", "monospace"], "font-weight": "normal", "cap-height": 0.65}}, "filters": [], "transitions": {"fast": ["all", "0.1s", "ease-in-out", "0s"], "default": ["all", "0.2s", "ease-in-out", "0s"], "slow": ["all", "0.5s", "ease-in-out", "0s"]}}'; display: none; }
+
+html { box-sizing: border-box; }
+
+*, *:before, *:after { box-sizing: inherit; }
+
+a { color: inherit; }
+
+html { font-size: 14Px; color: #848e91; font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif; font-weight: normal; }
+
+body { color: #848e91; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/** @name   			default @styleguide 		Fonts / Faces @display 		font @font-family 	Helvetica Neue, Helvetica, Verdana, Arial, sans-serif @font-style 		 @font-weight 	normal */
+/** @name   			quote @styleguide 		Fonts / Faces @display 		font @font-family 	Palatino, Times, Georgia, serif @font-style 		 @font-weight 	normal */
+/** @name   			code @styleguide 		Fonts / Faces @display 		font @font-family 	Menlo, Monaco, Consolas, Courier New, monospace @font-style 		 @font-weight 	normal */
+/** @name 	```.tr-fast``` @styleguide  	Helpers / Transitions @example 	html <div class="tr-fast"> I'm transitionned with fast </div> */
+.tr-fast { transition: all 0.1s ease-in-out 0s, outline-color 0s linear 0s; outline-color: black; }
+
+/** @name 	```.tr-default``` @styleguide  	Helpers / Transitions @example 	html <div class="tr-default"> I'm transitionned with default </div> */
+.tr-default { transition: all 0.2s ease-in-out 0s, outline-color 0s linear 0s; outline-color: black; }
+
+/** @name 	```.tr-slow``` @styleguide  	Helpers / Transitions @example 	html <div class="tr-slow"> I'm transitionned with slow </div> */
+.tr-slow { transition: all 0.5s ease-in-out 0s, outline-color 0s linear 0s; outline-color: black; }
+
+/** @name 	```.f-default``` @styleguide  	Fonts / Classes @example 	html <div class="f-default"> I have the font "default" applied </div> */
+.f-default { font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif; font-weight: normal; }
+
+/** @name 	```.f-quote``` @styleguide  	Fonts / Classes @example 	html <div class="f-quote"> I have the font "quote" applied </div> */
+.f-quote { font-family: Palatino, Times, Georgia, serif; font-weight: normal; }
+
+/** @name 	```.f-code``` @styleguide  	Fonts / Classes @example 	html <div class="f-code"> I have the font "code" applied </div> */
+.f-code { font-family: Menlo, Monaco, Consolas, "Courier New", monospace; font-weight: normal; }
+
+/** @name 	```.m-b-smaller``` @styleguide  	Layout / Margins @example 	html <div class="m-b-smaller" style="background:#f2bc2b; width:100px; height:5px"></div> <div style="background:#2b3438; width:100px; height:5px"></div> */
+.m-b-smaller { margin-bottom: 0.3rem; }
+
+/** @name 	```.m-t-smaller``` @styleguide  	Layout / Margins @example 	html <div style="background:#f2bc2b; width:100px; height:5px"></div> <div class="m-t-smaller" style="background:#2b3438; width:100px; height:5px"></div> */
+.m-t-smaller { margin-top: 0.3rem; }
+
+/** @name 	```.m-l-smaller``` @styleguide  	Layout / Margins @example 	html <div style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div class="m-l-smaller" style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-l-smaller { margin-left: 0.3rem; }
+
+/** @name 	```.m-r-smaller``` @styleguide  	Layout / Margins @example 	html <div class="m-r-smaller" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-r-smaller { margin-right: 0.3rem; }
+
+/** @name 	```.m-s-smaller``` @styleguide  	Layout / Margins @example 	html <div class="m-s-smaller" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-s-smaller { margin-left: 0.3rem; margin-right: 0.3rem; }
+
+/** @name 	```.p-smaller``` @styleguide  	Layout / Paddings @example 	html <div class="p-smaller" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-smaller:not(p) { padding: 0.3rem; }
+
+/** @name 	```.p-b-smaller``` @styleguide  	Layout / Paddings @example 	html <div class="p-b-smaller" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-b-smaller { padding-bottom: 0.3rem; }
+
+/** @name 	```.p-t-smaller``` @styleguide  	Layout / Paddings @example 	html <div class="p-t-smaller" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-t-smaller { padding-top: 0.3rem; }
+
+/** @name 	```.p-l-smaller``` @styleguide  	Layout / Paddings @example 	html <div class="p-l-smaller" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-l-smaller { padding-left: 0.3rem; }
+
+/** @name 	```.p-r-smaller``` @styleguide  	Layout / Paddings @example 	html <div class="p-r-smaller" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-r-smaller { padding-right: 0.3rem; }
+
+/** @name 	```.p-s-smaller``` @styleguide  	Layout / Paddings @example 	html <div class="p-s-smaller" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-s-smaller { padding-left: 0.3rem; padding-right: 0.3rem; }
+
+/** @name 	```.m-b-small``` @styleguide  	Layout / Margins @example 	html <div class="m-b-small" style="background:#f2bc2b; width:100px; height:5px"></div> <div style="background:#2b3438; width:100px; height:5px"></div> */
+.m-b-small { margin-bottom: 0.6rem; }
+
+/** @name 	```.m-t-small``` @styleguide  	Layout / Margins @example 	html <div style="background:#f2bc2b; width:100px; height:5px"></div> <div class="m-t-small" style="background:#2b3438; width:100px; height:5px"></div> */
+.m-t-small { margin-top: 0.6rem; }
+
+/** @name 	```.m-l-small``` @styleguide  	Layout / Margins @example 	html <div style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div class="m-l-small" style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-l-small { margin-left: 0.6rem; }
+
+/** @name 	```.m-r-small``` @styleguide  	Layout / Margins @example 	html <div class="m-r-small" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-r-small { margin-right: 0.6rem; }
+
+/** @name 	```.m-s-small``` @styleguide  	Layout / Margins @example 	html <div class="m-s-small" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-s-small { margin-left: 0.6rem; margin-right: 0.6rem; }
+
+/** @name 	```.p-small``` @styleguide  	Layout / Paddings @example 	html <div class="p-small" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-small:not(p) { padding: 0.6rem; }
+
+/** @name 	```.p-b-small``` @styleguide  	Layout / Paddings @example 	html <div class="p-b-small" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-b-small { padding-bottom: 0.6rem; }
+
+/** @name 	```.p-t-small``` @styleguide  	Layout / Paddings @example 	html <div class="p-t-small" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-t-small { padding-top: 0.6rem; }
+
+/** @name 	```.p-l-small``` @styleguide  	Layout / Paddings @example 	html <div class="p-l-small" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-l-small { padding-left: 0.6rem; }
+
+/** @name 	```.p-r-small``` @styleguide  	Layout / Paddings @example 	html <div class="p-r-small" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-r-small { padding-right: 0.6rem; }
+
+/** @name 	```.p-s-small``` @styleguide  	Layout / Paddings @example 	html <div class="p-s-small" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-s-small { padding-left: 0.6rem; padding-right: 0.6rem; }
+
+/** @name 	```.m-b``` @styleguide  	Layout / Margins @example 	html <div class="m-b" style="background:#f2bc2b; width:100px; height:5px"></div> <div style="background:#2b3438; width:100px; height:5px"></div> */
+.m-b { margin-bottom: 1rem; }
+
+/** @name 	```.m-t``` @styleguide  	Layout / Margins @example 	html <div style="background:#f2bc2b; width:100px; height:5px"></div> <div class="m-t" style="background:#2b3438; width:100px; height:5px"></div> */
+.m-t { margin-top: 1rem; }
+
+/** @name 	```.m-l``` @styleguide  	Layout / Margins @example 	html <div style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div class="m-l" style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-l { margin-left: 1rem; }
+
+/** @name 	```.m-r``` @styleguide  	Layout / Margins @example 	html <div class="m-r" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-r { margin-right: 1rem; }
+
+/** @name 	```.m-s``` @styleguide  	Layout / Margins @example 	html <div class="m-s" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-s { margin-left: 1rem; margin-right: 1rem; }
+
+/** @name 	```.p``` @styleguide  	Layout / Paddings @example 	html <div class="p" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p:not(p) { padding: 1rem; }
+
+/** @name 	```.p-b``` @styleguide  	Layout / Paddings @example 	html <div class="p-b" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-b { padding-bottom: 1rem; }
+
+/** @name 	```.p-t``` @styleguide  	Layout / Paddings @example 	html <div class="p-t" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-t { padding-top: 1rem; }
+
+/** @name 	```.p-l``` @styleguide  	Layout / Paddings @example 	html <div class="p-l" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-l { padding-left: 1rem; }
+
+/** @name 	```.p-r``` @styleguide  	Layout / Paddings @example 	html <div class="p-r" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-r { padding-right: 1rem; }
+
+/** @name 	```.p-s``` @styleguide  	Layout / Paddings @example 	html <div class="p-s" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-s { padding-left: 1rem; padding-right: 1rem; }
+
+/** @name 	```.m-b-medium``` @styleguide  	Layout / Margins @example 	html <div class="m-b-medium" style="background:#f2bc2b; width:100px; height:5px"></div> <div style="background:#2b3438; width:100px; height:5px"></div> */
+.m-b-medium { margin-bottom: 1.4rem; }
+
+/** @name 	```.m-t-medium``` @styleguide  	Layout / Margins @example 	html <div style="background:#f2bc2b; width:100px; height:5px"></div> <div class="m-t-medium" style="background:#2b3438; width:100px; height:5px"></div> */
+.m-t-medium { margin-top: 1.4rem; }
+
+/** @name 	```.m-l-medium``` @styleguide  	Layout / Margins @example 	html <div style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div class="m-l-medium" style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-l-medium { margin-left: 1.4rem; }
+
+/** @name 	```.m-r-medium``` @styleguide  	Layout / Margins @example 	html <div class="m-r-medium" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-r-medium { margin-right: 1.4rem; }
+
+/** @name 	```.m-s-medium``` @styleguide  	Layout / Margins @example 	html <div class="m-s-medium" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-s-medium { margin-left: 1.4rem; margin-right: 1.4rem; }
+
+/** @name 	```.p-medium``` @styleguide  	Layout / Paddings @example 	html <div class="p-medium" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-medium:not(p) { padding: 1.4rem; }
+
+/** @name 	```.p-b-medium``` @styleguide  	Layout / Paddings @example 	html <div class="p-b-medium" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-b-medium { padding-bottom: 1.4rem; }
+
+/** @name 	```.p-t-medium``` @styleguide  	Layout / Paddings @example 	html <div class="p-t-medium" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-t-medium { padding-top: 1.4rem; }
+
+/** @name 	```.p-l-medium``` @styleguide  	Layout / Paddings @example 	html <div class="p-l-medium" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-l-medium { padding-left: 1.4rem; }
+
+/** @name 	```.p-r-medium``` @styleguide  	Layout / Paddings @example 	html <div class="p-r-medium" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-r-medium { padding-right: 1.4rem; }
+
+/** @name 	```.p-s-medium``` @styleguide  	Layout / Paddings @example 	html <div class="p-s-medium" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-s-medium { padding-left: 1.4rem; padding-right: 1.4rem; }
+
+/** @name 	```.m-b-big``` @styleguide  	Layout / Margins @example 	html <div class="m-b-big" style="background:#f2bc2b; width:100px; height:5px"></div> <div style="background:#2b3438; width:100px; height:5px"></div> */
+.m-b-big { margin-bottom: 2rem; }
+
+/** @name 	```.m-t-big``` @styleguide  	Layout / Margins @example 	html <div style="background:#f2bc2b; width:100px; height:5px"></div> <div class="m-t-big" style="background:#2b3438; width:100px; height:5px"></div> */
+.m-t-big { margin-top: 2rem; }
+
+/** @name 	```.m-l-big``` @styleguide  	Layout / Margins @example 	html <div style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div class="m-l-big" style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-l-big { margin-left: 2rem; }
+
+/** @name 	```.m-r-big``` @styleguide  	Layout / Margins @example 	html <div class="m-r-big" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-r-big { margin-right: 2rem; }
+
+/** @name 	```.m-s-big``` @styleguide  	Layout / Margins @example 	html <div class="m-s-big" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-s-big { margin-left: 2rem; margin-right: 2rem; }
+
+/** @name 	```.p-big``` @styleguide  	Layout / Paddings @example 	html <div class="p-big" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-big:not(p) { padding: 2rem; }
+
+/** @name 	```.p-b-big``` @styleguide  	Layout / Paddings @example 	html <div class="p-b-big" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-b-big { padding-bottom: 2rem; }
+
+/** @name 	```.p-t-big``` @styleguide  	Layout / Paddings @example 	html <div class="p-t-big" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-t-big { padding-top: 2rem; }
+
+/** @name 	```.p-l-big``` @styleguide  	Layout / Paddings @example 	html <div class="p-l-big" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-l-big { padding-left: 2rem; }
+
+/** @name 	```.p-r-big``` @styleguide  	Layout / Paddings @example 	html <div class="p-r-big" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-r-big { padding-right: 2rem; }
+
+/** @name 	```.p-s-big``` @styleguide  	Layout / Paddings @example 	html <div class="p-s-big" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-s-big { padding-left: 2rem; padding-right: 2rem; }
+
+/** @name 	```.m-b-bigger``` @styleguide  	Layout / Margins @example 	html <div class="m-b-bigger" style="background:#f2bc2b; width:100px; height:5px"></div> <div style="background:#2b3438; width:100px; height:5px"></div> */
+.m-b-bigger { margin-bottom: 3rem; }
+
+/** @name 	```.m-t-bigger``` @styleguide  	Layout / Margins @example 	html <div style="background:#f2bc2b; width:100px; height:5px"></div> <div class="m-t-bigger" style="background:#2b3438; width:100px; height:5px"></div> */
+.m-t-bigger { margin-top: 3rem; }
+
+/** @name 	```.m-l-bigger``` @styleguide  	Layout / Margins @example 	html <div style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div class="m-l-bigger" style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-l-bigger { margin-left: 3rem; }
+
+/** @name 	```.m-r-bigger``` @styleguide  	Layout / Margins @example 	html <div class="m-r-bigger" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-r-bigger { margin-right: 3rem; }
+
+/** @name 	```.m-s-bigger``` @styleguide  	Layout / Margins @example 	html <div class="m-s-bigger" style="display:inline-block; background:#f2bc2b; width:50px; height:50px"></div> <div style="display:inline-block; background:#2b3438; width:50px; height:50px"></div> */
+.m-s-bigger { margin-left: 3rem; margin-right: 3rem; }
+
+/** @name 	```.p-bigger``` @styleguide  	Layout / Paddings @example 	html <div class="p-bigger" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-bigger:not(p) { padding: 3rem; }
+
+/** @name 	```.p-b-bigger``` @styleguide  	Layout / Paddings @example 	html <div class="p-b-bigger" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-b-bigger { padding-bottom: 3rem; }
+
+/** @name 	```.p-t-bigger``` @styleguide  	Layout / Paddings @example 	html <div class="p-t-bigger" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-t-bigger { padding-top: 3rem; }
+
+/** @name 	```.p-l-bigger``` @styleguide  	Layout / Paddings @example 	html <div class="p-l-bigger" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-l-bigger { padding-left: 3rem; }
+
+/** @name 	```.p-r-bigger``` @styleguide  	Layout / Paddings @example 	html <div class="p-r-bigger" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-r-bigger { padding-right: 3rem; }
+
+/** @name 	```.p-s-bigger``` @styleguide  	Layout / Paddings @example 	html <div class="p-s-bigger" style="border:1px solid #f2bc2b; width:150px; height:150px;"> <div style="background:#2b3438; width:100%; height:100%"></div> </div> */
+.p-s-bigger { padding-left: 3rem; padding-right: 3rem; }
+
+/** @name 	```.s-smaller``` @styleguide  	Layout / Sizes @example 	html <div class="s-smaller"> I have the size "smaller" defined </div> */
+.s-smaller { font-size: 0.3rem; }
+
+/** @name 	```.s-smaller-rel``` @styleguide  	Layout / Sizes @example 	html <div class="s-smaller-rel"> I have the size "smaller" defined relative to my parent </div> */
+.s-smaller-rel { font-size: 0.3em; }
+
+/** @name 	```.s-small``` @styleguide  	Layout / Sizes @example 	html <div class="s-small"> I have the size "small" defined </div> */
+.s-small { font-size: 0.6rem; }
+
+/** @name 	```.s-small-rel``` @styleguide  	Layout / Sizes @example 	html <div class="s-small-rel"> I have the size "small" defined relative to my parent </div> */
+.s-small-rel { font-size: 0.6em; }
+
+/** @name 	```.s-default``` @styleguide  	Layout / Sizes @example 	html <div class="s-default"> I have the size "default" defined </div> */
+.s-default { font-size: 1rem; }
+
+/** @name 	```.s-default-rel``` @styleguide  	Layout / Sizes @example 	html <div class="s-default-rel"> I have the size "default" defined relative to my parent </div> */
+.s-default-rel { font-size: 1em; }
+
+/** @name 	```.s-medium``` @styleguide  	Layout / Sizes @example 	html <div class="s-medium"> I have the size "medium" defined </div> */
+.s-medium { font-size: 1.4rem; }
+
+/** @name 	```.s-medium-rel``` @styleguide  	Layout / Sizes @example 	html <div class="s-medium-rel"> I have the size "medium" defined relative to my parent </div> */
+.s-medium-rel { font-size: 1.4em; }
+
+/** @name 	```.s-big``` @styleguide  	Layout / Sizes @example 	html <div class="s-big"> I have the size "big" defined </div> */
+.s-big { font-size: 2rem; }
+
+/** @name 	```.s-big-rel``` @styleguide  	Layout / Sizes @example 	html <div class="s-big-rel"> I have the size "big" defined relative to my parent </div> */
+.s-big-rel { font-size: 2em; }
+
+/** @name 	```.s-bigger``` @styleguide  	Layout / Sizes @example 	html <div class="s-bigger"> I have the size "bigger" defined </div> */
+.s-bigger { font-size: 3rem; }
+
+/** @name 	```.s-bigger-rel``` @styleguide  	Layout / Sizes @example 	html <div class="s-bigger-rel"> I have the size "bigger" defined relative to my parent </div> */
+.s-bigger-rel { font-size: 3em; }
+
+/** @name 	```.no-p-t``` Reset **top** padding @styleguide  	Layout / No padding @example 	html <div class="no-p-t" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-p-t { padding-top: 0 !important; }
+
+/** @name 	```.no-p-r``` Reset **right** padding @styleguide  	Layout / No padding @example 	html <div class="no-p-r" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-p-r { padding-right: 0 !important; }
+
+/** @name 	```.no-p-b``` Reset **bottom** padding @styleguide  	Layout / No padding @example 	html <div class="no-p-b" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-p-b { padding-bottom: 0 !important; }
+
+/** @name 	```.no-p-l``` Reset **left** padding @styleguide  	Layout / No padding @example 	html <div class="no-p-l" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-p-l { padding-left: 0 !important; }
+
+/** @name 	```.no-p-s``` Reset **left** and **right** paddings @styleguide  	Layout / No padding @example 	html <div class="no-p-s" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-p-s { padding-left: 0 !important; padding-right: 0 !important; }
+
+/** @name 	```.no-m-t``` Reset **top** padding @styleguide  	Layout / No margin @example 	html <div class="no-m-t" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-m-t { margin-top: 0 !important; }
+
+/** @name 	```.no-m-r``` Reset **right** padding @styleguide  	Layout / No margin @example 	html <div class="no-m-r" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-m-r { margin-right: 0 !important; }
+
+/** @name 	```.no-m-b``` Reset **bottom** padding @styleguide  	Layout / No margin @example 	html <div class="no-m-b" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-m-b { margin-bottom: 0 !important; }
+
+/** @name 	```.no-m-l``` Reset **left** padding @styleguide  	Layout / No margin @example 	html <div class="no-m-l" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-m-l { margin-left: 0 !important; }
+
+/** @name 	```.no-m-s``` Reset **left** and **right** margins @styleguide  	Layout / No padding @example 	html <div class="no-m-s" style="display:inline-block; background:#f2bc2b; width:50px; height:50px;"></div> */
+.no-m-s { margin-left: 0 !important; margin-right: 0 !important; }
+
+/** @name 	```.c-default``` Specify the color to **default** @styleguide  	Colors / Classes @example 	html <div class="c-default"> I'm in "default" color </div> */
+.c-default { color: #848e91; }
+
+/** @name 	```.bkg-default``` Specify the background color to **default** @styleguide  	Colors / Classes @example 	html <div class="bkg-default p" style="color:white"> My background color is "default" </div> */
+.bkg-default { background-color: #848e91; }
+
+/** @name 	```.c-title``` Specify the color to **title** @styleguide  	Colors / Classes @example 	html <div class="c-title"> I'm in "title" color </div> */
+.c-title { color: #2b3438; }
+
+/** @name 	```.bkg-title``` Specify the background color to **title** @styleguide  	Colors / Classes @example 	html <div class="bkg-title p" style="color:white"> My background color is "title" </div> */
+.bkg-title { background-color: #2b3438; }
+
+/** @name 	```.c-text``` Specify the color to **text** @styleguide  	Colors / Classes @example 	html <div class="c-text"> I'm in "text" color </div> */
+.c-text { color: #848e91; }
+
+/** @name 	```.bkg-text``` Specify the background color to **text** @styleguide  	Colors / Classes @example 	html <div class="bkg-text p" style="color:white"> My background color is "text" </div> */
+.bkg-text { background-color: #848e91; }
+
+/** @name 	```.c-link``` Specify the color to **link** @styleguide  	Colors / Classes @example 	html <div class="c-link"> I'm in "link" color </div> */
+.c-link { color: #f2bc2b; }
+
+/** @name 	```.bkg-link``` Specify the background color to **link** @styleguide  	Colors / Classes @example 	html <div class="bkg-link p" style="color:white"> My background color is "link" </div> */
+.bkg-link { background-color: #f2bc2b; }
+
+/** @name 	```.c-primary``` Specify the color to **primary** @styleguide  	Colors / Classes @example 	html <div class="c-primary"> I'm in "primary" color </div> */
+.c-primary { color: #f2bc2b; }
+
+/** @name 	```.bkg-primary``` Specify the background color to **primary** @styleguide  	Colors / Classes @example 	html <div class="bkg-primary p" style="color:white"> My background color is "primary" </div> */
+.bkg-primary { background-color: #f2bc2b; }
+
+/** @name 	```.c-secondary``` Specify the color to **secondary** @styleguide  	Colors / Classes @example 	html <div class="c-secondary"> I'm in "secondary" color </div> */
+.c-secondary { color: #2b3438; }
+
+/** @name 	```.bkg-secondary``` Specify the background color to **secondary** @styleguide  	Colors / Classes @example 	html <div class="bkg-secondary p" style="color:white"> My background color is "secondary" </div> */
+.bkg-secondary { background-color: #2b3438; }
+
+/** @name 	```.c-success``` Specify the color to **success** @styleguide  	Colors / Classes @example 	html <div class="c-success"> I'm in "success" color </div> */
+.c-success { color: #5cb85c; }
+
+/** @name 	```.bkg-success``` Specify the background color to **success** @styleguide  	Colors / Classes @example 	html <div class="bkg-success p" style="color:white"> My background color is "success" </div> */
+.bkg-success { background-color: #5cb85c; }
+
+/** @name 	```.c-warning``` Specify the color to **warning** @styleguide  	Colors / Classes @example 	html <div class="c-warning"> I'm in "warning" color </div> */
+.c-warning { color: #f0ad4e; }
+
+/** @name 	```.bkg-warning``` Specify the background color to **warning** @styleguide  	Colors / Classes @example 	html <div class="bkg-warning p" style="color:white"> My background color is "warning" </div> */
+.bkg-warning { background-color: #f0ad4e; }
+
+/** @name 	```.c-error``` Specify the color to **error** @styleguide  	Colors / Classes @example 	html <div class="c-error"> I'm in "error" color </div> */
+.c-error { color: #d9534f; }
+
+/** @name 	```.bkg-error``` Specify the background color to **error** @styleguide  	Colors / Classes @example 	html <div class="bkg-error p" style="color:white"> My background color is "error" </div> */
+.bkg-error { background-color: #d9534f; }
+
+/** @name 	```.c-info``` Specify the color to **info** @styleguide  	Colors / Classes @example 	html <div class="c-info"> I'm in "info" color </div> */
+.c-info { color: #2199e8; }
+
+/** @name 	```.bkg-info``` Specify the background color to **info** @styleguide  	Colors / Classes @example 	html <div class="bkg-info p" style="color:white"> My background color is "info" </div> */
+.bkg-info { background-color: #2199e8; }
+
+/** @name 	h1 h1 title styling @styleguide 	Typography / Titles @example 	html <h1 class="h1">Hello World</h1> <div class="tf"> <h1>Hello World</h1> </div> */
+.h1, .tf h1 { font-size: 3.5em; line-height: 1.1; }
+
+.h1.vr, .vr .h1, .tf h1.vr, .vr .tf h1 { margin-bottom: 1rem; }
+
+/** @name 	h2 h2 title styling @styleguide 	Typography / Titles @example 	html <h2 class="h2">Hello World</h2> <div class="tf"> <h2>Hello World</h2> </div> */
+.h2, .tf h2 { font-size: 3em; line-height: 1.1; }
+
+.h2.vr, .vr .h2, .tf h2.vr, .vr .tf h2 { margin-bottom: 1rem; }
+
+/** @name 	h3 h3 title styling @styleguide 	Typography / Titles @example 	html <h3 class="h3">Hello World</h3> <div class="tf"> <h3>Hello World</h3> </div> */
+.h3, .tf h3 { font-size: 2.5em; line-height: 1.1; }
+
+.h3.vr, .vr .h3, .tf h3.vr, .vr .tf h3 { margin-bottom: 1rem; }
+
+/** @name 	h4 h4 title styling @styleguide 	Typography / Titles @example 	html <h4 class="h4">Hello World</h4> <div class="tf"> <h4>Hello World</h4> </div> */
+.h4, .tf h4 { font-size: 2em; line-height: 1.1; }
+
+.h4.vr, .vr .h4, .tf h4.vr, .vr .tf h4 { margin-bottom: 1rem; }
+
+/** @name 	h5 h5 title styling @styleguide 	Typography / Titles @example 	html <h5 class="h5">Hello World</h5> <div class="tf"> <h5>Hello World</h5> </div> */
+.h5, .tf h5 { font-size: 1.5em; line-height: 1.1; }
+
+.h5.vr, .vr .h5, .tf h5.vr, .vr .tf h5 { margin-bottom: 1rem; }
+
+/** @name 	h6 h6 title styling @styleguide 	Typography / Titles @example 	html <h6 class="h6">Hello World</h6> <div class="tf"> <h6>Hello World</h6> </div> */
+.h6, .tf h6 { font-size: 1em; line-height: 1.1; }
+
+.h6.vr, .vr .h6, .tf h6.vr, .vr .tf h6 { margin-bottom: 1rem; }
+
+h1.vr, .vr h1, h2.vr, .vr h2, h3.vr, .vr h3, h4.vr, .vr h4, h5.vr, .vr h5, h6.vr, .vr h6, .h1.vr, .vr .h1, .h2.vr, .vr .h2, .h3.vr, .vr .h3, .h4.vr, .vr .h4, .h5.vr, .vr .h5, .h6.vr, .vr .h6 { margin-bottom: 1em; }
+
+h1.vr:last-child, .vr h1:last-child, h2.vr:last-child, .vr h2:last-child, h3.vr:last-child, .vr h3:last-child, h4.vr:last-child, .vr h4:last-child, h5.vr:last-child, .vr h5:last-child, h6.vr:last-child, .vr h6:last-child, .h1.vr:last-child, .vr .h1:last-child, .h2.vr:last-child, .vr .h2:last-child, .h3.vr:last-child, .vr .h3:last-child, .h4.vr:last-child, .vr .h4:last-child, .h5.vr:last-child, .vr .h5:last-child, .h6.vr:last-child, .vr .h6:last-child { margin-bottom: 0; }
+
+.h1, .tf h1 { color: #2b3438; }
+
+.h2, .tf h2 { color: #2b3438; }
+
+.h3, .tf h3 { color: #2b3438; }
+
+.h4, .tf h4 { color: #2b3438; }
+
+.h5, .tf h5 { color: #2b3438; }
+
+.h6, .tf h6 { color: #2b3438; }
+
+/** @name 	Default Default paragraph styling @styleguide 	Typography / Paragraphs @example 	html <p class="p vr"> Duis gravida justo at urna interdum blandit. Sed venenatis, eros dictum gravida dictum, mauris sapien feugiat libero, at fermentum quam tellus dignissim nunc. Donec eu rutrum dui, in rhoncus lacus. </p> <div class="tf vr"> <p> Duis gravida justo at urna interdum blandit. Sed venenatis, eros dictum gravida dictum, mauris sapien feugiat libero, at fermentum quam tellus dignissim nunc. Donec eu rutrum dui, in rhoncus lacus. </p> </div> */
+.p, .tf p { font-size: 1em; line-height: 1.4; }
+
+.p.vr, .vr .p, .tf p.vr, .vr .tf p { margin-bottom: 1rem; }
+
+/** @name 	Lead Lead paragraph styling @styleguide 	Typography / Paragraphs @example 	html <p class="p p--lead vr"> Duis gravida justo at urna interdum blandit. Sed venenatis, eros dictum gravida dictum, mauris sapien feugiat libero, at fermentum quam tellus dignissim nunc. Donec eu rutrum dui, in rhoncus lacus. </p> <div class="tf vr"> <p class="lead"> Duis gravida justo at urna interdum blandit. Sed venenatis, eros dictum gravida dictum, mauris sapien feugiat libero, at fermentum quam tellus dignissim nunc. Donec eu rutrum dui, in rhoncus lacus. </p> </div> */
+.p--lead, .tf p.lead { font-size: 1.3em; font-weight: lighter; }
+
+p.vr, .vr p, .p.vr, .vr .p { margin-bottom: 1em; }
+
+p.vr:last-child, .vr p:last-child, .p.vr:last-child, .vr .p:last-child { margin-bottom: 0; }
+
+.link, .tf a:not(.btn) { text-decoration: none; color: #f2bc2b; }
+
+/** @name 		Marked text For highlighting a run of text due to its relevance in another context, use the ```mark``` tag. @styleguide 		Typography / Inline texts @example 		html This is a <span class="mark">marked text</span> <div class="tf"> This is another <mark>marked text</mark> </div> */
+/** @name 		Deleted text For indicating blocks of text that have been deleted use the ```del``` tag. @styleguide 		Typography / Inline texts @example 		html This is a <span class="del">deleted text</span> <div class="tf"> This is another <del>deleted text</del> </div> */
+/** @name 		Strikethrough text For indicating blocks of text that are no longer relevant use the ```s``` tag. @styleguide 		Typography / Inline texts @example 		html This is a <span class="s">striked through text</span> <div class="tf"> This is another <s>striked through text</s> </div> */
+/** @name 		Inserted text For indicating additions to the document use the ```ins``` tag. @styleguide 		Typography / Inline texts @example 		html This is a <span class="ins">inserted text</span> <div class="tf"> This is another <ins>inserted text</ins> </div> */
+/** @name 		Underlined text To underline text use the ```u``` tag. @styleguide 		Typography / Inline texts @example 		html This is a <span class="u">underlined text</span> <div class="tf"> This is another <u>underlined text</u> </div> */
+/** @name 		Small text For de-emphasizing inline or blocks of text, use the ```small``` tag to set text at 85% the size of the parent. @styleguide 		Typography / Inline texts @example 		html This is a <span class="small">small text</span> <div class="tf"> This is another <small>small text</small> </div> */
+/** @name 		Bold For emphasizing a snippet of text with a heavier font-weight. @styleguide 		Typography / Inline texts @example 		html This is a <span class="strong">strong text</span> <div class="tf"> This is another <strong>strong text</strong> </div> */
+/** @name 		Italics For emphasizing a snippet of text with italics. @styleguide 		Typography / Inline texts @example 		html This is an <span class="em">italic text</span> <div class="tf"> This is another <em>italic text</em> </div> */
+.mark, .tf mark { background-color: rgba(242, 188, 43, 0.1); }
+
+.del, .tf del { text-decoration: line-through; }
+
+.s, .tf s { text-decoration: line-through; }
+
+.ins, .tf ins { text-decoration: underline; }
+
+.u, .tf u { text-decoration: underline; }
+
+.small, .tf small { font-size: .65em; }
+
+.strong, .tf strong { font-weight: bold; }
+
+.em, .tf em { font-style: italic; }
+
+/** @name 	Description list A list of terms with their associated descriptions. @styleguide 		Typography / Lists @example 	html <div class="tf"> <dl> <dt>List item 1</dt> <dd>Mauris sit amet erat vitae mi pellentesque placerat. Vestibulum dapibus.</dd> <dt>List item 1</dt> <dd>Mauris sit amet erat vitae mi pellentesque placerat. Vestibulum dapibus.</dd> <dt>List item 1</dt> <dd>Mauris sit amet erat vitae mi pellentesque placerat. Vestibulum dapibus.</dd> </dl> </div> */
+.dl, .tf dl { counter-reset: s-list; }
+
+.dl.vr, .vr .dl, .tf dl.vr, .vr .tf dl { margin-bottom: 2em; }
+
+.dt, .tf dl > dt { font-weight: bold; margin-bottom: .3em; }
+
+.dd, .tf dl > dd { margin-bottom: .5em; }
+
+/** @name 	Unordered list A list of items in which the order does not explicitly matter. @styleguide 		Typography / Lists @example 	html <div class="tf"> <ul> <li>List item 1</li> <li>List item 2</li> <li>List item 3</li> <li>List item 4</li> </ul> </div> */
+.ul, .tf ul { counter-reset: s-list; }
+
+.ul.vr, .vr .ul, .tf ul.vr, .vr .tf ul { margin-bottom: 2em; }
+
+.ul > .li, .ul > li, .tf ul > li { padding-left: 1em; position: relative; margin-bottom: .3em; }
+
+.ul > .li:before, .ul > li:before, .tf ul > li:before { content: counter(s-list, circle); counter-increment: s-list; }
+
+.ul > .li:before, .ul > li:before, .tf ul > li:before { left: 0; color: #848e91 !important; }
+
+.ul > .li:before, .ul > li:before, .tf ul > li:before { position: absolute; display: block; }
+
+.ul > .li > ul, .ul > .li > ol, .ul > .li > dl, .ul > li > ul, .ul > li > ol, .ul > li > dl, .tf ul > li > ul, .tf ul > li > ol, .tf ul > li > dl { margin-left: 0; margin-bottom: 0; }
+
+/** @name 	Ordered list A list of items in which the order does explicitly matter. @styleguide 		Typography / Lists @example 	html <div class="tf"> <ol> <li>List item 1</li> <li>List item 2</li> <li>List item 3</li> <li>List item 4</li> </ol> </div> */
+.ol, .tf ol { counter-reset: s-list; }
+
+.ol.vr, .vr .ol, .tf ol.vr, .vr .tf ol { margin-bottom: 2em; }
+
+.ol > .li, .ol > li, .tf ol > li { padding-left: 1em; position: relative; margin-bottom: .3em; }
+
+.ol > .li:before, .ol > li:before, .tf ol > li:before { content: counter(s-list, decimal); counter-increment: s-list; }
+
+.ol > .li:before, .ol > li:before, .tf ol > li:before { left: 0; top: 0.4em; color: #848e91 !important; font-size: 0.6em !important; }
+
+.ol > .li:before, .ol > li:before, .tf ol > li:before { position: absolute; display: block; }
+
+.ol > .li > ul, .ol > .li > ol, .ol > .li > dl, .ol > li > ul, .ol > li > ol, .ol > li > dl, .tf ol > li > ul, .tf ol > li > ol, .tf ol > li > dl { margin-left: 0; margin-bottom: 0; }
+
+dl.vr, .vr dl, ul.vr, .vr ul, ol.vr, .vr ol, .dl.vr, .vr .dl, .ul.vr, .vr .ul, .ol.vr, .vr .ol { margin-bottom: 1em; }
+
+dl.vr:last-child, .vr dl:last-child, ul.vr:last-child, .vr ul:last-child, ol.vr:last-child, .vr ol:last-child, .dl.vr:last-child, .vr .dl:last-child, .ul.vr:last-child, .vr .ul:last-child, .ol.vr:last-child, .vr .ol:last-child { margin-bottom: 0; }
+
+dl.vr dl, dl.vr ul, dl.vr ol, dl.vr .dl, dl.vr .ul, dl.vr .ol, .vr dl dl, .vr dl ul, .vr dl ol, .vr dl .dl, .vr dl .ul, .vr dl .ol, ul.vr dl, ul.vr ul, ul.vr ol, ul.vr .dl, ul.vr .ul, ul.vr .ol, .vr ul dl, .vr ul ul, .vr ul ol, .vr ul .dl, .vr ul .ul, .vr ul .ol, ol.vr dl, ol.vr ul, ol.vr ol, ol.vr .dl, ol.vr .ul, ol.vr .ol, .vr ol dl, .vr ol ul, .vr ol ol, .vr ol .dl, .vr ol .ul, .vr ol .ol, .dl.vr dl, .dl.vr ul, .dl.vr ol, .dl.vr .dl, .dl.vr .ul, .dl.vr .ol, .vr .dl dl, .vr .dl ul, .vr .dl ol, .vr .dl .dl, .vr .dl .ul, .vr .dl .ol, .ul.vr dl, .ul.vr ul, .ul.vr ol, .ul.vr .dl, .ul.vr .ul, .ul.vr .ol, .vr .ul dl, .vr .ul ul, .vr .ul ol, .vr .ul .dl, .vr .ul .ul, .vr .ul .ol, .ol.vr dl, .ol.vr ul, .ol.vr ol, .ol.vr .dl, .ol.vr .ul, .ol.vr .ol, .vr .ol dl, .vr .ol ul, .vr .ol ol, .vr .ol .dl, .vr .ol .ul, .vr .ol .ol { margin-top: .5em; margin-bottom: .5em; }
+
+.dt, .tf dl > dt { font-weight: bold; }
+
+.ul > .li, .ul > li, .tf ul > li { padding-left: 1em; position: relative; }
+
+.ul > .li:before, .ul > li:before, .tf ul > li:before { content: counter(s-list, circle); counter-increment: s-list; }
+
+.ul > .li:before, .ul > li:before, .tf ul > li:before { left: 0; color: #f2bc2b !important; }
+
+.ul > .li:before, .ul > li:before, .tf ul > li:before { position: absolute; display: block; }
+
+.ul > .li > ul, .ul > .li > ol, .ul > .li > dl, .ul > li > ul, .ul > li > ol, .ul > li > dl, .tf ul > li > ul, .tf ul > li > ol, .tf ul > li > dl { margin-left: 0; margin-bottom: 0; }
+
+.ol > .li, .ol > li, .tf ol > li { padding-left: 1em; position: relative; }
+
+.ol > .li:before, .ol > li:before, .tf ol > li:before { content: counter(s-list, decimal); counter-increment: s-list; }
+
+.ol > .li:before, .ol > li:before, .tf ol > li:before { left: 0; top: 0.4em; color: #f2bc2b !important; font-size: 0.6em !important; }
+
+.ol > .li:before, .ol > li:before, .tf ol > li:before { position: absolute; display: block; }
+
+.ol > .li > ul, .ol > .li > ol, .ol > .li > dl, .ol > li > ul, .ol > li > ol, .ol > li > dl, .tf ol > li > ul, .tf ol > li > ol, .tf ol > li > dl { margin-left: 0; margin-bottom: 0; }
+
+/** Layout All the layout level specific styling. */
+/** Layout All the layout level specific styling. */
+/** Default layout */
+html, body { width: 100%; height: 100%; }
+
+body { display: flex; overflow: hidden; flex-flow: column nowrap; }
+
+main { flex: 1 1 100%; }
+
+.footer, .header { flex: 0 0 auto; }
+
+s-interactive-demo { display: flex; flex: 1 0 auto; }
+
+/** Pages All the pages level specific styling. */
+/** Pages All the pages level specific styling. */
+/** Blocks All the blocks styling. A block can contain other blocks or objects and does not have to relay on his ancestors to be properly displayed. */
+/** Blocks All the blocks styling. A block can contain other blocks or objects and does not have to relay on his ancestors to be properly displayed. */
+/** Footer styling */
+.footer { padding: 10px 20px; background: #20272a; color: white; }
+
+/** Header styling */
+.header { background: #20272a; color: white; }
+
+.header .row { margin-left: 0; }
+
+.header__title { color: white; }
+
+.header__logo { height: 30px; }
+
+/** Navigation styling */
+/** @name 	Nav justified */
+/** @name 	Nav justify Provide a simple justify navigation component @styleguide 	Blocks / Nav @example 	html <ul class="nav nav--justify"> <li class="nav__item"> Item 1 </li> <li class="nav__item"> Item 2 </li> <li class="nav__item"> Item 3 </li> </ul> */
+.nav--justify { display: table; width: 100%; }
+
+.nav--justify > li, .nav--justify > .nav__item { display: table-cell; vertical-align: middle; }
+
+.nav--justify > li, .nav--justify > li a, .nav--justify > .nav__item, .nav--justify > .nav__item a { text-align: center; }
+
+.nav--right { text-align: right; }
+
+/** @name 	Nav inline Provide a simple inline navigation component @styleguide 	Blocks / Nav @example 	html <ul class="nav nav--inline"> <li class="nav__item"> Item 1 </li> <li class="nav__item"> Item 2 </li> <li class="nav__item"> Item 3 </li> </ul> */
+.nav--inline, .nav--topbar { display: block; }
+
+.nav--inline > li, .nav--topbar > li, .nav--inline > .nav__item, .nav--topbar > .nav__item { position: relative; display: inline-block; }
+
+.nav--right { text-align: right; }
+
+/** Header nav */
+.nav--topbar .nav__item a { color: white; text-decoration: none; display: inline-block; height: 50px; padding: 18px 15px; font-size: 13px; }
+
+.nav--topbar .nav__item a:hover { background: #414f55; }
+
+.cm-s-material { background: #2b3438 !important; }
+
+.CodeMirror-gutters { background: #293135 !important; }
+
+s-codemirror { height: 100%; }
+
+.s-interactive-demo__preview-container { height: 100% !important; }
+
+.s-interactive-demo__preview-container iframe { height: 100% !important; }
+
+.s-interactive-demo__preview { height: 100%; }
+
+/** Objects All the objects styling. An object response to the same rules has the blocks, unless they cannot contain any other objects or blocks. */
+/** Objects All the objects styling. An object response to the same rules has the blocks, unless they cannot contain any other objects or blocks. */
+.coffeekraken-logo { background-repeat: no-repeat; background-size: cover; background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='utf-8'?>\a 	<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\a 	<svg version='1.2' baseProfile='tiny' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'\a 		 x='0px' y='0px' viewBox='0 0 954.1 288.7' xml:space='preserve'>\a 	<g fill='#2b3438'>\a 		<path fill='rgba(43, 52, 56, 0.5)' d='M932.9,217.2c0-18.7-11.6-26.9-25.2-26.9c-10.2,0-19.9,3.8-32.7,13.1V192l-65,0.5c-5.3-1.9-11-2.8-16.8-2.8\a 			c-5.1,0-10.2,0.8-15.1,2.4h-73.5v15.3h16L693.3,229h-8.4v-78.6h-36.3v16.5h17.3v103.5h-14.1v-52c0-15.3-9.5-29.1-37.6-29.1\a 			c-0.8,0-1.6,0-2.4,0l0,0l-32,1c-12,0-24.2,7-30.2,22.9H549V192h-34.2l0,0h-37.1v15.3h16L466.2,229h-8.4v-78.6h-36.3v16.5h17.3\a 			v103.4h-17.5v16.5h50.8v-16.5h-14.2l0.1-23h8.3l39.9,39.5h24.4l0,0h62.5c3.4,1.1,7.1,1.7,11,1.7c10.6,0,18.9-3.6,30.9-13.3v11.6h33\a 			l0,0h31v-16.3l-14.2-0.1l0.1-23.1h8.3l39.8,39.5l50.2,0.5c4.1,0.9,8.5,1.3,13.1,1.3c20.2,0,37.3-8.7,47.5-24.4l-16.4-7.1\a 			c-7,9.9-18.4,15.3-30.6,15.3c-17.6,0-29.6-10.5-32.5-28.7h79.5c0-14.5-4.4-26.4-11.4-35.4H856v61.9h-16.4v16.5h52v-16.5h-16.4\a 			v-50.8c9.7-7.6,19.9-12.1,27.6-12.1c7.7,0,11.2,5.2,11.2,17.3v62.1h35.5v-16.5h-16.4v-53H932.9z M534,270.2l-18.9,0.1v0.1h-1.2\a 			L480,236.8l35.9-29.5h14.8l0,0h3.3V270.2z M632.5,262.8c-7.7,7-17.3,11.2-25.8,11.2c-10.2,0-17.3-6.4-17.3-15.7\a 			c0-9.4,7.7-16.3,18.3-16.3c8.1,0,16.6,3.2,24.8,9.4V262.8z M632.5,235.7c-7.7-5-17.7-8-26.2-8c-19.7,0-34.9,13.5-34.9,30.7\a 			c0,4.3,0.9,8.4,2.6,12.1l-0.2-0.1h-20.7v-27.2c0-18.3,4.8-29.9,19.6-33.1l18,6.2c4.3-7.4,11.4-11.2,20.5-11.2\a 			c11.4,0,21.3,4.8,21.3,18.3L632.5,235.7L632.5,235.7z M707.1,236.8l35.9-29.5h12.1c-7,8.2-11.5,19.1-11.5,31.9\a 			c0,12.2,3.9,22.9,10.7,31.2H741L707.1,236.8z M764.9,230.2c2.8-15.7,14-25.8,28.8-25.8s28,10.9,31,25.8H764.9z'/>\a 		<path d='M135.9,229.7c26.3,0,46.1-9.9,58.9-27.1v27h58.1v-28.8h-29.1l-0.3-45.3l14.7-0.1l74.3,74.1l29.5-0.1v-28.8h-14l-61-59.7\a 			l52.6-53H342V59.1h-88.7v28.8h24.1l-39.2,38.9l-14.4-0.1l0.3-67.5L194.8,59v27.6c-15.1-19.6-37.7-27.5-56.7-27.5\a 			c-20.4,0-36.9,2.9-50.7,13.4v-13H58.7v59.2h28.9c8.2-21.3,22.4-31.9,42.6-31.9c16.7,0,29.3,5.6,37.9,16.8\a 			c8.5,11.2,12.8,24.6,12.8,40.3c0,16.4-4.5,29.6-13.6,39.7c-9,10.1-20.6,15.2-34.6,15.2c-20.2,0-37.1-7.2-45.3-28.4H58.5v59.2h28.9\a 			v-13.1c13.4,10.2,28.9,12.9,48.5,13.1V229.7z'/>\a 		<rect fill='#f2bc2b' x='87.7' y='2' width='225.1' height='28.8'/>\a 		<polygon points='29.3,30.8 58.5,30.8 58.5,2 0,2 0,287.3 58.5,287.3 58.5,258.5 29.3,258.5 	'/>\a 		<polygon points='342,30.8 371.3,30.8 371.3,258.5 342,258.5 342,287.3 400.6,287.3 400.6,2 342,2 	'/>\a 		<rect x='87.7' y='258.6' width='225.1' height='28.8'/>\a 		<g>\a 			<path d='M497.4,142c22.9,0,40.6-6.6,53.1-19.8c1.6,2,3.3,3.9,5.3,5.7c9.9,9,22.1,13.5,36.4,13.5c14.7,0,26.9-4.5,36.6-13.6\a 				c9.8-9.1,14.7-21.3,14.7-36.7c0-15.6-4.9-27.9-14.8-36.9c-9.9-9-22-13.5-36.5-13.5c-14.4,0-26.5,4.5-36.4,13.5\a 				c-7.3,6.6-11.9,15.1-13.9,25.4l0,0c-2.5,11.2-10.1,21.4-17.2,27.7c-7.1,6.3-15.3,9.4-24.7,9.4c-11.5,0-21-4.2-28.4-12.5\a 				S460.5,85,460.5,71.6c0-12.8,3.5-23.9,10.5-33.1s17.4-13.8,31.1-13.8c13.6,0,23.9,5.9,30.9,17.7c1.5,2.6,2.9,5.4,4.1,8.5\a 				l23.5-17.1l0.2-31.5h-23.7V13c-11.3-8.7-25.3-13-42-13c-13.4,0-25.8,2.8-37,8.3c-11.3,5.5-20.3,13.7-27,24.7\a 				c-6.7,10.9-10,23.7-10,38.2c0,20.4,6.4,37.4,19.2,50.7C453.2,135.3,472.2,142,497.4,142z M592.1,64.3c6,0,10.7,2.3,14.2,6.9\a 				s5.2,11,5.2,19.2c0,9.3-1.8,16.2-5.4,20.5c-3.6,4.4-8.3,6.6-14.1,6.6c-6.5,0-11.3-2.4-14.5-7.3s-4.8-11-4.8-18.5\a 				C572.9,73.4,579.3,64.3,592.1,64.3z'/>\a 			<path d='M906.1,121.5c-5.7,0-11.1-1.8-16.3-5.5c-5.1-3.6-7.9-9.8-8.4-18.6h72.7c0-10.2-1.6-19.4-4.7-27.7\a 				c-3.2-8.3-8.8-15.2-16.9-20.7c-8.1-5.6-17.8-8.3-28.9-8.3c-15.4,0-28.1,5-38,14.9c-3.4,3.4-6.2,7-8.4,10.9\a 				c-3.3-6.8-8.5-12.7-15.5-17.5c-8.1-5.6-17.8-8.3-28.9-8.3c-15.4,0-28.1,5-38,14.9s-14.9,22.3-14.9,37.1c0,14.6,4.8,26.3,14.5,35.2\a 				c9.6,8.9,23.1,13.4,40.3,13.4c19.8,0,34.7-6.6,44.9-19.8c1.7,2.3,3.5,4.4,5.7,6.4c9.6,8.9,23.1,13.4,40.3,13.4\a 				c21.6,0,37.4-7.8,47.6-23.5l-24.2-7.6C921.1,117.7,913.6,121.5,906.1,121.5z M901.9,61c6.1,0,10.9,1.9,14.5,5.7\a 				c3.5,3.8,5.7,8.3,6.4,13.7H882C883.8,67.5,890.5,61,901.9,61z M811.1,61c6.1,0,10.9,1.9,14.5,5.7c3.5,3.8,5.7,8.3,6.4,13.7h-40.8\a 				C793,67.5,799.6,61,811.1,61z M846.6,112.9l-8.7-2.7c-7.6,7.5-15.1,11.3-22.6,11.3c-5.7,0-11.1-1.8-16.3-5.5\a 				c-5.1-3.6-7.9-9.8-8.4-18.6h60.2c0.5,6.8,2.2,12.9,5,18.4C852.7,114.8,849,113.7,846.6,112.9z'/>\a 			<path d='M652.1,118.3l-14.2,0.4v21.8h43.4h17.2h64v-22.1h-15.3V66.6h15.3V44.4h-15.3V33.8c0-8.9,2.7-13.3,8.1-13.3\a 				c3.8,0,6.7,3.4,8.7,10.3l22.6-17.4C780.1,4.5,769.2,0,754,0c-12.6,0-22,3.4-28.4,10.2s-9.5,15.2-9.5,25.4v8.8H703v22.2h13.1v51.7\a 				h-17.5h-15.3V66.6h15.3V44.4h-15.3V33.8c0-8.9,2.7-13.3,8.1-13.3c3.8,0,6.7,3.4,8.7,10.3l22.6-17.4C716.1,4.5,705.2,0,690,0\a 				c-12.6,0-22,3.4-28.4,10.2s-9.5,15.2-9.5,25.4v8.8H639v22.2h13.1V118.3z'/>\a 		</g>\a 	</g>\a 	</svg>\a"); display: inline-block; max-width: 120px; }
+
+.coffeekraken-logo:after { content: ''; display: block; width: 100%; height: 0; padding-bottom: 30%; }
+
+.coffeekraken-logo--white { background-repeat: no-repeat; background-size: cover; background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='utf-8'?>\a 	<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\a 	<svg version='1.2' baseProfile='tiny' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'\a 		 x='0px' y='0px' viewBox='0 0 954.1 288.7' xml:space='preserve'>\a 	<g fill='white'>\a 		<path fill='rgba(255, 255, 255, 0.5)' d='M932.9,217.2c0-18.7-11.6-26.9-25.2-26.9c-10.2,0-19.9,3.8-32.7,13.1V192l-65,0.5c-5.3-1.9-11-2.8-16.8-2.8\a 			c-5.1,0-10.2,0.8-15.1,2.4h-73.5v15.3h16L693.3,229h-8.4v-78.6h-36.3v16.5h17.3v103.5h-14.1v-52c0-15.3-9.5-29.1-37.6-29.1\a 			c-0.8,0-1.6,0-2.4,0l0,0l-32,1c-12,0-24.2,7-30.2,22.9H549V192h-34.2l0,0h-37.1v15.3h16L466.2,229h-8.4v-78.6h-36.3v16.5h17.3\a 			v103.4h-17.5v16.5h50.8v-16.5h-14.2l0.1-23h8.3l39.9,39.5h24.4l0,0h62.5c3.4,1.1,7.1,1.7,11,1.7c10.6,0,18.9-3.6,30.9-13.3v11.6h33\a 			l0,0h31v-16.3l-14.2-0.1l0.1-23.1h8.3l39.8,39.5l50.2,0.5c4.1,0.9,8.5,1.3,13.1,1.3c20.2,0,37.3-8.7,47.5-24.4l-16.4-7.1\a 			c-7,9.9-18.4,15.3-30.6,15.3c-17.6,0-29.6-10.5-32.5-28.7h79.5c0-14.5-4.4-26.4-11.4-35.4H856v61.9h-16.4v16.5h52v-16.5h-16.4\a 			v-50.8c9.7-7.6,19.9-12.1,27.6-12.1c7.7,0,11.2,5.2,11.2,17.3v62.1h35.5v-16.5h-16.4v-53H932.9z M534,270.2l-18.9,0.1v0.1h-1.2\a 			L480,236.8l35.9-29.5h14.8l0,0h3.3V270.2z M632.5,262.8c-7.7,7-17.3,11.2-25.8,11.2c-10.2,0-17.3-6.4-17.3-15.7\a 			c0-9.4,7.7-16.3,18.3-16.3c8.1,0,16.6,3.2,24.8,9.4V262.8z M632.5,235.7c-7.7-5-17.7-8-26.2-8c-19.7,0-34.9,13.5-34.9,30.7\a 			c0,4.3,0.9,8.4,2.6,12.1l-0.2-0.1h-20.7v-27.2c0-18.3,4.8-29.9,19.6-33.1l18,6.2c4.3-7.4,11.4-11.2,20.5-11.2\a 			c11.4,0,21.3,4.8,21.3,18.3L632.5,235.7L632.5,235.7z M707.1,236.8l35.9-29.5h12.1c-7,8.2-11.5,19.1-11.5,31.9\a 			c0,12.2,3.9,22.9,10.7,31.2H741L707.1,236.8z M764.9,230.2c2.8-15.7,14-25.8,28.8-25.8s28,10.9,31,25.8H764.9z'/>\a 		<path d='M135.9,229.7c26.3,0,46.1-9.9,58.9-27.1v27h58.1v-28.8h-29.1l-0.3-45.3l14.7-0.1l74.3,74.1l29.5-0.1v-28.8h-14l-61-59.7\a 			l52.6-53H342V59.1h-88.7v28.8h24.1l-39.2,38.9l-14.4-0.1l0.3-67.5L194.8,59v27.6c-15.1-19.6-37.7-27.5-56.7-27.5\a 			c-20.4,0-36.9,2.9-50.7,13.4v-13H58.7v59.2h28.9c8.2-21.3,22.4-31.9,42.6-31.9c16.7,0,29.3,5.6,37.9,16.8\a 			c8.5,11.2,12.8,24.6,12.8,40.3c0,16.4-4.5,29.6-13.6,39.7c-9,10.1-20.6,15.2-34.6,15.2c-20.2,0-37.1-7.2-45.3-28.4H58.5v59.2h28.9\a 			v-13.1c13.4,10.2,28.9,12.9,48.5,13.1V229.7z'/>\a 		<rect fill='white' x='87.7' y='2' width='225.1' height='28.8'/>\a 		<polygon points='29.3,30.8 58.5,30.8 58.5,2 0,2 0,287.3 58.5,287.3 58.5,258.5 29.3,258.5 	'/>\a 		<polygon points='342,30.8 371.3,30.8 371.3,258.5 342,258.5 342,287.3 400.6,287.3 400.6,2 342,2 	'/>\a 		<rect x='87.7' y='258.6' width='225.1' height='28.8'/>\a 		<g>\a 			<path d='M497.4,142c22.9,0,40.6-6.6,53.1-19.8c1.6,2,3.3,3.9,5.3,5.7c9.9,9,22.1,13.5,36.4,13.5c14.7,0,26.9-4.5,36.6-13.6\a 				c9.8-9.1,14.7-21.3,14.7-36.7c0-15.6-4.9-27.9-14.8-36.9c-9.9-9-22-13.5-36.5-13.5c-14.4,0-26.5,4.5-36.4,13.5\a 				c-7.3,6.6-11.9,15.1-13.9,25.4l0,0c-2.5,11.2-10.1,21.4-17.2,27.7c-7.1,6.3-15.3,9.4-24.7,9.4c-11.5,0-21-4.2-28.4-12.5\a 				S460.5,85,460.5,71.6c0-12.8,3.5-23.9,10.5-33.1s17.4-13.8,31.1-13.8c13.6,0,23.9,5.9,30.9,17.7c1.5,2.6,2.9,5.4,4.1,8.5\a 				l23.5-17.1l0.2-31.5h-23.7V13c-11.3-8.7-25.3-13-42-13c-13.4,0-25.8,2.8-37,8.3c-11.3,5.5-20.3,13.7-27,24.7\a 				c-6.7,10.9-10,23.7-10,38.2c0,20.4,6.4,37.4,19.2,50.7C453.2,135.3,472.2,142,497.4,142z M592.1,64.3c6,0,10.7,2.3,14.2,6.9\a 				s5.2,11,5.2,19.2c0,9.3-1.8,16.2-5.4,20.5c-3.6,4.4-8.3,6.6-14.1,6.6c-6.5,0-11.3-2.4-14.5-7.3s-4.8-11-4.8-18.5\a 				C572.9,73.4,579.3,64.3,592.1,64.3z'/>\a 			<path d='M906.1,121.5c-5.7,0-11.1-1.8-16.3-5.5c-5.1-3.6-7.9-9.8-8.4-18.6h72.7c0-10.2-1.6-19.4-4.7-27.7\a 				c-3.2-8.3-8.8-15.2-16.9-20.7c-8.1-5.6-17.8-8.3-28.9-8.3c-15.4,0-28.1,5-38,14.9c-3.4,3.4-6.2,7-8.4,10.9\a 				c-3.3-6.8-8.5-12.7-15.5-17.5c-8.1-5.6-17.8-8.3-28.9-8.3c-15.4,0-28.1,5-38,14.9s-14.9,22.3-14.9,37.1c0,14.6,4.8,26.3,14.5,35.2\a 				c9.6,8.9,23.1,13.4,40.3,13.4c19.8,0,34.7-6.6,44.9-19.8c1.7,2.3,3.5,4.4,5.7,6.4c9.6,8.9,23.1,13.4,40.3,13.4\a 				c21.6,0,37.4-7.8,47.6-23.5l-24.2-7.6C921.1,117.7,913.6,121.5,906.1,121.5z M901.9,61c6.1,0,10.9,1.9,14.5,5.7\a 				c3.5,3.8,5.7,8.3,6.4,13.7H882C883.8,67.5,890.5,61,901.9,61z M811.1,61c6.1,0,10.9,1.9,14.5,5.7c3.5,3.8,5.7,8.3,6.4,13.7h-40.8\a 				C793,67.5,799.6,61,811.1,61z M846.6,112.9l-8.7-2.7c-7.6,7.5-15.1,11.3-22.6,11.3c-5.7,0-11.1-1.8-16.3-5.5\a 				c-5.1-3.6-7.9-9.8-8.4-18.6h60.2c0.5,6.8,2.2,12.9,5,18.4C852.7,114.8,849,113.7,846.6,112.9z'/>\a 			<path d='M652.1,118.3l-14.2,0.4v21.8h43.4h17.2h64v-22.1h-15.3V66.6h15.3V44.4h-15.3V33.8c0-8.9,2.7-13.3,8.1-13.3\a 				c3.8,0,6.7,3.4,8.7,10.3l22.6-17.4C780.1,4.5,769.2,0,754,0c-12.6,0-22,3.4-28.4,10.2s-9.5,15.2-9.5,25.4v8.8H703v22.2h13.1v51.7\a 				h-17.5h-15.3V66.6h15.3V44.4h-15.3V33.8c0-8.9,2.7-13.3,8.1-13.3c3.8,0,6.7,3.4,8.7,10.3l22.6-17.4C716.1,4.5,705.2,0,690,0\a 				c-12.6,0-22,3.4-28.4,10.2s-9.5,15.2-9.5,25.4v8.8H639v22.2h13.1V118.3z'/>\a 		</g>\a 	</g>\a 	</svg>\a"); display: inline-block; max-width: 120px; }
+
+.coffeekraken-logo--white:after { content: ''; display: block; width: 100%; height: 0; padding-bottom: 30%; }
+
+.coffeekraken-logo--footer { background-repeat: no-repeat; background-size: cover; background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='utf-8'?>\a 	<!-- Generator: Adobe Illustrator 21.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->\a 	<svg version='1.2' baseProfile='tiny' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'\a 		 x='0px' y='0px' viewBox='0 0 954.1 288.7' xml:space='preserve'>\a 	<g fill='#8a9da5'>\a 		<path fill='rgba(138, 157, 165, 0.5)' d='M932.9,217.2c0-18.7-11.6-26.9-25.2-26.9c-10.2,0-19.9,3.8-32.7,13.1V192l-65,0.5c-5.3-1.9-11-2.8-16.8-2.8\a 			c-5.1,0-10.2,0.8-15.1,2.4h-73.5v15.3h16L693.3,229h-8.4v-78.6h-36.3v16.5h17.3v103.5h-14.1v-52c0-15.3-9.5-29.1-37.6-29.1\a 			c-0.8,0-1.6,0-2.4,0l0,0l-32,1c-12,0-24.2,7-30.2,22.9H549V192h-34.2l0,0h-37.1v15.3h16L466.2,229h-8.4v-78.6h-36.3v16.5h17.3\a 			v103.4h-17.5v16.5h50.8v-16.5h-14.2l0.1-23h8.3l39.9,39.5h24.4l0,0h62.5c3.4,1.1,7.1,1.7,11,1.7c10.6,0,18.9-3.6,30.9-13.3v11.6h33\a 			l0,0h31v-16.3l-14.2-0.1l0.1-23.1h8.3l39.8,39.5l50.2,0.5c4.1,0.9,8.5,1.3,13.1,1.3c20.2,0,37.3-8.7,47.5-24.4l-16.4-7.1\a 			c-7,9.9-18.4,15.3-30.6,15.3c-17.6,0-29.6-10.5-32.5-28.7h79.5c0-14.5-4.4-26.4-11.4-35.4H856v61.9h-16.4v16.5h52v-16.5h-16.4\a 			v-50.8c9.7-7.6,19.9-12.1,27.6-12.1c7.7,0,11.2,5.2,11.2,17.3v62.1h35.5v-16.5h-16.4v-53H932.9z M534,270.2l-18.9,0.1v0.1h-1.2\a 			L480,236.8l35.9-29.5h14.8l0,0h3.3V270.2z M632.5,262.8c-7.7,7-17.3,11.2-25.8,11.2c-10.2,0-17.3-6.4-17.3-15.7\a 			c0-9.4,7.7-16.3,18.3-16.3c8.1,0,16.6,3.2,24.8,9.4V262.8z M632.5,235.7c-7.7-5-17.7-8-26.2-8c-19.7,0-34.9,13.5-34.9,30.7\a 			c0,4.3,0.9,8.4,2.6,12.1l-0.2-0.1h-20.7v-27.2c0-18.3,4.8-29.9,19.6-33.1l18,6.2c4.3-7.4,11.4-11.2,20.5-11.2\a 			c11.4,0,21.3,4.8,21.3,18.3L632.5,235.7L632.5,235.7z M707.1,236.8l35.9-29.5h12.1c-7,8.2-11.5,19.1-11.5,31.9\a 			c0,12.2,3.9,22.9,10.7,31.2H741L707.1,236.8z M764.9,230.2c2.8-15.7,14-25.8,28.8-25.8s28,10.9,31,25.8H764.9z'/>\a 		<path d='M135.9,229.7c26.3,0,46.1-9.9,58.9-27.1v27h58.1v-28.8h-29.1l-0.3-45.3l14.7-0.1l74.3,74.1l29.5-0.1v-28.8h-14l-61-59.7\a 			l52.6-53H342V59.1h-88.7v28.8h24.1l-39.2,38.9l-14.4-0.1l0.3-67.5L194.8,59v27.6c-15.1-19.6-37.7-27.5-56.7-27.5\a 			c-20.4,0-36.9,2.9-50.7,13.4v-13H58.7v59.2h28.9c8.2-21.3,22.4-31.9,42.6-31.9c16.7,0,29.3,5.6,37.9,16.8\a 			c8.5,11.2,12.8,24.6,12.8,40.3c0,16.4-4.5,29.6-13.6,39.7c-9,10.1-20.6,15.2-34.6,15.2c-20.2,0-37.1-7.2-45.3-28.4H58.5v59.2h28.9\a 			v-13.1c13.4,10.2,28.9,12.9,48.5,13.1V229.7z'/>\a 		<rect fill='#f2bc2b' x='87.7' y='2' width='225.1' height='28.8'/>\a 		<polygon points='29.3,30.8 58.5,30.8 58.5,2 0,2 0,287.3 58.5,287.3 58.5,258.5 29.3,258.5 	'/>\a 		<polygon points='342,30.8 371.3,30.8 371.3,258.5 342,258.5 342,287.3 400.6,287.3 400.6,2 342,2 	'/>\a 		<rect x='87.7' y='258.6' width='225.1' height='28.8'/>\a 		<g>\a 			<path d='M497.4,142c22.9,0,40.6-6.6,53.1-19.8c1.6,2,3.3,3.9,5.3,5.7c9.9,9,22.1,13.5,36.4,13.5c14.7,0,26.9-4.5,36.6-13.6\a 				c9.8-9.1,14.7-21.3,14.7-36.7c0-15.6-4.9-27.9-14.8-36.9c-9.9-9-22-13.5-36.5-13.5c-14.4,0-26.5,4.5-36.4,13.5\a 				c-7.3,6.6-11.9,15.1-13.9,25.4l0,0c-2.5,11.2-10.1,21.4-17.2,27.7c-7.1,6.3-15.3,9.4-24.7,9.4c-11.5,0-21-4.2-28.4-12.5\a 				S460.5,85,460.5,71.6c0-12.8,3.5-23.9,10.5-33.1s17.4-13.8,31.1-13.8c13.6,0,23.9,5.9,30.9,17.7c1.5,2.6,2.9,5.4,4.1,8.5\a 				l23.5-17.1l0.2-31.5h-23.7V13c-11.3-8.7-25.3-13-42-13c-13.4,0-25.8,2.8-37,8.3c-11.3,5.5-20.3,13.7-27,24.7\a 				c-6.7,10.9-10,23.7-10,38.2c0,20.4,6.4,37.4,19.2,50.7C453.2,135.3,472.2,142,497.4,142z M592.1,64.3c6,0,10.7,2.3,14.2,6.9\a 				s5.2,11,5.2,19.2c0,9.3-1.8,16.2-5.4,20.5c-3.6,4.4-8.3,6.6-14.1,6.6c-6.5,0-11.3-2.4-14.5-7.3s-4.8-11-4.8-18.5\a 				C572.9,73.4,579.3,64.3,592.1,64.3z'/>\a 			<path d='M906.1,121.5c-5.7,0-11.1-1.8-16.3-5.5c-5.1-3.6-7.9-9.8-8.4-18.6h72.7c0-10.2-1.6-19.4-4.7-27.7\a 				c-3.2-8.3-8.8-15.2-16.9-20.7c-8.1-5.6-17.8-8.3-28.9-8.3c-15.4,0-28.1,5-38,14.9c-3.4,3.4-6.2,7-8.4,10.9\a 				c-3.3-6.8-8.5-12.7-15.5-17.5c-8.1-5.6-17.8-8.3-28.9-8.3c-15.4,0-28.1,5-38,14.9s-14.9,22.3-14.9,37.1c0,14.6,4.8,26.3,14.5,35.2\a 				c9.6,8.9,23.1,13.4,40.3,13.4c19.8,0,34.7-6.6,44.9-19.8c1.7,2.3,3.5,4.4,5.7,6.4c9.6,8.9,23.1,13.4,40.3,13.4\a 				c21.6,0,37.4-7.8,47.6-23.5l-24.2-7.6C921.1,117.7,913.6,121.5,906.1,121.5z M901.9,61c6.1,0,10.9,1.9,14.5,5.7\a 				c3.5,3.8,5.7,8.3,6.4,13.7H882C883.8,67.5,890.5,61,901.9,61z M811.1,61c6.1,0,10.9,1.9,14.5,5.7c3.5,3.8,5.7,8.3,6.4,13.7h-40.8\a 				C793,67.5,799.6,61,811.1,61z M846.6,112.9l-8.7-2.7c-7.6,7.5-15.1,11.3-22.6,11.3c-5.7,0-11.1-1.8-16.3-5.5\a 				c-5.1-3.6-7.9-9.8-8.4-18.6h60.2c0.5,6.8,2.2,12.9,5,18.4C852.7,114.8,849,113.7,846.6,112.9z'/>\a 			<path d='M652.1,118.3l-14.2,0.4v21.8h43.4h17.2h64v-22.1h-15.3V66.6h15.3V44.4h-15.3V33.8c0-8.9,2.7-13.3,8.1-13.3\a 				c3.8,0,6.7,3.4,8.7,10.3l22.6-17.4C780.1,4.5,769.2,0,754,0c-12.6,0-22,3.4-28.4,10.2s-9.5,15.2-9.5,25.4v8.8H703v22.2h13.1v51.7\a 				h-17.5h-15.3V66.6h15.3V44.4h-15.3V33.8c0-8.9,2.7-13.3,8.1-13.3c3.8,0,6.7,3.4,8.7,10.3l22.6-17.4C716.1,4.5,705.2,0,690,0\a 				c-12.6,0-22,3.4-28.4,10.2s-9.5,15.2-9.5,25.4v8.8H639v22.2h13.1V118.3z'/>\a 		</g>\a 	</g>\a 	</svg>\a"); display: inline-block; max-width: 120px; }
+
+.coffeekraken-logo--footer:after { content: ''; display: block; width: 100%; height: 0; padding-bottom: 30%; }
+
+.lm_goldenlayout { background: #20272a; }
+
+.lm_content { background: #2b3438; }
+
+.lm_dragProxy .lm_content { box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); }
+
+.lm_dropTargetIndicator { box-shadow: inset 0 0 30px #000; outline: 1px dashed #ccc; transition: all 200ms ease; }
+
+.lm_dropTargetIndicator .lm_inner { background: #2b3438 !important; }
+
+.lm_splitter { background: #20272a !important; transition: opacity 200ms ease; }
+
+.lm_splitter:hover { opacity: 1; background: #f2bc2b !important; z-index: 100; }
+
+.lm_header { height: 20px; -webkit-user-select: none; -moz-user-select: none; -o-user-select: none; -ms-user-select: none; user-select: none; }
+
+.lm_header.lm_selectable { cursor: pointer; }
+
+.lm_selected .lm_header { background-color: #452500; }
+
+.lm_maximised .lm_header { background-color: #000; }
+
+.lm_header .lm_tab { background: #111; color: #999; font-size: 12px; padding-top: 2px; padding-bottom: 2px; font-family: Arial, sans-serif; margin-right: 2px; box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.3); }
+
+.lm_tab.lm_active, .lm_tab:hover { color: #ddd; background: #222; }
+
+.lm_header .lm_tab.lm_active { padding-bottom: 3px; border-bottom: none; box-shadow: 0 -2px 2px #000; }
+
+.lm_header .lm_tab .lm_close_tab { background-position: center center; background-repeat: no-repeat; opacity: 0.4; filter: alpha(opacity=40); background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFQ0EwQjYyQ0YzOUExMUUzODEzRUM2RjIwMjQwNUVGMyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFQ0EwQjYyREYzOUExMUUzODEzRUM2RjIwMjQwNUVGMyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkVDQTBCNjJBRjM5QTExRTM4MTNFQzZGMjAyNDA1RUYzIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkVDQTBCNjJCRjM5QTExRTM4MTNFQzZGMjAyNDA1RUYzIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+71iVHAAAAE5JREFUeNpsTQkKwDAIS6Uf8P9/1CdkKtp1MCFqDgjMjAGQ/CB1AbACdHfMxM/Ud/MJ1G0OUVXcgTHKzNUBXoHSVpZPB94pLj/GqXgEGAC1mzL201rjRgAAAABJRU5ErkJggg==); }
+
+.lm_header .lm_tab .lm_close_tab { width: 11px; height: 11px; right: 6px; top: 4px; background-repeat: no-repeat; }
+
+.lm_header .lm_tab .lm_close_tab:hover, .lm_header .lm_tab.lm_active .lm_close_tab { opacity: 1; filter: alpha(opacity=100); }
+
+.lm_controls > li { background-position: center center; background-repeat: no-repeat; position: relative; opacity: 0.4; filter: alpha(opacity=40); -webkit-transition: opacity 300ms ease; -o-transition: opacity 300ms ease; -ms-transition: opacity 300ms ease; -moz-transition: opacity 300ms ease; transition: opacity 300ms ease; }
+
+.lm_controls > li:hover { opacity: 1; filter: alpha(opacity=100); }
+
+.lm_controls .lm_popout { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjOWFlODE3Zi0zMjcxLWJkNDItOTY0Mi03MDJiZjVkNGJmOWEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDlDNzcyMkJGQjYyMTFFM0IzQUE4RkIyQzNDRDI0MDgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDlDNzcyMkFGQjYyMTFFM0IzQUE4RkIyQzNDRDI0MDgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmM5YWU4MTdmLTMyNzEtYmQ0Mi05NjQyLTcwMmJmNWQ0YmY5YSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpjOWFlODE3Zi0zMjcxLWJkNDItOTY0Mi03MDJiZjVkNGJmOWEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5u9IgFAAAAPElEQVR42mL8//8/AxTAGeiABY3PiEXNfyYGIgALmjX/sZnMgs8aGIOQdf+xOZwBm3VEOxxvGIEAQIABAAoJChZkbRwFAAAAAElFTkSuQmCC); }
+
+.lm_controls .lm_maximise { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjOWFlODE3Zi0zMjcxLWJkNDItOTY0Mi03MDJiZjVkNGJmOWEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDlDQ0YxNUVGQjYyMTFFM0IzQUE4RkIyQzNDRDI0MDgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDlDNzcyMzJGQjYyMTFFM0IzQUE4RkIyQzNDRDI0MDgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmM5YWU4MTdmLTMyNzEtYmQ0Mi05NjQyLTcwMmJmNWQ0YmY5YSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpjOWFlODE3Zi0zMjcxLWJkNDItOTY0Mi03MDJiZjVkNGJmOWEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5DFX8LAAAAJklEQVR42mL8DwQMBAATAxGABUoz4lHznyiTBqMimO/whhVAgAEAMIEGEQk8OGQAAAAASUVORK5CYII=); }
+
+.lm_maximised .lm_controls .lm_maximise { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzdBOUM4MUQ0NzIyMTFFNDg0M0Q4OTQxQjVGRUFGQ0EiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzdBOUM4MUM0NzIyMTFFNDg0M0Q4OTQxQjVGRUFGQ0EiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkExRjEyNDM3RkI1RjExRTM4NkNCOTA5QTc5RjA3NEM3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkExRjEyNDM4RkI1RjExRTM4NkNCOTA5QTc5RjA3NEM3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+dG2ryAAAACdJREFUeNpi/P//PwMxgImBSDAyFbKAiFmzZuENzLS0NEaiTQQIMADdZQcTcyy94AAAAABJRU5ErkJggg==); }
+
+.lm_controls .lm_close { background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3FpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjOWFlODE3Zi0zMjcxLWJkNDItOTY0Mi03MDJiZjVkNGJmOWEiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDlDQ0YxNjZGQjYyMTFFM0IzQUE4RkIyQzNDRDI0MDgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDlDQ0YxNjVGQjYyMTFFM0IzQUE4RkIyQzNDRDI0MDgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmM5YWU4MTdmLTMyNzEtYmQ0Mi05NjQyLTcwMmJmNWQ0YmY5YSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpjOWFlODE3Zi0zMjcxLWJkNDItOTY0Mi03MDJiZjVkNGJmOWEiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz6rmsrNAAAAQ0lEQVR42nTOUQ4AMAQDUHr/O3dbIgtN+cMTTd6KiIy9iALcwNujGgf/B7RhhyMC5DoVOET3Gi6DQrgMCrGAAY8AAwDe6xQOLXhdxAAAAABJRU5ErkJggg==); }
+
+.lm_transition_indicator { background-color: #000; border: 1px dashed #555; }
+
+.lm_popin { cursor: pointer; }
+
+.lm_popin .lm_bg { background: #fff; opacity: 0.3; filter: alpha(opacity=30); }
+
+.lm_popin .lm_icon { border-left: 1px solid #eee; border-top: 1px solid #eee; background-position: center center; background-repeat: no-repeat; opacity: 0.7; filter: alpha(opacity=70); background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAJCAYAAADpeqZqAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoxNTlCMjk5QzM3MUMxMUU0OTBFOUQ3QUI0Q0UzREQ0RSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoxNTlCMjk5RDM3MUMxMUU0OTBFOUQ3QUI0Q0UzREQ0RSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjE1OUIyOTlBMzcxQzExRTQ5MEU5RDdBQjRDRTNERDRFIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjE1OUIyOTlCMzcxQzExRTQ5MEU5RDdBQjRDRTNERDRFIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+3fq+uQAAAFxJREFUeNqcjosJwCAMRBNxgey/YzLCacRADaJtH/jlnh6rKoiIRYQCMwMdqC70gR4c6zzzwUGZmxBewQBynaVqxrNDelwsgZ3sUvEph2/U28s7Cv0gfvpUsQkwAKQyLdc+L4T6AAAAAElFTkSuQmCC); }
+
+.lm_popin:hover .lm_icon { opacity: 1; filter: alpha(opacity=100); }
+
+/** Trumps All the things that does not fit in any others directory. Try to keep this folder has small as possible. If you have to many things in here, that mean that you probably need to refactor your codebase... */
+/** Trumps All the things that does not fit in any others directory. Try to keep this folder has small as possible. If you have to many things in here, that mean that you probably need to refactor your codebase... */

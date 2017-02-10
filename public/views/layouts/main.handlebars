@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>{{title}}</title>
+	<link rel="stylesheet" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
+
+</head>
+<body>
+
+	<header class="header">
+		<div class="row row-align-middle">
+			<div class="gr-adapt bkg-primary">
+				{{#if logo}}
+					<img style="height:25px;" class="inline-block" src="/{{logo}}" />
+				{{else}}
+					<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
+						<div style="width:80px;" class="coffeekraken-logo coffeekraken-logo--white"></div>
+					</a>
+				{{/if}}
+			</div>
+			<div class="gr-adapt">
+				<h1 class="h5 header__title">
+					{{title}}
+					{{#if packageJson.version}}
+						<span class="small">{{packageJson.version}}</span>
+					{{/if}}
+				</h1>
+			</div>
+			<div class="gr-grow"></div>
+			<div class="gr-adapt">
+				<ul class="nav nav--topbar">
+					{{#if packageJson.homepage}}
+						<li class="nav__item">
+							<a href="{{packageJson.homepage}}" title="Go to website" target="_blank">
+								<i class="fa fa-globe"></i>&nbsp;&nbsp;Website
+							</a>
+						</li>
+					{{/if}}
+					{{#if packageJson.repository}}
+						<li class="nav__item">
+							<a href="{{packageJson.repository.url}}" title="Repository" target="_blank">
+								<i class="fa fa-github"></i>&nbsp;&nbsp;Repository
+							</a>
+						</li>
+					{{/if}}
+				</ul>
+			</div>
+		</div>
+	</header>
+
+	{{#each editors}}
+		{{#if this}}
+			<template id="{{ this.language }}">
+				<s-codemirror
+					{{#if this.accept }} accept="{{this.accept}}" {{/if}}
+					{{#if this.updateOn }} update-on="{{this.updateOn}}" {{/if}}
+					update-timeout="2000"
+					id="{{this.language}}"
+					title="{{this.title}}"
+					language="{{ this.language }}">
+					{{{this.data}}}
+				</s-codemirror>
+			</template>
+		{{/if}}
+	{{/each}}
+
+	<s-interactive-demo layout="{{ config.layout }}" display-toggles="false">
+		<div s-interactive-demo-preview></div>
+	</s-interactive-demo>
+
+	<footer class="footer">
+		<div class="row row-align-middle">
+			<div class="gr-6">
+				<div class="s-small">
+					Copyright &copy; <a href="http://coffeekraken.io" class="link" title="Coffeekraken">Coffeekraken</a>
+				</div>
+				<div class="s-small">
+					Distributed under <a href="https://opensource.org/licenses/MIT" class="link" title="MIT license">MIT license</a>
+				</div>
+			</div>
+			<div class="gr-6 t-right">
+				<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
+					<div style="width:60px;" class="coffeekraken-logo coffeekraken-logo--footer"></div>
+				</a>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		window.app = {
+			compileServer : '{{compileServerSettings}}'
+		};
+	</script>
+	<script src="/assets/js/app.js"></script>
+
+
+</body>
+</html>

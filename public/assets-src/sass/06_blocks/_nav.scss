@@ -1,0 +1,38 @@
+/**
+ * Navigation styling
+ */
+.nav {
+
+}
+
+/**
+ * @name 	Nav justified
+ */
+@include s-component('nav') {
+	@include s-nav-justify-classes-bare();
+	@include s-nav-inline-classes-bare();
+}
+
+
+/**
+ * Header nav
+ */
+.nav--topbar {
+	@extend .nav--inline;
+
+	.nav__item {
+
+		a {
+			color: white;
+			text-decoration: none;
+			display: inline-block;
+			height:50px;
+			padding:18px 15px;
+			font-size:13px;
+
+			&:hover {
+				background: s-color(secondary, -lighten 10%);
+			}
+		}
+	}
+}

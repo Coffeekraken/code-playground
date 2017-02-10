@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+process.title = 'coffeekraken-code-playground';
+
+const exec = require('child_process').spawn;
+const fs = require('fs');
+const path = require('path');
+const __merge = require('lodash/merge');
+
+// extend config
+const defaultConfig = require(__dirname + '/code-playground.config');
+let config = {};
+if (fs.existsSync(process.env.PWD + '/code-playground.config.js')) {
+	config = require(process.env.PWD + '/code-playground.config.js');
+}
+const finalConfig = __merge({}, defaultConfig, config);
+
+// run the compile server
+exec('node_modules/coffeekraken-compile-server/run');
+
+// launch the playground
+require(__dirname + '/public/app.js')(finalConfig);
+
+process.on( 'SIGINT', function() {
+	console.log('Code playground stopped');
+	// some other closing procedures go here
+	process.exit( );
+})

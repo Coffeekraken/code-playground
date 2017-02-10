@@ -1,0 +1,59 @@
+/**
+ * Vendors
+ * All external librarie needed in the project.
+ */
+@import '00_vendors/all';
+
+/**
+ * Setup
+ * Setup all the different parts/modules/libraries.
+ */
+@import '01_setup/all';
+
+/**
+ * Utils
+ * Import all the different utils functions, mixins, classes, etc...
+ */
+@import '02_utils/all';
+
+/**
+ * Generic
+ * All the generic codebase for the project like typography, resets, etc...
+ */
+@import '03_generic/all';
+
+/**
+ * Layout
+ * All the layout level specific styling.
+ */
+@import '04_layout/all';
+
+/**
+ * Pages
+ * All the pages level specific styling.
+ */
+@import '05_pages/all';
+
+/**
+ * Blocks
+ * All the blocks styling.
+ * A block can contain other blocks or objects and does not have to relay on his ancestors
+ * to be properly displayed.
+ */
+@import '06_blocks/all';
+
+/**
+ * Objects
+ * All the objects styling.
+ * An object response to the same rules has the blocks, unless they cannot contain any other objects or blocks.
+ */
+@import '07_objects/all';
+
+/**
+ * Trumps
+ * All the things that does not fit in any others directory. Try to keep this folder has small as possible.
+ * If you have to many things in here, that mean that you probably need to refactor your codebase...
+ */
+@import '08_trumps/all';
+
+// DO NOT UPDATE OR ADD CONTENT TO THIS FILE...
