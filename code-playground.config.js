@@ -44,6 +44,12 @@ module.exports = {
 				@include s-classes();
 				@include s-typography-classes();
 			`
+		},
+		js : {
+			language : 'js',
+			data : `
+				import SAtvCardComponent from 'coffeekraken-s-atv-card-component'
+			`
 		}
 	}
 }
