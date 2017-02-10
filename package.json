@@ -1,8 +1,8 @@
 {
-  "name": "markdown-doc-ui",
+  "name": "coffeekraken-code-playground",
   "version": "0.0.1",
-  "description": "Provide a nice standelone (jsfiddle/codepen/jsbin) like interface wrapped in a simple to use node server.",
-  "homepage": "https://buzzbrothers.ch",
+  "description": "Provide a nice code playground that let you play with some html, javascript (coffee, typescript, etc...) and css (sass, scss, stylus, etc...)",
+  "homepage": "http://coffeekraken.io",
   "repository": {
     "type": "git",
     "url": "https://github.com/coffeekraken/code-playground"

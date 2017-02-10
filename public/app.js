@@ -5,7 +5,6 @@ const __express = require('express');
 const __expressHandlebars = require('express-handlebars');
 const __path = require('path');
 const __fs = require('fs');
-const __open = require('open');
 
 module.exports = function(config) {
 
@@ -97,7 +96,4 @@ module.exports = function(config) {
 	app.listen(config.port, function () {
 		console.log('Demo up and running on port ' + config.port + '!');
 	});
-
-	// open browser window
-	// __open('http://localhost:' + config.port);
 }
