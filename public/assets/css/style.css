@@ -1302,9 +1302,7 @@ s-codemirror { height: 100%; }
 
 .s-interactive-demo__preview-container { height: 100% !important; }
 
-.s-interactive-demo__preview-container iframe { height: 100% !important; }
-
-.s-interactive-demo__preview { height: 100%; }
+.s-interactive-demo__preview-container iframe { height: auto !important; }
 
 /** Objects All the objects styling. An object response to the same rules has the blocks, unless they cannot contain any other objects or blocks. */
 /** Objects All the objects styling. An object response to the same rules has the blocks, unless they cannot contain any other objects or blocks. */
