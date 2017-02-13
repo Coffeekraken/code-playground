@@ -40586,6 +40586,7 @@ __webpack_require__(70);
 var CodeMirror = __webpack_require__(0);
 CodeMirror.modes.js = CodeMirror.modes.javascript;
 CodeMirror.modes.html = CodeMirror.modes.htmlmixed;
+CodeMirror.modes.coffee = CodeMirror.modes.coffeescript;
 
 /***/ })
 /******/ ]);

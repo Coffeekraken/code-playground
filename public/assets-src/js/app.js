@@ -13,3 +13,4 @@ require('./webcomponent.imports.js');
 const CodeMirror = require('codemirror');
 CodeMirror.modes.js = CodeMirror.modes.javascript;
 CodeMirror.modes.html = CodeMirror.modes.htmlmixed;
+CodeMirror.modes.coffee = CodeMirror.modes.coffeescript;
