@@ -9,7 +9,7 @@ module.exports = {
 	logo : null,
 
 	// layout
-	layout : 'right',
+	layout : 'top',
 
 	// compile server configurations
 	compileServer : {
