@@ -1300,6 +1300,8 @@ s-interactive-demo { display: flex; flex: 1 0 auto; }
 
 .CodeMirror-gutters { background: #293135 !important; }
 
+.CodeMirror-vscrollbar, .CodeMirror-hscrollbar { display: none !important; }
+
 s-codemirror { height: 100%; }
 
 .s-interactive-demo__preview-container { height: 100% !important; }

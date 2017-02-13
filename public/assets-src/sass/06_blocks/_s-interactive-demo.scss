@@ -4,6 +4,10 @@
 .CodeMirror-gutters {
 	background: s-color(secondary, -darken 1%) !important;
 }
+.CodeMirror-vscrollbar,
+.CodeMirror-hscrollbar {
+	display: none !important;
+}
 s-codemirror {
 	height:100%;
 }

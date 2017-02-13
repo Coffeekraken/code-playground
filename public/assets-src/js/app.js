@@ -8,3 +8,8 @@ require('codemirror/mode/stylus/stylus.js');
 require('./golden-layout.js');
 require('./webcomponent.props.js');
 require('./webcomponent.imports.js');
+
+// codemirror aliases
+const CodeMirror = require('codemirror');
+CodeMirror.modes.js = CodeMirror.modes.javascript;
+CodeMirror.modes.html = CodeMirror.modes.htmlmixed;
