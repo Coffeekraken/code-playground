@@ -74,7 +74,7 @@ module.exports = function(config) {
 				settings.editors.js.data = config.editors.js.data;
 			}
 			settings.editors.js.aceept = config.editors.js.accept;
-			settings.editors.js.updateOn = config.editors.js.updateOn || (config.editors.js.language !== 'js') ? 'run' : null;
+			settings.editors.js.updateOn = config.editors.js.updateOn || 'run';
 		}
 
 		// render the page
