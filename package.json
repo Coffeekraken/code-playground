@@ -21,11 +21,12 @@
     "assets.watch.css": "nodemon -w public/assets-src -e scss -x \"npm run assets.build.css\"",
     "assets.watch.js": "nodemon -w public/assets-src -e js -x \"npm run assets.build.js\"",
     "compile-server": "coffeekraken-compile-server",
-    "test": "coffeekraken-testing-stack"
+    "test": "coffeekraken-testing-stack",
+    "demo": "node ./run"
   },
   "keywords": [
-    "markdown",
-    "documentation",
+    "code",
+    "playground",
     "interface",
     "web",
     "node",
@@ -53,13 +54,14 @@
     "nodemon": "^1.11.0",
     "open": "0.0.5",
     "vinyl-named": "^1.1.0",
-    "webpack": "^2.0.0"
+    "webpack": "^1.14.0"
   },
   "dependencies": {
     "codemirror": "^5.22.0",
     "coffeekraken-compile-server": "git+ssh://git@github.com/Coffeekraken/compile-server.git#release/0.0.1",
     "coffeekraken-gridle": "git+ssh://git@github.com/Coffeekraken/gridle.git#release/3.0.0",
     "coffeekraken-s-atv-card-component": "git+https://git@github.com/Coffeekraken/s-atv-card-component.git#release/0.0.1",
+    "coffeekraken-s-dialog-component": "git+https://git@github.com/Coffeekraken/s-dialog-component.git#release/0.0.1",
     "coffeekraken-s-interactive-demo-component": "git+https://git@github.com/Coffeekraken/s-interactive-demo-component.git#release/0.0.1",
     "coffeekraken-sugar": "git+ssh://git@github.com/Coffeekraken/sugar.git#release/0.0.1",
     "express": "^4.14.0",
@@ -67,6 +69,7 @@
     "golden-layout": "^1.5.7",
     "imagemin": "^5.2.2",
     "lodash": "^4.17.2",
+    "node-parallel": "^0.1.6",
     "webcomponents.js": "^0.7.23"
   }
 }

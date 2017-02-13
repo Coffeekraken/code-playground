@@ -7,19 +7,16 @@ module.exports = {
 		filename: '[name]',
 	},
 	module: {
-		rules: [{
+		loaders: [{
 			test: /\.js$/,
 			exclude: /(bower_components|node_modules)/,
-			use: [{
-				loader: 'babel-loader'
-			}]
+			loader: 'babel-loader'
 		}]
 	},
 	resolve : {
 		alias : {
-			// 'coffeekraken-s-interactive-demo-component' : '/Users/olivierbossel/data/web/coffeekraken/s-interactive-demo-component/dist/index.js',
+			// 'coffeekraken-s-dialog-component' : '/Users/olivierbossel/data/web/coffeekraken/s-dialog-component/dist/index.js',
 			// 'coffeekraken-sugar' : '/Users/olivierbossel/data/web/coffeekraken/sugar/dist'
 		}
-	},
-	devtool: 'source-map'
+	}
 }

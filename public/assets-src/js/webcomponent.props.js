@@ -3,7 +3,7 @@ import SWebComponent from 'coffeekraken-sugar/js/core/SWebComponent'
 
 // setting up compile server
 const compileServerSettings = Object.assign({
-	api_url : `${document.location.protocol}//${document.location.hostname}:3002`
+	api_url : `${document.location.protocol}//${document.location.hostname}:4000`
 }, JSON.parse(window.app.compileServer));
 compileServer.setup(compileServerSettings);
 

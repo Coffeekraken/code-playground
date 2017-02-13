@@ -1259,6 +1259,10 @@ s-interactive-demo { display: flex; flex: 1 0 auto; }
 /** Pages All the pages level specific styling. */
 /** Blocks All the blocks styling. A block can contain other blocks or objects and does not have to relay on his ancestors to be properly displayed. */
 /** Blocks All the blocks styling. A block can contain other blocks or objects and does not have to relay on his ancestors to be properly displayed. */
+.s-dialog__overlay { background: rgba(43, 52, 56, 0.8); }
+
+.s-dialog__content { background: white; box-shadow: rgba(0, 0, 0, 0.2) 0 20px 30px; max-width: 60%; }
+
 /** Footer styling */
 .footer { padding: 10px 20px; background: #20272a; color: white; }
 

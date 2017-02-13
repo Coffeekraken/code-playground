@@ -5,6 +5,8 @@ const exec = require('child_process').spawn;
 const fs = require('fs');
 const path = require('path');
 const __merge = require('lodash/merge');
+const __parallel = require('concurrently');
+
 
 // extend config
 const defaultConfig = require(__dirname + '/code-playground.config');

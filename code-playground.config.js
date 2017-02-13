@@ -2,37 +2,39 @@ module.exports = {
 	// server port
 	port : 3000,
 
-	// title
-	title : 'Code Playground',
-
 	// logo
 	logo : null,
 
-	// layout
-	layout : 'top',
+	// title
+	title : 's-atv-card-component',
 
-	// compile server configurations
-	compileServer : {
-	},
+	// layout
+	layout : 'right',
+
+	// compile server
+	compileServer : {},
 
 	// editors
 	editors : {
 		html : {
 			language : 'html',
 			data : `
-				<div class="tf vr">
-					<h1>Hello world</h1>
-					<h2>Hello world</h2>
-					<h3>Hello world</h3>
-					<h4>Hello world</h4>
-					<h5>Hello world</h5>
-					<h6>Hello world</h6>
-					<p class="lead">
-						Sed elit erat, sollicitudin et elit nec, sodales gravida risus. Aenean enim justo, tincidunt ac posuere suscipit, lobortis id leo. Nunc lacinia pellentesque viverra. Aenean at commodo est, at dignissim.
-					</p>
-					<p>
-						Sed elit erat, sollicitudin et elit nec, sodales gravida risus. Aenean enim justo, tincidunt ac posuere suscipit, lobortis id leo. Nunc lacinia pellentesque viverra. Aenean at commodo est, at dignissim.
-					</p>
+				<div class="container">
+					<s-atv-card>
+						<article class="card">
+	 						<figure class="ratio-16-9">
+								<img class="abs-cover" src="http://coffeekraken.io/dist/img/contribute-issues.jpg" />
+							</figure>
+							<div class="card__content">
+								<h1 class="h3 m-b">
+									Hello World
+								</h1>
+								<p class="p">
+									In tempus leo eu semper gravida. Sed molestie ex porta fermentum imperdiet. Vivamus nec libero at tellus suscipit fermentum sit amet sed nibh. Lorem ipsum dolor sit amet, consectetur adipiscing.
+								</p>
+							</div>
+						</article>
+					</s-atv-card>
 				</div>
 			`
 		},
@@ -43,12 +45,31 @@ module.exports = {
 				@include s-init();
 				@include s-classes();
 				@include s-typography-classes();
+				body {
+					background: linear-gradient(to left, #f46b45 , #eea849);
+				}
+				.container {
+					@include s-position(absolute, middle, center);
+				}
+				.card {
+					max-width : 400px;
+					@include s-depth(2);
+					background: white;
+
+					&:hover {
+						@include s-depth(20);
+					}
+				}
+				.card__content {
+					padding: s-rem(40px);
+					transform:translate3d(0,0,20px);
+				}
 			`
 		},
 		js : {
 			language : 'js',
 			data : `
-				import SAtvCardComponent from 'coffeekraken-s-atv-card-component'
+				import 'webcomponents.js/webcomponents-lite'
 			`
 		}
 	}

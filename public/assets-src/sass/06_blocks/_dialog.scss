@@ -1,0 +1,11 @@
+.s-dialog {
+
+}
+	.s-dialog__overlay {
+		background : s-color(secondary, -opacity .8);
+	}
+	.s-dialog__content {
+		background: white;
+		@include s-depth(10);
+		max-width:60%;
+	}
