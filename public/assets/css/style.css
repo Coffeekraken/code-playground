@@ -1267,6 +1267,8 @@ s-interactive-demo { display: flex; flex: 1 0 auto; }
 
 .header .row { margin-left: 0; }
 
+.header [class*="gr-"] { height: 3.57143rem; }
+
 .header__title { color: white; }
 
 .header__logo { height: 30px; }

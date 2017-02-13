@@ -13,6 +13,10 @@
 	// 	padding-top:s-rem(10px);
 	// 	padding-bottom: s-rem(10px);
 	// }
+	//
+	[class*="gr-"] {
+		height: s-rem(50px);
+	}
 }
 	.header__title {
 		color: white;
