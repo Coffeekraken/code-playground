@@ -1,3 +1,4 @@
+require('webcomponents.js/webcomponents-lite');
 require('codemirror/mode/sass/sass.js');
 require('codemirror/mode/css/css.js');
 require('codemirror/mode/coffeescript/coffeescript.js');

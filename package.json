@@ -57,16 +57,16 @@
   },
   "dependencies": {
     "codemirror": "^5.22.0",
-    "coffeekraken-gridle": "git+ssh://git@github.com/Coffeekraken/gridle.git#release/3.0.0",
     "coffeekraken-compile-server": "git+ssh://git@github.com/Coffeekraken/compile-server.git#release/0.0.1",
-    "coffeekraken-sugar": "git+ssh://git@github.com/Coffeekraken/sugar.git#release/0.0.1",
-    "coffeekraken-s-interactive-demo-component": "git+https://git@github.com/Coffeekraken/s-interactive-demo-component.git#release/0.0.1",
+    "coffeekraken-gridle": "git+ssh://git@github.com/Coffeekraken/gridle.git#release/3.0.0",
     "coffeekraken-s-atv-card-component": "git+https://git@github.com/Coffeekraken/s-atv-card-component.git#release/0.0.1",
+    "coffeekraken-s-interactive-demo-component": "git+https://git@github.com/Coffeekraken/s-interactive-demo-component.git#release/0.0.1",
+    "coffeekraken-sugar": "git+ssh://git@github.com/Coffeekraken/sugar.git#release/0.0.1",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "golden-layout": "^1.5.7",
     "imagemin": "^5.2.2",
-    "lodash": "^4.17.2"
-
+    "lodash": "^4.17.2",
+    "webcomponents.js": "^0.7.23"
   }
 }
