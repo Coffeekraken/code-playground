@@ -12,7 +12,11 @@ module.exports = {
 	layout : 'right',
 
 	// compile server
-	compileServer : {},
+	compileServer : {
+
+		port : 4000
+
+	},
 
 	// editors
 	editors : {

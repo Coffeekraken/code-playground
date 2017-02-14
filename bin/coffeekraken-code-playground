@@ -1,0 +1,74 @@
+#!/usr/bin/env node
+process.title = 'coffeekraken-code-playground';
+const spawn = require('child_process').spawn;
+const __fs = require('fs');
+const __merge = require('lodash/merge');
+const app = require('commander');
+const __colors = require('colors/safe');
+
+(function() {
+
+	app
+		.version('0.0.1')
+		.option('-p --port [port]', 'Port on which to start the server', /^\S+$/i)
+		.option('-c --config [config]', 'Configuration file to load', /^\S+$/i)
+		.parse(process.argv);
+
+	// extend config
+	const defaultConfig = require(__dirname + '/../code-playground.config');
+	let config = {};
+	if (app.config) {
+		if ( ! __fs.existsSync(app.config)) {
+			throw 'Compile Server : the configuration file "' + process.env.PWD + '/' + app.config + '" does not exist...';
+		}
+		// load the config file
+		config = require(process.env.PWD + '/' + app.config);
+	} else {
+		if (__fs.existsSync(process.env.PWD + '/code-playground.config.js')) {
+			config = require(process.env.PWD + '/code-playground.config.js');
+		}
+	}
+	const finalConfig = __merge({}, defaultConfig, config);
+
+	for(let key in app._events) {
+		if (app[key] !== undefined) {
+			if (typeof(app[key]) === 'function') {
+				finalConfig[key] = app[key]();
+			} else {
+				finalConfig[key] = app[key];
+			}
+		}
+	}
+
+	if ( ! finalConfig.port) {
+		console.error('Code Playground : you have to specify at least a port to run the server on...');
+		return;
+	}
+
+	console.log(__colors.yellow(`Code Playground : ...starting on port ${finalConfig.port}...`));
+
+	let inlineCompileServerArgs = [];
+	for(let key in finalConfig.compileServer) {
+		inlineCompileServerArgs.push(`--${key}`);
+		inlineCompileServerArgs.push(`${finalConfig.compileServer[key]}`);
+	}
+	// console.log(inlineCompileServerArgs.join(' '));
+
+	const ls = spawn(`/Users/olivierbossel/data/web/coffeekraken/compile-server/bin/coffeekraken-compile-server`, inlineCompileServerArgs);
+	ls.stdout.on('data', (data) => {
+	  console.log(data.toString());
+	});
+	ls.stderr.on('data', (data) => {
+	  console.log(data.toString());
+	});
+
+	// launch the playground
+	require(__dirname + '/../public/app.js')(finalConfig);
+
+	process.on( 'SIGINT', function() {
+		console.log(__colors.magenta('Code Playground : stopped'));
+		// some other closing procedures go here
+		process.exit( );
+	})
+
+})();

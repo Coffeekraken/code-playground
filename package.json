@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "bin": {
-    "coffeekraken-code-playground": "./run"
+    "coffeekraken-code-playground": "./bin/coffeekraken-code-playground"
   },
   "scripts": {
     "assets": "npm run assets.build",
@@ -20,9 +20,8 @@
     "assets.watch": "concurrently --kill-others \"npm run assets.watch.css\" \"npm run assets.watch.js\"",
     "assets.watch.css": "nodemon -w public/assets-src -e scss -x \"npm run assets.build.css\"",
     "assets.watch.js": "nodemon -w public/assets-src -e js -x \"npm run assets.build.js\"",
-    "compile-server": "coffeekraken-compile-server",
     "test": "coffeekraken-testing-stack",
-    "demo": "node ./run"
+    "demo": "./bin/coffeekraken-code-playground"
   },
   "keywords": [
     "code",
@@ -56,6 +55,7 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-es2015-loose": "^8.0.0",
     "babel-preset-stage-0": "^6.16.0",
+    "colors": "^1.1.2",
     "concurrently": "^3.1.0",
     "node-sass": "^3.13.0",
     "nodemon": "^1.11.0",
