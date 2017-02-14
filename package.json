@@ -12,14 +12,13 @@
     "coffeekraken-code-playground": "./bin/coffeekraken-code-playground"
   },
   "scripts": {
-    "assets": "npm run assets.build",
-    "assets.build": "npm run assets.build.css && npm run assets.build.js && npm run assets.build.img",
-    "assets.build.css": "node-sass public/assets-src/sass/style.scss public/assets/css/style.css --include-path node_modules --output-style compact",
-    "assets.build.js": "webpack",
-    "assets.build.img": "imagemin public/assets-src/img/* --out-dir=public/assets/img",
+    "assets": "npm run assets.css && npm run assets.js && npm run assets.img",
+    "assets.css": "node-sass public/assets-src/sass/style.scss public/assets/css/style.css --include-path node_modules --output-style compact",
+    "assets.js": "webpack",
+    "assets.img": "imagemin public/assets-src/img/* --out-dir=public/assets/img",
     "assets.watch": "concurrently --kill-others \"npm run assets.watch.css\" \"npm run assets.watch.js\"",
-    "assets.watch.css": "nodemon -w public/assets-src -e scss -x \"npm run assets.build.css\"",
-    "assets.watch.js": "nodemon -w public/assets-src -e js -x \"npm run assets.build.js\"",
+    "assets.watch.css": "nodemon -w public/assets-src -e scss -x \"npm run assets.css\"",
+    "assets.watch.js": "nodemon -w public/assets-src -e js -x \"npm run assets.js\"",
     "test": "coffeekraken-testing-stack",
     "demo": "./bin/coffeekraken-code-playground"
   },
@@ -55,7 +54,6 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-es2015-loose": "^8.0.0",
     "babel-preset-stage-0": "^6.16.0",
-    "colors": "^1.1.2",
     "concurrently": "^3.1.0",
     "node-sass": "^3.13.0",
     "nodemon": "^1.11.0",
@@ -75,7 +73,7 @@
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "golden-layout": "^1.5.7",
-    "imagemin": "^5.2.2",
+    "imagemin-cli": "^3.0.0",
     "lodash": "^4.17.2",
     "node-parallel": "^0.1.6",
     "webcomponents.js": "^0.7.23"

@@ -4,7 +4,6 @@ const spawn = require('child_process').spawn;
 const __fs = require('fs');
 const __merge = require('lodash/merge');
 const app = require('commander');
-const __colors = require('colors/safe');
 
 (function() {
 
@@ -62,7 +61,7 @@ const __colors = require('colors/safe');
 	require(__dirname + '/../public/app.js')(finalConfig);
 
 	process.on( 'SIGINT', function() {
-		console.log(__colors.magenta('Code Playground : stopped'));
+		console.log('Code Playground : stopped');
 		// some other closing procedures go here
 		process.exit( );
 	})

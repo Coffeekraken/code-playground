@@ -31148,9 +31148,11 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	// setting up compile server
-	var compileServerSettings = Object.assign({
-		api_url: document.location.protocol + '//' + document.location.hostname + ':4000'
-	}, JSON.parse(window.app.compileServer));
+	var compileServerSettings = JSON.parse(window.app.compileServer);
+	var port = compileServerSettings.port || 4000;
+	compileServerSettings = Object.assign({
+		api_url: document.location.protocol + '//' + document.location.hostname + ':' + port
+	}, compileServerSettings);
 	_coffeekrakenCompileServer2.default.setup(compileServerSettings);
 
 	// default properties

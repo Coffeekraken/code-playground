@@ -6,7 +6,6 @@ const __expressHandlebars = require('express-handlebars');
 const __path = require('path');
 const __fs = require('fs');
 const __md5 = require('MD5');
-const __colors = require('colors/safe');
 
 module.exports = function(config) {
 
@@ -100,11 +99,11 @@ module.exports = function(config) {
 		});
 	});
 
-	console.log(__colors.yellow(`Code Playground : ...starting on port ${config.port}...`));
+	console.log(`Code Playground : ...starting on port ${config.port}...`);
 
 	// start demo server
 	app.listen(config.port, function () {
-		console.log(__colors.green('Code Playground : ✓ running on port ' + config.port + '!'));
-		console.log(__colors.green(`Code Playground : access interface on http://localhost:${config.port}`));
+		console.log('Code Playground : ✓ running on port ' + config.port + '!');
+		console.log(`Code Playground : access interface on http://localhost:${config.port}`);
 	});
 }
