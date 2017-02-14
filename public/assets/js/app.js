@@ -41946,7 +41946,7 @@
 						_this6._refs.run.classList.remove('success');
 						// add success class
 						_this6.removeComponentClass(_this6, null, 'compiling-success');
-					}, 1000);
+					}, 800);
 					// compile end event
 					if (_this6.props.compile) {
 						// launch a compileStart event
@@ -41963,7 +41963,7 @@
 					_this6._refs.run.disabled = false;
 					setTimeout(function () {
 						_this6._refs.run.classList.remove('error');
-					}, 1000);
+					}, 800);
 					// dispatch a compile error
 					_this6.dispatchComponentEvent('compileError', {
 						error: error
