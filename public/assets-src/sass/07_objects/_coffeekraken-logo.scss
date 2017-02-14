@@ -19,3 +19,9 @@
 	);
 	max-width:120px;
 }
+.coffeekraken-logo--dialog {
+	@include s-coffeekraken-logo(
+		$color : s-color(white),
+		$accent : s-color(primary)
+	);
+}

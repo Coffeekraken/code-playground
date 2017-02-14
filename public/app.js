@@ -5,6 +5,7 @@ const __express = require('express');
 const __expressHandlebars = require('express-handlebars');
 const __path = require('path');
 const __fs = require('fs');
+const __md5 = require('MD5');
 
 module.exports = function(config) {
 
@@ -26,6 +27,12 @@ module.exports = function(config) {
 	let packageJson = {};
 	if (__fs.existsSync(process.env.PWD + '/package.json')) {
 		packageJson = require(process.env.PWD + '/package.json');
+		if (packageJson.contributors) {
+			packageJson.contributors = packageJson.contributors.map((contributor) => {
+				contributor.gravatar = `https://www.gravatar.com/avatar/${__md5(contributor.email)}`;
+				return contributor;
+			});
+		}
 	}
 
 	// middleware

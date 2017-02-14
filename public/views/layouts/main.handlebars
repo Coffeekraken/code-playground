@@ -31,6 +31,69 @@
 			<div class="gr-grow"></div>
 			<div class="gr-adapt">
 				<ul class="nav nav--topbar">
+					{{#if packageJson.description}}
+						<li class="nav__item">
+							<s-dialog>
+								<a href="#description" title="Description" target="_blank">
+									<i class="fa fa-info-circle"></i>&nbsp;&nbsp;About
+								</a>
+							</s-dialog>
+							<div class="hidden">
+								<div id="description">
+									<figure class="ratio-5-1">
+										<img class="abs-cover" src="http://coffeekraken.io/dist/img/header-bkg.jpg" />
+										<div style="width:150px; position:absolute; top:50%; left:40px; transform:translateY(-50%); max-width:none;">
+											{{#if logo}}
+												<img style="height:45px;" class="inline-block" src="/{{logo}}" />
+											{{else}}
+												<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
+													<div style="width:150px; max-width:none;" class="coffeekraken-logo coffeekraken-logo--dialog"></div>
+												</a>
+											{{/if}}
+										</div>
+									</figure>
+									<div class="p-bigger">
+
+										<h1 class="h3 m-b">
+											{{title}}
+											{{#if packageJson.version}}
+												<span class="small">{{packageJson.version}}</span>
+											{{/if}}
+										</h1>
+										<p class="p p--lead m-b">
+											{{packageJson.description}}
+										</p>
+
+										{{#if packageJson.homepage}}
+											<a href="{{packageJson.homepage}}" class="btn m-r-small" target="_blank">
+												<i class="fa fa-globe"></i>&nbsp;&nbsp;Go to website
+											</a>
+										{{/if}}
+										{{#if packageJson.repository}}
+											<a href="{{packageJson.repository.url}}" class="btn m-r-small" target="_blank">
+												<i class="fa fa-github"></i>&nbsp;&nbsp;View repository
+											</a>
+										{{/if}}
+										<a class="btn btn--primary" s-dialog-ok>
+											Close
+										</a>
+										<ul class="list list--contributors m-b pull-right">
+											{{#each packageJson.contributors}}
+											<li class="list__item relative">
+												<a class="block" href="{{this.url}}" title="{{this.name}}" target="_blank">
+													<img src="{{this.gravatar}}" />
+												</a>
+												<div class="tooltip tooltip--secondary tooltip--t">
+													{{this.name}}
+												</div>
+											</li>
+											{{/each}}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+					{{/if}}
 					{{#if packageJson.homepage}}
 						<li class="nav__item">
 							<a href="{{packageJson.homepage}}" title="Go to website" target="_blank">
@@ -87,23 +150,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<s-dialog open-on="init">
-		<figure class="ratio-16-9">
-			<img class="abs-cover" src="http://coffeekraken.io/dist/img/contribute-issues.jpg" />
-		</figure>
-		<div class="p-bigger">
-			<h1 class="h3 m-b">
-				Hello world
-			</h1>
-			<p class="p p--lead m-b">
-				Aliquam cursus erat a hendrerit vestibulum. In fringilla fringilla nibh, eu rutrum arcu scelerisque sit amet. Cras sodales felis porta hendrerit rutrum. Ut magna ligula, egestas hendrerit dui sit amet.
-			</p>
-			<a class="btn" s-dialog-ok>
-				OK
-			</a>
-		</div>
-	</s-dialog>
 
 	<script>
 		window.app = {

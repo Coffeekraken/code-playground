@@ -1,0 +1,6 @@
+@include s-tooltip-classes(
+	$colors : default primary secondary
+);
+.tooltip {
+	white-space: nowrap;
+}
