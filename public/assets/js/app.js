@@ -41792,7 +41792,6 @@
 					default:
 						// try to set to codemirror the new prop
 						try {
-							console.log(name, newVal);
 							this._codemirror.setOption(name, newVal);
 						} catch (e) {}
 						break;
