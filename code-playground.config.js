@@ -6,7 +6,7 @@ module.exports = {
 	logo : null,
 
 	// title
-	title : 's-atv-card-component',
+	title : 'Code Playground',
 
 	// layout
 	layout : 'right',
@@ -14,6 +14,7 @@ module.exports = {
 	// compile server
 	compileServer : {
 
+		// compile server port
 		port : 4000
 
 	},

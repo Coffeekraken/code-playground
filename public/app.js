@@ -104,6 +104,7 @@ module.exports = function(config) {
 
 	// start demo server
 	app.listen(config.port, function () {
-		console.log(__colors.green('Code Playground : ✓ up and running on port ' + config.port + '!'));
+		console.log(__colors.green('Code Playground : ✓ running on port ' + config.port + '!'));
+		console.log(__colors.green(`Code Playground : access interface on http://localhost:${config.port}`));
 	});
 }

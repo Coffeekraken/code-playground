@@ -45,16 +45,12 @@ const __colors = require('colors/safe');
 		return;
 	}
 
-	console.log(__colors.yellow(`Code Playground : ...starting on port ${finalConfig.port}...`));
-
 	let inlineCompileServerArgs = [];
 	for(let key in finalConfig.compileServer) {
 		inlineCompileServerArgs.push(`--${key}`);
 		inlineCompileServerArgs.push(`${finalConfig.compileServer[key]}`);
 	}
-	// console.log(inlineCompileServerArgs.join(' '));
-
-	const ls = spawn(`/Users/olivierbossel/data/web/coffeekraken/compile-server/bin/coffeekraken-compile-server`, inlineCompileServerArgs);
+	const ls = spawn(`coffeekraken-compile-server`, inlineCompileServerArgs);
 	ls.stdout.on('data', (data) => {
 	  console.log(data.toString());
 	});
