@@ -1,0 +1,9 @@
+@include s-dropdown-classes(
+	$colors : default primary secondary
+);
+
+.dropdown__menu {
+	a {
+		text-decoration: none;
+	}
+}

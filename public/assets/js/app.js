@@ -35966,7 +35966,7 @@
 				this._computeProps();
 
 				// props proxy
-				this._initPropsProxy();
+				// this._initPropsProxy();
 
 				// check the required props
 				this.requiredProps.forEach(function (prop) {
@@ -39157,6 +39157,10 @@
 
 	var _coffeekrakenSDialogComponent2 = _interopRequireDefault(_coffeekrakenSDialogComponent);
 
+	var _coffeekrakenSShareComponent = __webpack_require__(241);
+
+	var _coffeekrakenSShareComponent2 = _interopRequireDefault(_coffeekrakenSShareComponent);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
@@ -39360,7 +39364,7 @@
 							toggleElm.classList.add('active');
 						} else {
 							// hide the editor
-							part.style.display = 'none';
+							editorObj.elm.style.display = 'none';
 						}
 						// append to header
 						this._refs.header.appendChild(toggleElm);
@@ -45505,6 +45509,679 @@
 	}
 
 	module.exports = serialize;
+
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _SShareComponent = __webpack_require__(242);
+
+	var _SShareComponent2 = _interopRequireDefault(_SShareComponent);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _SShareComponent2.default.define('s-share', _SShareComponent2.default, 'a');
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _SAnchorWebComponent2 = __webpack_require__(243);
+
+	var _SAnchorWebComponent3 = _interopRequireDefault(_SAnchorWebComponent2);
+
+	var _sharerNpm = __webpack_require__(244);
+
+	var _sharerNpm2 = _interopRequireDefault(_sharerNpm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	/**
+	 * @name 	SShareComponent
+	 * @extends 	SAnchorWebComponent
+	 * Easily create some share buttons to target facebook, twitter, linkedin, google+, etc...
+	 *
+	 * @example 	html
+	 * <a is="s-share" href="#" platform="facebook" title="Share on facebook">
+	 * 	Share on facebook
+	 * </a>
+	 *
+	 * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+	 */
+
+	/**
+	 * @name 			Share
+	 * Easily create some share buttons to target facebook, twitter, linkedin, google+, etc...
+	 * @styleguide  	Objects / Share
+	 *
+	 * @example 		html
+	 * <a is="s-share" href="#" platform="facebook" title="Share on facebook">
+	 * 	Share on facebook
+	 * </a>
+	 *
+	 * @author 			Olivier Bossel <olivier.bossel@gmail.com>
+	 */
+
+	var SShareComponent = function (_SAnchorWebComponent) {
+		_inherits(SShareComponent, _SAnchorWebComponent);
+
+		function SShareComponent() {
+			_classCallCheck(this, SShareComponent);
+
+			return _possibleConstructorReturn(this, (SShareComponent.__proto__ || Object.getPrototypeOf(SShareComponent)).apply(this, arguments));
+		}
+
+		_createClass(SShareComponent, [{
+			key: 'componentWillMount',
+
+
+			/**
+	   * Component will mount
+	  	 * @definition 		SWebComponent.componentWillMount
+	   * @protected
+	   */
+			value: function componentWillMount() {
+				_get(SShareComponent.prototype.__proto__ || Object.getPrototypeOf(SShareComponent.prototype), 'componentWillMount', this).call(this);
+			}
+
+			/**
+	   * Mount component
+	   * @definition 		SWebComponent.componentMount
+	   * @protected
+	   */
+
+		}, {
+			key: 'componentMount',
+			value: function componentMount() {
+				_get(SShareComponent.prototype.__proto__ || Object.getPrototypeOf(SShareComponent.prototype), 'componentMount', this).call(this);
+
+				// list all attributes available for each platforms
+				this._platformAttrs = {
+					twitter: ['title', 'url', 'hashtags', 'via'],
+					facebook: ['url'],
+					linkedin: ['url'],
+					googleplus: ['url'],
+					email: ['title', 'url', 'to', 'subject'],
+					whatsapp: ['title', 'url'],
+					telegram: ['title', 'url'],
+					viber: ['title', 'url'],
+					pinterest: ['url', 'image', 'description'],
+					tumblr: ['url', 'title', 'caption', 'tags'],
+					hackernews: ['url', 'title'],
+					reddit: ['url'],
+					vk: ['url', 'title', 'image', 'caption'],
+					buffer: ['url', 'title', 'via', 'picture'],
+					xing: ['url', 'title'],
+					line: ['url', 'title'],
+					instapaper: ['url', 'title', 'description'],
+					pocket: ['url'],
+					digg: ['url'],
+					stumbleupon: ['title', 'url'],
+					flipboard: ['title', 'url'],
+					weibo: ['url', 'title', 'image', 'apikey', 'relateui'],
+					renren: ['url'],
+					myspace: ['url', 'title', 'description'],
+					blogger: ['url', 'title', 'description'],
+					baidu: ['url', 'title'],
+					okru: ['url', 'title']
+				};
+
+				// listen for click on the element
+				this.addEventListener('click', this._onClick.bind(this));
+			}
+
+			/**
+	   * Component unmount
+	   * @definition 		SWebComponent.componentUnmount
+	   * @protected
+	   */
+
+		}, {
+			key: 'componentUnmount',
+			value: function componentUnmount() {
+				_get(SShareComponent.prototype.__proto__ || Object.getPrototypeOf(SShareComponent.prototype), 'componentUnmount', this).call(this);
+			}
+
+			/**
+	   * Component will receive prop
+	   * @definition 		SWebComponent.componentWillReceiveProp
+	   * @protected
+	   */
+
+		}, {
+			key: 'componentWillReceiveProp',
+			value: function componentWillReceiveProp(name, newVal, oldVal) {
+				switch (name) {}
+			}
+
+			/**
+	   * Render the component
+	   * Here goes the code that reflect the this.props state on the actual html element
+	   * @definition 		SWebComponent.render
+	   * @protected
+	   */
+
+		}, {
+			key: 'render',
+			value: function render() {
+				_get(SShareComponent.prototype.__proto__ || Object.getPrototypeOf(SShareComponent.prototype), 'render', this).call(this);
+			}
+
+			/**
+	   * Get default share attributes
+	   * @param 		{String} 		attr 		The attribute name to process
+	   * @return 		{String} 					The default attribute
+	   */
+
+		}, {
+			key: '_getDefaultShareAttriute',
+			value: function _getDefaultShareAttriute(attr) {
+				switch (attr) {
+					case 'title':
+					case 'subject':
+					case 'caption':
+						return document.title;
+						break;
+					case 'description':
+						var descElm = document.querySelector('meta[name="description"]');
+						if (descElm && descElm.content) return descElm.content;
+						break;
+					case 'url':
+						var href = this.getAttribute('href');
+						return href && href !== '#' ? href : document.location.href;
+						break;
+				}
+				return null;
+			}
+
+			/**
+	   * Handle click
+	   * @param 		{Event} 		e 		The click event
+	   */
+
+		}, {
+			key: '_onClick',
+			value: function _onClick(e) {
+				var _this2 = this;
+
+				e.preventDefault();
+				// loop on platform attributes
+				if (!this._platformAttrs[this.props.platform]) return;
+				this.setAttribute('data-sharer', this.props.platform);
+				this._platformAttrs[this.props.platform].forEach(function (attr) {
+					if (_this2.hasAttribute('data-' + attr)) return;
+					var val = _this2.props[attr];
+					if (!val) {
+						val = _this2._getDefaultShareAttriute(attr);
+					}
+					if (val) {
+						_this2.setAttribute('data-' + attr, val);
+					}
+				});
+
+				// create a new sharer
+				var sharer = new _sharerNpm2.default(this);
+				sharer.share();
+			}
+		}], [{
+			key: 'css',
+
+
+			/**
+	   * Css
+	   * @protected
+	   */
+			value: function css(componentName, componentNameDash) {
+				return '\n\t\t\t' + componentNameDash + ' {\n\t\t\t\tdisplay : block;\n\t\t\t\tcursor: pointer;\n\t\t\t}\n\t\t';
+			}
+		}, {
+			key: 'defaultProps',
+
+
+			/**
+	   * Default props
+	   * @definition 		SWebComponent.defaultProps
+	   * @protected
+	   */
+			get: function get() {
+				return {
+					/**
+	     * On which platform to share the content
+	     * @prop
+	     * @type 		{String}
+	     */
+					platform: null,
+
+					/**
+	     * Set the title to share
+	     * @prop
+	     * @type 		{String}
+	     * @default 	document.title
+	     */
+					title: null,
+
+					/**
+	     * Set the url to share
+	     * @prop
+	     * @type 		{String}
+	     * @default 	document.location.href
+	     */
+					url: null,
+
+					/**
+	     * Set a username to tweet through without @
+	     * @prop
+	     * @type 		{String}
+	     */
+					via: null,
+
+					/**
+	     * Set some hashtags to add to tweet comma separated without #
+	     * @prop
+	     * @type 		{String}
+	     */
+					hashtags: null,
+
+					/**
+	     * Set an email address to share to
+	     * @prop
+	     * @type 		{String}
+	     */
+					to: null,
+
+					/**
+	     * Set the email subject
+	     * @prop
+	     * @type 		{String}
+	     * @default 	document.title
+	     */
+					subject: null,
+
+					/**
+	     * Set the absolute image url to share through (pinterest,vk,weibo)
+	     * @prop
+	     * @type 		{String}
+	     */
+					image: null,
+
+					/**
+	     * Set the description to share (pinterest,instapaper,myspace,blogger,)
+	     * @prop
+	     * @type 		{String}
+	     * @default 	meta[description]
+	     */
+					description: null,
+
+					/**
+	     * Set the caption to share (tumblr,vk)
+	     * @prop
+	     * @type 		{String}
+	     * @default 	document.title
+	     */
+					caption: null,
+
+					/**
+	     * Set the tags to share comma separated (tumblr)
+	     * @prop
+	     * @type 		{String}
+	     */
+					tags: null
+				};
+			}
+
+			/**
+	   * Required props
+	   * @definition 		SWebComponent.requiredProps
+	   * @protected
+	   */
+
+		}, {
+			key: 'requiredProps',
+			get: function get() {
+				return ['platform'];
+			}
+		}]);
+
+		return SShareComponent;
+	}(_SAnchorWebComponent3.default);
+
+	exports.default = SShareComponent;
+
+/***/ },
+/* 243 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _mixwith = __webpack_require__(101);
+
+	var _SWebComponentMixin = __webpack_require__(102);
+
+	var _SWebComponentMixin2 = _interopRequireDefault(_SWebComponentMixin);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	if (typeof HTMLAnchorElement !== 'function') {
+	    var _HTMLAnchorElement = function _HTMLAnchorElement() {};
+	    _HTMLAnchorElement.prototype = HTMLAnchorElement.prototype;
+	    HTMLAnchorElement = _HTMLAnchorElement;
+	}
+
+	var SAnchorWebComponent = function (_mix$with) {
+	    _inherits(SAnchorWebComponent, _mix$with);
+
+	    function SAnchorWebComponent() {
+	        _classCallCheck(this, SAnchorWebComponent);
+
+	        return _possibleConstructorReturn(this, _mix$with.apply(this, arguments));
+	    }
+
+	    return SAnchorWebComponent;
+	}((0, _mixwith.mix)(HTMLAnchorElement).with(_SWebComponentMixin2.default));
+
+	exports.default = SAnchorWebComponent;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports) {
+
+	/**
+	 * @preserve
+	 * Sharer.js
+	 *
+	 * @description Create your own social share buttons
+	 * @version 0.2.12
+	 * @author Ellison Leao <ellisonleao@gmail.com>
+	 * @license GPLv3
+	 *
+	 */
+
+	/**
+	 * @constructor
+	 */
+	var Sharer = function(elem) {
+	    this.elem = elem;
+	};
+
+	Sharer.prototype = {
+	    /**
+	     *  @function getValue
+	     *  @description Helper to get the attribute of a DOM element
+	     *  @param {String} attr DOM element attribute
+	     *  @returns {String|Empty} returns the attr value or empty string
+	     */
+	    getValue: function(attr) {
+	        var val = this.elem.getAttribute('data-' + attr);
+	        return (val === undefined || val === null) ? false : val;
+	    },
+
+	    /**
+	     * @event share
+	     * @description Main share event. Will pop a window or redirect to a link
+	     * based on the data-sharer attribute.
+	     */
+	    share: function() {
+	        var sharer = this.getValue('sharer').toLowerCase(),
+	            sharers = {
+	                facebook: {
+	                    shareUrl: 'https://www.facebook.com/sharer/sharer.php',
+	                    params: {u: this.getValue('url')}
+	                },
+	                googleplus: {
+	                    shareUrl: 'https://plus.google.com/share',
+	                    params: {url: this.getValue('url')}
+	                },
+	                linkedin: {
+	                    shareUrl: 'https://www.linkedin.com/shareArticle',
+	                    params: {
+	                        url: this.getValue('url'),
+	                        mini: true
+	                    }
+	                },
+	                twitter: {
+	                    shareUrl: 'https://twitter.com/intent/tweet/',
+	                    params: {
+	                        text: this.getValue('title'),
+	                        url: this.getValue('url'),
+	                        hashtags: this.getValue('hashtags'),
+	                        via: this.getValue('via')
+	                    }
+	                },
+	                email: {
+	                    shareUrl: 'mailto:' + this.getValue('to'),
+	                    params: {
+	                        subject: this.getValue('subject'),
+	                        body: this.getValue('title') + '\n' + this.getValue('url')
+	                    },
+	                    isLink: true
+	                },
+	                whatsapp: {
+	                    shareUrl: 'whatsapp://send',
+	                    params: {
+	                        text: this.getValue('title') + ' ' + this.getValue('url')
+	                    },
+	                    isLink: true
+	                },
+	                telegram: {
+	                    shareUrl: 'tg://msg_url',
+	                    params: {
+	                        text: this.getValue('title') + ' ' + this.getValue('url')
+	                    },
+	                    isLink: true
+	                },
+	                viber: {
+	                    shareUrl: 'viber://forward',
+	                    params: {
+	                        text: this.getValue('title') + ' ' + this.getValue('url')
+	                    },
+	                    isLink: true
+	                },
+	                line: {
+	                    shareUrl: 'http://line.me/R/msg/text/?' + encodeURIComponent(this.getValue('title') + ' ' + this.getValue('url')),
+	                    isLink: true
+	                },
+	                pinterest: {
+	                    shareUrl: 'https://www.pinterest.com/pin/create/button/',
+	                    params: {url: this.getValue('url')}
+	                },
+	                tumblr: {
+	                    shareUrl: 'http://tumblr.com/widgets/share/tool',
+	                    params: {
+	                        canonicalUrl: this.getValue('url'),
+	                        content: this.getValue('url'),
+	                        posttype: 'link',
+	                        title: this.getValue('title'),
+	                        caption: this.getValue('caption'),
+	                        tags: this.getValue('tags')
+	                    }
+	                },
+	                hackernews: {
+	                    shareUrl: 'https://news.ycombinator.com/submitlink',
+	                    params: {
+	                        u: this.getValue('url'),
+	                        t: this.getValue('title')
+	                    }
+	                },
+	                reddit: {
+	                    shareUrl: 'https://www.reddit.com/submit',
+	                    params: {'url': this.getValue('url')}
+	                },
+	                vk: {
+	                    shareUrl: 'http://vk.com/share.php',
+	                    params: {
+	                        url: this.getValue('url'),
+	                        title: this.getValue('title'),
+	                        description: this.getValue('caption'),
+	                        image: this.getValue('image')
+	                    }
+	                },
+	                xing: {
+	                    shareUrl: 'https://www.xing.com/app/user',
+	                    params: {
+	                        'op': 'share',
+	                        'url': this.getValue('url'),
+	                        'title': this.getValue('title')
+	                    }
+	                },
+	                buffer: {
+	                    shareUrl: 'https://buffer.com/add',
+	                    params: {
+	                        url: this.getValue('url'),
+	                        title: this.getValue('title'),
+	                        via: this.getValue('via'),
+	                        picture: this.getValue('picture')
+	                    }
+	                },
+	                instapaper: {
+	                    shareUrl: 'http://www.instapaper.com/edit',
+	                    params: {
+	                        url: this.getValue('url'),
+	                        title: this.getValue('title'),
+	                        description: this.getValue('description')
+	                    }
+	                },
+	                pocket: {
+	                    shareUrl: 'https://getpocket.com/save',
+	                    params: {
+	                        url: this.getValue('url')
+	                    }
+	                },
+	                digg: {
+	                    shareUrl: 'http://www.digg.com/submit',
+	                    params: {
+	                        url: this.getValue('url')
+	                    }
+	                },
+	                stumbleupon: {
+	                    shareUrl: 'http://www.stumbleupon.com/submit',
+	                    params: {
+	                        url: this.getValue('url'),
+	                        title: this.getValue('title')
+	                    }
+	                },
+	                flipboard: {
+	                    shareUrl: 'https://share.flipboard.com/bookmarklet/popout',
+	                    params: {
+	                        v: 2,
+	                        title: this.getValue('title'),
+	                        url: this.getValue('url'),
+	                        t: Date.now()
+	                    }
+	                },
+	                weibo: {
+	                    shareUrl: 'http://service.weibo.com/share/share.php',
+	                    params: {
+	                        url: this.getValue('url'),
+	                        title: this.getValue('title'),
+	                        language: 'zh_cn'
+	                    }
+	                },
+	                renren: {
+	                    shareUrl: 'http://share.renren.com/share/buttonshare',
+	                    params: {
+	                        link: this.getValue('url')
+	                    }
+	                },
+	                myspace: {
+	                    shareUrl: 'https://myspace.com/post',
+	                    params: {
+	                        u: this.getValue('url'),
+	                        t: this.getValue('title'),
+	                        c: this.getValue('description')
+	                    }
+	                },
+	                blogger: {
+	                    shareUrl: 'https://www.blogger.com/blog-this.g',
+	                    params: {
+	                        u: this.getValue('url'),
+	                        n: this.getValue('title'),
+	                        t: this.getValue('description')
+	                    }
+	                },
+	                baidu: {
+	                    shareUrl: 'http://cang.baidu.com/do/add',
+	                    params: {
+	                        it: this.getValue('title'),
+	                        iu: this.getValue('url')
+	                    }
+	                },
+	                hatenabookmark: {
+	                    shareUrl: 'http://b.hatena.ne.jp/entry/' + this.getValue('url'),
+	                }
+	            },
+	            s = sharers[sharer];
+
+	        // custom popups sizes
+	        if (s) {
+	            s.width = this.getValue('width');
+	            s.height = this.getValue('height');
+	        }
+	        return s !== undefined ? this.urlSharer(s) : false;
+	    },
+	    /**
+	     * @event urlSharer
+	     * @param {Object} sharer
+	     */
+	    urlSharer: function(sharer) {
+	        var p = sharer.params || {},
+	            keys = Object.keys(p),
+	            i,
+	            str = keys.length > 0 ? '?' : '';
+	        for (i = 0; i < keys.length; i++) {
+	            if (str !== '?') {
+	                str += '&';
+	            }
+	            if (p[keys[i]]) {
+	                str += keys[i] + '=' + encodeURIComponent(p[keys[i]]);
+	            }
+	        }
+	        sharer.shareUrl += str;
+
+	        if (!sharer.isLink) {
+	            var popWidth = sharer.width || 600,
+	                popHeight = sharer.height || 480,
+	                left = window.innerWidth / 2 - popWidth / 2 + window.screenX,
+	                top = window.innerHeight / 2 - popHeight / 2 + window.screenY,
+	                popParams = 'scrollbars=no, width=' + popWidth + ', height=' + popHeight + ', top=' + top + ', left=' + left,
+	                newWindow = window.open(sharer.shareUrl, '', popParams);
+
+	            if (window.focus) {
+	                newWindow.focus();
+	            }
+	        } else {
+	            window.location.href = sharer.shareUrl;
+	        }
+	    }
+	};
+
+	module.exports = Sharer;
 
 
 /***/ }

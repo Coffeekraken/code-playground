@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
 	<title>{{title}}</title>
+	{{#if packageJson.description}}
+		<meta name="description" content="{{packageJson.description}}" />
+	{{/if}}
+	{{#if packageJson.keywords}}
+		<meta name="keywords" content="{{packageJson.keywords}}" />
+	{{/if}}
+	{{#if packageJson.repository}}
+		<link rel="canonical" href="{{packageJson.repository.url}}" />
+	{{/if}}
 	<link rel="stylesheet" href="/assets/css/style.css" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
-
 </head>
 <body>
 
@@ -34,7 +42,7 @@
 					{{#if packageJson.description}}
 						<li class="nav__item">
 							<s-dialog>
-								<a href="#description" title="Description" target="_blank">
+								<a class="nav__link" href="#description" title="Description" target="_blank">
 									<i class="fa fa-info-circle"></i>&nbsp;&nbsp;About
 								</a>
 							</s-dialog>
@@ -94,16 +102,47 @@
 							</div>
 						</li>
 					{{/if}}
+					{{#if packageJson.repository}}
+						<li class="nav__item">
+							<div class="dropdown dropdown--primary">
+								<a class="nav__link" title="Share">
+									<i class="fa fa-share"></i> &nbsp;Share
+								</a>
+								<ul class="dropdown__menu">
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="facebook" title="Share on facebook">
+											<i class="fa fa-facebook"></i> Facebook
+										</a>
+									</li>
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="twitter" title="Share on twitter">
+											<i class="fa fa-twitter"></i> Twitter
+										</a>
+									</li>
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="googleplus" title="Share on googleplus">
+											<i class="fa fa-google-plus"></i> Google+
+										</a>
+									</li>
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="linkedin" title="Share on linkedin">
+											<i class="fa fa-linkedin"></i> LinkedIn
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					{{/if}}
 					{{#if packageJson.homepage}}
 						<li class="nav__item">
-							<a href="{{packageJson.homepage}}" title="Go to website" target="_blank">
+							<a class="nav__link" href="{{packageJson.homepage}}" title="Go to website" target="_blank">
 								<i class="fa fa-globe"></i>&nbsp;&nbsp;Website
 							</a>
 						</li>
 					{{/if}}
 					{{#if packageJson.repository}}
 						<li class="nav__item">
-							<a href="{{packageJson.repository.url}}" title="Repository" target="_blank">
+							<a class="nav__link" href="{{packageJson.repository.url}}" title="Repository" target="_blank">
 								<i class="fa fa-github"></i>&nbsp;&nbsp;Repository
 							</a>
 						</li>
