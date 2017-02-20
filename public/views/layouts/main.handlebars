@@ -162,7 +162,9 @@
 					id="{{this.language}}"
 					title="{{this.title}}"
 					language="{{ this.language }}">
-					{{{this.data}}}
+					<template>
+						{{{this.data}}}
+					</template>
 				</s-codemirror>
 			</template>
 		{{/if}}
@@ -192,11 +194,11 @@
 
 	<script>
 		window.app = {
+			pwd : '{{pwd}}',
 			compileServer : '{{{compileServerSettings}}}'
 		};
 	</script>
 	<script src="/assets/js/app.js"></script>
-
 
 </body>
 </html>

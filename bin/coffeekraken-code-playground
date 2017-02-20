@@ -45,6 +45,10 @@ const app = require('commander');
 	}
 
 	let inlineCompileServerArgs = [];
+	// share secret
+	if (finalConfig.secret && ! finalConfig.compileServer.secret) {
+		finalConfig.compileServer.secret = finalConfig.secret;
+	}
 	for(let key in finalConfig.compileServer) {
 		inlineCompileServerArgs.push(`--${key}`);
 		inlineCompileServerArgs.push(`${finalConfig.compileServer[key]}`);

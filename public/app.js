@@ -1,11 +1,13 @@
 const _get = require('lodash/get');
 const _set = require('lodash/set');
 const _extend = require('lodash/extend');
+const __merge = require('lodash/merge');
 const __express = require('express');
 const __expressHandlebars = require('express-handlebars');
 const __path = require('path');
 const __fs = require('fs');
 const __md5 = require('MD5');
+const __Cryptr = require('cryptr');
 
 module.exports = function(config) {
 
@@ -23,78 +25,167 @@ module.exports = function(config) {
 	// static files
 	app.use('/assets', __express.static(__dirname + '/assets'));
 
-	// load package.json
-	let packageJson = {};
-	if (__fs.existsSync(process.env.PWD + '/package.json')) {
-		packageJson = require(process.env.PWD + '/package.json');
-		if (packageJson.contributors) {
-			packageJson.contributors = packageJson.contributors.map((contributor) => {
-				contributor.gravatar = `https://www.gravatar.com/avatar/${__md5(contributor.email)}`;
-				return contributor;
-			});
-		}
+	// cryptr instance
+ 	let cryptr;
+	if (config.secret) {
+		cryptr = new __Cryptr(config.secret);
 	}
 
-	// middleware
+	// protect
 	app.use((req, res, next) => {
 		if (/^\/assets\//.test(req.url)) return;
+		if (req.url.match('.js.map')) return;
+		next();
+	});
+
+	// attach config to request
+	app.use((req, res, next) => {
+		req.config = Object.assign({}, config);
+		next();
+	});
+
+	// pwd
+	app.use((req, res, next) => {
+		let pwd;
+		// if an app query parameter is found
+		if (req.query.app) {
+			// check if the node env exist
+			let apps = req.config.apps;
+			if (process.env.NODE_ENV && req.config.apps[process.env.NODE_ENV]) {
+				apps = req.config.apps[process.env.NODE_ENV];
+			}
+			if ( ! apps[req.query.app]) {
+				throw `The app ${req.query.app} is not defined in the code-playground.config.js file...`
+			}
+			pwd = apps[req.query.app];
+		} else if (req.query.pwd) {
+			if (cryptr) {
+				if ( req.query.pwd.match(/\//)) {
+					// a secret is provided but the pwd passed is not an encrypted string
+					throw `The passed req.query.pwd parameter is not a valid one...`;
+				} else {
+					pwd = cryptr.decrypt(req.query.pwd);
+				}
+			} else {
+				pwd = req.query.pwd;
+			}
+		} else {
+			pwd = process.env.PWD;
+		}
+
+		// resolve path
+		pwd = pwd.replace('~', process.env.HOME);
+
+		// check that the PWD is valid
+		if ( ! __fs.existsSync(pwd)
+			|| ! __fs.existsSync(`${pwd}/code-playground.config.js`)
+		) {
+			// either the pwd passed does not exist, or no code-playground.config.js file
+			// has been found at this emplacement...
+			throw `The passed req.query.pwd parameter is not a valid one...`;
+		}
+
+		// set pwd in config
+		req.config.pwd = pwd;
+
+		// next
+		next();
+	});
+
+	// read config if a req.query.pwd is passed
+	app.use((req, res, next) => {
+		if ( ! req.query.pwd && ! req.query.app) {
+			next();
+			return;
+		}
+
+		// read the config file
+		const _config = require(`${req.config.pwd}/code-playground.config.js`);
+
+		// remove some settings that can not be overrided like port, etc...
+		delete _config.port;
+		delete _config.compileServer.port;
+
+		// merge configs
+		req.config = __merge(req.config, _config);
+
+		// next
+		next();
+	});
+
+	// package json
+	app.use((req, res, next) => {
+
+		let packageJson;
+		// load package.json
+		if (__fs.existsSync(req.config.pwd + '/package.json')) {
+			packageJson = require(req.config.pwd + '/package.json');
+			if (packageJson.contributors) {
+				packageJson.contributors = packageJson.contributors.map((contributor) => {
+					contributor.gravatar = `https://www.gravatar.com/avatar/${__md5(contributor.email)}`;
+					return contributor;
+				});
+			}
+			// attach packageJson to req
+			req.packageJson = packageJson;
+		}
+		// next
 		next();
 	});
 
 	// global route
 	app.get(/.*/, function (req, res) {
-		// exclude .map files
-		if (req.url.match('.js.map')) return;
-
-		// settings
-		const settings = _extend({}, config);
 
 		// editors
-		if (config.editors.html) {
-			settings.editors.html.language = config.editors.html.language || 'html';
-			settings.editors.html.title = config.editors.html.title || config.editors.html.language;
-			if (settings.editors.html.file && __fs.existsSync(process.env.PWD + '/' + settings.editors.html.file)) {
-				settings.editors.html.data = __fs.readFileSync(process.env.PWD + '/' + settings.editors.html.file, 'utf8');
+		if (req.config.editors.html) {
+			req.config.editors.html.language = req.config.editors.html.language || 'html';
+			req.config.editors.html.title = req.config.editors.html.title || req.config.editors.html.language;
+			if (req.config.editors.html.file && __fs.existsSync(req.config.pwd + '/' + req.config.editors.html.file)) {
+				req.config.editors.html.data = __fs.readFileSync(req.config.pwd + '/' + req.config.editors.html.file, 'utf8');
 			} else {
-				settings.editors.html.data = config.editors.html.data;
+				req.config.editors.html.data = req.config.editors.html.data;
 			}
-			settings.editors.html.aceept = config.editors.html.accept;
-			settings.editors.html.updateOn = config.editors.html.updateOn || (config.editors.html.language !== 'html') ? 'run' : null;
+			req.config.editors.html.aceept = req.config.editors.html.accept;
+			req.config.editors.html.updateOn = req.config.editors.html.updateOn || (req.config.editors.html.language !== 'html') ? 'run' : null;
 		}
-		if (config.editors.css) {
-			settings.editors.css.language = config.editors.css.language || 'css';
-			settings.editors.css.title = config.editors.css.title || config.editors.css.language;
-			if (settings.editors.css.file && __fs.existsSync(process.env.PWD + '/' + settings.editors.css.file)) {
-				settings.editors.css.data = __fs.readFileSync(process.env.PWD + '/' + settings.editors.css.file, 'utf8');
+		if (req.config.editors.css) {
+			req.config.editors.css.language = req.config.editors.css.language || 'css';
+			req.config.editors.css.title = req.config.editors.css.title || req.config.editors.css.language;
+			if (req.config.editors.css.file && __fs.existsSync(req.config.pwd + '/' + req.config.editors.css.file)) {
+				req.config.editors.css.data = __fs.readFileSync(req.config.pwd + '/' + req.config.editors.css.file, 'utf8');
 			} else {
-				settings.editors.css.data = config.editors.css.data;
+				req.config.editors.css.data = req.config.editors.css.data;
 			}
-			settings.editors.css.aceept = config.editors.css.accept;
-			settings.editors.css.updateOn = config.editors.css.updateOn || (config.editors.css.language !== 'css') ? 'run' : null;
+			req.config.editors.css.aceept = req.config.editors.css.accept;
+			req.config.editors.css.updateOn = req.config.editors.css.updateOn || (req.config.editors.css.language !== 'css') ? 'run' : null;
 		}
-		if (config.editors.js) {
-			settings.editors.js.language = config.editors.js.language || 'js';
-			settings.editors.js.title = config.editors.js.title || config.editors.js.language;
-			if (settings.editors.js.file && __fs.existsSync(process.env.PWD + '/' + settings.editors.js.file)) {
-				settings.editors.js.data = __fs.readFileSync(process.env.PWD + '/' + settings.editors.js.file, 'utf8');
+		if (req.config.editors.js) {
+			req.config.editors.js.language = req.config.editors.js.language || 'js';
+			req.config.editors.js.title = req.config.editors.js.title || req.config.editors.js.language;
+			if (req.config.editors.js.file && __fs.existsSync(req.config.pwd + '/' + req.config.editors.js.file)) {
+				req.config.editors.js.data = __fs.readFileSync(req.config.pwd + '/' + req.config.editors.js.file, 'utf8');
 			} else {
-				settings.editors.js.data = config.editors.js.data;
+				req.config.editors.js.data = req.config.editors.js.data;
 			}
-			settings.editors.js.aceept = config.editors.js.accept;
-			settings.editors.js.updateOn = config.editors.js.updateOn || 'run';
+			req.config.editors.js.aceept = req.config.editors.js.accept;
+			req.config.editors.js.updateOn = req.config.editors.js.updateOn || 'run';
 		}
+
+		// delete the secret from the compileServerSettings to not expose sensible infos
+		delete req.config.compileServer.secret;
 
 		// render the page
 		res.render('home', {
-			title : config.title || 'Code Playground',
-			logo : config.logo,
-			config : config,
-			packageJson : packageJson,
-			compileServerSettings : JSON.stringify(config.compileServer),
+			title : req.config.title || 'Code Playground',
+			logo : req.config.logo,
+			config : req.config,
+			pwd : (cryptr) ? cryptr.encrypt(req.config.pwd) : req.config.pwd,
+			packageJson : req.packageJson,
+			compileServerSettings : JSON.stringify(req.config.compileServer),
 			editors : {
-				html : config.editors.html,
-				css : config.editors.css,
-				js : config.editors.js
+				html : req.config.editors.html,
+				css : req.config.editors.css,
+				js : req.config.editors.js
 			}
 		});
 	});

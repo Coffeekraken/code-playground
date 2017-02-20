@@ -2,6 +2,23 @@ module.exports = {
 	// server port
 	port : 3000,
 
+	// secret used to encrypt and decrypt vars
+	// like the req.query.env, etc...
+	// DON'T FORGET TO CHANGE THAT IN YOUR CONFIG
+	secret : 'hello',
+
+	// map some app names to some pwd on the server.
+	// by setting this up you will be able to target your
+	// different apps with the query string ?app={appname}
+	apps : {
+		's-atv-card-component' : '~/data/web/coffeekraken/s-atv-card-component',
+		's-notification-component' : '~/data/web/coffeekraken/s-notification-component',
+		production : {
+			's-atv-card-component' : '/Users/olivierbossel/data/web/coffeekraken/s-atv-card-component',
+			's-notification-component' : '/Users/olivierbossel/data/web/coffeekraken/s-notification-component',
+		}
+	},
+
 	// logo
 	logo : null,
 
