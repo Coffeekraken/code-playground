@@ -8,7 +8,7 @@ compileServerSettings = Object.assign({
 	apiUrl : `${document.location.protocol}//${document.location.hostname}:${port}`
 }, compileServerSettings);
 if (window.app.pwd) {
-	compileServerSettings.queryString = `pwd=${window.app.pwd}`;
+	compileServerSettings.queryString = `cwd=${window.app.pwd}`;
 }
 compileServer.setup(compileServerSettings);
 

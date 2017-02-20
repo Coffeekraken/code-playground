@@ -5,19 +5,15 @@ module.exports = {
 	// secret used to encrypt and decrypt vars
 	// like the req.query.env, etc...
 	// DON'T FORGET TO CHANGE THAT IN YOUR CONFIG
-	secret : 'hello',
+	secret : null,
 
 	// map some app names to some pwd on the server.
 	// by setting this up you will be able to target your
 	// different apps with the query string ?app={appname}
-	apps : {
-		's-atv-card-component' : '~/data/web/coffeekraken/s-atv-card-component',
-		's-notification-component' : '~/data/web/coffeekraken/s-notification-component',
-		production : {
-			's-atv-card-component' : '/Users/olivierbossel/data/web/coffeekraken/s-atv-card-component',
-			's-notification-component' : '/Users/olivierbossel/data/web/coffeekraken/s-notification-component',
-		}
-	},
+	// or by /{appname},
+	// format : {appname} : {cwd}
+	// other : {NODE_ENV} : {...}
+	apps : {},
 
 	// logo
 	logo : null,
@@ -52,7 +48,7 @@ module.exports = {
 									Hello World
 								</h1>
 								<p class="p">
-									In tempus leo eu semper gravida. Sed molestie ex porta fermentum imperdiet. Vivamus nec libero at tellus suscipit fermentum sit amet sed nibh. Lorem ipsum dolor sit amet, consectetur adipiscing.
+									This is the code-playground demo of the code-playground tool.
 								</p>
 							</div>
 						</article>

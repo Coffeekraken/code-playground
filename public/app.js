@@ -2,6 +2,7 @@ const _get = require('lodash/get');
 const _set = require('lodash/set');
 const _extend = require('lodash/extend');
 const __merge = require('lodash/merge');
+const __clone = require('lodash/cloneDeep');
 const __express = require('express');
 const __expressHandlebars = require('express-handlebars');
 const __path = require('path');
@@ -34,40 +35,44 @@ module.exports = function(config) {
 	// protect
 	app.use((req, res, next) => {
 		if (/^\/assets\//.test(req.url)) return;
+		if (req.url.match('favicon.ico')) return;
 		if (req.url.match('.js.map')) return;
 		next();
 	});
 
 	// attach config to request
 	app.use((req, res, next) => {
-		req.config = Object.assign({}, config);
+		// req.config = Object.assign({}, config);
+		req.config = __clone(config);
 		next();
 	});
 
 	// pwd
 	app.use((req, res, next) => {
 		let pwd;
+		let app = req.path.split('/')[1] || req.query.app;
+
 		// if an app query parameter is found
-		if (req.query.app) {
+		if (app) {
 			// check if the node env exist
 			let apps = req.config.apps;
 			if (process.env.NODE_ENV && req.config.apps[process.env.NODE_ENV]) {
 				apps = req.config.apps[process.env.NODE_ENV];
 			}
-			if ( ! apps[req.query.app]) {
-				throw `The app ${req.query.app} is not defined in the code-playground.config.js file...`
+			if ( ! apps[app]) {
+				throw `The app ${app} is not defined in the code-playground.config.js file...`
 			}
-			pwd = apps[req.query.app];
-		} else if (req.query.pwd) {
+			pwd = apps[app];
+		} else if (req.query.cwd) {
 			if (cryptr) {
-				if ( req.query.pwd.match(/\//)) {
+				if ( req.query.cwd.match(/\//)) {
 					// a secret is provided but the pwd passed is not an encrypted string
-					throw `The passed req.query.pwd parameter is not a valid one...`;
+					throw `The passed req.query.cwd parameter is not a valid one...`;
 				} else {
-					pwd = cryptr.decrypt(req.query.pwd);
+					pwd = cryptr.decrypt(req.query.cwd);
 				}
 			} else {
-				pwd = req.query.pwd;
+				pwd = req.query.cwd;
 			}
 		} else {
 			pwd = process.env.PWD;
@@ -82,7 +87,7 @@ module.exports = function(config) {
 		) {
 			// either the pwd passed does not exist, or no code-playground.config.js file
 			// has been found at this emplacement...
-			throw `The passed req.query.pwd parameter is not a valid one...`;
+			throw `The passed req.query.cwd parameter is not a valid one...`;
 		}
 
 		// set pwd in config
@@ -92,9 +97,9 @@ module.exports = function(config) {
 		next();
 	});
 
-	// read config if a req.query.pwd is passed
+	// read config if a req.query.cwd is passed
 	app.use((req, res, next) => {
-		if ( ! req.query.pwd && ! req.query.app) {
+		if ( ! req.query.cwd && ! req.query.app && ! req.path.split('/')[1]) {
 			next();
 			return;
 		}
@@ -104,6 +109,7 @@ module.exports = function(config) {
 
 		// remove some settings that can not be overrided like port, etc...
 		delete _config.port;
+		delete _config.apps;
 		delete _config.compileServer.port;
 
 		// merge configs
