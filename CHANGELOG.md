@@ -1,6 +1,6 @@
 ### HEAD
 
-* {update}
+* Init repo
 
 ### {version} ({month} {day}, {year})
 

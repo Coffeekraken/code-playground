@@ -10,6 +10,7 @@ const app = require('commander');
 	app
 		.version('0.0.1')
 		.option('-p --port [port]', 'Port on which to start the server', /^\S+$/i)
+		.option('-d --cwd [cwd]', 'Change the working directory', /^\S+$/i)
 		.option('-c --config [config]', 'Configuration file to load', /^\S+$/i)
 		.parse(process.argv);
 

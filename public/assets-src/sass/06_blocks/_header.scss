@@ -5,6 +5,8 @@
 	// padding:20px;
 	background: s-color(secondary, -darken 5%);
 	color:white;
+	position: relative;
+	z-index:20;
 
 	.row {
 		margin-left:0;

@@ -29,14 +29,31 @@
 				{{/if}}
 			</div>
 			<div class="gr-adapt">
-				<h1 class="h5 header__title">
-					{{title}}
-					{{#if packageJson.version}}
-						<span class="small">{{packageJson.version}}</span>
+				<div class="dropdown dropdown--primary">
+					<h1 class="h5 header__title">
+						{{#if apps}}
+							&nbsp;<i style="font-size:.8em" class="fa fa-caret-down"></i>&nbsp;
+						{{/if}}
+						{{title}}
+						{{#if packageJson.version}}
+							<span class="small">{{packageJson.version}}</span>
+						{{/if}}
+					</h1>
+					{{#if apps}}
+						<ul class="dropdown__menu">
+							{{#each apps}}
+								<li class="dropdown__item">
+									<a href="/{{@key}}" title="{{this.config.title}}">
+										{{this.config.title}} <span class="s-small">{{this.packageJson.version}}</span>
+									</a>
+								</li>
+							{{/each}}
+						</ul>
 					{{/if}}
-				</h1>
+				</div>
 			</div>
-			<div class="gr-grow"></div>
+			<div class="gr-grow">
+			</div>
 			<div class="gr-adapt">
 				<ul class="nav nav--topbar">
 					{{#if packageJson.description}}
@@ -178,7 +195,7 @@
 		<div class="row row-align-middle">
 			<div class="gr-6">
 				<div class="s-small">
-					Copyright &copy; <a href="http://coffeekraken.io" class="link" title="Coffeekraken">Coffeekraken</a>
+					Copyright &copy; <a href="http://coffeekraken.io" class="link" title="Coffeekraken">Coffeekraken</a> - Powered by <a class="link" href="https://github.com/coffeekraken/carpenter" target="_blank">Carpenter</a>
 				</div>
 				<div class="s-small">
 					Distributed under <a href="https://opensource.org/licenses/MIT" class="link" title="MIT license">MIT license</a>

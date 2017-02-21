@@ -42,14 +42,19 @@ module.exports = function(config) {
 
 	// attach config to request
 	app.use((req, res, next) => {
-		// req.config = Object.assign({}, config);
 		req.config = __clone(config);
+
+		// layout parameter
+		if (req.query.layout) {
+			req.config.layout = req.query.layout;
+		}
+
 		next();
 	});
 
 	// pwd
 	app.use((req, res, next) => {
-		let pwd;
+		let pwd = process.env.PWD;
 		let app = req.path.split('/')[1] || req.query.app;
 
 		// if an app query parameter is found
@@ -74,8 +79,8 @@ module.exports = function(config) {
 			} else {
 				pwd = req.query.cwd;
 			}
-		} else {
-			pwd = process.env.PWD;
+		} else if (req.config.cwd) {
+			pwd = req.config.cwd;
 		}
 
 		// resolve path
@@ -94,6 +99,40 @@ module.exports = function(config) {
 		req.config.pwd = pwd;
 
 		// next
+		next();
+	});
+
+	// apps
+	app.use((req, res, next) => {
+		if ( ! req.config.apps) {
+			next();
+			return;
+		}
+
+		// check if the node env exist
+		let apps = req.config.apps;
+		if (process.env.NODE_ENV && req.config.apps[process.env.NODE_ENV]) {
+			apps = req.config.apps[process.env.NODE_ENV];
+		}
+
+		for (let key in apps) {
+
+			if ( ! req.apps) req.apps = {};
+
+			const appPath = apps[key].replace('~', process.env.HOME);;
+			const appObj = {};
+			// check if a package json exist
+			if (__fs.existsSync(`${appPath}/package.json`)) {
+				appObj.packageJson = require(`${appPath}/package.json`);
+
+			}
+			// check if a package json exist
+			if (__fs.existsSync(`${appPath}/code-playground.config.js`)) {
+				appObj.config = require(`${appPath}/code-playground.config.js`);
+
+			}
+			req.apps[key] = appObj;
+		}
 		next();
 	});
 
@@ -185,6 +224,7 @@ module.exports = function(config) {
 			title : req.config.title || 'Code Playground',
 			logo : req.config.logo,
 			config : req.config,
+			apps : req.apps,
 			pwd : (cryptr) ? cryptr.encrypt(req.config.pwd) : req.config.pwd,
 			packageJson : req.packageJson,
 			compileServerSettings : JSON.stringify(req.config.compileServer),
