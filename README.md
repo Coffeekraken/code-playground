@@ -49,6 +49,24 @@ module.exports = {
 
 See [documentation](doc/) for full ```code-playground.config.js``` file reference
 
+### Add an NPM script
+
+Add in your ```package.json``` file a demo script like so:
+
+```json
+{
+	"scripts": {
+		"demo": "coffeekraken-code-playground"
+	}
+}
+```
+
+### Launch your code-playground
+
+Launch the NPM script to start your code-playground server like so:
+
+```npm run demo```
+
 ## Features
 
 - Nice web interface to play with your code live
