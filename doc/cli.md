@@ -2,7 +2,9 @@
 
 This package expose a simple CLI that let you start your code playground server like so:
 
-```coffeekraken-code-playground -p 3000```
+```
+coffeekraken-code-playground -p 3000
+```
 
 ## Options
 

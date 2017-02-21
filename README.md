@@ -14,7 +14,9 @@ Provide a nice code playground that let you play with some html, javascript (cof
 
 ### Install
 
-```npm install git+ssh://git@github.com/coffeekraken/code-playground#0.0.1 --save```
+```
+npm install git+ssh://git@github.com/coffeekraken/code-playground#0.0.1 --save
+```
 
 ### Create config file
 
@@ -65,7 +67,9 @@ Add in your ```package.json``` file a demo script like so:
 
 Launch the NPM script to start your code-playground server like so:
 
-```npm run demo```
+```
+npm run demo
+```
 
 ## Features
 
