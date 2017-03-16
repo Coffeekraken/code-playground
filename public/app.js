@@ -40,6 +40,16 @@ module.exports = function(config) {
 		next();
 	});
 
+	// static files
+	app.use((req, res, next) => {
+		if (__fs.existsSync(process.env.NODE_ENV + req.url)) {
+			return res.sendFile(process.env.NODE_ENV + req.url);
+		} else if (__fs.existsSync(__path.resolve(__dirname + '/../') + req.url)) {
+			return res.sendFile(__path.resolve(__dirname + '/../') + req.url);
+		}
+		next();
+	});
+
 	// attach config to request
 	app.use((req, res, next) => {
 		req.config = __clone(config);
