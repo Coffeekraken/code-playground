@@ -9,6 +9,7 @@ const __path = require('path');
 const __fs = require('fs');
 const __md5 = require('MD5');
 const __Cryptr = require('cryptr');
+const __cookieSession = require('cookie-session');
 
 module.exports = function(config) {
 
@@ -26,6 +27,13 @@ module.exports = function(config) {
 	// static files
 	app.use('/assets', __express.static(__dirname + '/assets'));
 
+	// cookie session
+	app.set('trust proxy', 1)
+	app.use(__cookieSession({
+		name : 'session',
+		secret : 'coffeekraken-code-playground'
+	}));
+
 	// cryptr instance
  	let cryptr;
 	if (config.secret) {
@@ -37,16 +45,6 @@ module.exports = function(config) {
 		if (/^\/assets\//.test(req.url)) return;
 		if (req.url.match('favicon.ico')) return;
 		if (req.url.match('.js.map')) return;
-		next();
-	});
-
-	// static files
-	app.use((req, res, next) => {
-		if (__fs.existsSync(process.env.NODE_ENV + req.url)) {
-			return res.sendFile(process.env.NODE_ENV + req.url);
-		} else if (__fs.existsSync(__path.resolve(__dirname + '/../') + req.url)) {
-			return res.sendFile(__path.resolve(__dirname + '/../') + req.url);
-		}
 		next();
 	});
 
@@ -65,10 +63,11 @@ module.exports = function(config) {
 	// pwd
 	app.use((req, res, next) => {
 		let pwd = process.env.PWD;
-		let app = req.path.split('/')[1] || req.query.app;
+		const isApp = req.path.split('/').length >= 2 && req.path.split('/')[1] === 'app';
+		let app = req.path.split('/')[2] || req.query.app;
 
 		// if an app query parameter is found
-		if (app) {
+		if (isApp && app) {
 			// check if the node env exist
 			let apps = req.config.apps;
 			if (process.env.NODE_ENV && req.config.apps[process.env.NODE_ENV]) {
@@ -89,12 +88,17 @@ module.exports = function(config) {
 			} else {
 				pwd = req.query.cwd;
 			}
+		} else if (req.session.pwd) {
+			pwd = req.session.pwd;
 		} else if (req.config.cwd) {
 			pwd = req.config.cwd;
 		}
 
 		// resolve path
 		pwd = pwd.replace('~', process.env.HOME);
+
+		// save in session
+		req.session.pwd = pwd;
 
 		// check that the PWD is valid
 		if ( ! __fs.existsSync(pwd)
@@ -109,6 +113,20 @@ module.exports = function(config) {
 		req.config.pwd = pwd;
 
 		// next
+		next();
+	});
+
+	// static files
+	app.use((req, res, next) => {
+		if (req.url === '/') {
+			next();
+			return;
+		}
+		if (__fs.existsSync(req.config.pwd + req.url)) {
+			return res.sendFile(req.config.pwd + req.url);
+		} else if (__fs.existsSync(__path.resolve(__dirname + '/../') + req.url)) {
+			return res.sendFile(__path.resolve(__dirname + '/../') + req.url);
+		}
 		next();
 	});
 
