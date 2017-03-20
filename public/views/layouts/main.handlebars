@@ -43,7 +43,7 @@
 						<ul class="dropdown__menu">
 							{{#each apps}}
 								<li class="dropdown__item">
-									<a href="/{{@key}}" title="{{this.config.title}}">
+									<a href="/app/{{@key}}" title="{{this.config.title}}">
 										{{this.config.title}} <span class="s-small">{{this.packageJson.version}}</span>
 									</a>
 								</li>
