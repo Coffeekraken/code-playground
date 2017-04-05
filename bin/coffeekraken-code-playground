@@ -2,6 +2,7 @@
 process.title = 'coffeekraken-code-playground';
 const spawn = require('child_process').spawn;
 const __fs = require('fs');
+const __path = require('path');
 const __merge = require('lodash/merge');
 const app = require('commander');
 
