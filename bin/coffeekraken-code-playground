@@ -18,11 +18,12 @@ const app = require('commander');
 	const defaultConfig = require(__dirname + '/../code-playground.config');
 	let config = {};
 	if (app.config) {
+		app.config = __path.resolve(app.config);
 		if ( ! __fs.existsSync(app.config)) {
-			throw 'Compile Server : the configuration file "' + process.env.PWD + '/' + app.config + '" does not exist...';
+			throw 'Compile Server : the configuration file "' + app.config + '" does not exist...';
 		}
 		// load the config file
-		config = require(process.env.PWD + '/' + app.config);
+		config = require(app.config);
 	} else {
 		if (__fs.existsSync(process.env.PWD + '/code-playground.config.js')) {
 			config = require(process.env.PWD + '/code-playground.config.js');
