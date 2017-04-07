@@ -2,17 +2,17 @@
  * Header styling
  */
 .header {
-	// padding:20px;
 	background: s-color(secondary, -darken 5%);
 	color:white;
+	position: relative;
+	z-index:20;
 
 	.row {
 		margin-left:0;
 	}
-	// [class*="gr-"] {
-	// 	padding-top:s-rem(10px);
-	// 	padding-bottom: s-rem(10px);
-	// }
+	[class*="gr-"] {
+		height: s-rem(50px);
+	}
 }
 	.header__title {
 		color: white;

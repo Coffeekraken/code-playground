@@ -121,6 +121,7 @@ switch(layout) {
 // create layout config
 var myLayout,
 savedState = localStorage.getItem( 'savedState' );
+savedState = null;
 if( savedState !== null) {
 	const state = JSON.parse(savedState);
 	if (state._layout === layout) {

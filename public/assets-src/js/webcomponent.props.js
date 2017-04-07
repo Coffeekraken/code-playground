@@ -2,9 +2,14 @@ import compileServer from 'coffeekraken-compile-server'
 import SWebComponent from 'coffeekraken-sugar/js/core/SWebComponent'
 
 // setting up compile server
-const compileServerSettings = Object.assign({
-	api_url : `${document.location.protocol}//${document.location.hostname}:3002`
-}, JSON.parse(window.app.compileServer));
+let compileServerSettings = JSON.parse(window.app.compileServer);
+const port = compileServerSettings.port || 4000;
+compileServerSettings = Object.assign({
+	apiUrl : `${document.location.protocol}//${document.location.hostname}:${port}`
+}, compileServerSettings);
+if (window.app.pwd) {
+	compileServerSettings.queryString = `cwd=${window.app.pwd}`;
+}
 compileServer.setup(compileServerSettings);
 
 // default properties

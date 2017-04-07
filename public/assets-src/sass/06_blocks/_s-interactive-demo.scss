@@ -4,16 +4,16 @@
 .CodeMirror-gutters {
 	background: s-color(secondary, -darken 1%) !important;
 }
+.CodeMirror-vscrollbar,
+.CodeMirror-hscrollbar {
+	display: none !important;
+}
 s-codemirror {
 	height:100%;
 }
-
 .s-interactive-demo__preview-container {
 	height: 100% !important;
 }
 .s-interactive-demo__preview-container iframe {
-	height: 100% !important;
-}
-.s-interactive-demo__preview {
-	height: 100%;
+	height: auto !important;
 }

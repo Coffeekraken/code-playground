@@ -1,0 +1,59 @@
+@keyframes dialog-overlay-in {
+	from {
+		opacity:0;
+	}
+	to {
+		opacity:1;
+	}
+}
+@keyframes dialog-overlay-out {
+	from {
+		opacity:1;
+	}
+	to {
+		opacity:0;
+	}
+}
+@keyframes dialog-content-in {
+	from {
+		transform:translateY(-50px);
+		opacity:0;
+	}
+	to {
+		transform:translateY(0);
+		opacity:1;
+	}
+}
+@keyframes dialog-content-out {
+	from {
+		transform:translateY(0);
+		opacity:1;
+	}
+	to {
+		transform:translateY(50px);
+		opacity:0;
+	}
+}
+
+.s-dialog {
+	animation : none .2s linear;
+}
+	.s-dialog__overlay {
+		background : s-color(secondary, -opacity .8);
+		animation : dialog-overlay-in .1s ease-in-out;
+	}
+	.s-dialog__content {
+		background: white;
+		@include s-depth(10);
+		max-width: s-rem(800px);
+		animation : dialog-content-in .4s cubic-bezier(0.100, 0.770, 0.095, 1);
+	}
+.s-dialog--out {
+
+	.s-dialog__content {
+		animation : dialog-content-out .2s cubic-bezier(0.670, 0.010, 1.000, 0.425) forwards;
+	}
+	.s-dialog__overlay {
+		animation : dialog-overlay-out .2s ease-out forwards;
+	}
+}

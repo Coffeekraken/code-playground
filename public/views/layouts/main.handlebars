@@ -2,10 +2,18 @@
 <html lang="en">
 <head>
 	<title>{{title}}</title>
+	{{#if packageJson.description}}
+		<meta name="description" content="{{packageJson.description}}" />
+	{{/if}}
+	{{#if packageJson.keywords}}
+		<meta name="keywords" content="{{packageJson.keywords}}" />
+	{{/if}}
+	{{#if packageJson.repository}}
+		<link rel="canonical" href="{{packageJson.repository.url}}" />
+	{{/if}}
 	<link rel="stylesheet" href="/assets/css/style.css" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 	<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
-
 </head>
 <body>
 
@@ -21,26 +29,137 @@
 				{{/if}}
 			</div>
 			<div class="gr-adapt">
-				<h1 class="h5 header__title">
-					{{title}}
-					{{#if packageJson.version}}
-						<span class="small">{{packageJson.version}}</span>
+				<div class="dropdown dropdown--primary">
+					<h1 class="h5 header__title">
+						{{#if apps}}
+							&nbsp;<i style="font-size:.8em" class="fa fa-caret-down"></i>&nbsp;
+						{{/if}}
+						{{title}}
+						{{#if packageJson.version}}
+							<span class="small">{{packageJson.version}}</span>
+						{{/if}}
+					</h1>
+					{{#if apps}}
+						<ul class="dropdown__menu">
+							{{#each apps}}
+								<li class="dropdown__item">
+									<a href="/app/{{@key}}" title="{{this.config.title}}">
+										{{this.config.title}} <span class="s-small">{{this.packageJson.version}}</span>
+									</a>
+								</li>
+							{{/each}}
+						</ul>
 					{{/if}}
-				</h1>
+				</div>
 			</div>
-			<div class="gr-grow"></div>
+			<div class="gr-grow">
+			</div>
 			<div class="gr-adapt">
 				<ul class="nav nav--topbar">
+					{{#if packageJson.description}}
+						<li class="nav__item">
+							<s-dialog>
+								<a class="nav__link" href="#description" title="Description" target="_blank">
+									<i class="fa fa-info-circle"></i>&nbsp;&nbsp;About
+								</a>
+							</s-dialog>
+							<div class="hidden">
+								<div id="description">
+									<figure class="ratio-5-1">
+										<img class="abs-cover" src="http://coffeekraken.io/dist/img/header-bkg.jpg" />
+										<div style="width:150px; position:absolute; top:50%; left:40px; transform:translateY(-50%); max-width:none;">
+											{{#if logo}}
+												<img style="height:45px;" class="inline-block" src="/{{logo}}" />
+											{{else}}
+												<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
+													<div style="width:150px; max-width:none;" class="coffeekraken-logo coffeekraken-logo--dialog"></div>
+												</a>
+											{{/if}}
+										</div>
+									</figure>
+									<div class="p-bigger">
+
+										<h1 class="h3 m-b">
+											{{title}}
+											{{#if packageJson.version}}
+												<span class="small">{{packageJson.version}}</span>
+											{{/if}}
+										</h1>
+										<p class="p p--lead m-b">
+											{{packageJson.description}}
+										</p>
+
+										{{#if packageJson.homepage}}
+											<a href="{{packageJson.homepage}}" class="btn m-r-small" target="_blank">
+												<i class="fa fa-globe"></i>&nbsp;&nbsp;Go to website
+											</a>
+										{{/if}}
+										{{#if packageJson.repository}}
+											<a href="{{packageJson.repository.url}}" class="btn m-r-small" target="_blank">
+												<i class="fa fa-github"></i>&nbsp;&nbsp;View repository
+											</a>
+										{{/if}}
+										<a class="btn btn--primary" s-dialog-ok>
+											Close
+										</a>
+										<ul class="list list--contributors m-b pull-right">
+											{{#each packageJson.contributors}}
+											<li class="list__item relative">
+												<a class="block" href="{{this.url}}" title="{{this.name}}" target="_blank">
+													<img src="{{this.gravatar}}" />
+												</a>
+												<div class="tooltip tooltip--secondary tooltip--t">
+													{{this.name}}
+												</div>
+											</li>
+											{{/each}}
+										</ul>
+									</div>
+								</div>
+							</div>
+						</li>
+					{{/if}}
+					{{#if packageJson.repository}}
+						<li class="nav__item">
+							<div class="dropdown dropdown--primary">
+								<a class="nav__link" title="Share">
+									<i class="fa fa-share"></i> &nbsp;Share
+								</a>
+								<ul class="dropdown__menu">
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="facebook" title="Share on facebook">
+											<i class="fa fa-facebook"></i> Facebook
+										</a>
+									</li>
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="twitter" title="Share on twitter">
+											<i class="fa fa-twitter"></i> Twitter
+										</a>
+									</li>
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="googleplus" title="Share on googleplus">
+											<i class="fa fa-google-plus"></i> Google+
+										</a>
+									</li>
+									<li class="dropdown__item">
+										<a is="s-share" href="{{packageJson.repository.url}}" platform="linkedin" title="Share on linkedin">
+											<i class="fa fa-linkedin"></i> LinkedIn
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+					{{/if}}
 					{{#if packageJson.homepage}}
 						<li class="nav__item">
-							<a href="{{packageJson.homepage}}" title="Go to website" target="_blank">
+							<a class="nav__link" href="{{packageJson.homepage}}" title="Go to website" target="_blank">
 								<i class="fa fa-globe"></i>&nbsp;&nbsp;Website
 							</a>
 						</li>
 					{{/if}}
 					{{#if packageJson.repository}}
 						<li class="nav__item">
-							<a href="{{packageJson.repository.url}}" title="Repository" target="_blank">
+							<a class="nav__link" href="{{packageJson.repository.url}}" title="Repository" target="_blank">
 								<i class="fa fa-github"></i>&nbsp;&nbsp;Repository
 							</a>
 						</li>
@@ -60,7 +179,9 @@
 					id="{{this.language}}"
 					title="{{this.title}}"
 					language="{{ this.language }}">
-					{{{this.data}}}
+					<template>
+						{{{this.data}}}
+					</template>
 				</s-codemirror>
 			</template>
 		{{/if}}
@@ -74,7 +195,7 @@
 		<div class="row row-align-middle">
 			<div class="gr-6">
 				<div class="s-small">
-					Copyright &copy; <a href="http://coffeekraken.io" class="link" title="Coffeekraken">Coffeekraken</a>
+					Copyright &copy; <a href="http://coffeekraken.io" class="link" title="Coffeekraken">Coffeekraken</a> - Powered by <a class="link" href="https://github.com/coffeekraken/carpenter" target="_blank">Carpenter</a>
 				</div>
 				<div class="s-small">
 					Distributed under <a href="https://opensource.org/licenses/MIT" class="link" title="MIT license">MIT license</a>
@@ -90,11 +211,11 @@
 
 	<script>
 		window.app = {
-			compileServer : '{{compileServerSettings}}'
+			pwd : '{{pwd}}',
+			compileServer : '{{{compileServerSettings}}}'
 		};
 	</script>
 	<script src="/assets/js/app.js"></script>
-
 
 </body>
 </html>
