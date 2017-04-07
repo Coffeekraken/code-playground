@@ -29,6 +29,7 @@ Provide a nice code playground that let you play with some html, javascript (cof
 ![Carpenter screenshot](/.resources/code-playground-screenshot.png)
 
 
+* **Demo**: [http://components.coffeekraken.io](http://components.coffeekraken.io)
 * Homepage: [http://coffeekraken.io](http://coffeekraken.io)
 * Source: [https://github.com/coffeekraken/code-playground](https://github.com/coffeekraken/code-playground)
 * Twitter: [https://twitter.com/coffeekrakenio](https://twitter.com/coffeekrakenio)
