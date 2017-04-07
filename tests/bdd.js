@@ -1,6 +1,4 @@
 import "babel-polyfill";
-import "webcomponents.js/webcomponents-lite";
-import Component from '../dist/index';
 import { expect } from 'chai'
 import testingStack from 'coffeekraken-testing-stack';
 const html = require('./fixture.html');
