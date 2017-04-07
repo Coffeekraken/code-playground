@@ -72,6 +72,7 @@
     "coffeekraken-s-notification-component": "https://github.com/Coffeekraken/s-notification-component.git#release/0.0.1",
     "coffeekraken-s-share-component": "https://github.com/Coffeekraken/s-share-component.git#release/0.0.1",
     "coffeekraken-sugar": "https://github.com/Coffeekraken/sugar.git#release/0.0.1",
+    "coffeekraken-testing-stack": "https://github.com/Coffeekraken/testing-stack.git#release/0.0.1",
     "cookie-session": "^2.0.0-beta.1",
     "cryptr": "^2.0.0",
     "express": "^4.14.0",

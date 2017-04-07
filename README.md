@@ -1,9 +1,32 @@
-# Coffeekraken Code Playground <small>0.0.1</small> [![Build Status](https://travis-ci.org/coffeekraken/code-playground.svg)](https://travis-ci.org/coffeekraken/code-playground)
+# Coffeekraken Code Playground <img src="/.resources/coffeekraken-logo.jpg" height="25px" />
+
+<p>
+	<a href="https://travis-ci.org/Coffeekraken/code-playground">
+		<img src="https://img.shields.io/travis/Coffeekraken/code-playground.svg?style=flat-square" />
+	</a>
+	<a href="https://www.npmjs.com/package/coffeekraken-code-playground">
+		<img src="https://img.shields.io/npm/v/coffeekraken-code-playground.svg?style=flat-square" />
+	</a>
+	<a href="https://github.com/coffeekraken/code-playground/blob/master/LICENSE.txt">
+		<img src="https://img.shields.io/npm/l/coffeekraken-code-playground.svg?style=flat-square" />
+	</a>
+	<!-- <a href="https://github.com/coffeekraken/code-playground">
+		<img src="https://img.shields.io/npm/dt/coffeekraken-code-playground.svg?style=flat-square" />
+	</a>
+	<a href="https://github.com/coffeekraken/code-playground">
+		<img src="https://img.shields.io/github/forks/coffeekraken/code-playground.svg?style=social&label=Fork&style=flat-square" />
+	</a>
+	<a href="https://github.com/coffeekraken/code-playground">
+		<img src="https://img.shields.io/github/stars/coffeekraken/code-playground.svg?style=social&label=Star&style=flat-square" />
+	</a>-->
+	<a href="https://twitter.com/coffeekrakenio">
+		<img src="https://img.shields.io/twitter/url/http/coffeekrakenio.svg?style=social&style=flat-square" />
+	</a>
+</p>
 
 Provide a nice code playground that let you play with some html, javascript (coffee, typescript, etc...) and css (sass, scss, stylus, etc...)
 
-
-![Carpenter screenshot](.resources/code-playground-screenshot.png)
+![Carpenter screenshot](/.resources/code-playground-screenshot.png)
 
 
 * Homepage: [http://coffeekraken.io](http://coffeekraken.io)
