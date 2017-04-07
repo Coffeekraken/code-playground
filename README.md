@@ -41,7 +41,7 @@ Provide a nice code playground that let you play with some html, javascript (cof
 npm install git+ssh://git@github.com/coffeekraken/code-playground#0.0.1 --save
 ```
 
-### Create config file
+### Create config file
 
 Create a ```code-playground.config.js``` file at the root of your project like this one:
 
@@ -108,7 +108,7 @@ npm run demo
 - [query string parameters availables](doc/query-string.md)
 - [CLI](doc/cli.md)
 
-## Browser support
+## Browser support
 
 * Chrome *(latest 2)*
 * Firefox *(latest 2)*
