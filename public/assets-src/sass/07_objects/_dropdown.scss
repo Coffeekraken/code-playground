@@ -2,6 +2,8 @@
 	$colors : default primary secondary
 );
 .dropdown__menu {
+	overflow-y: auto;
+	max-height: 90vh;
 
 	a {
 		text-decoration: none;
