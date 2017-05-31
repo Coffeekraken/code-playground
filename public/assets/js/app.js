@@ -42,7 +42,7 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -81,9 +81,9 @@
 		});
 	});
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -97,9 +97,9 @@
 
 	exports.default = _SNotificationComponent2.default;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -113,7 +113,7 @@
 
 	var _SWebComponent3 = _interopRequireDefault(_SWebComponent2);
 
-	var _prependChild = __webpack_require__(73);
+	var _prependChild = __webpack_require__(74);
 
 	var _prependChild2 = _interopRequireDefault(_prependChild);
 
@@ -149,6 +149,7 @@
 	 */
 
 	//
+	// @TODO : add event support in documentation
 	// * @event
 	//  * @name 		dismiss
 	//  * Event dispatched when the notification is dismissed. A value is attached to this event if provided.
@@ -387,7 +388,7 @@
 
 
 			/**
-	   * Static notification factory
+	   * Static notification factory. You need to have the actual component registered into your page.
 	   * @param 		{Object} 		props 		The notification property object
 	   * @param 		{String} 		[tagname=s-notification] 	The component tagname to create
 	   * @return 		{SNotificationComponent} 		The notification dom element
@@ -542,9 +543,9 @@
 	SNotificationComponent.notificationsContainers = {};
 	exports.default = SNotificationComponent;
 
-/***/ },
+/***/ }),
 /* 3 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -578,14 +579,14 @@
 
 	exports.default = SVideoWebComponent;
 
-/***/ },
+/***/ }),
 /* 4 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	   value: true
 	});
 	exports.default = sNativeWebComponent;
 
@@ -598,17 +599,17 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function sNativeWebComponent(HTMLElementToExtend) {
-		if (typeof HTMLElementToExtend !== 'function') {
-			var _HTMLElementToExtend = function _HTMLElementToExtend() {};
-			_HTMLElementToExtend.prototype = HTMLElementToExtend.prototype;
-			HTMLElementToExtend = _HTMLElementToExtend;
-		}
-		return (0, _mixwith.mix)(HTMLElementToExtend).with(_SWebComponentMixin2.default);
+	   // if (typeof HTMLElementToExtend !== 'function'){
+	   var _HTMLElementToExtend = function _HTMLElementToExtend() {};
+	   _HTMLElementToExtend.prototype = HTMLElementToExtend.prototype;
+	   HTMLElementToExtend = _HTMLElementToExtend;
+	   // }
+	   return (0, _mixwith.mix)(HTMLElementToExtend).with(_SWebComponentMixin2.default);
 	}
 
-/***/ },
+/***/ }),
 /* 5 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;'use strict';
 
@@ -763,9 +764,9 @@
 	  }();
 	});
 
-/***/ },
+/***/ }),
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -793,35 +794,39 @@
 
 	var _camelize2 = _interopRequireDefault(_camelize);
 
-	var _upperFirst = __webpack_require__(60);
+	var _uncamelize = __webpack_require__(60);
+
+	var _uncamelize2 = _interopRequireDefault(_uncamelize);
+
+	var _upperFirst = __webpack_require__(61);
 
 	var _upperFirst2 = _interopRequireDefault(_upperFirst);
 
-	var _fastdom = __webpack_require__(61);
+	var _fastdom = __webpack_require__(62);
 
 	var _fastdom2 = _interopRequireDefault(_fastdom);
 
-	var _dispatchEvent = __webpack_require__(62);
+	var _dispatchEvent = __webpack_require__(63);
 
 	var _dispatchEvent2 = _interopRequireDefault(_dispatchEvent);
 
-	var _whenInViewport = __webpack_require__(65);
+	var _whenInViewport = __webpack_require__(66);
 
 	var _whenInViewport2 = _interopRequireDefault(_whenInViewport);
 
-	var _whenVisible = __webpack_require__(66);
+	var _whenVisible = __webpack_require__(67);
 
 	var _whenVisible2 = _interopRequireDefault(_whenVisible);
 
-	var _prependChild = __webpack_require__(73);
+	var _prependChild = __webpack_require__(74);
 
 	var _prependChild2 = _interopRequireDefault(_prependChild);
 
-	var _SWatcher = __webpack_require__(74);
+	var _SWatcher = __webpack_require__(75);
 
 	var _SWatcher2 = _interopRequireDefault(_SWatcher);
 
-	var _propertyProxy = __webpack_require__(113);
+	var _propertyProxy = __webpack_require__(114);
 
 	var _propertyProxy2 = _interopRequireDefault(_propertyProxy);
 
@@ -833,9 +838,9 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(114).polyfill();
+	__webpack_require__(115).polyfill();
 
-	__webpack_require__(115);
+	// require('proxy-polyfill/proxy.min');
 
 	__webpack_require__(116);
 	__webpack_require__(117);
@@ -1116,7 +1121,7 @@
 					var _this2 = this;
 
 					var deps = [];
-					var comp = Object.getPrototypeOf(window.sugar._webComponentsClasses[this.componentName]);
+					var comp = window.sugar._webComponentsClasses[this.componentName];
 					while (comp) {
 						if (comp.mountDependencies) {
 							comp.mountDependencies.forEach(function (dep) {
@@ -1129,9 +1134,8 @@
 					}
 
 					// props mount dependencies
-					var propsDeps = [].concat(this.props.mountDependencies);
+					deps = deps.concat(this.props.mountDependencies);
 					var finalDeps = [];
-					finalDeps = finalDeps.concat(this.props.mountDependencies);
 					deps.forEach(function (dep) {
 						if (typeof dep === 'function') {
 							dep = dep.bind(_this2);
@@ -1384,14 +1388,18 @@
 					this._props = Object.assign({}, this.defaultProps, this.props);
 
 					// init properties proxy object
-					this.props = new Proxy(this._props, {
-						set: function set(target, property, value) {
-							_this3.setProp(property, value);
-						},
-						get: function get(target, property) {
-							return target[property];
-						}
-					});
+					if (window.Proxy) {
+						this.props = new Proxy(this._props, {
+							set: function set(target, property, value) {
+								_this3.setProp(property, value);
+							},
+							get: function get(target, property) {
+								return target[property];
+							}
+						});
+					} else {
+						this.props = this._props;
+					}
 
 					// created callback
 					this.componentCreated();
@@ -1906,9 +1914,10 @@
 				key: 'dispatchComponentEvent',
 				value: function dispatchComponentEvent(name) {
 					var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+					var fromElm = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : this;
 
-					(0, _dispatchEvent2.default)(this, name, data);
-					(0, _dispatchEvent2.default)(this, this.tagName.toLowerCase() + '.' + name, data);
+					(0, _dispatchEvent2.default)(fromElm, name, data);
+					(0, _dispatchEvent2.default)(fromElm, this.tagName.toLowerCase() + '.' + name, data);
 				}
 
 				/**
@@ -1944,7 +1953,10 @@
 					// stop if same value
 					if (oldVal === value) return;
 
-					// set the prop
+					// set the prop (duplicate and assign again the whole object to avoid issues with Proxy polyfill)
+					// const newProps = Object.assign({}, this._props);
+					// newProps[prop] = value;
+					// this._props = newProps;
 					this._props[prop] = value;
 
 					// handle new value
@@ -2129,13 +2141,13 @@
 					if (physicalProps.indexOf(prop) !== -1) {
 						// set the prop on the node
 						if (value !== 0 && (value === false || value === 'null' || !value)) {
-							this.removeAttribute(prop);
+							this.removeAttribute((0, _uncamelize2.default)(prop));
 						} else if ((typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object') {
-							this.setAttribute(prop, JSON.stringify(value));
+							this.setAttribute((0, _uncamelize2.default)(prop), JSON.stringify(value));
 						} else if (typeof value === 'function') {
-							this.setAttribute(prop, 'fn');
+							this.setAttribute((0, _uncamelize2.default)(prop), 'fn');
 						} else {
-							this.setAttribute(prop, value);
+							this.setAttribute((0, _uncamelize2.default)(prop), value);
 						}
 					}
 				}
@@ -2351,9 +2363,9 @@
 	// Export the mixin class
 	exports.default = SWebComponentMixin;
 
-/***/ },
+/***/ }),
 /* 7 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -2384,16 +2396,16 @@
 		return string;
 	}
 
-/***/ },
+/***/ }),
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(9);
 
 
-/***/ },
+/***/ }),
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var copyObject = __webpack_require__(10),
 	    createAssigner = __webpack_require__(29),
@@ -2437,9 +2449,9 @@
 	module.exports = assignIn;
 
 
-/***/ },
+/***/ }),
 /* 10 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var assignValue = __webpack_require__(11),
 	    baseAssignValue = __webpack_require__(12);
@@ -2483,9 +2495,9 @@
 	module.exports = copyObject;
 
 
-/***/ },
+/***/ }),
 /* 11 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseAssignValue = __webpack_require__(12),
 	    eq = __webpack_require__(28);
@@ -2517,9 +2529,9 @@
 	module.exports = assignValue;
 
 
-/***/ },
+/***/ }),
 /* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var defineProperty = __webpack_require__(13);
 
@@ -2548,9 +2560,9 @@
 	module.exports = baseAssignValue;
 
 
-/***/ },
+/***/ }),
 /* 13 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(14);
 
@@ -2565,9 +2577,9 @@
 	module.exports = defineProperty;
 
 
-/***/ },
+/***/ }),
 /* 14 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseIsNative = __webpack_require__(15),
 	    getValue = __webpack_require__(27);
@@ -2588,9 +2600,9 @@
 	module.exports = getNative;
 
 
-/***/ },
+/***/ }),
 /* 15 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isFunction = __webpack_require__(16),
 	    isMasked = __webpack_require__(24),
@@ -2641,9 +2653,9 @@
 	module.exports = baseIsNative;
 
 
-/***/ },
+/***/ }),
 /* 16 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseGetTag = __webpack_require__(17),
 	    isObject = __webpack_require__(23);
@@ -2684,9 +2696,9 @@
 	module.exports = isFunction;
 
 
-/***/ },
+/***/ }),
 /* 17 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(18),
 	    getRawTag = __webpack_require__(21),
@@ -2718,9 +2730,9 @@
 	module.exports = baseGetTag;
 
 
-/***/ },
+/***/ }),
 /* 18 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var root = __webpack_require__(19);
 
@@ -2730,9 +2742,9 @@
 	module.exports = Symbol;
 
 
-/***/ },
+/***/ }),
 /* 19 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var freeGlobal = __webpack_require__(20);
 
@@ -2745,9 +2757,9 @@
 	module.exports = root;
 
 
-/***/ },
+/***/ }),
 /* 20 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/** Detect free variable `global` from Node.js. */
 	var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
@@ -2756,9 +2768,9 @@
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 21 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(18);
 
@@ -2808,9 +2820,9 @@
 	module.exports = getRawTag;
 
 
-/***/ },
+/***/ }),
 /* 22 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -2836,9 +2848,9 @@
 	module.exports = objectToString;
 
 
-/***/ },
+/***/ }),
 /* 23 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if `value` is the
@@ -2873,9 +2885,9 @@
 	module.exports = isObject;
 
 
-/***/ },
+/***/ }),
 /* 24 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var coreJsData = __webpack_require__(25);
 
@@ -2899,9 +2911,9 @@
 	module.exports = isMasked;
 
 
-/***/ },
+/***/ }),
 /* 25 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var root = __webpack_require__(19);
 
@@ -2911,9 +2923,9 @@
 	module.exports = coreJsData;
 
 
-/***/ },
+/***/ }),
 /* 26 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
 	var funcProto = Function.prototype;
@@ -2943,9 +2955,9 @@
 	module.exports = toSource;
 
 
-/***/ },
+/***/ }),
 /* 27 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Gets the value at `key` of `object`.
@@ -2962,9 +2974,9 @@
 	module.exports = getValue;
 
 
-/***/ },
+/***/ }),
 /* 28 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Performs a
@@ -3005,9 +3017,9 @@
 	module.exports = eq;
 
 
-/***/ },
+/***/ }),
 /* 29 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseRest = __webpack_require__(30),
 	    isIterateeCall = __webpack_require__(38);
@@ -3048,9 +3060,9 @@
 	module.exports = createAssigner;
 
 
-/***/ },
+/***/ }),
 /* 30 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var identity = __webpack_require__(31),
 	    overRest = __webpack_require__(32),
@@ -3071,9 +3083,9 @@
 	module.exports = baseRest;
 
 
-/***/ },
+/***/ }),
 /* 31 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * This method returns the first argument it receives.
@@ -3098,9 +3110,9 @@
 	module.exports = identity;
 
 
-/***/ },
+/***/ }),
 /* 32 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var apply = __webpack_require__(33);
 
@@ -3140,9 +3152,9 @@
 	module.exports = overRest;
 
 
-/***/ },
+/***/ }),
 /* 33 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * A faster alternative to `Function#apply`, this function invokes `func`
@@ -3167,9 +3179,9 @@
 	module.exports = apply;
 
 
-/***/ },
+/***/ }),
 /* 34 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseSetToString = __webpack_require__(35),
 	    shortOut = __webpack_require__(37);
@@ -3187,9 +3199,9 @@
 	module.exports = setToString;
 
 
-/***/ },
+/***/ }),
 /* 35 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var constant = __webpack_require__(36),
 	    defineProperty = __webpack_require__(13),
@@ -3215,9 +3227,9 @@
 	module.exports = baseSetToString;
 
 
-/***/ },
+/***/ }),
 /* 36 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Creates a function that returns `value`.
@@ -3247,9 +3259,9 @@
 	module.exports = constant;
 
 
-/***/ },
+/***/ }),
 /* 37 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/** Used to detect hot functions by number of calls within a span of milliseconds. */
 	var HOT_COUNT = 800,
@@ -3290,9 +3302,9 @@
 	module.exports = shortOut;
 
 
-/***/ },
+/***/ }),
 /* 38 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var eq = __webpack_require__(28),
 	    isArrayLike = __webpack_require__(39),
@@ -3326,9 +3338,9 @@
 	module.exports = isIterateeCall;
 
 
-/***/ },
+/***/ }),
 /* 39 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isFunction = __webpack_require__(16),
 	    isLength = __webpack_require__(40);
@@ -3365,9 +3377,9 @@
 	module.exports = isArrayLike;
 
 
-/***/ },
+/***/ }),
 /* 40 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
 	var MAX_SAFE_INTEGER = 9007199254740991;
@@ -3406,9 +3418,9 @@
 	module.exports = isLength;
 
 
-/***/ },
+/***/ }),
 /* 41 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/** Used as references for various `Number` constants. */
 	var MAX_SAFE_INTEGER = 9007199254740991;
@@ -3434,9 +3446,9 @@
 	module.exports = isIndex;
 
 
-/***/ },
+/***/ }),
 /* 42 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var arrayLikeKeys = __webpack_require__(43),
 	    baseKeysIn = __webpack_require__(56),
@@ -3472,9 +3484,9 @@
 	module.exports = keysIn;
 
 
-/***/ },
+/***/ }),
 /* 43 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseTimes = __webpack_require__(44),
 	    isArguments = __webpack_require__(45),
@@ -3527,9 +3539,9 @@
 	module.exports = arrayLikeKeys;
 
 
-/***/ },
+/***/ }),
 /* 44 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * The base implementation of `_.times` without support for iteratee shorthands
@@ -3553,9 +3565,9 @@
 	module.exports = baseTimes;
 
 
-/***/ },
+/***/ }),
 /* 45 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseIsArguments = __webpack_require__(46),
 	    isObjectLike = __webpack_require__(47);
@@ -3595,9 +3607,9 @@
 	module.exports = isArguments;
 
 
-/***/ },
+/***/ }),
 /* 46 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseGetTag = __webpack_require__(17),
 	    isObjectLike = __webpack_require__(47);
@@ -3619,9 +3631,9 @@
 	module.exports = baseIsArguments;
 
 
-/***/ },
+/***/ }),
 /* 47 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if `value` is object-like. A value is object-like if it's not `null`
@@ -3654,9 +3666,9 @@
 	module.exports = isObjectLike;
 
 
-/***/ },
+/***/ }),
 /* 48 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if `value` is classified as an `Array` object.
@@ -3686,9 +3698,9 @@
 	module.exports = isArray;
 
 
-/***/ },
+/***/ }),
 /* 49 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(19),
 	    stubFalse = __webpack_require__(51);
@@ -3731,9 +3743,9 @@
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
 
-/***/ },
+/***/ }),
 /* 50 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	module.exports = function(module) {
 		if(!module.webpackPolyfill) {
@@ -3747,9 +3759,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 51 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * This method returns `false`.
@@ -3771,9 +3783,9 @@
 	module.exports = stubFalse;
 
 
-/***/ },
+/***/ }),
 /* 52 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseIsTypedArray = __webpack_require__(53),
 	    baseUnary = __webpack_require__(54),
@@ -3804,9 +3816,9 @@
 	module.exports = isTypedArray;
 
 
-/***/ },
+/***/ }),
 /* 53 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseGetTag = __webpack_require__(17),
 	    isLength = __webpack_require__(40),
@@ -3870,9 +3882,9 @@
 	module.exports = baseIsTypedArray;
 
 
-/***/ },
+/***/ }),
 /* 54 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * The base implementation of `_.unary` without support for storing metadata.
@@ -3890,9 +3902,9 @@
 	module.exports = baseUnary;
 
 
-/***/ },
+/***/ }),
 /* 55 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {var freeGlobal = __webpack_require__(20);
 
@@ -3919,9 +3931,9 @@
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
 
-/***/ },
+/***/ }),
 /* 56 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(23),
 	    isPrototype = __webpack_require__(57),
@@ -3958,9 +3970,9 @@
 	module.exports = baseKeysIn;
 
 
-/***/ },
+/***/ }),
 /* 57 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -3982,9 +3994,9 @@
 	module.exports = isPrototype;
 
 
-/***/ },
+/***/ }),
 /* 58 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * This function is like
@@ -4008,9 +4020,9 @@
 	module.exports = nativeKeysIn;
 
 
-/***/ },
+/***/ }),
 /* 59 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -4030,9 +4042,35 @@
 		return res.trim();
 	}
 
-/***/ },
+/***/ }),
 /* 60 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.default = uncamelize;
+	/**
+	 * Uncamelize a string
+	 */
+	function uncamelize(text) {
+		var separator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '-';
+
+		// Replace all capital letters by separator followed by lowercase one
+		var res = '';
+		res = text.replace(/[A-Z]/g, function (letter) {
+			return separator + letter.toLowerCase();
+		});
+
+		// Remove first separator (to avoid _hello_world name)
+		return res.replace("/^" + separator + "/", '').trim();
+	}
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -4047,9 +4085,9 @@
 	  return string.charAt(0).toUpperCase() + string.slice(1);
 	}
 
-/***/ },
-/* 61 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;!(function(win) {
 
@@ -4289,15 +4327,15 @@
 	var exports = win.fastdom = (win.fastdom || new FastDom()); // jshint ignore:line
 
 	// Expose to CJS & AMD
-	if (("function")[0] == 'f') !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return exports; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	else if ((typeof module)[0] == 'o') module.exports = exports;
+	if (true) !(__WEBPACK_AMD_DEFINE_RESULT__ = function() { return exports; }.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	else if ((typeof module) == 'object') module.exports = exports;
 
 	})( typeof window !== 'undefined' ? window : this);
 
 
-/***/ },
-/* 62 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4306,7 +4344,7 @@
 	});
 	exports.default = dispatchEvent;
 
-	var _SEvent = __webpack_require__(63);
+	var _SEvent = __webpack_require__(64);
 
 	var _SEvent2 = _interopRequireDefault(_SEvent);
 
@@ -4340,9 +4378,9 @@
 	  target.dispatchEvent(e);
 	}
 
-/***/ },
-/* 63 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4351,7 +4389,7 @@
 	});
 	exports.default = undefined;
 
-	var _customEvent = __webpack_require__(64);
+	var _customEvent = __webpack_require__(65);
 
 	var _customEvent2 = _interopRequireDefault(_customEvent);
 
@@ -4408,9 +4446,9 @@
 	 * @author 		Olivier Bossel<olivier.bossel@gmail.com>
 	 */
 
-/***/ },
-/* 64 */
-/***/ function(module, exports) {
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {
 	var NativeCustomEvent = global.CustomEvent;
@@ -4463,9 +4501,9 @@
 
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4474,19 +4512,19 @@
 	});
 	exports.default = whenInViewport;
 
-	var _whenVisible = __webpack_require__(66);
+	var _whenVisible = __webpack_require__(67);
 
 	var _whenVisible2 = _interopRequireDefault(_whenVisible);
 
-	var _isInViewport = __webpack_require__(69);
+	var _isInViewport = __webpack_require__(70);
 
 	var _isInViewport2 = _interopRequireDefault(_isInViewport);
 
-	var _throttle = __webpack_require__(70);
+	var _throttle = __webpack_require__(71);
 
 	var _throttle2 = _interopRequireDefault(_throttle);
 
-	var _closest = __webpack_require__(71);
+	var _closest = __webpack_require__(72);
 
 	var _closest2 = _interopRequireDefault(_closest);
 
@@ -4496,9 +4534,9 @@
 	 * Monitor an HTMLElement to be notified when it is in the viewport
 	 *
 	 * @name 		whenInViewport
-	 * @param 		{HTMLElement} 				elm 		The element to monitor
-	 * @param 		{Function} 					[cb=null] 	An optional callback to call when the element is in the viewport
-	 * @return 		(Promise) 								The promise that will be resolved when the element is in the viewport
+	 * @param 		{HTMLElement} 				elm 					The element to monitor
+	 * @param 		{Number} 					[offset=50] 			An offset that represent the distance before entering the viewport for the detection or an object with top, right, bottom and left offsets
+	 * @return 		(Promise) 											The promise that will be resolved when the element is in the viewport
 	 *
 	 * @example 	js
 	 * import whenInViewport from 'sugarcss/js/dom/whenInViewport'
@@ -4509,7 +4547,7 @@
 	 * @author 		Olivier Bossel <olivier.bossel@gmail.com>
 	 */
 	function whenInViewport(elm) {
-		var cb = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+		var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 50;
 
 		return new Promise(function (resolve, reject) {
 			// try to get the closest element that has an overflow
@@ -4530,12 +4568,11 @@
 				if (isVisible && isInViewport) {
 					scrollContainerElm.removeEventListener('scroll', checkViewport);
 					window.removeEventListener('resize', checkViewport);
-					if (cb) cb(elm);
 					resolve(elm);
 				}
 			};
 			var checkViewport = (0, _throttle2.default)(function (e) {
-				isInViewport = (0, _isInViewport2.default)(elm, 50);
+				isInViewport = (0, _isInViewport2.default)(elm, offset);
 				_cb();
 			}, 100);
 
@@ -4554,9 +4591,9 @@
 		});
 	}
 
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4565,11 +4602,11 @@
 	});
 	exports.default = whenVisible;
 
-	var _isVisible = __webpack_require__(67);
+	var _isVisible = __webpack_require__(68);
 
 	var _isVisible2 = _interopRequireDefault(_isVisible);
 
-	var _closestNotVisible = __webpack_require__(68);
+	var _closestNotVisible = __webpack_require__(69);
 
 	var _closestNotVisible2 = _interopRequireDefault(_closestNotVisible);
 
@@ -4716,9 +4753,9 @@
 		});
 	}
 
-/***/ },
-/* 67 */
-/***/ function(module, exports) {
+/***/ }),
+/* 68 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -4760,9 +4797,9 @@
 	}
 	window.__isVisible = isVisible;
 
-/***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4771,7 +4808,7 @@
 	});
 	exports.default = closestNotVisible;
 
-	var _isVisible = __webpack_require__(67);
+	var _isVisible = __webpack_require__(68);
 
 	var _isVisible2 = _interopRequireDefault(_isVisible);
 
@@ -4806,23 +4843,26 @@
 	}
 	window.__closestNotVisible = closestNotVisible;
 
-/***/ },
-/* 69 */
-/***/ function(module, exports) {
+/***/ }),
+/* 70 */
+/***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
+
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 	exports.default = isInViewport;
 	/**
 	 * Check if the passed HTMLElement is in the viewport or not
 	 *
 	 * @name 		isInViewport
-	 * @param 		{HTMLElement} 				elm  		The element to insert
-	 * @param 		{Object} 					offset 		An object of top, right, bottom and left offset used to detect the status
-	 * @return 		{Boolean								If the element is in the viewport or not
+	 * @param 		{HTMLElement} 				elm  			The element to insert
+	 * @param 		{Object} 					[offset=50] 	An object of top, right, bottom and left offset used to detect the status or an object with top, right, bottom and left offsets
+	 * @return 		{Boolean									If the element is in the viewport or not
 	 *
 	 * @example  	js
 	 * import isInViewport from 'sugarcss/js/dom/isInViewport'
@@ -4833,18 +4873,32 @@
 	 * @author 		Olivier Bossel <olivier.bossel@gmail.com>
 	 */
 	function isInViewport(elm) {
-	  var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 50;
+		var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 50;
 
-	  var containerHeight = window.innerHeight || document.documentElement.clientHeight;
-	  var containerWidth = window.innerWidth || document.documentElement.clientWidth;
-	  var rect = elm.getBoundingClientRect();
-	  return rect.top - containerHeight - offset <= 0 && rect.bottom + offset >= 0 && rect.left - containerWidth - offset <= 0 && rect.right + offset >= 0;
+		// handle offset
+		var offsetTop = offset;
+		var offsetRight = offset;
+		var offsetBottom = offset;
+		var offsetLeft = offset;
+		if ((typeof offset === 'undefined' ? 'undefined' : _typeof(offset)) === 'object') {
+			offsetTop = offset.top || 0;
+			offsetRight = offset.right || 0;
+			offsetBottom = offset.bottom || 0;
+			offsetLeft = offset.left || 0;
+		}
+		var containerHeight = window.innerHeight || document.documentElement.clientHeight;
+		var containerWidth = window.innerWidth || document.documentElement.clientWidth;
+		var rect = elm.getBoundingClientRect();
+		var isTopIn = rect.top - containerHeight - offsetBottom <= 0;
+		var isBottomIn = rect.bottom - offsetTop >= 0;
+		var isLeftIn = rect.left - containerWidth - offsetRight <= 0;
+		var isRightIn = rect.right - offsetLeft >= 0;
+		return isTopIn && isBottomIn && isLeftIn && isRightIn;
 	}
-	window.__isInViewport = isInViewport;
 
-/***/ },
-/* 70 */
-/***/ function(module, exports) {
+/***/ }),
+/* 71 */
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -4892,9 +4946,9 @@
 	    };
 	}
 
-/***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 72 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -4903,7 +4957,7 @@
 	});
 	exports.default = closest;
 
-	var _matches = __webpack_require__(72);
+	var _matches = __webpack_require__(73);
 
 	var _matches2 = _interopRequireDefault(_matches);
 
@@ -4940,9 +4994,9 @@
 	}
 	window.__closest = closest;
 
-/***/ },
-/* 72 */
-/***/ function(module, exports) {
+/***/ }),
+/* 73 */
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -4978,9 +5032,9 @@
 	  return f.call(el, selector);
 	}
 
-/***/ },
-/* 73 */
-/***/ function(module, exports) {
+/***/ }),
+/* 74 */
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -5008,9 +5062,9 @@
 	  }
 	}
 
-/***/ },
-/* 74 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -5020,15 +5074,15 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _constructorName = __webpack_require__(75);
+	var _constructorName = __webpack_require__(76);
 
 	var _constructorName2 = _interopRequireDefault(_constructorName);
 
-	var _get2 = __webpack_require__(76);
+	var _get2 = __webpack_require__(77);
 
 	var _get3 = _interopRequireDefault(_get2);
 
-	var _set2 = __webpack_require__(111);
+	var _set2 = __webpack_require__(112);
 
 	var _set3 = _interopRequireDefault(_set2);
 
@@ -5340,9 +5394,9 @@
 
 	exports.default = SWatcher;
 
-/***/ },
-/* 75 */
-/***/ function(module, exports) {
+/***/ }),
+/* 76 */
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -5376,11 +5430,11 @@
 	  return results && results.length > 1 ? results[1] : "";
 	}
 
-/***/ },
-/* 76 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(77);
+	var baseGet = __webpack_require__(78);
 
 	/**
 	 * Gets the value at `path` of `object`. If the resolved value is
@@ -5415,12 +5469,12 @@
 	module.exports = get;
 
 
-/***/ },
-/* 77 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(78),
-	    toKey = __webpack_require__(110);
+	var castPath = __webpack_require__(79),
+	    toKey = __webpack_require__(111);
 
 	/**
 	 * The base implementation of `_.get` without support for default values.
@@ -5445,14 +5499,14 @@
 	module.exports = baseGet;
 
 
-/***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isArray = __webpack_require__(48),
-	    isKey = __webpack_require__(79),
-	    stringToPath = __webpack_require__(81),
-	    toString = __webpack_require__(107);
+	    isKey = __webpack_require__(80),
+	    stringToPath = __webpack_require__(82),
+	    toString = __webpack_require__(108);
 
 	/**
 	 * Casts `value` to a path array if it's not one.
@@ -5472,12 +5526,12 @@
 	module.exports = castPath;
 
 
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isArray = __webpack_require__(48),
-	    isSymbol = __webpack_require__(80);
+	    isSymbol = __webpack_require__(81);
 
 	/** Used to match property names within property paths. */
 	var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -5507,9 +5561,9 @@
 	module.exports = isKey;
 
 
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseGetTag = __webpack_require__(17),
 	    isObjectLike = __webpack_require__(47);
@@ -5542,11 +5596,11 @@
 	module.exports = isSymbol;
 
 
-/***/ },
-/* 81 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var memoizeCapped = __webpack_require__(82);
+	var memoizeCapped = __webpack_require__(83);
 
 	/** Used to match property names within property paths. */
 	var reLeadingDot = /^\./,
@@ -5576,11 +5630,11 @@
 	module.exports = stringToPath;
 
 
-/***/ },
-/* 82 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var memoize = __webpack_require__(83);
+	var memoize = __webpack_require__(84);
 
 	/** Used as the maximum memoize cache size. */
 	var MAX_MEMOIZE_SIZE = 500;
@@ -5608,11 +5662,11 @@
 	module.exports = memoizeCapped;
 
 
-/***/ },
-/* 83 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(84);
+	var MapCache = __webpack_require__(85);
 
 	/** Error message constants. */
 	var FUNC_ERROR_TEXT = 'Expected a function';
@@ -5687,15 +5741,15 @@
 	module.exports = memoize;
 
 
-/***/ },
-/* 84 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var mapCacheClear = __webpack_require__(85),
-	    mapCacheDelete = __webpack_require__(101),
-	    mapCacheGet = __webpack_require__(104),
-	    mapCacheHas = __webpack_require__(105),
-	    mapCacheSet = __webpack_require__(106);
+	var mapCacheClear = __webpack_require__(86),
+	    mapCacheDelete = __webpack_require__(102),
+	    mapCacheGet = __webpack_require__(105),
+	    mapCacheHas = __webpack_require__(106),
+	    mapCacheSet = __webpack_require__(107);
 
 	/**
 	 * Creates a map cache object to store key-value pairs.
@@ -5725,13 +5779,13 @@
 	module.exports = MapCache;
 
 
-/***/ },
-/* 85 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 86 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var Hash = __webpack_require__(86),
-	    ListCache = __webpack_require__(93),
-	    Map = __webpack_require__(100);
+	var Hash = __webpack_require__(87),
+	    ListCache = __webpack_require__(94),
+	    Map = __webpack_require__(101);
 
 	/**
 	 * Removes all key-value entries from the map.
@@ -5752,15 +5806,15 @@
 	module.exports = mapCacheClear;
 
 
-/***/ },
-/* 86 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var hashClear = __webpack_require__(87),
-	    hashDelete = __webpack_require__(89),
-	    hashGet = __webpack_require__(90),
-	    hashHas = __webpack_require__(91),
-	    hashSet = __webpack_require__(92);
+	var hashClear = __webpack_require__(88),
+	    hashDelete = __webpack_require__(90),
+	    hashGet = __webpack_require__(91),
+	    hashHas = __webpack_require__(92),
+	    hashSet = __webpack_require__(93);
 
 	/**
 	 * Creates a hash object.
@@ -5790,11 +5844,11 @@
 	module.exports = Hash;
 
 
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(88);
+	var nativeCreate = __webpack_require__(89);
 
 	/**
 	 * Removes all key-value entries from the hash.
@@ -5811,9 +5865,9 @@
 	module.exports = hashClear;
 
 
-/***/ },
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(14);
 
@@ -5823,9 +5877,9 @@
 	module.exports = nativeCreate;
 
 
-/***/ },
-/* 89 */
-/***/ function(module, exports) {
+/***/ }),
+/* 90 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Removes `key` and its value from the hash.
@@ -5846,11 +5900,11 @@
 	module.exports = hashDelete;
 
 
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(88);
+	var nativeCreate = __webpack_require__(89);
 
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -5882,11 +5936,11 @@
 	module.exports = hashGet;
 
 
-/***/ },
-/* 91 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 92 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(88);
+	var nativeCreate = __webpack_require__(89);
 
 	/** Used for built-in method references. */
 	var objectProto = Object.prototype;
@@ -5911,11 +5965,11 @@
 	module.exports = hashHas;
 
 
-/***/ },
-/* 92 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var nativeCreate = __webpack_require__(88);
+	var nativeCreate = __webpack_require__(89);
 
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -5940,15 +5994,15 @@
 	module.exports = hashSet;
 
 
-/***/ },
-/* 93 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var listCacheClear = __webpack_require__(94),
-	    listCacheDelete = __webpack_require__(95),
-	    listCacheGet = __webpack_require__(97),
-	    listCacheHas = __webpack_require__(98),
-	    listCacheSet = __webpack_require__(99);
+	var listCacheClear = __webpack_require__(95),
+	    listCacheDelete = __webpack_require__(96),
+	    listCacheGet = __webpack_require__(98),
+	    listCacheHas = __webpack_require__(99),
+	    listCacheSet = __webpack_require__(100);
 
 	/**
 	 * Creates an list cache object.
@@ -5978,9 +6032,9 @@
 	module.exports = ListCache;
 
 
-/***/ },
-/* 94 */
-/***/ function(module, exports) {
+/***/ }),
+/* 95 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Removes all key-value entries from the list cache.
@@ -5997,11 +6051,11 @@
 	module.exports = listCacheClear;
 
 
-/***/ },
-/* 95 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(96);
+	var assocIndexOf = __webpack_require__(97);
 
 	/** Used for built-in method references. */
 	var arrayProto = Array.prototype;
@@ -6038,9 +6092,9 @@
 	module.exports = listCacheDelete;
 
 
-/***/ },
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 97 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var eq = __webpack_require__(28);
 
@@ -6065,11 +6119,11 @@
 	module.exports = assocIndexOf;
 
 
-/***/ },
-/* 97 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 98 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(96);
+	var assocIndexOf = __webpack_require__(97);
 
 	/**
 	 * Gets the list cache value for `key`.
@@ -6090,11 +6144,11 @@
 	module.exports = listCacheGet;
 
 
-/***/ },
-/* 98 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 99 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(96);
+	var assocIndexOf = __webpack_require__(97);
 
 	/**
 	 * Checks if a list cache value for `key` exists.
@@ -6112,11 +6166,11 @@
 	module.exports = listCacheHas;
 
 
-/***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 100 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var assocIndexOf = __webpack_require__(96);
+	var assocIndexOf = __webpack_require__(97);
 
 	/**
 	 * Sets the list cache `key` to `value`.
@@ -6144,9 +6198,9 @@
 	module.exports = listCacheSet;
 
 
-/***/ },
-/* 100 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(14),
 	    root = __webpack_require__(19);
@@ -6157,11 +6211,11 @@
 	module.exports = Map;
 
 
-/***/ },
-/* 101 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(102);
+	var getMapData = __webpack_require__(103);
 
 	/**
 	 * Removes `key` and its value from the map.
@@ -6181,11 +6235,11 @@
 	module.exports = mapCacheDelete;
 
 
-/***/ },
-/* 102 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var isKeyable = __webpack_require__(103);
+	var isKeyable = __webpack_require__(104);
 
 	/**
 	 * Gets the data for `map`.
@@ -6205,9 +6259,9 @@
 	module.exports = getMapData;
 
 
-/***/ },
-/* 103 */
-/***/ function(module, exports) {
+/***/ }),
+/* 104 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if `value` is suitable for use as unique object key.
@@ -6226,11 +6280,11 @@
 	module.exports = isKeyable;
 
 
-/***/ },
-/* 104 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 105 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(102);
+	var getMapData = __webpack_require__(103);
 
 	/**
 	 * Gets the map value for `key`.
@@ -6248,11 +6302,11 @@
 	module.exports = mapCacheGet;
 
 
-/***/ },
-/* 105 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(102);
+	var getMapData = __webpack_require__(103);
 
 	/**
 	 * Checks if a map value for `key` exists.
@@ -6270,11 +6324,11 @@
 	module.exports = mapCacheHas;
 
 
-/***/ },
-/* 106 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var getMapData = __webpack_require__(102);
+	var getMapData = __webpack_require__(103);
 
 	/**
 	 * Sets the map `key` to `value`.
@@ -6298,11 +6352,11 @@
 	module.exports = mapCacheSet;
 
 
-/***/ },
-/* 107 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var baseToString = __webpack_require__(108);
+	var baseToString = __webpack_require__(109);
 
 	/**
 	 * Converts `value` to a string. An empty string is returned for `null`
@@ -6332,14 +6386,14 @@
 	module.exports = toString;
 
 
-/***/ },
-/* 108 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(18),
-	    arrayMap = __webpack_require__(109),
+	    arrayMap = __webpack_require__(110),
 	    isArray = __webpack_require__(48),
-	    isSymbol = __webpack_require__(80);
+	    isSymbol = __webpack_require__(81);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -6375,9 +6429,9 @@
 	module.exports = baseToString;
 
 
-/***/ },
-/* 109 */
-/***/ function(module, exports) {
+/***/ }),
+/* 110 */
+/***/ (function(module, exports) {
 
 	/**
 	 * A specialized version of `_.map` for arrays without support for iteratee
@@ -6402,11 +6456,11 @@
 	module.exports = arrayMap;
 
 
-/***/ },
-/* 110 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var isSymbol = __webpack_require__(80);
+	var isSymbol = __webpack_require__(81);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -6429,11 +6483,11 @@
 	module.exports = toKey;
 
 
-/***/ },
-/* 111 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
 
-	var baseSet = __webpack_require__(112);
+	var baseSet = __webpack_require__(113);
 
 	/**
 	 * Sets the value at `path` of `object`. If a portion of `path` doesn't exist,
@@ -6470,15 +6524,15 @@
 	module.exports = set;
 
 
-/***/ },
-/* 112 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	var assignValue = __webpack_require__(11),
-	    castPath = __webpack_require__(78),
+	    castPath = __webpack_require__(79),
 	    isIndex = __webpack_require__(41),
 	    isObject = __webpack_require__(23),
-	    toKey = __webpack_require__(110);
+	    toKey = __webpack_require__(111);
 
 	/**
 	 * The base implementation of `_.set`.
@@ -6523,9 +6577,9 @@
 	module.exports = baseSet;
 
 
-/***/ },
-/* 113 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -6534,7 +6588,7 @@
 	});
 	exports.default = propertyProxy;
 
-	var _get2 = __webpack_require__(76);
+	var _get2 = __webpack_require__(77);
 
 	var _get3 = _interopRequireDefault(_get2);
 
@@ -6629,9 +6683,9 @@
 		return val;
 	}
 
-/***/ },
-/* 114 */
-/***/ function(module, exports) {
+/***/ }),
+/* 115 */
+/***/ (function(module, exports) {
 
 	/**
 	 * Code refactored from Mozilla Developer Network:
@@ -6681,194 +6735,13 @@
 	};
 
 
-/***/ },
-/* 115 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(module, global) {/*
-	 * Copyright 2016 Google Inc. All rights reserved.
-	 *
-	 * Licensed under the Apache License, Version 2.0 (the "License"); you may not
-	 * use this file except in compliance with the License. You may obtain a copy of
-	 * the License at
-	 *
-	 *     http://www.apache.org/licenses/LICENSE-2.0
-	 *
-	 * Unless required by applicable law or agreed to in writing, software
-	 * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-	 * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-	 * License for the specific language governing permissions and limitations under
-	 * the License.
-	 */
-
-	'use strict';
-
-
-	(function(scope) {
-	  if (scope['Proxy']) {
-	    return;
-	  }
-	  let lastRevokeFn = null;
-
-	  /**
-	   * @param {*} o
-	   * @return {boolean} whether this is probably a (non-null) Object
-	   */
-	  function isObject(o) {
-	    return o ? (typeof o == 'object' || typeof o == 'function') : false;
-	  }
-
-	  /**
-	   * @constructor
-	   * @param {!Object} target
-	   * @param {{apply, construct, get, set}} handler
-	   */
-	  scope.Proxy = function(target, handler) {
-	    if (!isObject(target) || !isObject(handler)) {
-	      throw new TypeError('Cannot create proxy with a non-object as target or handler');
-	    }
-
-	    // Construct revoke function, and set lastRevokeFn so that Proxy.revocable can steal it.
-	    // The caller might get the wrong revoke function if a user replaces or wraps scope.Proxy
-	    // to call itself, but that seems unlikely especially when using the polyfill.
-	    let throwRevoked = function() {};
-	    lastRevokeFn = function() {
-	      throwRevoked = function(trap) {
-	        throw new TypeError(`Cannot perform '${trap}' on a proxy that has been revoked`);
-	      };
-	    };
-
-	    // Fail on unsupported traps: Chrome doesn't do this, but ensure that users of the polyfill
-	    // are a bit more careful. Copy the internal parts of handler to prevent user changes.
-	    let unsafeHandler = handler;
-	    handler = {'get': null, 'set': null, 'apply': null, 'construct': null};
-	    for (let k in unsafeHandler) {
-	      if (!(k in handler)) {
-	        throw new TypeError(`Proxy polyfill does not support trap '${k}'`);
-	      }
-	      handler[k] = unsafeHandler[k];
-	    }
-	    if (typeof unsafeHandler == 'function') {
-	      // Allow handler to be a function (which has an 'apply' method). This matches what is
-	      // probably a bug in native versions. It treats the apply call as a trap to be configured.
-	      handler.apply = unsafeHandler.apply.bind(unsafeHandler);
-	    }
-
-	    // Define proxy as this, or a Function (if either it's callable, or apply is set).
-	    // TODO(samthor): Closure compiler doesn't know about 'construct', attempts to rename it.
-	    let proxy = this;
-	    let isMethod = false;
-	    let targetIsFunction = typeof target == 'function';
-	    if (handler.apply || handler['construct'] || targetIsFunction) {
-	      proxy = function Proxy() {
-	        let usingNew = (this && this.constructor === proxy);
-	        throwRevoked(usingNew ? 'construct' : 'apply');
-
-	        if (usingNew && handler['construct']) {
-	          return handler['construct'].call(this, target, arguments);
-	        } else if (!usingNew && handler.apply) {
-	          return handler.apply(target, this, arguments);
-	        } else if (targetIsFunction) {
-	          // since the target was a function, fallback to calling it directly.
-	          if (usingNew) {
-	            // inspired by answers to https://stackoverflow.com/q/1606797
-	            let all = Array.prototype.slice.call(arguments);
-	            all.unshift(target);  // pass class as first arg to constructor, although irrelevant
-	            // nb. cast to convince Closure compiler that this is a constructor
-	            let f = /** @type {!Function} */ (target.bind.apply(target, all));
-	            return new f();
-	          }
-	          return target.apply(this, arguments);
-	        }
-	        throw new TypeError(usingNew ? 'not a constructor' : 'not a function');
-	      };
-	      isMethod = true;
-	    }
-
-	    // Create default getters/setters. Create different code paths as handler.get/handler.set can't
-	    // change after creation.
-	    let getter = handler.get ? function(prop) {
-	      throwRevoked('get');
-	      return handler.get(this, prop, proxy);
-	    } : function(prop) {
-	      throwRevoked('get');
-	      return this[prop];
-	    };
-	    let setter = handler.set ? function(prop, value) {
-	      throwRevoked('set');
-	      let status = handler.set(this, prop, value, proxy);
-	      if (!status) {
-	        // TODO(samthor): If the calling code is in strict mode, throw TypeError.
-	        // It's (sometimes) possible to work this out, if this code isn't strict- try to load the
-	        // callee, and if it's available, that code is non-strict. However, this isn't exhaustive.
-	      }
-	    } : function(prop, value) {
-	      throwRevoked('set');
-	      this[prop] = value;
-	    };
-
-	    // Clone direct properties (i.e., not part of a prototype).
-	    let propertyNames = Object.getOwnPropertyNames(target);
-	    let propertyMap = {};
-	    propertyNames.forEach(function(prop) {
-	      if (isMethod && prop in proxy) {
-	        return;  // ignore properties already here, e.g. 'bind', 'prototype' etc
-	      }
-	      let real = Object.getOwnPropertyDescriptor(target, prop);
-	      let desc = {
-	        enumerable: !!real.enumerable,
-	        get: getter.bind(target, prop),
-	        set: setter.bind(target, prop),
-	      };
-	      Object.defineProperty(proxy, prop, desc);
-	      propertyMap[prop] = true;
-	    });
-
-	    // Set the prototype, or clone all prototype methods (always required if a getter is provided).
-	    // TODO(samthor): We don't allow prototype methods to be set. It's (even more) awkward.
-	    // An alternative here would be to _just_ clone methods to keep behavior consistent.
-	    let prototypeOk = true;
-	    if (Object.setPrototypeOf) {
-	      Object.setPrototypeOf(proxy, Object.getPrototypeOf(target));
-	    } else if (proxy.__proto__) {
-	      proxy.__proto__ = target.__proto__;
-	    } else {
-	      prototypeOk = false;
-	    }
-	    if (handler.get || !prototypeOk) {
-	      for (let k in target) {
-	        if (propertyMap[k]) {
-	          continue;
-	        }
-	        Object.defineProperty(proxy, k, {get: getter.bind(target, k)});
-	      }
-	    }
-
-	    // The Proxy polyfill cannot handle adding new properties. Seal the target and proxy.
-	    Object.seal(target);
-	    Object.seal(proxy);
-
-	    return proxy;  // nb. if isMethod is true, proxy != this
-	  };
-
-	  scope.Proxy.revocable = function(target, handler) {
-	    let p = new scope.Proxy(target, handler);
-	    return {'proxy': p, 'revoke': lastRevokeFn};
-	  };
-
-	  scope.Proxy['revocable'] = scope.Proxy.revocable;
-	  scope['Proxy'] = scope.Proxy;
-	})(typeof module !== 'undefined' && module['exports'] ? global : window);
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module), (function() { return this; }())))
-
-/***/ },
+/***/ }),
 /* 116 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _fastdom = __webpack_require__(61);
+	var _fastdom = __webpack_require__(62);
 
 	var _fastdom2 = _interopRequireDefault(_fastdom);
 
@@ -6920,17 +6793,17 @@
 	document.addEventListener('reset', handleFormSubmitOrReset);
 	document.addEventListener('submit', handleFormSubmitOrReset);
 
-/***/ },
+/***/ }),
 /* 117 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _fastdom = __webpack_require__(61);
+	var _fastdom = __webpack_require__(62);
 
 	var _fastdom2 = _interopRequireDefault(_fastdom);
 
-	var _dispatchEvent = __webpack_require__(62);
+	var _dispatchEvent = __webpack_require__(63);
 
 	var _dispatchEvent2 = _interopRequireDefault(_dispatchEvent);
 
@@ -6968,9 +6841,9 @@
 	document.addEventListener('change', handleInputAttributes);
 	document.addEventListener('keyup', handleInputAttributes);
 
-/***/ },
+/***/ }),
 /* 118 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -6992,9 +6865,9 @@
 		});
 	});
 
-/***/ },
+/***/ }),
 /* 119 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -7045,9 +6918,9 @@
 		});
 	}
 
-/***/ },
+/***/ }),
 /* 120 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseMerge = __webpack_require__(121),
 	    createAssigner = __webpack_require__(29);
@@ -7090,9 +6963,9 @@
 	module.exports = merge;
 
 
-/***/ },
+/***/ }),
 /* 121 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Stack = __webpack_require__(122),
 	    assignMergeValue = __webpack_require__(128),
@@ -7137,11 +7010,11 @@
 	module.exports = baseMerge;
 
 
-/***/ },
+/***/ }),
 /* 122 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(93),
+	var ListCache = __webpack_require__(94),
 	    stackClear = __webpack_require__(123),
 	    stackDelete = __webpack_require__(124),
 	    stackGet = __webpack_require__(125),
@@ -7170,11 +7043,11 @@
 	module.exports = Stack;
 
 
-/***/ },
+/***/ }),
 /* 123 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(93);
+	var ListCache = __webpack_require__(94);
 
 	/**
 	 * Removes all key-value entries from the stack.
@@ -7191,9 +7064,9 @@
 	module.exports = stackClear;
 
 
-/***/ },
+/***/ }),
 /* 124 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Removes `key` and its value from the stack.
@@ -7215,9 +7088,9 @@
 	module.exports = stackDelete;
 
 
-/***/ },
+/***/ }),
 /* 125 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Gets the stack value for `key`.
@@ -7235,9 +7108,9 @@
 	module.exports = stackGet;
 
 
-/***/ },
+/***/ }),
 /* 126 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if a stack value for `key` exists.
@@ -7255,13 +7128,13 @@
 	module.exports = stackHas;
 
 
-/***/ },
+/***/ }),
 /* 127 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var ListCache = __webpack_require__(93),
-	    Map = __webpack_require__(100),
-	    MapCache = __webpack_require__(84);
+	var ListCache = __webpack_require__(94),
+	    Map = __webpack_require__(101),
+	    MapCache = __webpack_require__(85);
 
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -7295,9 +7168,9 @@
 	module.exports = stackSet;
 
 
-/***/ },
+/***/ }),
 /* 128 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseAssignValue = __webpack_require__(12),
 	    eq = __webpack_require__(28);
@@ -7321,9 +7194,9 @@
 	module.exports = assignMergeValue;
 
 
-/***/ },
+/***/ }),
 /* 129 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var createBaseFor = __webpack_require__(130);
 
@@ -7343,9 +7216,9 @@
 	module.exports = baseFor;
 
 
-/***/ },
+/***/ }),
 /* 130 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Creates a base function for methods like `_.forIn` and `_.forOwn`.
@@ -7374,9 +7247,9 @@
 	module.exports = createBaseFor;
 
 
-/***/ },
+/***/ }),
 /* 131 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var assignMergeValue = __webpack_require__(128),
 	    cloneBuffer = __webpack_require__(132),
@@ -7473,9 +7346,9 @@
 	module.exports = baseMergeDeep;
 
 
-/***/ },
+/***/ }),
 /* 132 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(module) {var root = __webpack_require__(19);
 
@@ -7515,9 +7388,9 @@
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50)(module)))
 
-/***/ },
+/***/ }),
 /* 133 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var cloneArrayBuffer = __webpack_require__(134);
 
@@ -7537,9 +7410,9 @@
 	module.exports = cloneTypedArray;
 
 
-/***/ },
+/***/ }),
 /* 134 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Uint8Array = __webpack_require__(135);
 
@@ -7559,9 +7432,9 @@
 	module.exports = cloneArrayBuffer;
 
 
-/***/ },
+/***/ }),
 /* 135 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var root = __webpack_require__(19);
 
@@ -7571,9 +7444,9 @@
 	module.exports = Uint8Array;
 
 
-/***/ },
+/***/ }),
 /* 136 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Copies the values of `source` to `array`.
@@ -7597,9 +7470,9 @@
 	module.exports = copyArray;
 
 
-/***/ },
+/***/ }),
 /* 137 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseCreate = __webpack_require__(138),
 	    getPrototype = __webpack_require__(139),
@@ -7621,9 +7494,9 @@
 	module.exports = initCloneObject;
 
 
-/***/ },
+/***/ }),
 /* 138 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(23);
 
@@ -7657,9 +7530,9 @@
 	module.exports = baseCreate;
 
 
-/***/ },
+/***/ }),
 /* 139 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var overArg = __webpack_require__(140);
 
@@ -7669,9 +7542,9 @@
 	module.exports = getPrototype;
 
 
-/***/ },
+/***/ }),
 /* 140 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Creates a unary function that invokes `func` with its argument transformed.
@@ -7690,9 +7563,9 @@
 	module.exports = overArg;
 
 
-/***/ },
+/***/ }),
 /* 141 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isArrayLike = __webpack_require__(39),
 	    isObjectLike = __webpack_require__(47);
@@ -7729,9 +7602,9 @@
 	module.exports = isArrayLikeObject;
 
 
-/***/ },
+/***/ }),
 /* 142 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseGetTag = __webpack_require__(17),
 	    getPrototype = __webpack_require__(139),
@@ -7797,9 +7670,9 @@
 	module.exports = isPlainObject;
 
 
-/***/ },
+/***/ }),
 /* 143 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var copyObject = __webpack_require__(10),
 	    keysIn = __webpack_require__(42);
@@ -7835,9 +7708,9 @@
 	module.exports = toPlainObject;
 
 
-/***/ },
+/***/ }),
 /* 144 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -7922,9 +7795,9 @@
 		return props;
 	}
 
-/***/ },
+/***/ }),
 /* 145 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -7979,9 +7852,9 @@
 	  return null;
 	}
 
-/***/ },
+/***/ }),
 /* 146 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -8008,9 +7881,9 @@
 		}
 	}
 
-/***/ },
+/***/ }),
 /* 147 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * @license
@@ -10518,9 +10391,9 @@
 	  head.insertBefore(style, head.firstChild);
 	})(window.WebComponents);
 
-/***/ },
+/***/ }),
 /* 148 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -10978,9 +10851,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 149 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -12118,7 +11991,7 @@
 	        ch = dir < 0 ? lineObj.text.length - 1 : 0;
 	        var targetTop = measureCharPrepared(cm, prep, ch).top;
 	        ch = findFirst(function (ch) { return measureCharPrepared(cm, prep, ch).top == targetTop; }, (dir < 0) == (part.level == 1) ? part.from : part.to - 1, ch);
-	        if (sticky == "before") { ch = moveCharLogically(lineObj, ch, 1, true); }
+	        if (sticky == "before") { ch = moveCharLogically(lineObj, ch, 1); }
 	      } else { ch = dir < 0 ? part.to : part.from; }
 	      return new Pos(lineNo, ch, sticky)
 	    }
@@ -13627,8 +13500,17 @@
 	  cm.display.lineNumChars = null;
 	}
 
-	function pageScrollX() { return window.pageXOffset || (document.documentElement || document.body).scrollLeft }
-	function pageScrollY() { return window.pageYOffset || (document.documentElement || document.body).scrollTop }
+	function pageScrollX() {
+	  // Work around https://bugs.chromium.org/p/chromium/issues/detail?id=489206
+	  // which causes page_Offset and bounding client rects to use
+	  // different reference viewports and invalidate our calculations.
+	  if (chrome && android) { return -(document.body.getBoundingClientRect().left - parseInt(getComputedStyle(document.body).marginLeft)) }
+	  return window.pageXOffset || (document.documentElement || document.body).scrollLeft
+	}
+	function pageScrollY() {
+	  if (chrome && android) { return -(document.body.getBoundingClientRect().top - parseInt(getComputedStyle(document.body).marginTop)) }
+	  return window.pageYOffset || (document.documentElement || document.body).scrollTop
+	}
 
 	// Converts a {top, bottom, left, right} box from line-local
 	// coordinates into another coordinate system. Context may be one of
@@ -14123,49 +14005,6 @@
 	  setTimeout(function () { if (!cm.state.focused) { cm.display.shift = false; } }, 150);
 	}
 
-	// Re-align line numbers and gutter marks to compensate for
-	// horizontal scrolling.
-	function alignHorizontally(cm) {
-	  var display = cm.display, view = display.view;
-	  if (!display.alignWidgets && (!display.gutters.firstChild || !cm.options.fixedGutter)) { return }
-	  var comp = compensateForHScroll(display) - display.scroller.scrollLeft + cm.doc.scrollLeft;
-	  var gutterW = display.gutters.offsetWidth, left = comp + "px";
-	  for (var i = 0; i < view.length; i++) { if (!view[i].hidden) {
-	    if (cm.options.fixedGutter) {
-	      if (view[i].gutter)
-	        { view[i].gutter.style.left = left; }
-	      if (view[i].gutterBackground)
-	        { view[i].gutterBackground.style.left = left; }
-	    }
-	    var align = view[i].alignable;
-	    if (align) { for (var j = 0; j < align.length; j++)
-	      { align[j].style.left = left; } }
-	  } }
-	  if (cm.options.fixedGutter)
-	    { display.gutters.style.left = (comp + gutterW) + "px"; }
-	}
-
-	// Used to ensure that the line number gutter is still the right
-	// size for the current document size. Returns true when an update
-	// is needed.
-	function maybeUpdateLineNumberWidth(cm) {
-	  if (!cm.options.lineNumbers) { return false }
-	  var doc = cm.doc, last = lineNumberFor(cm.options, doc.first + doc.size - 1), display = cm.display;
-	  if (last.length != display.lineNumChars) {
-	    var test = display.measure.appendChild(elt("div", [elt("div", last)],
-	                                               "CodeMirror-linenumber CodeMirror-gutter-elt"));
-	    var innerW = test.firstChild.offsetWidth, padding = test.offsetWidth - innerW;
-	    display.lineGutter.style.width = "";
-	    display.lineNumInnerWidth = Math.max(innerW, display.lineGutter.offsetWidth - padding) + 1;
-	    display.lineNumWidth = display.lineNumInnerWidth + padding;
-	    display.lineNumChars = display.lineNumInnerWidth ? last.length : -1;
-	    display.lineGutter.style.width = display.lineNumWidth + "px";
-	    updateGutterSpace(cm);
-	    return true
-	  }
-	  return false
-	}
-
 	// Read the actual heights of the rendered lines, and update their
 	// stored heights to match.
 	function updateHeightsInViewport(cm) {
@@ -14224,137 +14063,216 @@
 	  return {from: from, to: Math.max(to, from + 1)}
 	}
 
+	// Re-align line numbers and gutter marks to compensate for
+	// horizontal scrolling.
+	function alignHorizontally(cm) {
+	  var display = cm.display, view = display.view;
+	  if (!display.alignWidgets && (!display.gutters.firstChild || !cm.options.fixedGutter)) { return }
+	  var comp = compensateForHScroll(display) - display.scroller.scrollLeft + cm.doc.scrollLeft;
+	  var gutterW = display.gutters.offsetWidth, left = comp + "px";
+	  for (var i = 0; i < view.length; i++) { if (!view[i].hidden) {
+	    if (cm.options.fixedGutter) {
+	      if (view[i].gutter)
+	        { view[i].gutter.style.left = left; }
+	      if (view[i].gutterBackground)
+	        { view[i].gutterBackground.style.left = left; }
+	    }
+	    var align = view[i].alignable;
+	    if (align) { for (var j = 0; j < align.length; j++)
+	      { align[j].style.left = left; } }
+	  } }
+	  if (cm.options.fixedGutter)
+	    { display.gutters.style.left = (comp + gutterW) + "px"; }
+	}
+
+	// Used to ensure that the line number gutter is still the right
+	// size for the current document size. Returns true when an update
+	// is needed.
+	function maybeUpdateLineNumberWidth(cm) {
+	  if (!cm.options.lineNumbers) { return false }
+	  var doc = cm.doc, last = lineNumberFor(cm.options, doc.first + doc.size - 1), display = cm.display;
+	  if (last.length != display.lineNumChars) {
+	    var test = display.measure.appendChild(elt("div", [elt("div", last)],
+	                                               "CodeMirror-linenumber CodeMirror-gutter-elt"));
+	    var innerW = test.firstChild.offsetWidth, padding = test.offsetWidth - innerW;
+	    display.lineGutter.style.width = "";
+	    display.lineNumInnerWidth = Math.max(innerW, display.lineGutter.offsetWidth - padding) + 1;
+	    display.lineNumWidth = display.lineNumInnerWidth + padding;
+	    display.lineNumChars = display.lineNumInnerWidth ? last.length : -1;
+	    display.lineGutter.style.width = display.lineNumWidth + "px";
+	    updateGutterSpace(cm);
+	    return true
+	  }
+	  return false
+	}
+
+	// SCROLLING THINGS INTO VIEW
+
+	// If an editor sits on the top or bottom of the window, partially
+	// scrolled out of view, this ensures that the cursor is visible.
+	function maybeScrollWindow(cm, rect) {
+	  if (signalDOMEvent(cm, "scrollCursorIntoView")) { return }
+
+	  var display = cm.display, box = display.sizer.getBoundingClientRect(), doScroll = null;
+	  if (rect.top + box.top < 0) { doScroll = true; }
+	  else if (rect.bottom + box.top > (window.innerHeight || document.documentElement.clientHeight)) { doScroll = false; }
+	  if (doScroll != null && !phantom) {
+	    var scrollNode = elt("div", "\u200b", null, ("position: absolute;\n                         top: " + (rect.top - display.viewOffset - paddingTop(cm.display)) + "px;\n                         height: " + (rect.bottom - rect.top + scrollGap(cm) + display.barHeight) + "px;\n                         left: " + (rect.left) + "px; width: " + (Math.max(2, rect.right - rect.left)) + "px;"));
+	    cm.display.lineSpace.appendChild(scrollNode);
+	    scrollNode.scrollIntoView(doScroll);
+	    cm.display.lineSpace.removeChild(scrollNode);
+	  }
+	}
+
+	// Scroll a given position into view (immediately), verifying that
+	// it actually became visible (as line heights are accurately
+	// measured, the position of something may 'drift' during drawing).
+	function scrollPosIntoView(cm, pos, end, margin) {
+	  if (margin == null) { margin = 0; }
+	  var rect;
+	  for (var limit = 0; limit < 5; limit++) {
+	    var changed = false;
+	    var coords = cursorCoords(cm, pos);
+	    var endCoords = !end || end == pos ? coords : cursorCoords(cm, end);
+	    rect = {left: Math.min(coords.left, endCoords.left),
+	            top: Math.min(coords.top, endCoords.top) - margin,
+	            right: Math.max(coords.left, endCoords.left),
+	            bottom: Math.max(coords.bottom, endCoords.bottom) + margin};
+	    var scrollPos = calculateScrollPos(cm, rect);
+	    var startTop = cm.doc.scrollTop, startLeft = cm.doc.scrollLeft;
+	    if (scrollPos.scrollTop != null) {
+	      updateScrollTop(cm, scrollPos.scrollTop);
+	      if (Math.abs(cm.doc.scrollTop - startTop) > 1) { changed = true; }
+	    }
+	    if (scrollPos.scrollLeft != null) {
+	      setScrollLeft(cm, scrollPos.scrollLeft);
+	      if (Math.abs(cm.doc.scrollLeft - startLeft) > 1) { changed = true; }
+	    }
+	    if (!changed) { break }
+	  }
+	  return rect
+	}
+
+	// Scroll a given set of coordinates into view (immediately).
+	function scrollIntoView(cm, rect) {
+	  var scrollPos = calculateScrollPos(cm, rect);
+	  if (scrollPos.scrollTop != null) { updateScrollTop(cm, scrollPos.scrollTop); }
+	  if (scrollPos.scrollLeft != null) { setScrollLeft(cm, scrollPos.scrollLeft); }
+	}
+
+	// Calculate a new scroll position needed to scroll the given
+	// rectangle into view. Returns an object with scrollTop and
+	// scrollLeft properties. When these are undefined, the
+	// vertical/horizontal position does not need to be adjusted.
+	function calculateScrollPos(cm, rect) {
+	  var display = cm.display, snapMargin = textHeight(cm.display);
+	  if (rect.top < 0) { rect.top = 0; }
+	  var screentop = cm.curOp && cm.curOp.scrollTop != null ? cm.curOp.scrollTop : display.scroller.scrollTop;
+	  var screen = displayHeight(cm), result = {};
+	  if (rect.bottom - rect.top > screen) { rect.bottom = rect.top + screen; }
+	  var docBottom = cm.doc.height + paddingVert(display);
+	  var atTop = rect.top < snapMargin, atBottom = rect.bottom > docBottom - snapMargin;
+	  if (rect.top < screentop) {
+	    result.scrollTop = atTop ? 0 : rect.top;
+	  } else if (rect.bottom > screentop + screen) {
+	    var newTop = Math.min(rect.top, (atBottom ? docBottom : rect.bottom) - screen);
+	    if (newTop != screentop) { result.scrollTop = newTop; }
+	  }
+
+	  var screenleft = cm.curOp && cm.curOp.scrollLeft != null ? cm.curOp.scrollLeft : display.scroller.scrollLeft;
+	  var screenw = displayWidth(cm) - (cm.options.fixedGutter ? display.gutters.offsetWidth : 0);
+	  var tooWide = rect.right - rect.left > screenw;
+	  if (tooWide) { rect.right = rect.left + screenw; }
+	  if (rect.left < 10)
+	    { result.scrollLeft = 0; }
+	  else if (rect.left < screenleft)
+	    { result.scrollLeft = Math.max(0, rect.left - (tooWide ? 0 : 10)); }
+	  else if (rect.right > screenw + screenleft - 3)
+	    { result.scrollLeft = rect.right + (tooWide ? 0 : 10) - screenw; }
+	  return result
+	}
+
+	// Store a relative adjustment to the scroll position in the current
+	// operation (to be applied when the operation finishes).
+	function addToScrollTop(cm, top) {
+	  if (top == null) { return }
+	  resolveScrollToPos(cm);
+	  cm.curOp.scrollTop = (cm.curOp.scrollTop == null ? cm.doc.scrollTop : cm.curOp.scrollTop) + top;
+	}
+
+	// Make sure that at the end of the operation the current cursor is
+	// shown.
+	function ensureCursorVisible(cm) {
+	  resolveScrollToPos(cm);
+	  var cur = cm.getCursor(), from = cur, to = cur;
+	  if (!cm.options.lineWrapping) {
+	    from = cur.ch ? Pos(cur.line, cur.ch - 1) : cur;
+	    to = Pos(cur.line, cur.ch + 1);
+	  }
+	  cm.curOp.scrollToPos = {from: from, to: to, margin: cm.options.cursorScrollMargin};
+	}
+
+	function scrollToCoords(cm, x, y) {
+	  if (x != null || y != null) { resolveScrollToPos(cm); }
+	  if (x != null) { cm.curOp.scrollLeft = x; }
+	  if (y != null) { cm.curOp.scrollTop = y; }
+	}
+
+	function scrollToRange(cm, range$$1) {
+	  resolveScrollToPos(cm);
+	  cm.curOp.scrollToPos = range$$1;
+	}
+
+	// When an operation has its scrollToPos property set, and another
+	// scroll action is applied before the end of the operation, this
+	// 'simulates' scrolling that position into view in a cheap way, so
+	// that the effect of intermediate scroll commands is not ignored.
+	function resolveScrollToPos(cm) {
+	  var range$$1 = cm.curOp.scrollToPos;
+	  if (range$$1) {
+	    cm.curOp.scrollToPos = null;
+	    var from = estimateCoords(cm, range$$1.from), to = estimateCoords(cm, range$$1.to);
+	    scrollToCoordsRange(cm, from, to, range$$1.margin);
+	  }
+	}
+
+	function scrollToCoordsRange(cm, from, to, margin) {
+	  var sPos = calculateScrollPos(cm, {
+	    left: Math.min(from.left, to.left),
+	    top: Math.min(from.top, to.top) - margin,
+	    right: Math.max(from.right, to.right),
+	    bottom: Math.max(from.bottom, to.bottom) + margin
+	  });
+	  scrollToCoords(cm, sPos.scrollLeft, sPos.scrollTop);
+	}
+
 	// Sync the scrollable area and scrollbars, ensure the viewport
 	// covers the visible area.
-	function setScrollTop(cm, val) {
+	function updateScrollTop(cm, val) {
 	  if (Math.abs(cm.doc.scrollTop - val) < 2) { return }
-	  cm.doc.scrollTop = val;
 	  if (!gecko) { updateDisplaySimple(cm, {top: val}); }
-	  if (cm.display.scroller.scrollTop != val) { cm.display.scroller.scrollTop = val; }
-	  cm.display.scrollbars.setScrollTop(val);
+	  setScrollTop(cm, val, true);
 	  if (gecko) { updateDisplaySimple(cm); }
 	  startWorker(cm, 100);
 	}
+
+	function setScrollTop(cm, val, forceScroll) {
+	  val = Math.min(cm.display.scroller.scrollHeight - cm.display.scroller.clientHeight, val);
+	  if (cm.display.scroller.scrollTop == val && !forceScroll) { return }
+	  cm.doc.scrollTop = val;
+	  cm.display.scrollbars.setScrollTop(val);
+	  if (cm.display.scroller.scrollTop != val) { cm.display.scroller.scrollTop = val; }
+	}
+
 	// Sync scroller and scrollbar, ensure the gutter elements are
 	// aligned.
-	function setScrollLeft(cm, val, isScroller) {
-	  if (isScroller ? val == cm.doc.scrollLeft : Math.abs(cm.doc.scrollLeft - val) < 2) { return }
+	function setScrollLeft(cm, val, isScroller, forceScroll) {
 	  val = Math.min(val, cm.display.scroller.scrollWidth - cm.display.scroller.clientWidth);
+	  if ((isScroller ? val == cm.doc.scrollLeft : Math.abs(cm.doc.scrollLeft - val) < 2) && !forceScroll) { return }
 	  cm.doc.scrollLeft = val;
 	  alignHorizontally(cm);
 	  if (cm.display.scroller.scrollLeft != val) { cm.display.scroller.scrollLeft = val; }
 	  cm.display.scrollbars.setScrollLeft(val);
-	}
-
-	// Since the delta values reported on mouse wheel events are
-	// unstandardized between browsers and even browser versions, and
-	// generally horribly unpredictable, this code starts by measuring
-	// the scroll effect that the first few mouse wheel events have,
-	// and, from that, detects the way it can convert deltas to pixel
-	// offsets afterwards.
-	//
-	// The reason we want to know the amount a wheel event will scroll
-	// is that it gives us a chance to update the display before the
-	// actual scrolling happens, reducing flickering.
-
-	var wheelSamples = 0;
-	var wheelPixelsPerUnit = null;
-	// Fill in a browser-detected starting value on browsers where we
-	// know one. These don't have to be accurate -- the result of them
-	// being wrong would just be a slight flicker on the first wheel
-	// scroll (if it is large enough).
-	if (ie) { wheelPixelsPerUnit = -.53; }
-	else if (gecko) { wheelPixelsPerUnit = 15; }
-	else if (chrome) { wheelPixelsPerUnit = -.7; }
-	else if (safari) { wheelPixelsPerUnit = -1/3; }
-
-	function wheelEventDelta(e) {
-	  var dx = e.wheelDeltaX, dy = e.wheelDeltaY;
-	  if (dx == null && e.detail && e.axis == e.HORIZONTAL_AXIS) { dx = e.detail; }
-	  if (dy == null && e.detail && e.axis == e.VERTICAL_AXIS) { dy = e.detail; }
-	  else if (dy == null) { dy = e.wheelDelta; }
-	  return {x: dx, y: dy}
-	}
-	function wheelEventPixels(e) {
-	  var delta = wheelEventDelta(e);
-	  delta.x *= wheelPixelsPerUnit;
-	  delta.y *= wheelPixelsPerUnit;
-	  return delta
-	}
-
-	function onScrollWheel(cm, e) {
-	  var delta = wheelEventDelta(e), dx = delta.x, dy = delta.y;
-
-	  var display = cm.display, scroll = display.scroller;
-	  // Quit if there's nothing to scroll here
-	  var canScrollX = scroll.scrollWidth > scroll.clientWidth;
-	  var canScrollY = scroll.scrollHeight > scroll.clientHeight;
-	  if (!(dx && canScrollX || dy && canScrollY)) { return }
-
-	  // Webkit browsers on OS X abort momentum scrolls when the target
-	  // of the scroll event is removed from the scrollable element.
-	  // This hack (see related code in patchDisplay) makes sure the
-	  // element is kept around.
-	  if (dy && mac && webkit) {
-	    outer: for (var cur = e.target, view = display.view; cur != scroll; cur = cur.parentNode) {
-	      for (var i = 0; i < view.length; i++) {
-	        if (view[i].node == cur) {
-	          cm.display.currentWheelTarget = cur;
-	          break outer
-	        }
-	      }
-	    }
-	  }
-
-	  // On some browsers, horizontal scrolling will cause redraws to
-	  // happen before the gutter has been realigned, causing it to
-	  // wriggle around in a most unseemly way. When we have an
-	  // estimated pixels/delta value, we just handle horizontal
-	  // scrolling entirely here. It'll be slightly off from native, but
-	  // better than glitching out.
-	  if (dx && !gecko && !presto && wheelPixelsPerUnit != null) {
-	    if (dy && canScrollY)
-	      { setScrollTop(cm, Math.max(0, Math.min(scroll.scrollTop + dy * wheelPixelsPerUnit, scroll.scrollHeight - scroll.clientHeight))); }
-	    setScrollLeft(cm, Math.max(0, Math.min(scroll.scrollLeft + dx * wheelPixelsPerUnit, scroll.scrollWidth - scroll.clientWidth)));
-	    // Only prevent default scrolling if vertical scrolling is
-	    // actually possible. Otherwise, it causes vertical scroll
-	    // jitter on OSX trackpads when deltaX is small and deltaY
-	    // is large (issue #3579)
-	    if (!dy || (dy && canScrollY))
-	      { e_preventDefault(e); }
-	    display.wheelStartX = null; // Abort measurement, if in progress
-	    return
-	  }
-
-	  // 'Project' the visible viewport to cover the area that is being
-	  // scrolled into view (if we know enough to estimate it).
-	  if (dy && wheelPixelsPerUnit != null) {
-	    var pixels = dy * wheelPixelsPerUnit;
-	    var top = cm.doc.scrollTop, bot = top + display.wrapper.clientHeight;
-	    if (pixels < 0) { top = Math.max(0, top + pixels - 50); }
-	    else { bot = Math.min(cm.doc.height, bot + pixels + 50); }
-	    updateDisplaySimple(cm, {top: top, bottom: bot});
-	  }
-
-	  if (wheelSamples < 20) {
-	    if (display.wheelStartX == null) {
-	      display.wheelStartX = scroll.scrollLeft; display.wheelStartY = scroll.scrollTop;
-	      display.wheelDX = dx; display.wheelDY = dy;
-	      setTimeout(function () {
-	        if (display.wheelStartX == null) { return }
-	        var movedX = scroll.scrollLeft - display.wheelStartX;
-	        var movedY = scroll.scrollTop - display.wheelStartY;
-	        var sample = (movedY && display.wheelDY && movedY / display.wheelDY) ||
-	          (movedX && display.wheelDX && movedX / display.wheelDX);
-	        display.wheelStartX = display.wheelStartY = null;
-	        if (!sample) { return }
-	        wheelPixelsPerUnit = (wheelPixelsPerUnit * wheelSamples + sample) / (wheelSamples + 1);
-	        ++wheelSamples;
-	      }, 200);
-	    } else {
-	      display.wheelDX += dx; display.wheelDY += dy;
-	    }
-	  }
 	}
 
 	// SCROLLBARS
@@ -14434,12 +14352,12 @@
 
 	NativeScrollbars.prototype.setScrollLeft = function (pos) {
 	  if (this.horiz.scrollLeft != pos) { this.horiz.scrollLeft = pos; }
-	  if (this.disableHoriz) { this.enableZeroWidthBar(this.horiz, this.disableHoriz); }
+	  if (this.disableHoriz) { this.enableZeroWidthBar(this.horiz, this.disableHoriz, "horiz"); }
 	};
 
 	NativeScrollbars.prototype.setScrollTop = function (pos) {
 	  if (this.vert.scrollTop != pos) { this.vert.scrollTop = pos; }
-	  if (this.disableVert) { this.enableZeroWidthBar(this.vert, this.disableVert); }
+	  if (this.disableVert) { this.enableZeroWidthBar(this.vert, this.disableVert, "vert"); }
 	};
 
 	NativeScrollbars.prototype.zeroWidthHack = function () {
@@ -14450,17 +14368,18 @@
 	  this.disableVert = new Delayed;
 	};
 
-	NativeScrollbars.prototype.enableZeroWidthBar = function (bar, delay) {
+	NativeScrollbars.prototype.enableZeroWidthBar = function (bar, delay, type) {
 	  bar.style.pointerEvents = "auto";
 	  function maybeDisable() {
 	    // To find out whether the scrollbar is still visible, we
 	    // check whether the element under the pixel in the bottom
-	    // left corner of the scrollbar box is the scrollbar box
+	    // right corner of the scrollbar box is the scrollbar box
 	    // itself (when the bar is still visible) or its filler child
 	    // (when the bar is hidden). If it is still visible, we keep
 	    // it enabled, if it's hidden, we disable pointer events.
 	    var box = bar.getBoundingClientRect();
-	    var elt$$1 = document.elementFromPoint(box.left + 1, box.bottom - 1);
+	    var elt$$1 = type == "vert" ? document.elementFromPoint(box.right - 1, (box.top + box.bottom) / 2)
+	        : document.elementFromPoint((box.right + box.left) / 2, box.bottom - 1);
 	    if (elt$$1 != bar) { bar.style.pointerEvents = "none"; }
 	    else { delay.set(1000, maybeDisable); }
 	  }
@@ -14532,137 +14451,10 @@
 	    node.setAttribute("cm-not-content", "true");
 	  }, function (pos, axis) {
 	    if (axis == "horizontal") { setScrollLeft(cm, pos); }
-	    else { setScrollTop(cm, pos); }
+	    else { updateScrollTop(cm, pos); }
 	  }, cm);
 	  if (cm.display.scrollbars.addClass)
 	    { addClass(cm.display.wrapper, cm.display.scrollbars.addClass); }
-	}
-
-	// SCROLLING THINGS INTO VIEW
-
-	// If an editor sits on the top or bottom of the window, partially
-	// scrolled out of view, this ensures that the cursor is visible.
-	function maybeScrollWindow(cm, rect) {
-	  if (signalDOMEvent(cm, "scrollCursorIntoView")) { return }
-
-	  var display = cm.display, box = display.sizer.getBoundingClientRect(), doScroll = null;
-	  if (rect.top + box.top < 0) { doScroll = true; }
-	  else if (rect.bottom + box.top > (window.innerHeight || document.documentElement.clientHeight)) { doScroll = false; }
-	  if (doScroll != null && !phantom) {
-	    var scrollNode = elt("div", "\u200b", null, ("position: absolute;\n                         top: " + (rect.top - display.viewOffset - paddingTop(cm.display)) + "px;\n                         height: " + (rect.bottom - rect.top + scrollGap(cm) + display.barHeight) + "px;\n                         left: " + (rect.left) + "px; width: " + (Math.max(2, rect.right - rect.left)) + "px;"));
-	    cm.display.lineSpace.appendChild(scrollNode);
-	    scrollNode.scrollIntoView(doScroll);
-	    cm.display.lineSpace.removeChild(scrollNode);
-	  }
-	}
-
-	// Scroll a given position into view (immediately), verifying that
-	// it actually became visible (as line heights are accurately
-	// measured, the position of something may 'drift' during drawing).
-	function scrollPosIntoView(cm, pos, end, margin) {
-	  if (margin == null) { margin = 0; }
-	  var rect;
-	  for (var limit = 0; limit < 5; limit++) {
-	    var changed = false;
-	    var coords = cursorCoords(cm, pos);
-	    var endCoords = !end || end == pos ? coords : cursorCoords(cm, end);
-	    rect = {left: Math.min(coords.left, endCoords.left),
-	            top: Math.min(coords.top, endCoords.top) - margin,
-	            right: Math.max(coords.left, endCoords.left),
-	            bottom: Math.max(coords.bottom, endCoords.bottom) + margin};
-	    var scrollPos = calculateScrollPos(cm, rect);
-	    var startTop = cm.doc.scrollTop, startLeft = cm.doc.scrollLeft;
-	    if (scrollPos.scrollTop != null) {
-	      setScrollTop(cm, scrollPos.scrollTop);
-	      if (Math.abs(cm.doc.scrollTop - startTop) > 1) { changed = true; }
-	    }
-	    if (scrollPos.scrollLeft != null) {
-	      setScrollLeft(cm, scrollPos.scrollLeft);
-	      if (Math.abs(cm.doc.scrollLeft - startLeft) > 1) { changed = true; }
-	    }
-	    if (!changed) { break }
-	  }
-	  return rect
-	}
-
-	// Scroll a given set of coordinates into view (immediately).
-	function scrollIntoView(cm, rect) {
-	  var scrollPos = calculateScrollPos(cm, rect);
-	  if (scrollPos.scrollTop != null) { setScrollTop(cm, scrollPos.scrollTop); }
-	  if (scrollPos.scrollLeft != null) { setScrollLeft(cm, scrollPos.scrollLeft); }
-	}
-
-	// Calculate a new scroll position needed to scroll the given
-	// rectangle into view. Returns an object with scrollTop and
-	// scrollLeft properties. When these are undefined, the
-	// vertical/horizontal position does not need to be adjusted.
-	function calculateScrollPos(cm, rect) {
-	  var display = cm.display, snapMargin = textHeight(cm.display);
-	  if (rect.top < 0) { rect.top = 0; }
-	  var screentop = cm.curOp && cm.curOp.scrollTop != null ? cm.curOp.scrollTop : display.scroller.scrollTop;
-	  var screen = displayHeight(cm), result = {};
-	  if (rect.bottom - rect.top > screen) { rect.bottom = rect.top + screen; }
-	  var docBottom = cm.doc.height + paddingVert(display);
-	  var atTop = rect.top < snapMargin, atBottom = rect.bottom > docBottom - snapMargin;
-	  if (rect.top < screentop) {
-	    result.scrollTop = atTop ? 0 : rect.top;
-	  } else if (rect.bottom > screentop + screen) {
-	    var newTop = Math.min(rect.top, (atBottom ? docBottom : rect.bottom) - screen);
-	    if (newTop != screentop) { result.scrollTop = newTop; }
-	  }
-
-	  var screenleft = cm.curOp && cm.curOp.scrollLeft != null ? cm.curOp.scrollLeft : display.scroller.scrollLeft;
-	  var screenw = displayWidth(cm) - (cm.options.fixedGutter ? display.gutters.offsetWidth : 0);
-	  var tooWide = rect.right - rect.left > screenw;
-	  if (tooWide) { rect.right = rect.left + screenw; }
-	  if (rect.left < 10)
-	    { result.scrollLeft = 0; }
-	  else if (rect.left < screenleft)
-	    { result.scrollLeft = Math.max(0, rect.left - (tooWide ? 0 : 10)); }
-	  else if (rect.right > screenw + screenleft - 3)
-	    { result.scrollLeft = rect.right + (tooWide ? 0 : 10) - screenw; }
-	  return result
-	}
-
-	// Store a relative adjustment to the scroll position in the current
-	// operation (to be applied when the operation finishes).
-	function addToScrollPos(cm, left, top) {
-	  if (left != null || top != null) { resolveScrollToPos(cm); }
-	  if (left != null)
-	    { cm.curOp.scrollLeft = (cm.curOp.scrollLeft == null ? cm.doc.scrollLeft : cm.curOp.scrollLeft) + left; }
-	  if (top != null)
-	    { cm.curOp.scrollTop = (cm.curOp.scrollTop == null ? cm.doc.scrollTop : cm.curOp.scrollTop) + top; }
-	}
-
-	// Make sure that at the end of the operation the current cursor is
-	// shown.
-	function ensureCursorVisible(cm) {
-	  resolveScrollToPos(cm);
-	  var cur = cm.getCursor(), from = cur, to = cur;
-	  if (!cm.options.lineWrapping) {
-	    from = cur.ch ? Pos(cur.line, cur.ch - 1) : cur;
-	    to = Pos(cur.line, cur.ch + 1);
-	  }
-	  cm.curOp.scrollToPos = {from: from, to: to, margin: cm.options.cursorScrollMargin};
-	}
-
-	// When an operation has its scrollToPos property set, and another
-	// scroll action is applied before the end of the operation, this
-	// 'simulates' scrolling that position into view in a cheap way, so
-	// that the effect of intermediate scroll commands is not ignored.
-	function resolveScrollToPos(cm) {
-	  var range$$1 = cm.curOp.scrollToPos;
-	  if (range$$1) {
-	    cm.curOp.scrollToPos = null;
-	    var from = estimateCoords(cm, range$$1.from), to = estimateCoords(cm, range$$1.to);
-	    var sPos = calculateScrollPos(cm, {
-	      left: Math.min(from.left, to.left),
-	      top: Math.min(from.top, to.top) - range$$1.margin,
-	      right: Math.max(from.right, to.right),
-	      bottom: Math.max(from.bottom, to.bottom) + range$$1.margin
-	    });
-	    cm.scrollTo(sPos.scrollLeft, sPos.scrollTop);
-	  }
 	}
 
 	// Operations are used to wrap a series of changes to the editor
@@ -14793,17 +14585,9 @@
 	    { display.wheelStartX = display.wheelStartY = null; }
 
 	  // Propagate the scroll position to the actual DOM scroller
-	  if (op.scrollTop != null && (display.scroller.scrollTop != op.scrollTop || op.forceScroll)) {
-	    doc.scrollTop = Math.max(0, Math.min(display.scroller.scrollHeight - display.scroller.clientHeight, op.scrollTop));
-	    display.scrollbars.setScrollTop(doc.scrollTop);
-	    display.scroller.scrollTop = doc.scrollTop;
-	  }
-	  if (op.scrollLeft != null && (display.scroller.scrollLeft != op.scrollLeft || op.forceScroll)) {
-	    doc.scrollLeft = Math.max(0, Math.min(display.scroller.scrollWidth - display.scroller.clientWidth, op.scrollLeft));
-	    display.scrollbars.setScrollLeft(doc.scrollLeft);
-	    display.scroller.scrollLeft = doc.scrollLeft;
-	    alignHorizontally(cm);
-	  }
+	  if (op.scrollTop != null) { setScrollTop(cm, op.scrollTop, op.forceScroll); }
+
+	  if (op.scrollLeft != null) { setScrollLeft(cm, op.scrollLeft, true, true); }
 	  // If we need to scroll a specific position into view, do so.
 	  if (op.scrollToPos) {
 	    var rect = scrollPosIntoView(cm, clipPos(doc, op.scrollToPos.from),
@@ -15097,6 +14881,36 @@
 	  }
 	}
 
+	function selectionSnapshot(cm) {
+	  if (cm.hasFocus()) { return null }
+	  var active = activeElt();
+	  if (!active || !contains(cm.display.lineDiv, active)) { return null }
+	  var result = {activeElt: active};
+	  if (window.getSelection) {
+	    var sel = window.getSelection();
+	    if (sel.anchorNode && sel.extend && contains(cm.display.lineDiv, sel.anchorNode)) {
+	      result.anchorNode = sel.anchorNode;
+	      result.anchorOffset = sel.anchorOffset;
+	      result.focusNode = sel.focusNode;
+	      result.focusOffset = sel.focusOffset;
+	    }
+	  }
+	  return result
+	}
+
+	function restoreSelection(snapshot) {
+	  if (!snapshot || !snapshot.activeElt || snapshot.activeElt == activeElt()) { return }
+	  snapshot.activeElt.focus();
+	  if (snapshot.anchorNode && contains(document.body, snapshot.anchorNode) && contains(document.body, snapshot.focusNode)) {
+	    var sel = window.getSelection(), range$$1 = document.createRange();
+	    range$$1.setEnd(snapshot.anchorNode, snapshot.anchorOffset);
+	    range$$1.collapse(false);
+	    sel.removeAllRanges();
+	    sel.addRange(range$$1);
+	    sel.extend(snapshot.focusNode, snapshot.focusOffset);
+	  }
+	}
+
 	// Does the actual updating of the line display. Bails out
 	// (returning false) when there is nothing to be done and forced is
 	// false.
@@ -15146,14 +14960,14 @@
 
 	  // For big changes, we hide the enclosing element during the
 	  // update, since that speeds up the operations on most browsers.
-	  var focused = activeElt();
+	  var selSnapshot = selectionSnapshot(cm);
 	  if (toUpdate > 4) { display.lineDiv.style.display = "none"; }
 	  patchDisplay(cm, display.updateLineNumbers, update.dims);
 	  if (toUpdate > 4) { display.lineDiv.style.display = ""; }
 	  display.renderedView = display.view;
 	  // There might have been a widget with a focused element that got
 	  // hidden or updated, if so re-focus it.
-	  if (focused && activeElt() != focused && focused.offsetHeight) { focused.focus(); }
+	  restoreSelection(selSnapshot);
 
 	  // Prevent selection and cursors from interfering with the scroll
 	  // width and height.
@@ -15298,6 +15112,117 @@
 	  } else if (found > -1 && !options.lineNumbers) {
 	    options.gutters = options.gutters.slice(0);
 	    options.gutters.splice(found, 1);
+	  }
+	}
+
+	// Since the delta values reported on mouse wheel events are
+	// unstandardized between browsers and even browser versions, and
+	// generally horribly unpredictable, this code starts by measuring
+	// the scroll effect that the first few mouse wheel events have,
+	// and, from that, detects the way it can convert deltas to pixel
+	// offsets afterwards.
+	//
+	// The reason we want to know the amount a wheel event will scroll
+	// is that it gives us a chance to update the display before the
+	// actual scrolling happens, reducing flickering.
+
+	var wheelSamples = 0;
+	var wheelPixelsPerUnit = null;
+	// Fill in a browser-detected starting value on browsers where we
+	// know one. These don't have to be accurate -- the result of them
+	// being wrong would just be a slight flicker on the first wheel
+	// scroll (if it is large enough).
+	if (ie) { wheelPixelsPerUnit = -.53; }
+	else if (gecko) { wheelPixelsPerUnit = 15; }
+	else if (chrome) { wheelPixelsPerUnit = -.7; }
+	else if (safari) { wheelPixelsPerUnit = -1/3; }
+
+	function wheelEventDelta(e) {
+	  var dx = e.wheelDeltaX, dy = e.wheelDeltaY;
+	  if (dx == null && e.detail && e.axis == e.HORIZONTAL_AXIS) { dx = e.detail; }
+	  if (dy == null && e.detail && e.axis == e.VERTICAL_AXIS) { dy = e.detail; }
+	  else if (dy == null) { dy = e.wheelDelta; }
+	  return {x: dx, y: dy}
+	}
+	function wheelEventPixels(e) {
+	  var delta = wheelEventDelta(e);
+	  delta.x *= wheelPixelsPerUnit;
+	  delta.y *= wheelPixelsPerUnit;
+	  return delta
+	}
+
+	function onScrollWheel(cm, e) {
+	  var delta = wheelEventDelta(e), dx = delta.x, dy = delta.y;
+
+	  var display = cm.display, scroll = display.scroller;
+	  // Quit if there's nothing to scroll here
+	  var canScrollX = scroll.scrollWidth > scroll.clientWidth;
+	  var canScrollY = scroll.scrollHeight > scroll.clientHeight;
+	  if (!(dx && canScrollX || dy && canScrollY)) { return }
+
+	  // Webkit browsers on OS X abort momentum scrolls when the target
+	  // of the scroll event is removed from the scrollable element.
+	  // This hack (see related code in patchDisplay) makes sure the
+	  // element is kept around.
+	  if (dy && mac && webkit) {
+	    outer: for (var cur = e.target, view = display.view; cur != scroll; cur = cur.parentNode) {
+	      for (var i = 0; i < view.length; i++) {
+	        if (view[i].node == cur) {
+	          cm.display.currentWheelTarget = cur;
+	          break outer
+	        }
+	      }
+	    }
+	  }
+
+	  // On some browsers, horizontal scrolling will cause redraws to
+	  // happen before the gutter has been realigned, causing it to
+	  // wriggle around in a most unseemly way. When we have an
+	  // estimated pixels/delta value, we just handle horizontal
+	  // scrolling entirely here. It'll be slightly off from native, but
+	  // better than glitching out.
+	  if (dx && !gecko && !presto && wheelPixelsPerUnit != null) {
+	    if (dy && canScrollY)
+	      { updateScrollTop(cm, Math.max(0, scroll.scrollTop + dy * wheelPixelsPerUnit)); }
+	    setScrollLeft(cm, Math.max(0, scroll.scrollLeft + dx * wheelPixelsPerUnit));
+	    // Only prevent default scrolling if vertical scrolling is
+	    // actually possible. Otherwise, it causes vertical scroll
+	    // jitter on OSX trackpads when deltaX is small and deltaY
+	    // is large (issue #3579)
+	    if (!dy || (dy && canScrollY))
+	      { e_preventDefault(e); }
+	    display.wheelStartX = null; // Abort measurement, if in progress
+	    return
+	  }
+
+	  // 'Project' the visible viewport to cover the area that is being
+	  // scrolled into view (if we know enough to estimate it).
+	  if (dy && wheelPixelsPerUnit != null) {
+	    var pixels = dy * wheelPixelsPerUnit;
+	    var top = cm.doc.scrollTop, bot = top + display.wrapper.clientHeight;
+	    if (pixels < 0) { top = Math.max(0, top + pixels - 50); }
+	    else { bot = Math.min(cm.doc.height, bot + pixels + 50); }
+	    updateDisplaySimple(cm, {top: top, bottom: bot});
+	  }
+
+	  if (wheelSamples < 20) {
+	    if (display.wheelStartX == null) {
+	      display.wheelStartX = scroll.scrollLeft; display.wheelStartY = scroll.scrollTop;
+	      display.wheelDX = dx; display.wheelDY = dy;
+	      setTimeout(function () {
+	        if (display.wheelStartX == null) { return }
+	        var movedX = scroll.scrollLeft - display.wheelStartX;
+	        var movedY = scroll.scrollTop - display.wheelStartY;
+	        var sample = (movedY && display.wheelDY && movedY / display.wheelDY) ||
+	          (movedX && display.wheelDX && movedX / display.wheelDX);
+	        display.wheelStartX = display.wheelStartY = null;
+	        if (!sample) { return }
+	        wheelPixelsPerUnit = (wheelPixelsPerUnit * wheelSamples + sample) / (wheelSamples + 1);
+	        ++wheelSamples;
+	      }, 200);
+	    } else {
+	      display.wheelDX += dx; display.wheelDY += dy;
+	    }
 	  }
 	}
 
@@ -15897,7 +15822,7 @@
 	// Verify that the selection does not partially select any atomic
 	// marked ranges.
 	function reCheckSelection(doc) {
-	  setSelectionInner(doc, skipAtomicInSelection(doc, doc.sel, null, false), sel_dontScroll);
+	  setSelectionInner(doc, skipAtomicInSelection(doc, doc.sel, null, false));
 	}
 
 	// Return a selection that does not partially select any atomic
@@ -16525,7 +16450,7 @@
 
 	function adjustScrollWhenAboveVisible(cm, line, diff) {
 	  if (heightAtLine(line) < ((cm.curOp && cm.curOp.scrollTop) || cm.doc.scrollTop))
-	    { addToScrollPos(cm, null, diff); }
+	    { addToScrollTop(cm, diff); }
 	}
 
 	function addLineWidget(doc, handle, node, options) {
@@ -16540,7 +16465,7 @@
 	    if (cm && !lineIsHidden(doc, line)) {
 	      var aboveVisible = heightAtLine(line) < doc.scrollTop;
 	      updateLineHeight(line, line.height + widgetHeight(widget));
-	      if (aboveVisible) { addToScrollPos(cm, null, widget.height); }
+	      if (aboveVisible) { addToScrollTop(cm, widget.height); }
 	      cm.curOp.forceUpdate = true;
 	    }
 	    return true
@@ -16888,7 +16813,8 @@
 	    var top = Pos(this.first, 0), last = this.first + this.size - 1;
 	    makeChange(this, {from: top, to: Pos(last, getLine(this, last).text.length),
 	                      text: this.splitLines(code), origin: "setValue", full: true}, true);
-	    setSelection(this, simpleSelection(top));
+	    if (this.cm) { scrollToCoords(this.cm, 0, 0); }
+	    setSelection(this, simpleSelection(top), sel_dontScroll);
 	  }),
 	  replaceRange: function(code, from, to, origin) {
 	    from = clipPos(this, from);
@@ -17965,15 +17891,17 @@
 	// Start a text drag. When it ends, see if any dragging actually
 	// happen, and treat as a click if it didn't.
 	function leftButtonStartDrag(cm, e, start, modifier) {
-	  var display = cm.display, startTime = +new Date;
-	  var dragEnd = operation(cm, function (e2) {
+	  var display = cm.display, moved = false;
+	  var dragEnd = operation(cm, function (e) {
 	    if (webkit) { display.scroller.draggable = false; }
 	    cm.state.draggingText = false;
 	    off(document, "mouseup", dragEnd);
+	    off(document, "mousemove", mouseMove);
+	    off(display.scroller, "dragstart", dragStart);
 	    off(display.scroller, "drop", dragEnd);
-	    if (Math.abs(e.clientX - e2.clientX) + Math.abs(e.clientY - e2.clientY) < 10) {
-	      e_preventDefault(e2);
-	      if (!modifier && +new Date - 200 < startTime)
+	    if (!moved) {
+	      e_preventDefault(e);
+	      if (!modifier)
 	        { extendSelection(cm.doc, start); }
 	      // Work around unexplainable focus problem in IE9 (#2127) and Chrome (#3081)
 	      if (webkit || ie && ie_version == 9)
@@ -17982,6 +17910,10 @@
 	        { display.input.focus(); }
 	    }
 	  });
+	  var mouseMove = function(e2) {
+	    moved = moved || Math.abs(e.clientX - e2.clientX) + Math.abs(e.clientY - e2.clientY) >= 10;
+	  };
+	  var dragStart = function () { return moved = true; };
 	  // Let the drag handler handle this.
 	  if (webkit) { display.scroller.draggable = true; }
 	  cm.state.draggingText = dragEnd;
@@ -17989,7 +17921,12 @@
 	  // IE's approach to draggable
 	  if (display.scroller.dragDrop) { display.scroller.dragDrop(); }
 	  on(document, "mouseup", dragEnd);
+	  on(document, "mousemove", mouseMove);
+	  on(display.scroller, "dragstart", dragStart);
 	  on(display.scroller, "drop", dragEnd);
+
+	  delayBlurEvent(cm);
+	  setTimeout(function () { return display.input.focus(); }, 20);
 	}
 
 	// Normal selection, as opposed to text dragging.
@@ -18521,7 +18458,7 @@
 	  // area, ensure viewport is updated when scrolling.
 	  on(d.scroller, "scroll", function () {
 	    if (d.scroller.clientHeight) {
-	      setScrollTop(cm, d.scroller.scrollTop);
+	      updateScrollTop(cm, d.scroller.scrollTop);
 	      setScrollLeft(cm, d.scroller.scrollLeft, true);
 	      signal(cm, "scroll", cm);
 	    }
@@ -19054,7 +18991,7 @@
 	        goals.push(headPos.left);
 	        var pos = findPosV(this$1, headPos, dir, unit);
 	        if (unit == "page" && range$$1 == doc.sel.primary())
-	          { addToScrollPos(this$1, null, charCoords(this$1, pos, "div").top - headPos.top); }
+	          { addToScrollTop(this$1, charCoords(this$1, pos, "div").top - headPos.top); }
 	        return pos
 	      }, sel_move);
 	      if (goals.length) { for (var i = 0; i < doc.sel.ranges.length; i++)
@@ -19091,11 +19028,7 @@
 	    hasFocus: function() { return this.display.input.getField() == activeElt() },
 	    isReadOnly: function() { return !!(this.options.readOnly || this.doc.cantEdit) },
 
-	    scrollTo: methodOp(function(x, y) {
-	      if (x != null || y != null) { resolveScrollToPos(this); }
-	      if (x != null) { this.curOp.scrollLeft = x; }
-	      if (y != null) { this.curOp.scrollTop = y; }
-	    }),
+	    scrollTo: methodOp(function (x, y) { scrollToCoords(this, x, y); }),
 	    getScrollInfo: function() {
 	      var scroller = this.display.scroller;
 	      return {left: scroller.scrollLeft, top: scroller.scrollTop,
@@ -19117,16 +19050,9 @@
 	      range$$1.margin = margin || 0;
 
 	      if (range$$1.from.line != null) {
-	        resolveScrollToPos(this);
-	        this.curOp.scrollToPos = range$$1;
+	        scrollToRange(this, range$$1);
 	      } else {
-	        var sPos = calculateScrollPos(this, {
-	          left: Math.min(range$$1.from.left, range$$1.to.left),
-	          top: Math.min(range$$1.from.top, range$$1.to.top) - range$$1.margin,
-	          right: Math.max(range$$1.from.right, range$$1.to.right),
-	          bottom: Math.max(range$$1.from.bottom, range$$1.to.bottom) + range$$1.margin
-	        });
-	        this.scrollTo(sPos.scrollLeft, sPos.scrollTop);
+	        scrollToCoordsRange(this, range$$1.from, range$$1.to, range$$1.margin);
 	      }
 	    }),
 
@@ -19154,7 +19080,7 @@
 	      regChange(this);
 	      this.curOp.forceUpdate = true;
 	      clearCaches(this);
-	      this.scrollTo(this.doc.scrollLeft, this.doc.scrollTop);
+	      scrollToCoords(this, this.doc.scrollLeft, this.doc.scrollTop);
 	      updateGutterSpace(this);
 	      if (oldHeight == null || Math.abs(oldHeight - textHeight(this.display)) > .5)
 	        { estimateLineHeights(this); }
@@ -19167,7 +19093,7 @@
 	      attachDoc(this, doc);
 	      clearCaches(this);
 	      this.display.input.reset();
-	      this.scrollTo(doc.scrollLeft, doc.scrollTop);
+	      scrollToCoords(this, doc.scrollLeft, doc.scrollTop);
 	      this.curOp.forceScroll = true;
 	      signalLater(this, "swapDoc", this, old);
 	      return old
@@ -19378,36 +19304,41 @@
 	};
 
 	ContentEditableInput.prototype.showPrimarySelection = function () {
-	  var sel = window.getSelection(), prim = this.cm.doc.sel.primary();
-	  var curAnchor = domToPos(this.cm, sel.anchorNode, sel.anchorOffset);
-	  var curFocus = domToPos(this.cm, sel.focusNode, sel.focusOffset);
-	  if (curAnchor && !curAnchor.bad && curFocus && !curFocus.bad &&
-	      cmp(minPos(curAnchor, curFocus), prim.from()) == 0 &&
-	      cmp(maxPos(curAnchor, curFocus), prim.to()) == 0)
-	    { return }
+	  var sel = window.getSelection(), cm = this.cm, prim = cm.doc.sel.primary();
+	  var from = prim.from(), to = prim.to();
 
-	  var start = posToDOM(this.cm, prim.from());
-	  var end = posToDOM(this.cm, prim.to());
-	  if (!start && !end) {
+	  if (cm.display.viewTo == cm.display.viewFrom || from.line >= cm.display.viewTo || to.line < cm.display.viewFrom) {
 	    sel.removeAllRanges();
 	    return
 	  }
 
-	  var view = this.cm.display.view;
-	  var old = sel.rangeCount && sel.getRangeAt(0);
-	  if (!start) {
-	    start = {node: view[0].measure.map[2], offset: 0};
-	  } else if (!end) { // FIXME dangerously hacky
+	  var curAnchor = domToPos(cm, sel.anchorNode, sel.anchorOffset);
+	  var curFocus = domToPos(cm, sel.focusNode, sel.focusOffset);
+	  if (curAnchor && !curAnchor.bad && curFocus && !curFocus.bad &&
+	      cmp(minPos(curAnchor, curFocus), from) == 0 &&
+	      cmp(maxPos(curAnchor, curFocus), to) == 0)
+	    { return }
+
+	  var view = cm.display.view;
+	  var start = (from.line >= cm.display.viewFrom && posToDOM(cm, from)) ||
+	      {node: view[0].measure.map[2], offset: 0};
+	  var end = to.line < cm.display.viewTo && posToDOM(cm, to);
+	  if (!end) {
 	    var measure = view[view.length - 1].measure;
 	    var map$$1 = measure.maps ? measure.maps[measure.maps.length - 1] : measure.map;
 	    end = {node: map$$1[map$$1.length - 1], offset: map$$1[map$$1.length - 2] - map$$1[map$$1.length - 3]};
 	  }
 
-	  var rng;
+	  if (!start || !end) {
+	    sel.removeAllRanges();
+	    return
+	  }
+
+	  var old = sel.rangeCount && sel.getRangeAt(0), rng;
 	  try { rng = range(start.node, start.offset, end.offset, end.node); }
 	  catch(e) {} // Our model of the DOM might be outdated, in which case the range we try to set can be impossible
 	  if (rng) {
-	    if (!gecko && this.cm.state.focused) {
+	    if (!gecko && cm.state.focused) {
 	      sel.collapse(start.node, start.offset);
 	      if (!rng.collapsed) {
 	        sel.removeAllRanges();
@@ -19917,7 +19848,7 @@
 	// Reset the input to correspond to the selection (or to be empty,
 	// when not typing and nothing is selected)
 	TextareaInput.prototype.reset = function (typing) {
-	  if (this.contextMenuPending) { return }
+	  if (this.contextMenuPending || this.composing) { return }
 	  var minimal, selected, cm = this.cm, doc = cm.doc;
 	  if (cm.somethingSelected()) {
 	    this.prevInput = "";
@@ -20282,16 +20213,16 @@
 
 	addLegacyProps(CodeMirror$1);
 
-	CodeMirror$1.version = "5.25.0";
+	CodeMirror$1.version = "5.26.0";
 
 	return CodeMirror$1;
 
 	})));
 
 
-/***/ },
+/***/ }),
 /* 150 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -20696,7 +20627,6 @@
 	            ch == "{" && (cx.type == "at" || cx.type == "atBlock")) {
 	          // Dedent relative to current context.
 	          indent = Math.max(0, cx.indent - indentUnit);
-	          cx = cx.prev;
 	        }
 	      }
 	      return indent;
@@ -20767,7 +20697,7 @@
 	    "border-top-left-radius", "border-top-right-radius", "border-top-style",
 	    "border-top-width", "border-width", "bottom", "box-decoration-break",
 	    "box-shadow", "box-sizing", "break-after", "break-before", "break-inside",
-	    "caption-side", "clear", "clip", "color", "color-profile", "column-count",
+	    "caption-side", "caret-color", "clear", "clip", "color", "color-profile", "column-count",
 	    "column-fill", "column-gap", "column-rule", "column-rule-color",
 	    "column-rule-style", "column-rule-width", "column-span", "column-width",
 	    "columns", "content", "counter-increment", "counter-reset", "crop", "cue",
@@ -20788,7 +20718,7 @@
 	    "grid-row-start", "grid-template", "grid-template-areas", "grid-template-columns",
 	    "grid-template-rows", "hanging-punctuation", "height", "hyphens",
 	    "icon", "image-orientation", "image-rendering", "image-resolution",
-	    "inline-box-align", "justify-content", "left", "letter-spacing",
+	    "inline-box-align", "justify-content", "justify-items", "justify-self", "left", "letter-spacing",
 	    "line-break", "line-height", "line-stacking", "line-stacking-ruby",
 	    "line-stacking-shift", "line-stacking-strategy", "list-style",
 	    "list-style-image", "list-style-position", "list-style-type", "margin",
@@ -20803,7 +20733,7 @@
 	    "padding", "padding-bottom", "padding-left", "padding-right", "padding-top",
 	    "page", "page-break-after", "page-break-before", "page-break-inside",
 	    "page-policy", "pause", "pause-after", "pause-before", "perspective",
-	    "perspective-origin", "pitch", "pitch-range", "play-during", "position",
+	    "perspective-origin", "pitch", "pitch-range", "place-content", "place-items", "place-self", "play-during", "position",
 	    "presentation-level", "punctuation-trim", "quotes", "region-break-after",
 	    "region-break-before", "region-break-inside", "region-fragment",
 	    "rendering-intent", "resize", "rest", "rest-after", "rest-before", "richness",
@@ -20954,13 +20884,13 @@
 	    "s-resize", "sans-serif", "saturation", "scale", "scale3d", "scaleX", "scaleY", "scaleZ", "screen",
 	    "scroll", "scrollbar", "scroll-position", "se-resize", "searchfield",
 	    "searchfield-cancel-button", "searchfield-decoration",
-	    "searchfield-results-button", "searchfield-results-decoration",
+	    "searchfield-results-button", "searchfield-results-decoration", "self-start", "self-end",
 	    "semi-condensed", "semi-expanded", "separate", "serif", "show", "sidama",
 	    "simp-chinese-formal", "simp-chinese-informal", "single",
 	    "skew", "skewX", "skewY", "skip-white-space", "slide", "slider-horizontal",
 	    "slider-vertical", "sliderthumb-horizontal", "sliderthumb-vertical", "slow",
 	    "small", "small-caps", "small-caption", "smaller", "soft-light", "solid", "somali",
-	    "source-atop", "source-in", "source-out", "source-over", "space", "space-around", "space-between", "spell-out", "square",
+	    "source-atop", "source-in", "source-out", "source-over", "space", "space-around", "space-between", "space-evenly", "spell-out", "square",
 	    "square-button", "start", "static", "status-bar", "stretch", "stroke", "sub",
 	    "subpixel-antialiased", "super", "sw-resize", "symbolic", "symbols", "system-ui", "table",
 	    "table-caption", "table-cell", "table-column", "table-column-group",
@@ -21043,8 +20973,8 @@
 	        }
 	      },
 	      ":": function(stream) {
-	        if (stream.match(/\s*\{/))
-	          return [null, "{"];
+	        if (stream.match(/\s*\{/, false))
+	          return [null, null]
 	        return false;
 	      },
 	      "$": function(stream) {
@@ -21126,9 +21056,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 151 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -21487,9 +21417,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 152 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -21654,9 +21584,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 153 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -21793,11 +21723,11 @@
 	        return state.token(stream, state);
 	      },
 
-	      indent: function (state, textAfter) {
+	      indent: function (state, textAfter, line) {
 	        if (!state.localMode || /^\s*<\//.test(textAfter))
 	          return htmlMode.indent(state.htmlState, textAfter);
 	        else if (state.localMode.indent)
-	          return state.localMode.indent(state.localState, textAfter);
+	          return state.localMode.indent(state.localState, textAfter, line);
 	        else
 	          return CodeMirror.Pass;
 	      },
@@ -21812,9 +21742,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 154 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -22212,9 +22142,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 155 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -22272,7 +22202,6 @@
 	        "namespace": C,
 	        "module": kw("module"),
 	        "enum": kw("module"),
-	        "type": kw("type"),
 
 	        // scope modifiers
 	        "public": kw("modifier"),
@@ -22295,7 +22224,7 @@
 	    return jsKeywords;
 	  }();
 
-	  var isOperatorChar = /[+\-*&%=<>!?|~^]/;
+	  var isOperatorChar = /[+\-*&%=<>!?|~^@]/;
 	  var isJsonldKeyword = /^@(context|id|value|language|type|container|list|set|reverse|index|base|vocab|graph)"/;
 
 	  function readRegexp(stream) {
@@ -22579,8 +22508,15 @@
 	    }
 	    if (type == "function") return cont(functiondef);
 	    if (type == "for") return cont(pushlex("form"), forspec, statement, poplex);
-	    if (type == "variable") return cont(pushlex("stat"), maybelabel);
-	    if (type == "switch") return cont(pushlex("form"), parenExpr, pushlex("}", "switch"), expect("{"),
+	    if (type == "variable") {
+	      if (isTS && value == "type") {
+	        cx.marked = "keyword"
+	        return cont(typeexpr, expect("operator"), typeexpr, expect(";"));
+	      } else {
+	        return cont(pushlex("stat"), maybelabel);
+	      }
+	    }
+	    if (type == "switch") return cont(pushlex("form"), parenExpr, expect("{"), pushlex("}", "switch"),
 	                                      block, poplex, poplex);
 	    if (type == "case") return cont(expression, expect(":"));
 	    if (type == "default") return cont(expect(":"));
@@ -22589,9 +22525,9 @@
 	    if (type == "class") return cont(pushlex("form"), className, poplex);
 	    if (type == "export") return cont(pushlex("stat"), afterExport, poplex);
 	    if (type == "import") return cont(pushlex("stat"), afterImport, poplex);
-	    if (type == "module") return cont(pushlex("form"), pattern, pushlex("}"), expect("{"), block, poplex, poplex)
-	    if (type == "type") return cont(typeexpr, expect("operator"), typeexpr, expect(";"));
+	    if (type == "module") return cont(pushlex("form"), pattern, expect("{"), pushlex("}"), block, poplex, poplex)
 	    if (type == "async") return cont(statement)
+	    if (value == "@") return cont(expression, statement)
 	    return pass(pushlex("stat"), expression, expect(";"), poplex);
 	  }
 	  function expression(type) {
@@ -22759,7 +22695,7 @@
 	  function typeexpr(type) {
 	    if (type == "variable") {cx.marked = "variable-3"; return cont(afterType);}
 	    if (type == "string" || type == "number" || type == "atom") return cont(afterType);
-	    if (type == "{") return cont(pushlex("}"), commasep(typeprop, "}", ",;"), poplex)
+	    if (type == "{") return cont(pushlex("}"), commasep(typeprop, "}", ",;"), poplex, afterType)
 	    if (type == "(") return cont(commasep(typearg, ")"), maybeReturnType)
 	  }
 	  function maybeReturnType(type) {
@@ -22773,6 +22709,8 @@
 	      return cont(typeprop)
 	    } else if (type == ":") {
 	      return cont(typeexpr)
+	    } else if (type == "[") {
+	      return cont(expression, maybetype, expect("]"), typeprop)
 	    }
 	  }
 	  function typearg(type) {
@@ -22783,6 +22721,7 @@
 	    if (value == "<") return cont(pushlex(">"), commasep(typeexpr, ">"), poplex, afterType)
 	    if (value == "|" || type == ".") return cont(typeexpr)
 	    if (type == "[") return cont(expect("]"), afterType)
+	    if (value == "extends") return cont(typeexpr)
 	  }
 	  function vardef() {
 	    return pass(pattern, maybetype, maybeAssign, vardefCont);
@@ -22838,6 +22777,7 @@
 	    if (value == "*") {cx.marked = "keyword"; return cont(functiondef);}
 	    if (type == "variable") {register(value); return cont(functiondef);}
 	    if (type == "(") return cont(pushcontext, pushlex(")"), commasep(funarg, ")"), poplex, maybetype, statement, popcontext);
+	    if (isTS && value == "<") return cont(pushlex(">"), commasep(typeexpr, ">"), poplex, functiondef)
 	  }
 	  function funarg(type) {
 	    if (type == "spread") return cont(funarg);
@@ -22876,6 +22816,7 @@
 	    }
 	    if (type == ";") return cont(classBody);
 	    if (type == "}") return cont();
+	    if (value == "@") return cont(expression, classBody)
 	  }
 	  function classfield(type, value) {
 	    if (value == "?") return cont(classfield)
@@ -23020,9 +22961,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 156 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -23321,9 +23262,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 157 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
 	// Distributed under an MIT license: http://codemirror.net/LICENSE
@@ -23342,6 +23283,7 @@
 
 	  CodeMirror.defineMode("stylus", function(config) {
 	    var indentUnit = config.indentUnit,
+	        indentUnitString = '',
 	        tagKeywords = keySet(tagKeywords_),
 	        tagVariablesRegexp = /^(a|b|i|s|col|em)$/i,
 	        propertyKeywords = keySet(propertyKeywords_),
@@ -23364,6 +23306,8 @@
 	        style,
 	        type,
 	        override;
+
+	    while (indentUnitString.length < indentUnit) indentUnitString += ' ';
 
 	    /**
 	     * Tokenizers
@@ -23640,7 +23584,7 @@
 	          return pushContext(state, stream, "block", 0);
 	        }
 	      }
-	      if (typeIsBlock(type, stream, state)) {
+	      if (typeIsBlock(type, stream)) {
 	        return pushContext(state, stream, "block");
 	      }
 	      if (type == "}" && endOfLine(stream)) {
@@ -23840,7 +23784,7 @@
 	     */
 	    states.atBlock = function(type, stream, state) {
 	      if (type == "(") return pushContext(state, stream, "atBlock_parens");
-	      if (typeIsBlock(type, stream, state)) {
+	      if (typeIsBlock(type, stream)) {
 	        return pushContext(state, stream, "block");
 	      }
 	      if (typeIsInterpolation(type, stream)) {
@@ -23999,7 +23943,7 @@
 	            ch = textAfter && textAfter.charAt(0),
 	            indent = cx.indent,
 	            lineFirstWord = firstWordOfLine(textAfter),
-	            lineIndent = line.length - line.replace(/^\s*/, "").length,
+	            lineIndent = line.match(/^\s*/)[0].replace(/\t/g, indentUnitString).length,
 	            prevLineFirstWord = state.context.prev ? state.context.prev.line.firstWord : "",
 	            prevLineIndent = state.context.prev ? state.context.prev.line.indent : lineIndent;
 
@@ -24008,7 +23952,6 @@
 	             ch == ")" && (cx.type == "parens" || cx.type == "atBlock_parens") ||
 	             ch == "{" && (cx.type == "at"))) {
 	          indent = cx.indent - indentUnit;
-	          cx = cx.prev;
 	        } else if (!(/(\})/.test(ch))) {
 	          if (/@|\$|\d/.test(ch) ||
 	              /^\{/.test(textAfter) ||
@@ -24096,9 +24039,9 @@
 	});
 
 
-/***/ },
+/***/ }),
 /* 158 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -24265,14 +24208,14 @@
 		myLayout.updateSize();
 	});
 
-/***/ },
+/***/ }),
 /* 159 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function($){var lm={"config":{},"container":{},"controls":{},"errors":{},"items":{},"utils":{}};
+	lm.utils.F = function() {
+	};
 
-	lm.utils.F = function () {};
-		
 	lm.utils.extend = function( subClass, superClass ) {
 		subClass.prototype = lm.utils.createObject( superClass.prototype );
 		subClass.prototype.contructor = subClass;
@@ -24335,7 +24278,7 @@
 
 	/**
 	 * This is based on Paul Irish's shim, but looks quite odd in comparison. Why?
-	 * Because 
+	 * Because
 	 * a) it shouldn't affect the global requestAnimationFrame function
 	 * b) it shouldn't pass on the time that has passed
 	 *
@@ -24343,22 +24286,22 @@
 	 *
 	 * @returns {void}
 	 */
-	lm.utils.animFrame = function( fn ){
-		return ( window.requestAnimationFrame     ||
+	lm.utils.animFrame = function( fn ) {
+		return ( window.requestAnimationFrame ||
 		window.webkitRequestAnimationFrame ||
-		window.mozRequestAnimationFrame    ||
-		function( callback ){
-			window.setTimeout(callback, 1000 / 60);
-		})(function(){
+		window.mozRequestAnimationFrame ||
+		function( callback ) {
+			window.setTimeout( callback, 1000 / 60 );
+		})( function() {
 			fn();
-		});
+		} );
 	};
 
 	lm.utils.indexOf = function( needle, haystack ) {
 		if( !( haystack instanceof Array ) ) {
 			throw new Error( 'Haystack is not an Array' );
 		}
-		
+
 		if( haystack.indexOf ) {
 			return haystack.indexOf( needle );
 		} else {
@@ -24371,13 +24314,13 @@
 		}
 	};
 
-	if ( typeof /./ != 'function' && typeof Int8Array != 'object' ) {
-	  lm.utils.isFunction = function ( obj ) {
-	    return typeof obj == 'function' || false;
-	  };
+	if( typeof /./ != 'function' && typeof Int8Array != 'object' ) {
+		lm.utils.isFunction = function( obj ) {
+			return typeof obj == 'function' || false;
+		};
 	} else {
-		lm.utils.isFunction = function ( obj ) {
-			return toString.call(obj) === '[object Function]';
+		lm.utils.isFunction = function( obj ) {
+			return toString.call( obj ) === '[object Function]';
 		};
 	}
 
@@ -24387,18 +24330,18 @@
 			return Function.prototype.bind.apply( fn, [ context ].concat( boundArgs || [] ) );
 		}
 
-		var bound = function () {
+		var bound = function() {
 
 			// Join the already applied arguments to the now called ones (after converting to an array again).
-			var args = ( boundArgs || [] ).concat(Array.prototype.slice.call(arguments, 0));
+			var args = ( boundArgs || [] ).concat( Array.prototype.slice.call( arguments, 0 ) );
 
 			// If not being called as a constructor
-			if (!(this instanceof bound)){
+			if( !(this instanceof bound) ) {
 				// return the result of the function called bound to target and partially applied.
-				return fn.apply(context, args);
+				return fn.apply( context, args );
 			}
 			// If being called as a constructor, apply the function bound to self.
-			fn.apply(this, args);
+			fn.apply( this, args );
 		};
 		// Attach the prototype of the function to our newly created function.
 		bound.prototype = fn.prototype;
@@ -24425,22 +24368,22 @@
 
 	lm.utils.getUniqueId = function() {
 		return ( Math.random() * 1000000000000000 )
-			.toString(36)
+			.toString( 36 )
 			.replace( '.', '' );
 	};
 
 	/**
 	 * A basic XSS filter. It is ultimately up to the
-	 * implementing developer to make sure their particular 
+	 * implementing developer to make sure their particular
 	 * applications and usecases are save from cross site scripting attacks
 	 *
 	 * @param   {String} input
-	 * @param 	{Boolean} keepTags
+	 * @param    {Boolean} keepTags
 	 *
 	 * @returns {String} filtered input
 	 */
 	lm.utils.filterXss = function( input, keepTags ) {
-		
+
 		var output = input
 			.replace( /javascript/gi, 'j&#97;vascript' )
 			.replace( /expression/gi, 'expr&#101;ssion' )
@@ -24479,60 +24422,54 @@
 	 *
 	 * @constructor
 	 */
-	lm.utils.EventEmitter = function()
-	{
-		this._mSubscriptions = { };
+	lm.utils.EventEmitter = function() {
+		this._mSubscriptions = {};
 		this._mSubscriptions[ lm.utils.EventEmitter.ALL_EVENT ] = [];
 
 		/**
 		 * Listen for events
 		 *
 		 * @param   {String} sEvent    The name of the event to listen to
-		 * @param   {Function} fCallback The callback to execute when the event occurs 
+		 * @param   {Function} fCallback The callback to execute when the event occurs
 		 * @param   {[Object]} oContext The value of the this pointer within the callback function
 		 *
 		 * @returns {void}
 		 */
-		this.on = function( sEvent, fCallback, oContext )
-		{
-			if ( !lm.utils.isFunction(fCallback) ) {
+		this.on = function( sEvent, fCallback, oContext ) {
+			if( !lm.utils.isFunction( fCallback ) ) {
 				throw new Error( 'Tried to listen to event ' + sEvent + ' with non-function callback ' + fCallback );
 			}
-			
-			if( !this._mSubscriptions[ sEvent ] )
-			{
+
+			if( !this._mSubscriptions[ sEvent ] ) {
 				this._mSubscriptions[ sEvent ] = [];
 			}
 
-			this._mSubscriptions[ sEvent ].push({ fn: fCallback, ctx: oContext });
+			this._mSubscriptions[ sEvent ].push( { fn: fCallback, ctx: oContext } );
 		};
 
 		/**
 		 * Emit an event and notify listeners
 		 *
 		 * @param   {String} sEvent The name of the event
-		 * @param 	{Mixed}  various additional arguments that will be passed to the listener
+		 * @param    {Mixed}  various additional arguments that will be passed to the listener
 		 *
 		 * @returns {void}
 		 */
-		this.emit = function( sEvent )
-		{
+		this.emit = function( sEvent ) {
 			var i, ctx, args;
 
 			args = Array.prototype.slice.call( arguments, 1 );
-			
+
 			if( this._mSubscriptions[ sEvent ] ) {
-				for( i = 0; i < this._mSubscriptions[ sEvent ].length; i++ )
-				{
+				for( i = 0; i < this._mSubscriptions[ sEvent ].length; i++ ) {
 					ctx = this._mSubscriptions[ sEvent ][ i ].ctx || {};
 					this._mSubscriptions[ sEvent ][ i ].fn.apply( ctx, args );
 				}
 			}
-			
+
 			args.unshift( sEvent );
 
-			for( i = 0; i < this._mSubscriptions[ lm.utils.EventEmitter.ALL_EVENT ].length; i++ )
-			{
+			for( i = 0; i < this._mSubscriptions[ lm.utils.EventEmitter.ALL_EVENT ].length; i++ ) {
 				ctx = this._mSubscriptions[ lm.utils.EventEmitter.ALL_EVENT ][ i ].ctx || {};
 				this._mSubscriptions[ lm.utils.EventEmitter.ALL_EVENT ][ i ].fn.apply( ctx, args );
 			}
@@ -24547,29 +24484,25 @@
 		 *
 		 * @returns {void}
 		 */
-		this.unbind = function( sEvent, fCallback, oContext )
-		{
+		this.unbind = function( sEvent, fCallback, oContext ) {
 			if( !this._mSubscriptions[ sEvent ] ) {
 				throw new Error( 'No subscribtions to unsubscribe for event ' + sEvent );
 			}
 
 			var i, bUnbound = false;
 
-			for( i = 0; i < this._mSubscriptions[ sEvent ].length; i++ )
-			{
+			for( i = 0; i < this._mSubscriptions[ sEvent ].length; i++ ) {
 				if
 				(
 					( !fCallback || this._mSubscriptions[ sEvent ][ i ].fn === fCallback ) &&
 					( !oContext || oContext === this._mSubscriptions[ sEvent ][ i ].ctx )
-				)
-				{
+				) {
 					this._mSubscriptions[ sEvent ].splice( i, 1 );
 					bUnbound = true;
 				}
 			}
 
-			if( bUnbound === false )
-			{
+			if( bUnbound === false ) {
 				throw new Error( 'Nothing to unbind for ' + sEvent );
 			}
 		};
@@ -24597,23 +24530,22 @@
 	 * @type {String}
 	 */
 	lm.utils.EventEmitter.ALL_EVENT = '__all';
-	lm.utils.DragListener = function(eElement, nButtonCode)
-	{
-		lm.utils.EventEmitter.call(this);
+	lm.utils.DragListener = function( eElement, nButtonCode ) {
+		lm.utils.EventEmitter.call( this );
 
-		this._eElement = $(eElement);
-		this._oDocument = $(document);
-		this._eBody = $(document.body);
+		this._eElement = $( eElement );
+		this._oDocument = $( document );
+		this._eBody = $( document.body );
 		this._nButtonCode = nButtonCode || 0;
 
 		/**
-		* The delay after which to start the drag in milliseconds
-		*/
+		 * The delay after which to start the drag in milliseconds
+		 */
 		this._nDelay = 200;
 
 		/**
-		* The distance the mouse needs to be moved to qualify as a drag
-		*/
+		 * The distance the mouse needs to be moved to qualify as a drag
+		 */
 		this._nDistance = 10;//TODO - works better with delay only
 
 		this._nX = 0;
@@ -24639,11 +24571,10 @@
 			this._eElement.unbind( 'mousedown touchstart', this._fDown );
 		},
 
-		onMouseDown: function(oEvent)
-		{
+		onMouseDown: function( oEvent ) {
 			oEvent.preventDefault();
 
-			if (oEvent.button == 0) {
+			if( oEvent.button == 0 || oEvent.type === "touchstart" ) {
 				var coordinates = this._getCoordinates( oEvent );
 
 				this._nOriginalX = coordinates.x;
@@ -24656,35 +24587,33 @@
 			}
 		},
 
-		onMouseMove: function(oEvent)
-		{
-			if (this._timeout != null) {
+		onMouseMove: function( oEvent ) {
+			if( this._timeout != null ) {
 				oEvent.preventDefault();
 
-				var coordinates = this._getCoordinates(oEvent);
+				var coordinates = this._getCoordinates( oEvent );
 
 				this._nX = coordinates.x - this._nOriginalX;
 				this._nY = coordinates.y - this._nOriginalY;
 
-				if (this._bDragging === false) {
-					if (
-						Math.abs(this._nX) > this._nDistance ||
-						Math.abs(this._nY) > this._nDistance
+				if( this._bDragging === false ) {
+					if(
+						Math.abs( this._nX ) > this._nDistance ||
+						Math.abs( this._nY ) > this._nDistance
 					) {
-						clearTimeout(this._timeout);
+						clearTimeout( this._timeout );
 						this._startDrag();
 					}
 				}
 
-				if (this._bDragging) {
-					this.emit('drag', this._nX, this._nY, oEvent);
+				if( this._bDragging ) {
+					this.emit( 'drag', this._nX, this._nY, oEvent );
 				}
 			}
 		},
 
-		onMouseUp: function(oEvent)
-		{
-			if(this._timeout != null) {
+		onMouseUp: function( oEvent ) {
+			if( this._timeout != null ) {
 				clearTimeout( this._timeout );
 				this._eBody.removeClass( 'lm_dragging' );
 				this._eElement.removeClass( 'lm_dragging' );
@@ -24698,29 +24627,22 @@
 			}
 		},
 
-		_startDrag: function()
-		{
+		_startDrag: function() {
 			this._bDragging = true;
 			this._eBody.addClass( 'lm_dragging' );
 			this._eElement.addClass( 'lm_dragging' );
 			this._oDocument.find( 'iframe' ).css( 'pointer-events', 'none' );
-			this.emit('dragStart', this._nOriginalX, this._nOriginalY);
+			this.emit( 'dragStart', this._nOriginalX, this._nOriginalY );
 		},
 
 		_getCoordinates: function( event ) {
-			var coordinates = {};
-
-			if( event.type.substr( 0, 5 ) === 'touch' ) {
-				coordinates.x = event.originalEvent.targetTouches[ 0 ].pageX;
-				coordinates.y = event.originalEvent.targetTouches[ 0 ].pageY;
-			} else {
-				coordinates.x = event.pageX;
-				coordinates.y = event.pageY;
-			}
-
-			return coordinates;
+			event = event.originalEvent && event.originalEvent.touches ? event.originalEvent.touches[ 0 ] : event;
+			return {
+				x: event.pageX,
+				y: event.pageY
+			};
 		}
-	});
+	} );
 	/**
 	 * The main class that will be exposed as GoldenLayout.
 	 *
@@ -24753,10 +24675,12 @@
 		this._creationTimeoutPassed = false;
 		this._subWindowsCreated = false;
 		this._dragSources = [];
+		this._updatingColumnsResponsive = false;
+		this._firstLoad = true;
 
 		this.width = null;
 		this.height = null;
-		this.root =  null;
+		this.root = null;
 		this.openPopouts = [];
 		this.selectedItem = null;
 		this.isSubWindow = false;
@@ -24857,7 +24781,7 @@
 				throw new Error( 'Can\'t create config, layout not yet initialised' );
 			}
 
-			if( root && !( root instanceof lm.items.AbstractContentItem ) ){
+			if( root && !( root instanceof lm.items.AbstractContentItem ) ) {
 				throw new Error( 'Root must be a ContentItem' );
 			}
 
@@ -24960,7 +24884,7 @@
 			 * If the document isn't ready yet, wait for it.
 			 */
 			if( document.readyState === 'loading' || document.body === null ) {
-				$(document).ready( lm.utils.fnBind( this.init, this ));
+				$( document ).ready( lm.utils.fnBind( this.init, this ) );
 				return;
 			}
 
@@ -24986,6 +24910,7 @@
 			this._create( this.config );
 			this._bindEvents();
 			this.isInitialised = true;
+			this._adjustColumnsResponsive();
 			this.emit( 'initialised' );
 		},
 
@@ -25008,13 +24933,15 @@
 			}
 
 			if( this.isInitialised === true ) {
-				this.root.callDownwards( 'setSize' );
+				this.root.callDownwards( 'setSize', [ this.width, this.height ] );
 
 				if( this._maximisedItem ) {
 					this._maximisedItem.element.width( this.container.width() );
 					this._maximisedItem.element.height( this.container.height() );
 					this._maximisedItem.callDownwards( 'setSize' );
 				}
+
+				this._adjustColumnsResponsive();
 			}
 		},
 
@@ -25038,13 +24965,13 @@
 			this.dropTargetIndicator.destroy();
 			this.transitionIndicator.destroy();
 			this.eventHub.destroy();
-			
-			this._dragSources.forEach(function (dragSource) {
+
+			this._dragSources.forEach( function( dragSource ) {
 				dragSource._dragListener.destroy();
 				dragSource._element = null;
 				dragSource._itemConfig = null;
 				dragSource._dragListener = null;
-			});
+			} );
 			this._dragSources = [];
 		},
 
@@ -25065,7 +24992,7 @@
 				throw new lm.errors.ConfigurationError( 'Missing parameter \'type\'', config );
 			}
 
-			if (config.type === 'react-component') {
+			if( config.type === 'react-component' ) {
 				config.type = 'component';
 				config.componentName = 'lm-react-component';
 			}
@@ -25083,16 +25010,16 @@
 			 */
 			if(
 				// If this is a component
-				config.type === 'component' &&
+			config.type === 'component' &&
 
-				// and it's not already within a stack
-				!( parent instanceof lm.items.Stack ) &&
+			// and it's not already within a stack
+			!( parent instanceof lm.items.Stack ) &&
 
-				// and we have a parent
-				!!parent &&
+			// and we have a parent
+			!!parent &&
 
-				// and it's not the topmost item in a new window
-				!( this.isSubWindow === true && parent instanceof lm.items.Root )
+			// and it's not the topmost item in a new window
+			!( this.isSubWindow === true && parent instanceof lm.items.Root )
 			) {
 				config = {
 					type: 'stack',
@@ -25111,9 +25038,9 @@
 		 *
 		 * @param   {Object|lm.itemsAbstractContentItem} configOrContentItem
 		 * @param   {[Object]} dimensions A map with width, height, left and top
-		 * @param 	{[String]} parentId the id of the element this item will be appended to
+		 * @param    {[String]} parentId the id of the element this item will be appended to
 		 *                             when popIn is called
-		 * @param 	{[Number]} indexInParent The position of this item within its parent element
+		 * @param    {[Number]} indexInParent The position of this item within its parent element
 
 		 * @returns {lm.controls.BrowserPopout}
 		 */
@@ -25160,7 +25087,6 @@
 			}
 
 
-
 			if( !dimensions && isItem ) {
 				windowLeft = window.screenX || window.screenLeft;
 				windowTop = window.screenY || window.screenTop;
@@ -25189,13 +25115,13 @@
 
 			browserPopout = new lm.controls.BrowserPopout( config, dimensions, parentId, indexInParent, this );
 
-			browserPopout.on( 'initialised', function(){
+			browserPopout.on( 'initialised', function() {
 				self.emit( 'windowOpened', browserPopout );
-			});
+			} );
 
-			browserPopout.on( 'closed', function(){
+			browserPopout.on( 'closed', function() {
 				self._$reconcilePopoutWindows();
-			});
+			} );
 
 			this.openPopouts.push( browserPopout );
 
@@ -25215,8 +25141,8 @@
 		createDragSource: function( element, itemConfig ) {
 			this.config.settings.constrainDragToContainer = false;
 			var dragSource = new lm.controls.DragSource( $( element ), itemConfig, this );
-			this._dragSources.push(dragSource);
-			
+			this._dragSources.push( dragSource );
+
 			return dragSource;
 		},
 
@@ -25227,7 +25153,7 @@
 		 *
 		 * @param   {lm.item.AbstractContentItem} item#
 		 * @param   {[Boolean]} _$silent Wheather to notify the item of its selection
-		 * @event 	selectionChanged
+		 * @event    selectionChanged
 		 *
 		 * @returns {VOID}
 		 */
@@ -25255,8 +25181,8 @@
 		},
 
 		/*************************
-		* PACKAGE PRIVATE
-		*************************/
+		 * PACKAGE PRIVATE
+		 *************************/
 		_$maximiseItem: function( contentItem ) {
 			if( this._maximisedItem !== null ) {
 				this._$minimiseItem( this._maximisedItem );
@@ -25299,9 +25225,9 @@
 		 * @returns {void}
 		 */
 		_$closeWindow: function() {
-			window.setTimeout(function(){
+			window.setTimeout( function() {
 				window.close();
-			}, 1);
+			}, 1 );
 		},
 
 		_$getArea: function( x, y ) {
@@ -25316,13 +25242,29 @@
 					y > area.y1 &&
 					y < area.y2 &&
 					smallestSurface > area.surface
-				){
+				) {
 					smallestSurface = area.surface;
 					mathingArea = area;
 				}
 			}
 
 			return mathingArea;
+		},
+
+		_$createRootItemAreas: function() {
+			var areaSize = 50;
+			var sides = { y2: 0, x2: 0, y1: 'y2', x1: 'x2' };
+			for( side in sides ) {
+				var area = this.root._$getArea();
+				area.side = side;
+				if( sides [ side ] )
+					area[ side ] = area[ sides [ side ] ] - areaSize;
+				else
+					area[ side ] = areaSize;
+				with( area )
+					surface = ( x2 - x1 ) * ( y2 - y1 );
+				this._itemAreas.push( area );
+			}
 		},
 
 		_$calculateItemAreas: function() {
@@ -25340,6 +25282,7 @@
 				this._itemAreas.push( this.root._$getArea() );
 				return;
 			}
+			this._$createRootItemAreas();
 
 			for( i = 0; i < allContentItems.length; i++ ) {
 
@@ -25355,6 +25298,12 @@
 					this._itemAreas = this._itemAreas.concat( area );
 				} else {
 					this._itemAreas.push( area );
+					var header = {};
+					lm.utils.copy( header, area );
+					lm.utils.copy( header, area.contentItem._contentAreaDimensions.header.highlightArea );
+					with( header )
+						surface = ( x2 - x1 ) * ( y2 - y1 );
+					this._itemAreas.push( header );
 				}
 			}
 		},
@@ -25421,8 +25370,8 @@
 		},
 
 		/***************************
-		* PRIVATE
-		***************************/
+		 * PRIVATE
+		 ***************************/
 		/**
 		 * Returns a flattened array of all content items,
 		 * regardles of level or type
@@ -25458,9 +25407,9 @@
 		 */
 		_bindEvents: function() {
 			if( this._isFullPage ) {
-				$(window).resize( this._resizeFunction );
+				$( window ).resize( this._resizeFunction );
 			}
-			$(window).on( 'unload beforeunload', this._unloadFunction );
+			$( window ).on( 'unload beforeunload', this._unloadFunction );
 		},
 
 		/**
@@ -25472,7 +25421,7 @@
 		 */
 		_onResize: function() {
 			clearTimeout( this._resizeTimeoutId );
-			this._resizeTimeoutId = setTimeout(lm.utils.fnBind( this.updateSize, this ), 100 );
+			this._resizeTimeoutId = setTimeout( lm.utils.fnBind( this.updateSize, this ), 100 );
 		},
 
 		/**
@@ -25528,22 +25477,22 @@
 		 */
 		_adjustToWindowMode: function() {
 			var popInButton = $( '<div class="lm_popin" title="' + this.config.labels.popin + '">' +
-					'<div class="lm_icon"></div>' +
-					'<div class="lm_bg"></div>' +
-				'</div>');
+				'<div class="lm_icon"></div>' +
+				'<div class="lm_bg"></div>' +
+				'</div>' );
 
-			popInButton.click(lm.utils.fnBind(function(){
+			popInButton.click( lm.utils.fnBind( function() {
 				this.emit( 'popIn' );
-			}, this));
+			}, this ) );
 
 			document.title = lm.utils.stripTags( this.config.content[ 0 ].title );
 
 			$( 'head' ).append( $( 'body link, body style, template, .gl_keep' ) );
 
 			this.container = $( 'body' )
-					.html( '' )
-					.css( 'visibility', 'visible' )
-					.append( popInButton );
+				.html( '' )
+				.css( 'visibility', 'visible' )
+				.append( popInButton );
 
 			/*
 			 * This seems a bit pointless, but actually causes a reflow/re-evaluation getting around
@@ -25601,12 +25550,12 @@
 			if( container[ 0 ] === document.body ) {
 				this._isFullPage = true;
 
-				$( 'html, body' ).css({
+				$( 'html, body' ).css( {
 					height: '100%',
-					margin:0,
+					margin: 0,
 					padding: 0,
 					overflow: 'hidden'
-				});
+				} );
 			}
 
 			this.container = container;
@@ -25657,17 +25606,125 @@
 					this.openPopouts[ i ].close();
 				}
 			}
+		},
+
+		/**
+		 * Adjusts the number of columns to be lower to fit the screen and still maintain minItemWidth.
+		 *
+		 * @returns {void}
+		 */
+		_adjustColumnsResponsive: function() {
+
+			// If there is no min width set, or not content items, do nothing.
+			if( !this._useResponsiveLayout() || this._updatingColumnsResponsive || !this.config.dimensions || !this.config.dimensions.minItemWidth || this.root.contentItems.length === 0 || !this.root.contentItems[ 0 ].isRow ) {
+				this._firstLoad = false;
+				return;
+			}
+
+			this._firstLoad = false;
+
+			// If there is only one column, do nothing.
+			var columnCount = this.root.contentItems[ 0 ].contentItems.length;
+			if( columnCount <= 1 ) {
+				return;
+			}
+
+			// If they all still fit, do nothing.
+			var minItemWidth = this.config.dimensions.minItemWidth;
+			var totalMinWidth = columnCount * minItemWidth;
+			if( totalMinWidth <= this.width ) {
+				return;
+			}
+
+			// Prevent updates while it is already happening.
+			this._updatingColumnsResponsive = true;
+
+			// Figure out how many columns to stack, and put them all in the first stack container.
+			var finalColumnCount = Math.max( Math.floor( this.width / minItemWidth ), 1 );
+			var stackColumnCount = columnCount - finalColumnCount;
+
+			var rootContentItem = this.root.contentItems[ 0 ];
+			var firstStackContainer = this._findAllStackContainers()[ 0 ];
+			for( var i = 0; i < stackColumnCount; i++ ) {
+				// Stack from right.
+				var column = rootContentItem.contentItems[ rootContentItem.contentItems.length - 1 ];
+				rootContentItem.removeChild( column );
+				this._addChildContentItemsToContainer( firstStackContainer, column );
+			}
+
+			this._updatingColumnsResponsive = false;
+		},
+
+		/**
+		 * Determines if responsive layout should be used.
+		 *
+		 * @returns {bool} - True if responsive layout should be used; otherwise false.
+		 */
+		_useResponsiveLayout: function() {
+			return this.config.settings && ( this.config.settings.responsiveMode == 'always' || ( this.config.settings.responsiveMode == 'onload' && this._firstLoad ) );
+		},
+
+		/**
+		 * Adds all children of a node to another container recursively.
+		 * @param {object} container - Container to add child content items to.
+		 * @param {object} node - Node to search for content items.
+		 * @returns {void}
+		 */
+		_addChildContentItemsToContainer: function( container, node ) {
+			if( node.type === 'stack' ) {
+				node.contentItems.forEach( function( item ) {
+					container.addChild( item );
+				} );
+			}
+			else {
+				node.contentItems.forEach( lm.utils.fnBind( function( item ) {
+					this._addChildContentItemsToContainer( container, item );
+				}, this ) );
+			}
+		},
+
+		/**
+		 * Finds all the stack containers.
+		 * @returns {array} - The found stack containers.
+		 */
+		_findAllStackContainers: function() {
+			var stackContainers = [];
+			this._findAllStackContainersRecursive( stackContainers, this.root );
+
+			return stackContainers;
+		},
+
+		/**
+		 * Finds all the stack containers.
+		 *
+		 * @param {array} - Set of containers to populate.
+		 * @param {object} - Current node to process.
+		 *
+		 * @returns {void}
+		 */
+		_findAllStackContainersRecursive: function( stackContainers, node ) {
+			node.contentItems.forEach( lm.utils.fnBind( function( item ) {
+				if( item.type == 'stack' ) {
+					stackContainers.push( item );
+				}
+				else if( !item.isComponent ) {
+					this._findAllStackContainersRecursive( stackContainers, item );
+				}
+			}, this ) );
 		}
-	});
+	} );
 
 	/**
 	 * Expose the Layoutmanager as the single entrypoint using UMD
 	 */
-	(function () {
+	(function() {
 		/* global define */
-		if ( true) {
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(160) ], __WEBPACK_AMD_DEFINE_RESULT__ = function( jquery ){ $ = jquery; return lm.LayoutManager; }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); // jshint ignore:line
-		} else if (typeof exports === 'object') {
+		if( true ) {
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [ __webpack_require__(160) ], __WEBPACK_AMD_DEFINE_RESULT__ = function( jquery ) {
+				$ = jquery;
+				return lm.LayoutManager;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); // jshint ignore:line
+		} else if( typeof exports === 'object' ) {
 			module.exports = lm.LayoutManager;
 		} else {
 			window.GoldenLayout = lm.LayoutManager;
@@ -25680,8 +25737,8 @@
 		title: ''
 	};
 	lm.config.defaultConfig = {
-		openPopouts:[],
-		settings:{
+		openPopouts: [],
+		settings: {
 			hasHeaders: true,
 			constrainDragToContainer: true,
 			reorderEnabled: true,
@@ -25691,7 +25748,8 @@
 			closePopoutsOnUnload: true,
 			showPopoutIcon: true,
 			showMaximiseIcon: true,
-			showCloseIcon: true
+			showCloseIcon: true,
+			responsiveMode: 'onload' // Can be onload, always, or none.
 		},
 		dimensions: {
 			borderWidth: 5,
@@ -25706,9 +25764,11 @@
 			maximise: 'maximise',
 			minimise: 'minimise',
 			popout: 'open in new window',
-			popin: 'pop in'
+			popin: 'pop in',
+			tabDropdown: 'additional tabs'
 		}
 	};
+
 	lm.container.ItemContainer = function( config, parent, layoutManager ) {
 		lm.utils.EventEmitter.call( this );
 
@@ -25718,14 +25778,14 @@
 		this.parent = parent;
 		this.layoutManager = layoutManager;
 		this.isHidden = false;
-		
+
 		this._config = config;
-		this._element = $([
+		this._element = $( [
 			'<div class="lm_item_container">',
-				'<div class="lm_content"></div>',
+			'<div class="lm_content"></div>',
 			'</div>'
-		].join( '' ));
-		
+		].join( '' ) );
+
 		this._contentElement = this._element.find( '.lm_content' );
 	};
 
@@ -25740,7 +25800,7 @@
 		getElement: function() {
 			return this._contentElement;
 		},
-		
+
 		/**
 		 * Hide the container. Notifies the containers content first
 		 * and then hides the DOM node. If the container is already hidden
@@ -25753,7 +25813,7 @@
 			this.isHidden = true;
 			this._element.hide();
 		},
-		
+
 		/**
 		 * Shows a previously hidden container. Notifies the
 		 * containers content first and then shows the DOM element.
@@ -25766,7 +25826,7 @@
 			this.isHidden = false;
 			this._element.show();
 			// call shown only if the container has a valid size
-			if(this.height != 0 || this.width != 0) {
+			if( this.height != 0 || this.width != 0 ) {
 				this.emit( 'shown' );
 			}
 		},
@@ -25781,7 +25841,7 @@
 		 * @todo  Rework!!!
 		 * @param {Number} width  The new width in pixel
 		 * @param {Number} height The new height in pixel
-		 * 
+		 *
 		 * @returns {Boolean} resizeSuccesful
 		 */
 		setSize: function( width, height ) {
@@ -25797,7 +25857,7 @@
 			while( !rowOrColumn.isColumn && !rowOrColumn.isRow ) {
 				rowOrColumnChild = rowOrColumn;
 				rowOrColumn = rowOrColumn.parent;
-				
+
 
 				/**
 				 * No row or column has been found
@@ -25810,15 +25870,15 @@
 			direction = rowOrColumn.isColumn ? "height" : "width";
 			newSize = direction === "height" ? height : width;
 
-			totalPixel = this[direction] * ( 1 / ( rowOrColumnChild.config[direction] / 100 ) );
+			totalPixel = this[ direction ] * ( 1 / ( rowOrColumnChild.config[ direction ] / 100 ) );
 			percentage = ( newSize / totalPixel ) * 100;
-			delta = ( rowOrColumnChild.config[direction] - percentage ) / rowOrColumn.contentItems.length;
+			delta = ( rowOrColumnChild.config[ direction ] - percentage ) / (rowOrColumn.contentItems.length - 1);
 
 			for( i = 0; i < rowOrColumn.contentItems.length; i++ ) {
 				if( rowOrColumn.contentItems[ i ] === rowOrColumnChild ) {
-					rowOrColumn.contentItems[ i ].config[direction] = percentage;
+					rowOrColumn.contentItems[ i ].config[ direction ] = percentage;
 				} else {
-					rowOrColumn.contentItems[ i ].config[direction] += delta;
+					rowOrColumn.contentItems[ i ].config[ direction ] += delta;
 				}
 			}
 
@@ -25826,7 +25886,7 @@
 
 			return true;
 		},
-		
+
 		/**
 		 * Closes the container if it is closable. Can be called by
 		 * both the component within at as well as the contentItem containing
@@ -25887,7 +25947,7 @@
 		 *
 		 * @param {[Int]} width  in px
 		 * @param {[Int]} height in px
-		 * 
+		 *
 		 * @returns {void}
 		 */
 		_$setSize: function( width, height ) {
@@ -25898,17 +25958,17 @@
 				this.emit( 'resize' );
 			}
 		}
-	});
+	} );
 
 	/**
 	 * Pops a content item out into a new browser window.
 	 * This is achieved by
 	 *
-	 * 	- Creating a new configuration with the content item as root element
-	 * 	- Serializing and minifying the configuration
-	 * 	- Opening the current window's URL with the configuration as a GET parameter
-	 * 	- GoldenLayout when opened in the new window will look for the GET parameter
-	 * 	  and use it instead of the provided configuration
+	 *    - Creating a new configuration with the content item as root element
+	 *    - Serializing and minifying the configuration
+	 *    - Opening the current window's URL with the configuration as a GET parameter
+	 *    - GoldenLayout when opened in the new window will look for the GET parameter
+	 *      and use it instead of the provided configuration
 	 *
 	 * @param {Object} config GoldenLayout item config
 	 * @param {Object} dimensions A map with width, height, top and left
@@ -25933,8 +25993,12 @@
 	lm.utils.copy( lm.controls.BrowserPopout.prototype, {
 
 		toConfig: function() {
+			if( this.isInitialised === false ) {
+				throw new Error( 'Can\'t create config, layout not yet initialised' );
+				return;
+			}
 			return {
-				dimensions:{
+				dimensions: {
 					width: this.getGlInstance().width,
 					height: this.getGlInstance().height,
 					left: this._popoutWindow.screenX || this._popoutWindow.screenLeft,
@@ -25958,23 +26022,24 @@
 			if( this.getGlInstance() ) {
 				this.getGlInstance()._$closeWindow();
 			} else {
-				try{
+				try {
 					this.getWindow().close();
-				} catch( e ){}
+				} catch( e ) {
+				}
 			}
 		},
 
 		/**
-		 * Returns the popped out item to its original position. If the original 
+		 * Returns the popped out item to its original position. If the original
 		 * parent isn't available anymore it falls back to the layout's topmost element
 		 */
 		popIn: function() {
-			var childConfig, 
-				parentItem, 
+			var childConfig,
+				parentItem,
 				index = this._indexInParent;
 
 			if( this._parentId ) {
-				
+
 				/*
 				 * The $.extend call seems a bit pointless, but it's crucial to
 				 * copy the config returned by this.getGlInstance().toConfig()
@@ -25986,7 +26051,7 @@
 				 */
 				childConfig = $.extend( true, {}, this.getGlInstance().toConfig() ).content[ 0 ];
 				parentItem = this._layoutManager.root.getItemsById( this._parentId )[ 0 ];
-				
+
 				/*
 				 * Fallback if parentItem is not available. Either add it to the topmost
 				 * item or make it the topmost item if the layout is empty
@@ -26016,7 +26081,7 @@
 		_createWindow: function() {
 			var checkReadyInterval,
 				url = this._createUrl(),
-				
+
 				/**
 				 * Bogus title to prevent re-usage of existing window with the
 				 * same title. The actual title will be set by the new window's
@@ -26027,7 +26092,7 @@
 				/**
 				 * The options as used in the window.open string
 				 */
-				options = this._serializeWindowOptions({
+				options = this._serializeWindowOptions( {
 					width: this._dimensions.width,
 					height: this._dimensions.height,
 					innerWidth: this._dimensions.width,
@@ -26039,7 +26104,7 @@
 					resizable: 'yes',
 					scrollbars: 'no',
 					status: 'no'
-				});
+				} );
 
 			this._popoutWindow = window.open( url, title, options );
 
@@ -26063,7 +26128,7 @@
 			 * window or raising an event on the window object - both would introduce knowledge
 			 * about the parent to the child window which we'd rather avoid
 			 */
-			checkReadyInterval = setInterval(lm.utils.fnBind(function(){
+			checkReadyInterval = setInterval( lm.utils.fnBind( function() {
 				if( this._popoutWindow.__glInstance && this._popoutWindow.__glInstance.isInitialised ) {
 					this._onInitialised();
 					clearInterval( checkReadyInterval );
@@ -26100,8 +26165,8 @@
 				urlParts;
 
 			config = ( new lm.utils.ConfigMinifier() ).minifyConfig( config );
-			
-			try{
+
+			try {
 				localStorage.setItem( storageKey, JSON.stringify( config ) );
 			} catch( e ) {
 				throw new Error( 'Error while writing to localStorage ' + e.toString() );
@@ -26113,7 +26178,7 @@
 			if( urlParts.length === 1 ) {
 				return urlParts[ 0 ] + '?gl-window=' + storageKey;
 
-			// URL contains GET-parameters
+				// URL contains GET-parameters
 			} else {
 				return document.location.href + '&gl-window=' + storageKey;
 			}
@@ -26121,10 +26186,10 @@
 
 		/**
 		 * Move the newly created window roughly to
-		 * where the component used to be. 
+		 * where the component used to be.
 		 *
 		 * @private
-		 * 
+		 *
 		 * @returns {void}
 		 */
 		_positionWindow: function() {
@@ -26148,13 +26213,13 @@
 		 * Invoked 50ms after the window unload event
 		 *
 		 * @private
-		 * 
+		 *
 		 * @returns {void}
 		 */
 		_onClose: function() {
 			setTimeout( lm.utils.fnBind( this.emit, this, [ 'closed' ] ), 50 );
 		}
-	});
+	} );
 	/**
 	 * This class creates a temporary container
 	 * for the component whilst it is being dragged
@@ -26165,7 +26230,7 @@
 	 *
 	 * @param {Number} x              The initial x position
 	 * @param {Number} y              The initial y position
-	 * @param {lm.utils.DragListener} dragListener   
+	 * @param {lm.utils.DragListener} dragListener
 	 * @param {lm.LayoutManager} layoutManager
 	 * @param {lm.item.AbstractContentItem} contentItem
 	 * @param {lm.item.AbstractContentItem} originalParent
@@ -26186,7 +26251,13 @@
 		this._dragListener.on( 'dragStop', this._onDrop, this );
 
 		this.element = $( lm.controls.DragProxy._template );
-		this.element.css({ left: x, top: y });
+		if( originalParent && originalParent._side ) {
+			this._sided = originalParent._sided;
+			this.element.addClass( 'lm_' + originalParent._side );
+			if( [ 'right', 'bottom' ].indexOf( originalParent._side ) >= 0 )
+				this.element.find( '.lm_content' ).after( this.element.find( '.lm_header' ) );
+		}
+		this.element.css( { left: x, top: y } );
 		this.element.find( '.lm_tab' ).attr( 'title', lm.utils.stripTags( this._contentItem.config.title ) );
 		this.element.find( '.lm_title' ).html( this._contentItem.config.title );
 		this.childElementContainer = this.element.find( '.lm_content' );
@@ -26211,15 +26282,15 @@
 	};
 
 	lm.controls.DragProxy._template = '<div class="lm_dragProxy">' +
-										'<div class="lm_header">' +
-											'<ul class="lm_tabs">' +
-												'<li class="lm_tab lm_active"><i class="lm_left"></i>' +
-												'<span class="lm_title"></span>' +
-												'<i class="lm_right"></i></li>' +
-											'</ul>' +
-										'</div>' +
-										'<div class="lm_content"></div>' +
-									'</div>';
+		'<div class="lm_header">' +
+		'<ul class="lm_tabs">' +
+		'<li class="lm_tab lm_active"><i class="lm_left"></i>' +
+		'<span class="lm_title"></span>' +
+		'<i class="lm_right"></i></li>' +
+		'</ul>' +
+		'</div>' +
+		'<div class="lm_content"></div>' +
+		'</div>';
 
 	lm.utils.copy( lm.controls.DragProxy.prototype, {
 
@@ -26237,6 +26308,9 @@
 		 * @returns {void}
 		 */
 		_onDrag: function( offsetX, offsetY, event ) {
+
+			event = event.originalEvent && event.originalEvent.touches ? event.originalEvent.touches[ 0 ] : event;
+
 			var x = event.pageX,
 				y = event.pageY,
 				isWithinContainer = x > this._minX && x < this._maxX && y > this._minY && y < this._maxY;
@@ -26259,7 +26333,7 @@
 		 * @returns {void}
 		 */
 		_setDropPosition: function( x, y ) {
-			this.element.css({ left: x, top: y });
+			this.element.css( { left: x, top: y } );
 			this._area = this._layoutManager._$getArea( x, y );
 
 			if( this._area !== null ) {
@@ -26283,37 +26357,37 @@
 			 * Valid drop area found
 			 */
 			if( this._area !== null ) {
-				this._area.contentItem._$onDrop( this._contentItem );
+				this._area.contentItem._$onDrop( this._contentItem, this._area );
 
-			/**
-			 * No valid drop area available at present, but one has been found before.
-			 * Use it
-			 */
+				/**
+				 * No valid drop area available at present, but one has been found before.
+				 * Use it
+				 */
 			} else if( this._lastValidArea !== null ) {
-				this._lastValidArea.contentItem._$onDrop( this._contentItem );
+				this._lastValidArea.contentItem._$onDrop( this._contentItem, this._lastValidArea );
 
-			/**
-			 * No valid drop area found during the duration of the drag. Return
-			 * content item to its original position if a original parent is provided.
-			 * (Which is not the case if the drag had been initiated by createDragSource)
-			 */
-			} else if ( this._originalParent ){
+				/**
+				 * No valid drop area found during the duration of the drag. Return
+				 * content item to its original position if a original parent is provided.
+				 * (Which is not the case if the drag had been initiated by createDragSource)
+				 */
+			} else if( this._originalParent ) {
 				this._originalParent.addChild( this._contentItem );
 
-			/**
-			 * The drag didn't ultimately end up with adding the content item to
-			 * any container. In order to ensure clean up happens, destroy the
-			 * content item.
-			 */
+				/**
+				 * The drag didn't ultimately end up with adding the content item to
+				 * any container. In order to ensure clean up happens, destroy the
+				 * content item.
+				 */
 			} else {
 				this._contentItem._$destroy();
 			}
-			
+
 			this.element.remove();
 
 			this._layoutManager.emit( 'itemDropped', this._contentItem );
 		},
-		
+
 		/**
 		 * Removes the item from its original position within the tree
 		 *
@@ -26322,17 +26396,17 @@
 		 * @returns {void}
 		 */
 		_updateTree: function() {
-			
+
 			/**
 			 * parent is null if the drag had been initiated by a external drag source
 			 */
 			if( this._contentItem.parent ) {
 				this._contentItem.parent.removeChild( this._contentItem, true );
 			}
-			
+
 			this._contentItem._$setParent( this );
 		},
-		
+
 		/**
 		 * Updates the Drag Proxie's dimensions
 		 *
@@ -26343,8 +26417,12 @@
 		_setDimensions: function() {
 			var dimensions = this._layoutManager.config.dimensions,
 				width = dimensions.dragProxyWidth,
-				height = dimensions.dragProxyHeight - dimensions.headerHeight;
-		
+				height = dimensions.dragProxyHeight;
+
+			this.element.width( width );
+			this.element.height( height );
+			width -= ( this._sided ? dimensions.headerHeight : 0 );
+			height -= ( !this._sided ? dimensions.headerHeight : 0 );
 			this.childElementContainer.width( width );
 			this.childElementContainer.height( height );
 			this._contentItem.element.width( width );
@@ -26352,7 +26430,7 @@
 			this._contentItem.callDownwards( '_$show' );
 			this._contentItem.callDownwards( 'setSize' );
 		}
-	});
+	} );
 
 	/**
 	 * Allows for any DOM item to create a component on drag
@@ -26374,7 +26452,7 @@
 	};
 
 	lm.utils.copy( lm.controls.DragSource.prototype, {
-		
+
 		/**
 		 * Called initially and after every drag
 		 *
@@ -26384,7 +26462,7 @@
 			if( this._dragListener !== null ) {
 				this._dragListener.destroy();
 			}
-			
+
 			this._dragListener = new lm.utils.DragListener( this._element );
 			this._dragListener.on( 'dragStart', this._onDragStart, this );
 			this._dragListener.on( 'dragStop', this._createDragListener, this );
@@ -26405,14 +26483,14 @@
 			}
 			var contentItem = this._layoutManager._$normalizeContentItem( $.extend( true, {}, itemConfig ) ),
 				dragProxy = new lm.controls.DragProxy( x, y, this._dragListener, this._layoutManager, contentItem, null );
-			
+
 			this._layoutManager.transitionIndicator.transitionElements( this._element, dragProxy.element );
 		}
-	});
+	} );
 
 	lm.controls.DropTargetIndicator = function() {
 		this.element = $( lm.controls.DropTargetIndicator._template );
-		$(document.body).append( this.element );
+		$( document.body ).append( this.element );
 	};
 
 	lm.controls.DropTargetIndicator._template = '<div class="lm_dropTargetIndicator"><div class="lm_inner"></div></div>';
@@ -26423,22 +26501,22 @@
 		},
 
 		highlight: function( x1, y1, x2, y2 ) {
-			this.highlightArea({ x1:x1, y1:y1, x2:x2, y2:y2 });
+			this.highlightArea( { x1: x1, y1: y1, x2: x2, y2: y2 } );
 		},
 
 		highlightArea: function( area ) {
-			this.element.css({
+			this.element.css( {
 				left: area.x1,
 				top: area.y1,
 				width: area.x2 - area.x1,
 				height: area.y2 - area.y1
-			}).show();
+			} ).show();
 		},
 
 		hide: function() {
 			this.element.hide();
 		}
-	});
+	} );
 	/**
 	 * This class represents a header above a Stack ContentItem.
 	 *
@@ -26453,25 +26531,31 @@
 
 		if( this.layoutManager.config.settings.selectionEnabled === true ) {
 			this.element.addClass( 'lm_selectable' );
-			this.element.click( lm.utils.fnBind( this._onHeaderClick, this ) );
+			this.element.on( 'click touchstart', lm.utils.fnBind( this._onHeaderClick, this ) );
 		}
-		
-		this.element.height( layoutManager.config.dimensions.headerHeight );
+
 		this.tabsContainer = this.element.find( '.lm_tabs' );
+		this.tabDropdownContainer = this.element.find( '.lm_tabdropdown_list' );
+		this.tabDropdownContainer.hide();
 		this.controlsContainer = this.element.find( '.lm_controls' );
 		this.parent = parent;
 		this.parent.on( 'resize', this._updateTabSizes, this );
 		this.tabs = [];
 		this.activeContentItem = null;
 		this.closeButton = null;
+		this.tabDropdownButton = null;
+		$( document ).mouseup( lm.utils.fnBind( this._hideAdditionalTabsDropdown, this ) );
 
+		this._lastVisibleTabIndex = -1;
+		this._tabControlOffset = 10;
 		this._createControls();
 	};
 
 	lm.controls.Header._template = [
 		'<div class="lm_header">',
-			'<ul class="lm_tabs"></ul>',
-			'<ul class="lm_controls"></ul>',
+		'<ul class="lm_tabs"></ul>',
+		'<ul class="lm_controls"></ul>',
+		'<ul class="lm_tabdropdown_list"></ul>',
 		'</div>'
 	].join( '' );
 
@@ -26480,8 +26564,8 @@
 		/**
 		 * Creates a new tab and associates it with a contentItem
 		 *
-		 * @param	{lm.item.AbstractContentItem} contentItem
-		 * @param	{Integer} index The position of the tab
+		 * @param    {lm.item.AbstractContentItem} contentItem
+		 * @param    {Integer} index The position of the tab
 		 *
 		 * @returns {void}
 		 */
@@ -26497,23 +26581,23 @@
 			}
 
 			tab = new lm.controls.Tab( this, contentItem );
-			
+
 			if( this.tabs.length === 0 ) {
 				this.tabs.push( tab );
 				this.tabsContainer.append( tab.element );
 				return;
 			}
-		
+
 			if( index === undefined ) {
 				index = this.tabs.length;
 			}
-		
+
 			if( index > 0 ) {
 				this.tabs[ index - 1 ].element.after( tab.element );
 			} else {
 				this.tabs[ 0 ].element.before( tab.element );
 			}
-		
+
 			this.tabs.splice( index, 0, tab );
 			this._updateTabSizes();
 		},
@@ -26521,7 +26605,7 @@
 		/**
 		 * Finds a tab based on the contentItem its associated with and removes it.
 		 *
-		 * @param	{lm.item.AbstractContentItem} contentItem
+		 * @param    {lm.item.AbstractContentItem} contentItem
 		 *
 		 * @returns {void}
 		 */
@@ -26533,17 +26617,17 @@
 					return;
 				}
 			}
-		
+
 			throw new Error( 'contentItem is not controlled by this header' );
 		},
-		
+
 		/**
 		 * The programmatical equivalent of clicking a Tab.
 		 *
 		 * @param {lm.item.AbstractContentItem} contentItem
 		 */
 		setActiveContentItem: function( contentItem ) {
-			var i, isActive;
+			var i, j, isActive, activeTab;
 
 			for( i = 0; i < this.tabs.length; i++ ) {
 				isActive = this.tabs[ i ].contentItem === contentItem;
@@ -26554,8 +26638,39 @@
 				}
 			}
 
+			/**
+			 * If the tab selected was in the dropdown, move everything down one to make way for this one to be the first.
+			 * This will make sure the most used tabs stay visible.
+			 */
+			if( this._lastVisibleTabIndex !== -1 && this.parent.config.activeItemIndex > this._lastVisibleTabIndex ) {
+				activeTab = this.tabs[ this.parent.config.activeItemIndex ];
+				for( j = this.parent.config.activeItemIndex; j > 0; j-- ) {
+					this.tabs[ j ] = this.tabs[ j - 1 ];
+				}
+				this.tabs[ 0 ] = activeTab;
+				this.parent.config.activeItemIndex = 0;
+			}
+
 			this._updateTabSizes();
 			this.parent.emitBubblingEvent( 'stateChanged' );
+		},
+
+		/**
+		 * Programmatically operate with header position.
+		 *
+		 * @param {string} position one of ('top','left','right','bottom') to set or empty to get it.
+		 *
+		 * @returns {string} previous header position
+		 */
+		position: function( position ) {
+			var previous = this.parent._header.show;
+			if( previous && !this.parent._side )
+				previous = 'top';
+			if( position !== undefined && this.parent._header.show != position ) {
+				this.parent._header.show = position;
+				this.parent._setupHeaderPosition();
+			}
+			return previous;
 		},
 
 		/**
@@ -26567,7 +26682,7 @@
 		 * @returns {Boolean} Whether the action was successful
 		 */
 		_$setClosable: function( isClosable ) {
-			if ( this.closeButton && this._isClosable() ) {
+			if( this.closeButton && this._isClosable() ) {
 				this.closeButton.element[ isClosable ? "show" : "hide" ]();
 				return true;
 			}
@@ -26579,19 +26694,28 @@
 		 * Destroys the entire header
 		 *
 		 * @package private
-		 * 
+		 *
 		 * @returns {void}
 		 */
 		_$destroy: function() {
-			this.emit( 'destroy' );
-		
+			this.emit( 'destroy', this );
+
 			for( var i = 0; i < this.tabs.length; i++ ) {
 				this.tabs[ i ]._$destroy();
 			}
-		
+
 			this.element.remove();
 		},
 
+		/**
+		 * get settings from header
+		 *
+		 * @returns {string} when exists
+		 */
+		_getHeaderSetting: function( name ) {
+			if( name in this.parent._header )
+				return this.parent._header[ name ];
+		},
 		/**
 		 * Creates the popout, maximise and close buttons in the header's top right corner
 		 *
@@ -26604,33 +26728,43 @@
 				maximiseLabel,
 				minimiseLabel,
 				maximise,
-				maximiseButton;
+				maximiseButton,
+				tabDropdownLabel,
+				showTabDropdown;
+
+			/**
+			 * Dropdown to show additional tabs.
+			 */
+			showTabDropdown = lm.utils.fnBind( this._showAdditionalTabsDropdown, this );
+			tabDropdownLabel = this.layoutManager.config.labels.tabDropdown;
+			this.tabDropdownButton = new lm.controls.HeaderButton( this, tabDropdownLabel, 'lm_tabdropdown', showTabDropdown );
+			this.tabDropdownButton.element.hide();
 
 			/**
 			 * Popout control to launch component in new window.
 			 */
-			if( this.layoutManager.config.settings.showPopoutIcon ) {
+			if( this._getHeaderSetting( 'popout' ) ) {
 				popout = lm.utils.fnBind( this._onPopoutClick, this );
-				label = this.layoutManager.config.labels.popout;
+				label = this._getHeaderSetting( 'popout' );
 				new lm.controls.HeaderButton( this, label, 'lm_popout', popout );
 			}
 
 			/**
 			 * Maximise control - set the component to the full size of the layout
 			 */
-			if( this.layoutManager.config.settings.showMaximiseIcon ) {
+			if( this._getHeaderSetting( 'maximise' ) ) {
 				maximise = lm.utils.fnBind( this.parent.toggleMaximise, this.parent );
-				maximiseLabel = this.layoutManager.config.labels.maximise;
-				minimiseLabel = this.layoutManager.config.labels.minimise;
+				maximiseLabel = this._getHeaderSetting( 'maximise' );
+				minimiseLabel = this._getHeaderSetting( 'minimise' );
 				maximiseButton = new lm.controls.HeaderButton( this, maximiseLabel, 'lm_maximise', maximise );
-				
-				this.parent.on( 'maximised', function(){
-					maximiseButton.element.attr( 'title', minimiseLabel );
-				});
 
-				this.parent.on( 'minimised', function(){
+				this.parent.on( 'maximised', function() {
+					maximiseButton.element.attr( 'title', minimiseLabel );
+				} );
+
+				this.parent.on( 'minimised', function() {
 					maximiseButton.element.attr( 'title', maximiseLabel );
-				});
+				} );
 			}
 
 			/**
@@ -26638,13 +26772,31 @@
 			 */
 			if( this._isClosable() ) {
 				closeStack = lm.utils.fnBind( this.parent.remove, this.parent );
-				label = this.layoutManager.config.labels.close;
+				label = this._getHeaderSetting( 'close' );
 				this.closeButton = new lm.controls.HeaderButton( this, label, 'lm_close', closeStack );
 			}
 		},
 
 		/**
-		 * Checks whether the header is closable based on the parent config and 
+		 * Shows drop down for additional tabs when there are too many to display.
+		 *
+		 * @returns {void}
+		 */
+		_showAdditionalTabsDropdown: function() {
+			this.tabDropdownContainer.show();
+		},
+
+		/**
+		 * Hides drop down for additional tabs when there are too many to display.
+		 *
+		 * @returns {void}
+		 */
+		_hideAdditionalTabsDropdown: function( e ) {
+			this.tabDropdownContainer.hide();
+		},
+
+		/**
+		 * Checks whether the header is closable based on the parent config and
 		 * the global config.
 		 *
 		 * @returns {Boolean} Whether the header is closable.
@@ -26665,7 +26817,7 @@
 		/**
 		 * Invoked when the header's background is clicked (not it's tabs or controls)
 		 *
-		 * @param	{jQuery DOM event} event
+		 * @param    {jQuery DOM event} event
 		 *
 		 * @returns {void}
 		 */
@@ -26676,7 +26828,7 @@
 		},
 
 		/**
-		 * Shrinks the tabs if the available space is not sufficient
+		 * Pushes the tabs to the tab dropdown if the available space is not sufficient
 		 *
 		 * @returns {void}
 		 */
@@ -26684,47 +26836,58 @@
 			if( this.tabs.length === 0 ) {
 				return;
 			}
-			
-			var availableWidth = this.element.outerWidth() - this.controlsContainer.outerWidth(),
+
+			var size = function( val ) {
+				return val ? 'width' : 'height';
+			}
+			this.element.css( size( !this.parent._sided ), '' );
+			this.element[ size( this.parent._sided ) ]( this.layoutManager.config.dimensions.headerHeight );
+			var availableWidth = this.element.outerWidth() - this.controlsContainer.outerWidth() - this._tabControlOffset,
 				totalTabWidth = 0,
 				tabElement,
 				i,
-				marginLeft,
-				gap;
+				showTabDropdown,
+				swapTab,
+				tabWidth,
+				hasVisibleTab = false;
+
+			if( this.parent._sided )
+				availableWidth = this.element.outerHeight() - this.controlsContainer.outerHeight() - this._tabControlOffset;
+			this._lastVisibleTabIndex = -1;
 
 			for( i = 0; i < this.tabs.length; i++ ) {
 				tabElement = this.tabs[ i ].element;
 
 				/*
-				 * In order to show every tab's close icon, decrement the z-index from left to right
+				 * Retain tab width when hidden so it can be restored.
 				 */
-				tabElement.css( 'z-index', this.tabs.length - i );
-				totalTabWidth += tabElement.outerWidth() + parseInt( tabElement.css( 'margin-right' ), 10 );
-			}
-
-			gap = ( totalTabWidth - availableWidth ) / ( this.tabs.length - 1 );
-
-			for( i = 0; i < this.tabs.length; i++ ) {
-
-				/*
-				 * The active tab keeps it's original width
-				 */
-				if( !this.tabs[ i ].isActive && gap > 0 ) {
-					marginLeft = '-' + Math.floor( gap )+ 'px';
-				} else {
-					marginLeft = '';
+				tabWidth = tabElement.data( 'lastTabWidth' );
+				if( !tabWidth ) {
+					tabWidth = tabElement.outerWidth() + parseInt( tabElement.css( 'margin-right' ), 10 );
 				}
 
-				this.tabs[ i ].element.css( 'margin-left', marginLeft );
+				totalTabWidth += tabWidth;
+
+				// If the tab won't fit, put it in the dropdown for tabs, making sure there is always at least one tab visible.
+				if( totalTabWidth > availableWidth && hasVisibleTab ) {
+					tabElement.data( 'lastTabWidth', tabWidth );
+					this.tabDropdownContainer.append( tabElement );
+				}
+				else {
+					hasVisibleTab = true;
+					this._lastVisibleTabIndex = i;
+					tabElement.removeData( 'lastTabWidth' );
+					this.tabsContainer.append( tabElement );
+				}
 			}
 
-			if( availableWidth < totalTabWidth ) {
-				this.element.css( 'overflow', 'hidden' );
-			} else {
-				this.element.css( 'overflow', 'visible' );
-			}
+			/*
+			 * Show the tab dropdown icon if not all tabs fit.
+			 */
+			showTabDropdown = totalTabWidth > availableWidth;
+			this.tabDropdownButton.element[ showTabDropdown ? 'show' : 'hide' ]();
 		}
-	});
+	} );
 
 
 	lm.controls.HeaderButton = function( header, label, cssClass, action ) {
@@ -26732,7 +26895,7 @@
 		this.element = $( '<li class="' + cssClass + '" title="' + label + '"></li>' );
 		this._header.on( 'destroy', this._$destroy, this );
 		this._action = action;
-		this.element.click( this._action );
+		this.element.on( 'click touchstart', this._action );
 		this._header.controlsContainer.append( this.element );
 	};
 
@@ -26741,7 +26904,7 @@
 			this.element.off();
 			this.element.remove();
 		}
-	});
+	} );
 	lm.controls.Splitter = function( isVertical, size ) {
 		this._isVertical = isVertical;
 		this._size = size;
@@ -26766,7 +26929,7 @@
 
 			return element;
 		}
-	});
+	} );
 
 	/**
 	 * Represents an individual tab within a Stack's header
@@ -26801,10 +26964,10 @@
 		this._onTabClickFn = lm.utils.fnBind( this._onTabClick, this );
 		this._onCloseClickFn = lm.utils.fnBind( this._onCloseClick, this );
 
-		this.element.click( this._onTabClickFn );
+		this.element.on( 'mousedown touchstart', this._onTabClickFn );
 
 		if( this.contentItem.config.isClosable ) {
-			this.closeElement.click( this._onCloseClickFn );
+			this.closeElement.on( 'click touchstart', this._onCloseClickFn );
 		} else {
 			this.closeElement.remove();
 		}
@@ -26825,10 +26988,10 @@
 	 * @type {String}
 	 */
 	lm.controls.Tab._template = '<li class="lm_tab"><i class="lm_left"></i>' +
-								'<span class="lm_title"></span><div class="lm_close_tab"></div>' +
-								'<i class="lm_right"></i></li>';
+		'<span class="lm_title"></span><div class="lm_close_tab"></div>' +
+		'<i class="lm_right"></i></li>';
 
-	lm.utils.copy( lm.controls.Tab.prototype,{
+	lm.utils.copy( lm.controls.Tab.prototype, {
 
 		/**
 		 * Sets the tab's title to the provided string and sets
@@ -26859,7 +27022,7 @@
 			if( isActive ) {
 				this.element.addClass( 'lm_active' );
 			} else {
-				this.element.removeClass( 'lm_active');
+				this.element.removeClass( 'lm_active' );
 			}
 		},
 
@@ -26870,8 +27033,8 @@
 		 * @returns {void}
 		 */
 		_$destroy: function() {
-			this.element.off( 'click', this._onTabClickFn );
-			this.closeElement.off( 'click', this._onCloseClickFn );
+			this.element.off( 'mousedown touchstart', this._onTabClickFn );
+			this.closeElement.off( 'click touchstart', this._onCloseClickFn );
 			if( this._dragListener ) {
 				this._dragListener.off( 'dragStart', this._onDragStart );
 				this._dragListener = null;
@@ -26911,14 +27074,14 @@
 		 * @returns {void}
 		 */
 		_onTabClick: function( event ) {
-			// left mouse button
-			if( event.button === 0 ) {
+			// left mouse button or tap
+			if( event.button === 0 || event.type === 'touchstart' ) {
 				var activeContentItem = this.header.parent.getActiveContentItem();
-				if (this.contentItem !== activeContentItem) {
+				if( this.contentItem !== activeContentItem ) {
 					this.header.parent.setActiveContentItem( this.contentItem );
 				}
 
-			// middle mouse button
+				// middle mouse button
 			} else if( event.button === 1 && this.contentItem.config.isClosable ) {
 				this._onCloseClick( event );
 			}
@@ -26937,7 +27100,7 @@
 			event.stopPropagation();
 			this.header.parent.removeChild( this.contentItem );
 		}
-	});
+	} );
 
 	lm.controls.TransitionIndicator = function() {
 		this._element = $( '<div class="lm_transition_indicator"></div>' );
@@ -26982,10 +27145,10 @@
 
 			for( cssProperty in this._fromDimensions ) {
 				currentFrameStyles[ cssProperty ] = this._fromDimensions[ cssProperty ] +
-				( toDimensions[ cssProperty] - this._fromDimensions[ cssProperty ] ) *
-				animationProgress;
+					( toDimensions[ cssProperty ] - this._fromDimensions[ cssProperty ] ) *
+					animationProgress;
 			}
-			
+
 			this._element.css( currentFrameStyles );
 			lm.utils.animFrame( lm.utils.fnBind( this._nextAnimationFrame, this ) );
 		},
@@ -27000,7 +27163,7 @@
 				height: element.outerHeight()
 			};
 		}
-	});
+	} );
 	lm.errors.ConfigurationError = function( message, node ) {
 		Error.call( this );
 
@@ -27010,7 +27173,6 @@
 	};
 
 	lm.errors.ConfigurationError.prototype = new Error();
-
 
 	/**
 	 * This is the baseclass that all content items inherit from.
@@ -27054,14 +27216,14 @@
 		this._throttledEvents = [ 'stateChanged' ];
 
 		this.on( lm.utils.EventEmitter.ALL_EVENT, this._propagateEvent, this );
-		
+
 		if( config.content ) {
 			this._createContentItems( config );
 		}
 	};
 
 	lm.utils.copy( lm.items.AbstractContentItem.prototype, {
-		
+
 		/**
 		 * Set the size of the component and its children, called recursively
 		 *
@@ -27104,7 +27266,7 @@
 		 * @returns {void}
 		 */
 		removeChild: function( contentItem, keepChild ) {
-			
+
 			/*
 			 * Get the position of the item that's to be removed within all content items this node contains
 			 */
@@ -27123,7 +27285,7 @@
 			if( keepChild !== true ) {
 				this.contentItems[ index ]._$destroy();
 			}
-			
+
 			/**
 			 * Remove the content item from this nodes array of children
 			 */
@@ -27140,9 +27302,9 @@
 			if( this.contentItems.length > 0 ) {
 				this.callDownwards( 'setSize' );
 
-			/**
-			 * If this was the last content item, remove this node as well
-			 */
+				/**
+				 * If this was the last content item, remove this node as well
+				 */
 			} else if( !(this instanceof lm.items.Root) && this.config.isClosable === true ) {
 				this.parent.removeChild( this );
 			}
@@ -27157,7 +27319,7 @@
 		 * @param {[Int]} index If omitted item will be appended
 		 */
 		addChild: function( contentItem, index ) {
-			if ( index === undefined ) {
+			if( index === undefined ) {
 				index = this.contentItems.length;
 			}
 
@@ -27169,7 +27331,7 @@
 
 			this.config.content.splice( index, 0, contentItem.config );
 			contentItem.parent = this;
-			
+
 			if( contentItem.parent.isInitialised === true && contentItem.isInitialised === false ) {
 				contentItem._$init();
 			}
@@ -27204,7 +27366,7 @@
 				oldChild.parent = null;
 				oldChild._$destroy();
 			}
-			
+
 			/*
 			 * Wire the new contentItem into the tree
 			 */
@@ -27214,7 +27376,7 @@
 			/*
 			 * Update tab reference
 			 */
-			if ( this.isStack ) {
+			if( this.isStack ) {
 				this.header.tabs[ index ].contentItem = newChild;
 			}
 
@@ -27227,7 +27389,7 @@
 		},
 
 		/**
-		 * Convenience method. 
+		 * Convenience method.
 		 * Shorthand for this.parent.removeChild( this )
 		 *
 		 * @returns {void}
@@ -27237,7 +27399,7 @@
 		},
 
 		/**
-		 * Removes the component from the layout and creates a new 
+		 * Removes the component from the layout and creates a new
 		 * browser window with the component and its children inside
 		 *
 		 * @returns {lm.controls.BrowserPopout}
@@ -27253,7 +27415,8 @@
 		 *
 		 * @returns {void}
 		 */
-		toggleMaximise: function() {
+		toggleMaximise: function( e ) {
+			e && e.preventDefault();
 			if( this.isMaximised === true ) {
 				this.layoutManager._$minimiseItem( this );
 			} else {
@@ -27290,7 +27453,7 @@
 
 		/**
 		 * Set this component's title
-		 * 
+		 *
 		 * @public
 		 * @param {String} title
 		 *
@@ -27356,7 +27519,7 @@
 			if( !this.hasId( id ) ) {
 				throw new Error( 'Id not found' );
 			}
-			
+
 			if( typeof this.config.id === 'string' ) {
 				delete this.config.id;
 			} else if( this.config.id instanceof Array ) {
@@ -27366,13 +27529,13 @@
 		},
 
 		/****************************************
-		* SELECTOR
-		****************************************/
+		 * SELECTOR
+		 ****************************************/
 		getItemsByFilter: function( filter ) {
 			var result = [],
 				next = function( contentItem ) {
 					for( var i = 0; i < contentItem.contentItems.length; i++ ) {
-						
+
 						if( filter( contentItem.contentItems[ i ] ) === true ) {
 							result.push( contentItem.contentItems[ i ] );
 						}
@@ -27386,13 +27549,13 @@
 		},
 
 		getItemsById: function( id ) {
-			return this.getItemsByFilter( function( item ){
+			return this.getItemsByFilter( function( item ) {
 				if( item.config.id instanceof Array ) {
 					return lm.utils.indexOf( id, item.config.id ) !== -1;
 				} else {
 					return item.config.id === id;
 				}
-			});
+			} );
 		},
 
 		getItemsByType: function( type ) {
@@ -27412,12 +27575,12 @@
 		},
 
 		/****************************************
-		* PACKAGE PRIVATE
-		****************************************/
+		 * PACKAGE PRIVATE
+		 ****************************************/
 		_$getItemsByProperty: function( key, value ) {
-			return this.getItemsByFilter( function( item ){
+			return this.getItemsByFilter( function( item ) {
 				return item[ key ] === value;
-			});
+			} );
 		},
 
 		_$setParent: function( parent ) {
@@ -27442,7 +27605,6 @@
 			this._callOnActiveComponents( 'show' );
 			this.element.show();
 			this.layoutManager.updateSize();
-			this._callOnActiveComponents( 'shown' );
 		},
 
 		_callOnActiveComponents: function( methodName ) {
@@ -27458,7 +27620,7 @@
 				}
 			}
 		},
-		
+
 		/**
 		 * Destroys this item ands its children
 		 *
@@ -27503,11 +27665,11 @@
 		 * The tree of content items is created in two steps: First all content items are instantiated,
 		 * then init is called recursively from top to bottem. This is the basic init function,
 		 * it can be used, extended or overwritten by the content items
-		 * 
+		 *
 		 * Its behaviour depends on the content item
 		 *
 		 * @package private
-		 * 
+		 *
 		 * @returns {void}
 		 */
 		_$init: function() {
@@ -27564,13 +27726,13 @@
 		 * @returns {configuration item node} extended config
 		 */
 		_extendItemNode: function( config ) {
-			
+
 			for( var key in lm.config.itemDefaultConfig ) {
 				if( config[ key ] === undefined ) {
 					config[ key ] = lm.config.itemDefaultConfig[ key ];
 				}
 			}
-			
+
 			return config;
 		},
 
@@ -27578,8 +27740,8 @@
 		 * Called for every event on the item tree. Decides whether the event is a bubbling
 		 * event and propagates it to its parent
 		 *
-		 * @param	{String} name the name of the event
-		 * @param   {lm.utils.BubblingEvent} event 
+		 * @param    {String} name the name of the event
+		 * @param   {lm.utils.BubblingEvent} event
 		 *
 		 * @returns {void}
 		 */
@@ -27587,7 +27749,7 @@
 			if( event instanceof lm.utils.BubblingEvent &&
 				event.isPropagationStopped === false &&
 				this.isInitialised === true ) {
-				
+
 				/**
 				 * In some cases (e.g. if an element is created from a DragSource) it
 				 * doesn't have a parent and is not below root. If that's the case
@@ -27621,7 +27783,7 @@
 					lm.utils.animFrame( lm.utils.fnBind( this._propagateEventToLayoutManager, this, [ name, event ] ) );
 				}
 			}
-			
+
 		},
 
 		/**
@@ -27636,7 +27798,7 @@
 			this._pendingEventPropagations[ name ] = false;
 			this.layoutManager.emit( name, event );
 		}
-	});
+	} );
 
 	/**
 	 * @param {[type]} layoutManager [description]
@@ -27658,7 +27820,7 @@
 
 		this.isComponent = true;
 		this.container = new lm.container.ItemContainer( this.config, this, layoutManager );
-		this.instance = new ComponentConstructor( this.container, componentConfig  );
+		this.instance = new ComponentConstructor( this.container, componentConfig );
 		this.element = this.container._element;
 	};
 
@@ -27671,7 +27833,10 @@
 		},
 
 		setSize: function() {
-			this.container._$setSize( this.element.width(), this.element.height() );
+			if( this.element.is( ':visible' ) ) {
+				// Do not update size of hidden components to prevent unwanted reflows
+				this.container._$setSize( this.element.width(), this.element.height() );
+			}
 		},
 
 		_$init: function() {
@@ -27688,14 +27853,14 @@
 			this.container.show();
 			lm.items.AbstractContentItem.prototype._$show.call( this );
 		},
-		
+
 		_$shown: function() {
 			this.container.shown();
 			lm.items.AbstractContentItem.prototype._$shown.call( this );
 		},
 
 		_$destroy: function() {
-			this.container.emit( 'destroy' );
+			this.container.emit( 'destroy', this );
 			lm.items.AbstractContentItem.prototype._$destroy.call( this );
 		},
 
@@ -27707,7 +27872,8 @@
 		_$getArea: function() {
 			return null;
 		}
-	});
+	} );
+
 	lm.items.Root = function( layoutManager, config, containerElement ) {
 		lm.items.AbstractContentItem.call( this, layoutManager, config, null );
 		this.isRoot = true;
@@ -27729,14 +27895,14 @@
 			contentItem = this.layoutManager._$normalizeContentItem( contentItem, this );
 			this.childElementContainer.append( contentItem.element );
 			lm.items.AbstractContentItem.prototype.addChild.call( this, contentItem );
-			
+
 			this.callDownwards( 'setSize' );
 			this.emitBubblingEvent( 'stateChanged' );
 		},
 
-		setSize: function() {
-			var width = this._containerElement.width(),
-				height = this._containerElement.height();
+		setSize: function( width, height ) {
+			width = (typeof width === 'undefined') ? this._containerElement.width() : width;
+			height = (typeof height === 'undefined') ? this._containerElement.height() : height;
 
 			this.element.width( width );
 			this.element.height( height );
@@ -27749,19 +27915,49 @@
 				this.contentItems[ 0 ].element.height( height );
 			}
 		},
+		_$highlightDropZone: function( x, y, area ) {
+			this.layoutManager.tabDropPlaceholder.remove();
+			lm.items.AbstractContentItem.prototype._$highlightDropZone.apply( this, arguments );
+		},
 
-		_$onDrop: function( contentItem ) {
+		_$onDrop: function( contentItem, area ) {
 			var stack;
 
-			if( contentItem.isComponent === true ) {
-				stack = this.layoutManager.createContentItem( {type: 'stack' }, this );
+			if( contentItem.isComponent ) {
+				stack = this.layoutManager.createContentItem( {
+					type: 'stack',
+					header: contentItem.config.header || {}
+				}, this );
+				stack._$init();
 				stack.addChild( contentItem );
-				this.addChild( stack );
-			} else {
+				contentItem = stack;
+			}
+
+			if( !this.contentItems.length ) {
 				this.addChild( contentItem );
+			} else {
+				var type = area.side[ 0 ] == 'x' ? 'row' : 'column';
+				var dimension = area.side[ 0 ] == 'x' ? 'width' : 'height';
+				var insertBefore = area.side[ 1 ] == '2';
+				var column = this.contentItems[ 0 ];
+				if( !column instanceof lm.items.RowOrColumn || column.type != type ) {
+					var rowOrColumn = this.layoutManager.createContentItem( { type: type }, this );
+					this.replaceChild( column, rowOrColumn );
+					rowOrColumn.addChild( contentItem, insertBefore ? 0 : undefined, true );
+					rowOrColumn.addChild( column, insertBefore ? undefined : 0, true );
+					column.config[ dimension ] = 50;
+					contentItem.config[ dimension ] = 50;
+					rowOrColumn.callDownwards( 'setSize' );
+				} else {
+					var sibbling = column.contentItems[ insertBefore ? 0 : column.contentItems.length - 1 ]
+					column.addChild( contentItem, insertBefore ? 0 : undefined, true );
+					sibbling.config[ dimension ] *= 0.5;
+					contentItem.config[ dimension ] = sibbling.config[ dimension ];
+					column.callDownwards( 'setSize' );
+				}
 			}
 		}
-	});
+	} );
 
 
 
@@ -27770,7 +27966,7 @@
 
 		this.isRow = !isColumn;
 		this.isColumn = isColumn;
-		
+
 		this.element = $( '<div class="lm_item lm_' + ( isColumn ? 'column' : 'row' ) + '"></div>' );
 		this.childElementContainer = this.element;
 		this._splitterSize = layoutManager.config.dimensions.borderWidth;
@@ -27785,7 +27981,7 @@
 	lm.utils.extend( lm.items.RowOrColumn, lm.items.AbstractContentItem );
 
 	lm.utils.copy( lm.items.RowOrColumn.prototype, {
-		
+
 		/**
 		 * Add a new contentItem to the Row or Column
 		 *
@@ -27799,18 +27995,18 @@
 		 * @returns {void}
 		 */
 		addChild: function( contentItem, index, _$suspendResize ) {
-		
+
 			var newItemSize, itemSize, i, splitterElement;
-		
+
 			contentItem = this.layoutManager._$normalizeContentItem( contentItem, this );
 
 			if( index === undefined ) {
 				index = this.contentItems.length;
 			}
-		
+
 			if( this.contentItems.length > 0 ) {
 				splitterElement = this._createSplitter( Math.max( 0, index - 1 ) ).element;
-		
+
 				if( index > 0 ) {
 					this.contentItems[ index - 1 ].element.after( splitterElement );
 					splitterElement.after( contentItem.element );
@@ -27821,16 +28017,16 @@
 			} else {
 				this.childElementContainer.append( contentItem.element );
 			}
-			
+
 			lm.items.AbstractContentItem.prototype.addChild.call( this, contentItem, index );
-		
+
 			newItemSize = ( 1 / this.contentItems.length ) * 100;
-			
+
 			if( _$suspendResize === true ) {
 				this.emitBubblingEvent( 'stateChanged' );
 				return;
 			}
-			
+
 			for( i = 0; i < this.contentItems.length; i++ ) {
 				if( this.contentItems[ i ] === contentItem ) {
 					contentItem.config[ this._dimension ] = newItemSize;
@@ -27839,7 +28035,7 @@
 					this.contentItems[ i ].config[ this._dimension ] = itemSize;
 				}
 			}
-			
+
 			this.callDownwards( 'setSize' );
 			this.emitBubblingEvent( 'stateChanged' );
 		},
@@ -27862,7 +28058,7 @@
 			if( index === -1 ) {
 				throw new Error( 'Can\'t remove child. ContentItem is not child of this Row or Column' );
 			}
-			
+
 			/**
 			 * Remove the splitter before the item or after if the item happens
 			 * to be the first in the row/column
@@ -27871,7 +28067,7 @@
 				this._splitter[ splitterIndex ]._$destroy();
 				this._splitter.splice( splitterIndex, 1 );
 			}
-			
+
 			/**
 			 * Allocate the space that the removed item occupied to the remaining items
 			 */
@@ -27880,7 +28076,7 @@
 					this.contentItems[ i ].config[ this._dimension ] += removedItemSize / ( this.contentItems.length - 1 );
 				}
 			}
-		
+
 			lm.items.AbstractContentItem.prototype.removeChild.call( this, contentItem, keepChild );
 
 			if( this.contentItems.length === 1 && this.config.isClosable === true ) {
@@ -27892,7 +28088,7 @@
 				this.emitBubblingEvent( 'stateChanged' );
 			}
 		},
-		
+
 		/**
 		 * Replaces a child of this Row or Column with another contentItem
 		 *
@@ -27908,7 +28104,7 @@
 			this.callDownwards( 'setSize' );
 			this.emitBubblingEvent( 'stateChanged' );
 		},
-		
+
 		/**
 		 * Called whenever the dimensions of this item or one of its parents change
 		 *
@@ -27922,7 +28118,7 @@
 			this.emitBubblingEvent( 'stateChanged' );
 			this.emit( 'resize' );
 		},
-		
+
 		/**
 		 * Invoked recursively by the layout manager. AbstractContentItem.init appends
 		 * the contentItem's DOM elements to the container, RowOrColumn init adds splitters
@@ -27936,95 +28132,111 @@
 			if( this.isInitialised === true ) return;
 
 			var i;
-		
+
 			lm.items.AbstractContentItem.prototype._$init.call( this );
-			
+
 			for( i = 0; i < this.contentItems.length - 1; i++ ) {
 				this.contentItems[ i ].element.after( this._createSplitter( i ).element );
 			}
 		},
-		
+
 		/**
 		 * Turns the relative sizes calculated by _calculateRelativeSizes into
 		 * absolute pixel values and applies them to the children's DOM elements
 		 *
 		 * Assigns additional pixels to counteract Math.floor
-		 * 
+		 *
 		 * @private
 		 * @returns {void}
 		 */
 		_setAbsoluteSizes: function() {
 			var i,
-				totalSplitterSize = ( this.contentItems.length - 1 ) * this._splitterSize,
+				sizeData = this._calculateAbsoluteSizes();
+
+			for( i = 0; i < this.contentItems.length; i++ ) {
+				if( sizeData.additionalPixel - i > 0 ) {
+					sizeData.itemSizes[ i ]++;
+				}
+
+				if( this._isColumn ) {
+					this.contentItems[ i ].element.width( sizeData.totalWidth );
+					this.contentItems[ i ].element.height( sizeData.itemSizes[ i ] );
+				} else {
+					this.contentItems[ i ].element.width( sizeData.itemSizes[ i ] );
+					this.contentItems[ i ].element.height( sizeData.totalHeight );
+				}
+			}
+		},
+
+		/**
+		 * Calculates the absolute sizes of all of the children of this Item.
+		 * @returns {object} - Set with absolute sizes and additional pixels.
+		 */
+		_calculateAbsoluteSizes: function() {
+			var i,
+				totalSplitterSize = (this.contentItems.length - 1) * this._splitterSize,
 				totalWidth = this.element.width(),
 				totalHeight = this.element.height(),
 				totalAssigned = 0,
 				additionalPixel,
 				itemSize,
 				itemSizes = [];
-		
+
 			if( this._isColumn ) {
 				totalHeight -= totalSplitterSize;
 			} else {
 				totalWidth -= totalSplitterSize;
 			}
-		
+
 			for( i = 0; i < this.contentItems.length; i++ ) {
 				if( this._isColumn ) {
 					itemSize = Math.floor( totalHeight * ( this.contentItems[ i ].config.height / 100 ) );
 				} else {
-					itemSize = Math.floor( totalWidth * ( this.contentItems[ i ].config.width / 100 ) );
+					itemSize = Math.floor( totalWidth * (this.contentItems[ i ].config.width / 100) );
 				}
 
 				totalAssigned += itemSize;
 				itemSizes.push( itemSize );
 			}
 
-			additionalPixel = Math.floor( ( this._isColumn ? totalHeight : totalWidth ) - totalAssigned );
+			additionalPixel = Math.floor( (this._isColumn ? totalHeight : totalWidth) - totalAssigned );
 
-			for( i = 0; i < this.contentItems.length; i++ ) {
-				if( additionalPixel - i > 0 ) {
-					itemSizes[ i ]++;
-				}
-
-				if( this._isColumn ) {
-					this.contentItems[ i ].element.width( totalWidth );
-					this.contentItems[ i ].element.height( itemSizes[ i ] );
-				} else {
-					this.contentItems[ i ].element.width( itemSizes[ i ] );
-					this.contentItems[ i ].element.height( totalHeight );
-				}
-			}
+			return {
+				itemSizes: itemSizes,
+				additionalPixel: additionalPixel,
+				totalWidth: totalWidth,
+				totalHeight: totalHeight
+			};
 		},
-		
+
 		/**
 		 * Calculates the relative sizes of all children of this Item. The logic
 		 * is as follows:
-		 * 
+		 *
 		 * - Add up the total size of all items that have a configured size
 		 *
 		 * - If the total == 100 (check for floating point errors)
-		 *		Excellent, job done
-		 * 
-		 * - If the total is > 100, 
-		 *		set the size of items without set dimensions to 1/3 and add this to the total
-		 *		set the size off all items so that the total is hundred relative to their original size 
+		 *        Excellent, job done
+		 *
+		 * - If the total is > 100,
+		 *        set the size of items without set dimensions to 1/3 and add this to the total
+		 *        set the size off all items so that the total is hundred relative to their original size
 		 *
 		 * - If the total is < 100
-		 *		If there are items without set dimensions, distribute the remainder to 100 evenly between them
-		 *		If there are no items without set dimensions, increase all items sizes relative to
-		 *		their original size so that they add up to 100
+		 *        If there are items without set dimensions, distribute the remainder to 100 evenly between them
+		 *        If there are no items without set dimensions, increase all items sizes relative to
+		 *        their original size so that they add up to 100
 		 *
 		 * @private
 		 * @returns {void}
 		 */
 		_calculateRelativeSizes: function() {
-			
+
 			var i,
 				total = 0,
 				itemsWithoutSetDimension = [],
 				dimension = this._isColumn ? 'height' : 'width';
-		
+
 			for( i = 0; i < this.contentItems.length; i++ ) {
 				if( this.contentItems[ i ].config[ dimension ] !== undefined ) {
 					total += this.contentItems[ i ].config[ dimension ];
@@ -28032,14 +28244,15 @@
 					itemsWithoutSetDimension.push( this.contentItems[ i ] );
 				}
 			}
-		
+
 			/**
 			 * Everything adds up to hundred, all good :-)
 			 */
 			if( Math.round( total ) === 100 ) {
+				this._respectMinItemWidth();
 				return;
 			}
-		
+
 			/**
 			 * Allocate the remaining size to the items without a set dimension
 			 */
@@ -28047,9 +28260,10 @@
 				for( i = 0; i < itemsWithoutSetDimension.length; i++ ) {
 					itemsWithoutSetDimension[ i ].config[ dimension ] = ( 100 - total ) / itemsWithoutSetDimension.length;
 				}
+				this._respectMinItemWidth();
 				return;
 			}
-		
+
 			/**
 			 * If the total is > 100, but there are also items without a set dimension left, assing 50
 			 * as their dimension and add it to the total
@@ -28062,15 +28276,97 @@
 					total += 50;
 				}
 			}
-		
+
 			/**
 			 * Set every items size relative to 100 relative to its size to total
 			 */
 			for( i = 0; i < this.contentItems.length; i++ ) {
 				this.contentItems[ i ].config[ dimension ] = ( this.contentItems[ i ].config[ dimension ] / total ) * 100;
 			}
+
+			this._respectMinItemWidth();
 		},
-		
+
+		/**
+		 * Adjusts the column widths to respect the dimensions minItemWidth if set.
+		 * @returns {}
+		 */
+		_respectMinItemWidth: function() {
+			var minItemWidth = this.layoutManager.config.dimensions ? (this.layoutManager.config.dimensions.minItemWidth || 0) : 0,
+				sizeData = null,
+				entriesOverMin = [],
+				totalOverMin = 0,
+				totalUnderMin = 0,
+				remainingWidth = 0,
+				itemSize = 0,
+				contentItem = null,
+				reducePercent,
+				reducedWidth,
+				allEntries = [],
+				entry;
+
+			if( this._isColumn || !minItemWidth || this.contentItems.length <= 1 ) {
+				return;
+			}
+
+			sizeData = this._calculateAbsoluteSizes();
+
+			/**
+			 * Figure out how much we are under the min item size total and how much room we have to use.
+			 */
+			for( i = 0; i < this.contentItems.length; i++ ) {
+
+				contentItem = this.contentItems[ i ];
+				itemSize = sizeData.itemSizes[ i ];
+
+				if( itemSize < minItemWidth ) {
+					totalUnderMin += minItemWidth - itemSize;
+					entry = { width: minItemWidth };
+
+				}
+				else {
+					totalOverMin += itemSize - minItemWidth;
+					entry = { width: itemSize };
+					entriesOverMin.push( entry );
+				}
+
+				allEntries.push( entry );
+			}
+
+			/**
+			 * If there is nothing under min, or there is not enough over to make up the difference, do nothing.
+			 */
+			if( totalUnderMin === 0 || totalUnderMin > totalOverMin ) {
+				return;
+			}
+
+			/**
+			 * Evenly reduce all columns that are over the min item width to make up the difference.
+			 */
+			reducePercent = totalUnderMin / totalOverMin;
+			remainingWidth = totalUnderMin;
+			for( i = 0; i < entriesOverMin.length; i++ ) {
+				entry = entriesOverMin[ i ];
+				reducedWidth = Math.round( ( entry.width - minItemWidth ) * reducePercent );
+				remainingWidth -= reducedWidth;
+				entry.width -= reducedWidth;
+			}
+
+			/**
+			 * Take anything remaining from the last item.
+			 */
+			if( remainingWidth !== 0 ) {
+				allEntries[ allEntries.length - 1 ].width -= remainingWidth;
+			}
+
+			/**
+			 * Set every items size relative to 100 relative to its size to total
+			 */
+			for( i = 0; i < this.contentItems.length; i++ ) {
+				this.contentItems[ i ].config.width = (allEntries[ i ].width / sizeData.totalWidth) * 100;
+			}
+		},
+
 		/**
 		 * Instantiates a new lm.controls.Splitter, binds events to it and adds
 		 * it to the array of splitters at the position specified as the index argument
@@ -28090,7 +28386,7 @@
 			this._splitter.splice( index, 0, splitter );
 			return splitter;
 		},
-		
+
 		/**
 		 * Locates the instance of lm.controls.Splitter in the array of
 		 * registered splitters and returns a map containing the contentItem
@@ -28103,7 +28399,7 @@
 		 */
 		_getItemsForSplitter: function( splitter ) {
 			var index = lm.utils.indexOf( splitter, this._splitter );
-			
+
 			return {
 				before: this.contentItems[ index ],
 				after: this.contentItems[ index + 1 ]
@@ -28115,17 +28411,17 @@
 		 * @param item
 		 * @private
 		 */
-		_getMinimumDimensions: function (arr) {
+		_getMinimumDimensions: function( arr ) {
 			var minWidth = 0, minHeight = 0;
 
-			for (var i = 0; i < arr.length; ++i) {
-				minWidth = Math.max(arr[i].minWidth || 0, minWidth);
-				minHeight = Math.max(arr[i].minHeight || 0, minHeight);
+			for( var i = 0; i < arr.length; ++i ) {
+				minWidth = Math.max( arr[ i ].minWidth || 0, minWidth );
+				minHeight = Math.max( arr[ i ].minHeight || 0, minHeight );
 			}
 
 			return { horizontal: minWidth, vertical: minHeight };
 		},
-		
+
 		/**
 		 * Invoked when a splitter's dragListener fires dragStart. Calculates the splitters
 		 * movement area once (so that it doesn't need calculating on every mousemove event)
@@ -28138,17 +28434,17 @@
 			var items = this._getItemsForSplitter( splitter ),
 				minSize = this.layoutManager.config.dimensions[ this._isColumn ? 'minItemHeight' : 'minItemWidth' ];
 
-			var beforeMinDim = this._getMinimumDimensions(items.before.config.content);
+			var beforeMinDim = this._getMinimumDimensions( items.before.config.content );
 			var beforeMinSize = this._isColumn ? beforeMinDim.vertical : beforeMinDim.horizontal;
 
-			var afterMinDim = this._getMinimumDimensions(items.after.config.content);
+			var afterMinDim = this._getMinimumDimensions( items.after.config.content );
 			var afterMinSize = this._isColumn ? afterMinDim.vertical : afterMinDim.horizontal;
 
 			this._splitterPosition = 0;
 			this._splitterMinPosition = -1 * ( items.before.element[ this._dimension ]() - (beforeMinSize || minSize) );
 			this._splitterMaxPosition = items.after.element[ this._dimension ]() - (afterMinSize || minSize);
 		},
-		
+
 		/**
 		 * Invoked when a splitter's DragListener fires drag. Updates the splitters DOM position,
 		 * but not the sizes of the elements the splitter controls in order to minimize resize events
@@ -28161,13 +28457,13 @@
 		 */
 		_onSplitterDrag: function( splitter, offsetX, offsetY ) {
 			var offset = this._isColumn ? offsetY : offsetX;
-		
+
 			if( offset > this._splitterMinPosition && offset < this._splitterMaxPosition ) {
 				this._splitterPosition = offset;
 				splitter.element.css( this._isColumn ? 'top' : 'left', offset );
 			}
 		},
-		
+
 		/**
 		 * Invoked when a splitter's DragListener fires dragStop. Resets the splitters DOM position,
 		 * and applies the new sizes to the elements before and after the splitter and their children
@@ -28184,23 +28480,37 @@
 				sizeAfter = items.after.element[ this._dimension ](),
 				splitterPositionInRange = ( this._splitterPosition + sizeBefore ) / ( sizeBefore + sizeAfter ),
 				totalRelativeSize = items.before.config[ this._dimension ] + items.after.config[ this._dimension ];
-		
+
 			items.before.config[ this._dimension ] = splitterPositionInRange * totalRelativeSize;
 			items.after.config[ this._dimension ] = ( 1 - splitterPositionInRange ) * totalRelativeSize;
-		
-			splitter.element.css({
+
+			splitter.element.css( {
 				'top': 0,
 				'left': 0
-			});
-			
+			} );
+
 			lm.utils.animFrame( lm.utils.fnBind( this.callDownwards, this, [ 'setSize' ] ) );
 		}
-	});
+	} );
 	lm.items.Stack = function( layoutManager, config, parent ) {
 		lm.items.AbstractContentItem.call( this, layoutManager, config, parent );
 
 		this.element = $( '<div class="lm_item lm_stack"></div>' );
 		this._activeContentItem = null;
+		var cfg = layoutManager.config;
+		this._header = { // defaults' reconstruction from old configuration style
+			show: cfg.settings.hasHeaders === true && config.hasHeaders !== false,
+			popout: cfg.settings.showPopoutIcon && cfg.labels.popout,
+			maximise: cfg.settings.showMaximiseIcon && cfg.labels.maximise,
+			close: cfg.settings.showCloseIcon && cfg.labels.close,
+			minimise: cfg.labels.minimise,
+		};
+		if( cfg.header ) // load simplified version of header configuration (https://github.com/deepstreamIO/golden-layout/pull/245)
+			lm.utils.copy( this._header, cfg.header );
+		if( config.header ) // load from stack
+			lm.utils.copy( this._header, config.header );
+		if( config.content && config.content[ 0 ] && config.content[ 0 ].header ) // load from component if stack omitted
+			lm.utils.copy( this._header, config.content[ 0 ].header );
 
 		this._dropZones = {};
 		this._dropSegment = null;
@@ -28212,11 +28522,9 @@
 		this.childElementContainer = $( '<div class="lm_items"></div>' );
 		this.header = new lm.controls.Header( layoutManager, this );
 
-		if( layoutManager.config.settings.hasHeaders === true ) {
-			this.element.append( this.header.element );
-		}
-
+		this.element.append( this.header.element );
 		this.element.append( this.childElementContainer );
+		this._setupHeaderPosition();
 		this._$validateClosability();
 	};
 
@@ -28226,8 +28534,9 @@
 
 		setSize: function() {
 			var i,
-				contentWidth = this.element.width(),
-				contentHeight = this.element.height() - this.layoutManager.config.dimensions.headerHeight;
+				headerSize = this._header.show ? this.layoutManager.config.dimensions.headerHeight : 0,
+				contentWidth = this.element.width() - (this._sided ? headerSize : 0),
+				contentHeight = this.element.height() - (!this._sided ? headerSize : 0);
 
 			this.childElementContainer.width( contentWidth );
 			this.childElementContainer.height( contentHeight );
@@ -28257,7 +28566,7 @@
 				if( !initialItem ) {
 					throw new Error( 'Configured activeItemIndex out of bounds' );
 				}
-				
+
 				this.setActiveContentItem( initialItem );
 			}
 		},
@@ -28297,13 +28606,13 @@
 			var index = lm.utils.indexOf( contentItem, this.contentItems );
 			lm.items.AbstractContentItem.prototype.removeChild.call( this, contentItem, keepChild );
 			this.header.removeTab( contentItem );
-			
+
 			if( this.contentItems.length > 0 ) {
-				this.setActiveContentItem( this.contentItems[ Math.max( index -1 , 0 ) ] );
+				this.setActiveContentItem( this.contentItems[ Math.max( index - 1, 0 ) ] );
 			} else {
 				this._activeContentItem = null;
 			}
-			
+
 			this._$validateClosability();
 			this.emitBubblingEvent( 'stateChanged' );
 		},
@@ -28323,9 +28632,9 @@
 
 			isClosable = this.header._isClosable();
 
-			for ( i = 0, len = this.contentItems.length; i < len; i++ ) {
-				if (!isClosable) { 
-					break; 
+			for( i = 0, len = this.contentItems.length; i < len; i++ ) {
+				if( !isClosable ) {
+					break;
 				}
 
 				isClosable = this.contentItems[ i ].config.isClosable;
@@ -28345,19 +28654,19 @@
 		 *
 		 * It was dropped on either the stacks header or the top, right, bottom or left bit of the content area
 		 * (which one of those is stored in this._dropSegment). Now, if the user has dropped on the header the case
-		 * is relatively clear: We add the item to the existing stack... job done (might be good to have 
+		 * is relatively clear: We add the item to the existing stack... job done (might be good to have
 		 * tab reordering at some point, but lets not sweat it right now)
 		 *
 		 * If the item was dropped on the content part things are a bit more complicated. If it was dropped on either the
-		 * top or bottom region we need to create a new column and place the items accordingly. 
-		 * Unless, of course if the stack is already within a column... in which case we want 
-		 * to add the newly created item to the existing column... 
+		 * top or bottom region we need to create a new column and place the items accordingly.
+		 * Unless, of course if the stack is already within a column... in which case we want
+		 * to add the newly created item to the existing column...
 		 * either prepend or append it, depending on wether its top or bottom.
 		 *
 		 * Same thing for rows and left / right drop segments... so in total there are 9 things that can potentially happen
 		 * (left, top, right, bottom) * is child of the right parent (row, column) + header drop
-		 * 
-		 * @param	{lm.item} contentItem
+		 *
+		 * @param    {lm.item} contentItem
 		 *
 		 * @returns {void}
 		 */
@@ -28399,7 +28708,10 @@
 			 * The content item can be either a component or a stack. If it is a component, wrap it into a stack
 			 */
 			if( contentItem.isComponent ) {
-				stack = this.layoutManager.createContentItem({ type: 'stack' }, this );
+				stack = this.layoutManager.createContentItem( {
+					type: 'stack',
+					header: contentItem.config.header || {}
+				}, this );
 				stack._$init();
 				stack.addChild( contentItem );
 				contentItem = stack;
@@ -28415,13 +28727,13 @@
 				this.config[ dimension ] *= 0.5;
 				contentItem.config[ dimension ] = this.config[ dimension ];
 				this.parent.callDownwards( 'setSize' );
-			/*
-			 * This handles items that are dropped on top or bottom of a row or left / right of a column. We need
-			 * to create the appropriate contentItem for them to live in
-			 */
+				/*
+				 * This handles items that are dropped on top or bottom of a row or left / right of a column. We need
+				 * to create the appropriate contentItem for them to live in
+				 */
 			} else {
 				type = isVertical ? 'column' : 'row';
-				rowOrColumn = this.layoutManager.createContentItem({ type: type }, this );
+				rowOrColumn = this.layoutManager.createContentItem( { type: type }, this );
 				this.parent.replaceChild( this, rowOrColumn );
 
 				rowOrColumn.addChild( contentItem, insertBefore ? 0 : undefined, true );
@@ -28437,8 +28749,8 @@
 		 * If the user hovers above the header part of the stack, indicate drop positions for tabs.
 		 * otherwise indicate which segment of the body the dragged item would be dropped on
 		 *
-		 * @param	{Int} x Absolute Screen X
-		 * @param	{Int} y Absolute Screen Y
+		 * @param    {Int} x Absolute Screen X
+		 * @param    {Int} y Absolute Screen Y
 		 *
 		 * @returns {void}
 		 */
@@ -28452,12 +28764,12 @@
 
 					if( segment === 'header' ) {
 						this._dropSegment = 'header';
-						this._highlightHeaderDropZone( x );
+						this._highlightHeaderDropZone( this._sided ? y : x );
 					} else {
 						this._resetHeaderDropZone();
 						this._highlightBodyDropZone( segment );
 					}
-					
+
 					return;
 				}
 			}
@@ -28467,7 +28779,7 @@
 			if( this.element.is( ':visible' ) === false ) {
 				return null;
 			}
-			
+
 			var getArea = lm.items.AbstractContentItem.prototype._$getArea,
 				headerArea = getArea.call( this, this.header.element ),
 				contentArea = getArea.call( this, this.childElementContainer ),
@@ -28551,7 +28863,7 @@
 					y2: contentArea.y1 + contentHeight * 0.5
 				}
 			};
-			
+
 			this._contentAreaDimensions.right = {
 				hoverArea: {
 					x1: contentArea.x1 + contentWidth * 0.75,
@@ -28602,12 +28914,12 @@
 			if( tabsLength === 0 ) {
 				headerOffset = this.header.element.offset();
 
-				this.layoutManager.dropTargetIndicator.highlightArea({
+				this.layoutManager.dropTargetIndicator.highlightArea( {
 					x1: headerOffset.left,
 					x2: headerOffset.left + 100,
 					y1: headerOffset.top + this.header.element.height() - 20,
 					y2: headerOffset.top + this.header.element.height()
-				});
+				} );
 
 				return;
 			}
@@ -28615,9 +28927,15 @@
 			for( i = 0; i < tabsLength; i++ ) {
 				tabElement = this.header.tabs[ i ].element;
 				offset = tabElement.offset();
-				tabLeft = offset.left;
-				tabTop = offset.top;
-				tabWidth = tabElement.width();
+				if( this._sided ) {
+					tabLeft = offset.top;
+					tabTop = offset.left;
+					tabWidth = tabElement.height();
+				} else {
+					tabLeft = offset.left;
+					tabTop = offset.top;
+					tabWidth = tabElement.width();
+				}
 
 				if( x > tabLeft && x < tabLeft + tabWidth ) {
 					isAboveTab = true;
@@ -28640,18 +28958,43 @@
 			}
 
 
+			if( this._sided ) {
+				placeHolderTop = this.layoutManager.tabDropPlaceholder.offset().top;
+				this.layoutManager.dropTargetIndicator.highlightArea( {
+					x1: tabTop,
+					x2: tabTop + tabElement.innerHeight(),
+					y1: placeHolderTop,
+					y2: placeHolderTop + this.layoutManager.tabDropPlaceholder.width()
+				} );
+				return;
+			}
 			placeHolderLeft = this.layoutManager.tabDropPlaceholder.offset().left;
 
-			this.layoutManager.dropTargetIndicator.highlightArea({
+			this.layoutManager.dropTargetIndicator.highlightArea( {
 				x1: placeHolderLeft,
 				x2: placeHolderLeft + this.layoutManager.tabDropPlaceholder.width(),
 				y1: tabTop,
 				y2: tabTop + tabElement.innerHeight()
-			});
+			} );
 		},
 
 		_resetHeaderDropZone: function() {
 			this.layoutManager.tabDropPlaceholder.remove();
+		},
+
+		_setupHeaderPosition: function() {
+			var side = [ 'right', 'left', 'bottom' ].indexOf( this._header.show ) >= 0 && this._header.show;
+			this.header.element.toggle( !!this._header.show );
+			this._side = side;
+			this._sided = [ 'right', 'left' ].indexOf( this._side ) >= 0;
+			this.element.removeClass( 'lm_left lm_right lm_bottom' );
+			if( this._side )
+				this.element.addClass( 'lm_' + this._side );
+			if( this.element.find( '.lm_header' ).length && this.childElementContainer ) {
+				var headerPosition = [ 'right', 'bottom' ].indexOf( this._side ) >= 0 ? 'before' : 'after';
+				this.header.element[ headerPosition ]( this.childElementContainer );
+				this.callDownwards( 'setSize' );
+			}
 		},
 
 		_highlightBodyDropZone: function( segment ) {
@@ -28659,7 +29002,7 @@
 			this.layoutManager.dropTargetIndicator.highlightArea( highlightArea );
 			this._dropSegment = segment;
 		}
-	});
+	} );
 
 	lm.utils.BubblingEvent = function( name, origin ) {
 		this.name = name;
@@ -28676,7 +29019,7 @@
 	 *
 	 * @constructor
 	 */
-	lm.utils.ConfigMinifier = function(){
+	lm.utils.ConfigMinifier = function() {
 		this._keys = [
 			'settings',
 			'hasHeaders',
@@ -28755,7 +29098,7 @@
 		 *
 		 * @returns {Object} the original configuration
 		 */
-		unminifyConfig: function( minifiedConfig ) { 
+		unminifyConfig: function( minifiedConfig ) {
 			var orig = {};
 			this._nextLevel( minifiedConfig, orig, '_max' );
 			return orig;
@@ -28766,7 +29109,7 @@
 		 *
 		 * @param   {Array|Object} orig
 		 * @param   {Array|Object} min
-		 * @param 	{String} translationFn
+		 * @param    {String} translationFn
 		 *
 		 * @returns {void}
 		 */
@@ -28798,10 +29141,10 @@
 					to[ minKey ] = from[ key ] instanceof Array ? [] : {};
 					this._nextLevel( from[ key ], to[ minKey ], translationFn );
 
-				/**
-				 * For primitive values (Strings, Numbers, Boolean etc.)
-				 * minify the value
-				 */
+					/**
+					 * For primitive values (Strings, Numbers, Boolean etc.)
+					 * minify the value
+					 */
 				} else {
 					to[ minKey ] = this[ translationFn ]( from[ key ], this._values );
 				}
@@ -28826,16 +29169,16 @@
 			}
 
 			var index = lm.utils.indexOf( value, dictionary );
-			
+
 			/**
 			 * value not found in the dictionary, return it unmodified
 			 */
 			if( index === -1 ) {
 				return value;
 
-			/**
-			 * value found in dictionary, return its base36 counterpart
-			 */
+				/**
+				 * value found in dictionary, return its base36 counterpart
+				 */
 			} else {
 				return index.toString( 36 );
 			}
@@ -28863,7 +29206,7 @@
 			 */
 			return value;
 		}
-	});
+	} );
 
 	/**
 	 * An EventEmitter singleton that propagates events
@@ -28877,7 +29220,7 @@
 	 * - Propagate events from children to the other children (but not the emitting one) and the parent
 	 *
 	 * @constructor
-	 * 
+	 *
 	 * @param {lm.LayoutManager} layoutManager
 	 */
 	lm.utils.EventHub = function( layoutManager ) {
@@ -28887,7 +29230,7 @@
 		this._childEventSource = null;
 		this.on( lm.utils.EventEmitter.ALL_EVENT, lm.utils.fnBind( this._onEventFromThis, this ) );
 		this._boundOnEventFromChild = lm.utils.fnBind( this._onEventFromChild, this );
-		$(window).on( 'gl_child_event', this._boundOnEventFromChild );
+		$( window ).on( 'gl_child_event', this._boundOnEventFromChild );
 	};
 
 	/**
@@ -28896,7 +29239,7 @@
 	 * @private
 	 *
 	 * @param {Mixed}
-	 * 
+	 *
 	 * @returns {void}
 	 */
 	lm.utils.EventHub.prototype._onEventFromThis = function() {
@@ -28948,11 +29291,11 @@
 	 */
 	lm.utils.EventHub.prototype._propagateToParent = function( args ) {
 		var event,
-			eventName = 'gl_child_event'; 
+			eventName = 'gl_child_event';
 
-		if (document.createEvent) {
+		if( document.createEvent ) {
 			event = window.opener.document.createEvent( 'HTMLEvents' );
-			event.initEvent( eventName, true, true);
+			event.initEvent( eventName, true, true );
 		} else {
 			event = window.opener.document.createEventObject();
 			event.eventType = eventName;
@@ -28962,8 +29305,8 @@
 		event.__glArgs = args;
 		event.__gl = this._layoutManager;
 
-		if (document.createEvent) {
-			window.opener.dispatchEvent(event);
+		if( document.createEvent ) {
+			window.opener.dispatchEvent( event );
 		} else {
 			window.opener.fireEvent( 'on' + event.eventType, event );
 		}
@@ -28998,7 +29341,7 @@
 	 */
 
 	lm.utils.EventHub.prototype.destroy = function() {
-		$(window).off( 'gl_child_event', this._boundOnEventFromChild );
+		$( window ).off( 'gl_child_event', this._boundOnEventFromChild );
 	};
 	/**
 	 * A specialised GoldenLayout component that binds GoldenLayout container
@@ -29031,8 +29374,9 @@
 		 * @returns {void}
 		 */
 		_render: function() {
-			this._reactComponent = ReactDOM.render( this._getReactComponent(), this._container.getElement()[ 0 ]);
-			this._originalComponentWillUpdate = this._reactComponent.componentWillUpdate || function(){};
+			this._reactComponent = ReactDOM.render( this._getReactComponent(), this._container.getElement()[ 0 ] );
+			this._originalComponentWillUpdate = this._reactComponent.componentWillUpdate || function() {
+				};
 			this._reactComponent.componentWillUpdate = this._onUpdate.bind( this );
 			if( this._container.getState() ) {
 				this._reactComponent.setState( this._container.getState() );
@@ -29046,7 +29390,7 @@
 		 * @returns {void}
 		 */
 		_destroy: function() {
-			ReactDOM.unmountComponentAtNode( this._container.getElement()[ 0 ]);
+			ReactDOM.unmountComponentAtNode( this._container.getElement()[ 0 ] );
 			this._container.off( 'open', this._render, this );
 			this._container.off( 'destroy', this._destroy, this );
 		},
@@ -29101,24 +29445,24 @@
 			var props = $.extend( defaultProps, this._container._config.props );
 			return React.createElement( this._reactClass, props );
 		}
-	});})(window.$);
+	} );})(window.$);
 
-/***/ },
+/***/ }),
 /* 160 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-	 * jQuery JavaScript Library v3.1.1
+	 * jQuery JavaScript Library v3.2.1
 	 * https://jquery.com/
 	 *
 	 * Includes Sizzle.js
 	 * https://sizzlejs.com/
 	 *
-	 * Copyright jQuery Foundation and other contributors
+	 * Copyright JS Foundation and other contributors
 	 * Released under the MIT license
 	 * https://jquery.org/license
 	 *
-	 * Date: 2016-09-22T22:30Z
+	 * Date: 2017-03-20T18:59Z
 	 */
 	( function( global, factory ) {
 
@@ -29197,7 +29541,7 @@
 
 
 	var
-		version = "3.1.1",
+		version = "3.2.1",
 
 		// Define a local copy of jQuery
 		jQuery = function( selector, context ) {
@@ -29345,11 +29689,11 @@
 
 					// Recurse if we're merging plain objects or arrays
 					if ( deep && copy && ( jQuery.isPlainObject( copy ) ||
-						( copyIsArray = jQuery.isArray( copy ) ) ) ) {
+						( copyIsArray = Array.isArray( copy ) ) ) ) {
 
 						if ( copyIsArray ) {
 							copyIsArray = false;
-							clone = src && jQuery.isArray( src ) ? src : [];
+							clone = src && Array.isArray( src ) ? src : [];
 
 						} else {
 							clone = src && jQuery.isPlainObject( src ) ? src : {};
@@ -29387,8 +29731,6 @@
 		isFunction: function( obj ) {
 			return jQuery.type( obj ) === "function";
 		},
-
-		isArray: Array.isArray,
 
 		isWindow: function( obj ) {
 			return obj != null && obj === obj.window;
@@ -29462,10 +29804,6 @@
 		// Microsoft forgot to hump their vendor prefix (#9572)
 		camelCase: function( string ) {
 			return string.replace( rmsPrefix, "ms-" ).replace( rdashAlpha, fcamelCase );
-		},
-
-		nodeName: function( elem, name ) {
-			return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 		},
 
 		each: function( obj, callback ) {
@@ -31952,6 +32290,13 @@
 
 	var rneedsContext = jQuery.expr.match.needsContext;
 
+
+
+	function nodeName( elem, name ) {
+
+	  return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
+
+	};
 	var rsingleTag = ( /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i );
 
 
@@ -32303,7 +32648,18 @@
 			return siblings( elem.firstChild );
 		},
 		contents: function( elem ) {
-			return elem.contentDocument || jQuery.merge( [], elem.childNodes );
+	        if ( nodeName( elem, "iframe" ) ) {
+	            return elem.contentDocument;
+	        }
+
+	        // Support: IE 9 - 11 only, iOS 7 only, Android Browser <=4.3 only
+	        // Treat the template element as a regular one in browsers that
+	        // don't support it.
+	        if ( nodeName( elem, "template" ) ) {
+	            elem = elem.content || elem;
+	        }
+
+	        return jQuery.merge( [], elem.childNodes );
 		}
 	}, function( name, fn ) {
 		jQuery.fn[ name ] = function( until, selector ) {
@@ -32401,7 +32757,7 @@
 			fire = function() {
 
 				// Enforce single-firing
-				locked = options.once;
+				locked = locked || options.once;
 
 				// Execute callbacks for all pending executions,
 				// respecting firingIndex overrides and runtime changes
@@ -32570,7 +32926,7 @@
 		throw ex;
 	}
 
-	function adoptValue( value, resolve, reject ) {
+	function adoptValue( value, resolve, reject, noValue ) {
 		var method;
 
 		try {
@@ -32586,9 +32942,10 @@
 			// Other non-thenables
 			} else {
 
-				// Support: Android 4.0 only
-				// Strict mode functions invoked without .call/.apply get global-object context
-				resolve.call( undefined, value );
+				// Control `resolve` arguments by letting Array#slice cast boolean `noValue` to integer:
+				// * false: [ value ].slice( 0 ) => resolve( value )
+				// * true: [ value ].slice( 1 ) => resolve()
+				resolve.apply( undefined, [ value ].slice( noValue ) );
 			}
 
 		// For Promises/A+, convert exceptions into rejections
@@ -32598,7 +32955,7 @@
 
 			// Support: Android 4.0 only
 			// Strict mode functions invoked without .call/.apply get global-object context
-			reject.call( undefined, value );
+			reject.apply( undefined, [ value ] );
 		}
 	}
 
@@ -32923,7 +33280,8 @@
 
 			// Single- and empty arguments are adopted like Promise.resolve
 			if ( remaining <= 1 ) {
-				adoptValue( singleValue, master.done( updateFunc( i ) ).resolve, master.reject );
+				adoptValue( singleValue, master.done( updateFunc( i ) ).resolve, master.reject,
+					!remaining );
 
 				// Use .then() to unwrap secondary thenables (cf. gh-3000)
 				if ( master.state() === "pending" ||
@@ -32994,15 +33352,6 @@
 		// A counter to track how many items to wait for before
 		// the ready event fires. See #6781
 		readyWait: 1,
-
-		// Hold (or release) the ready event
-		holdReady: function( hold ) {
-			if ( hold ) {
-				jQuery.readyWait++;
-			} else {
-				jQuery.ready( true );
-			}
-		},
 
 		// Handle when the DOM is ready
 		ready: function( wait ) {
@@ -33239,7 +33588,7 @@
 			if ( key !== undefined ) {
 
 				// Support array or space separated string of keys
-				if ( jQuery.isArray( key ) ) {
+				if ( Array.isArray( key ) ) {
 
 					// If key is an array of keys...
 					// We always set camelCase keys, so remove that.
@@ -33465,7 +33814,7 @@
 
 				// Speed up dequeue by getting out quickly if this is just a lookup
 				if ( data ) {
-					if ( !queue || jQuery.isArray( data ) ) {
+					if ( !queue || Array.isArray( data ) ) {
 						queue = dataPriv.access( elem, type, jQuery.makeArray( data ) );
 					} else {
 						queue.push( data );
@@ -33842,7 +34191,7 @@
 			ret = [];
 		}
 
-		if ( tag === undefined || tag && jQuery.nodeName( context, tag ) ) {
+		if ( tag === undefined || tag && nodeName( context, tag ) ) {
 			return jQuery.merge( [ context ], ret );
 		}
 
@@ -34449,7 +34798,7 @@
 
 				// For checkbox, fire native event so checked state will be right
 				trigger: function() {
-					if ( this.type === "checkbox" && this.click && jQuery.nodeName( this, "input" ) ) {
+					if ( this.type === "checkbox" && this.click && nodeName( this, "input" ) ) {
 						this.click();
 						return false;
 					}
@@ -34457,7 +34806,7 @@
 
 				// For cross-browser consistency, don't fire native .click() on links
 				_default: function( event ) {
-					return jQuery.nodeName( event.target, "a" );
+					return nodeName( event.target, "a" );
 				}
 			},
 
@@ -34734,11 +35083,12 @@
 		rscriptTypeMasked = /^true\/(.*)/,
 		rcleanScript = /^\s*<!(?:\[CDATA\[|--)|(?:\]\]|--)>\s*$/g;
 
+	// Prefer a tbody over its parent table for containing new rows
 	function manipulationTarget( elem, content ) {
-		if ( jQuery.nodeName( elem, "table" ) &&
-			jQuery.nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ) {
+		if ( nodeName( elem, "table" ) &&
+			nodeName( content.nodeType !== 11 ? content : content.firstChild, "tr" ) ) {
 
-			return elem.getElementsByTagName( "tbody" )[ 0 ] || elem;
+			return jQuery( ">tbody", elem )[ 0 ] || elem;
 		}
 
 		return elem;
@@ -35268,12 +35618,18 @@
 
 	function curCSS( elem, name, computed ) {
 		var width, minWidth, maxWidth, ret,
+
+			// Support: Firefox 51+
+			// Retrieving style before computed somehow
+			// fixes an issue with getting wrong values
+			// on detached elements
 			style = elem.style;
 
 		computed = computed || getStyles( elem );
 
-		// Support: IE <=9 only
-		// getPropertyValue is only needed for .css('filter') (#12537)
+		// getPropertyValue is needed for:
+		//   .css('filter') (IE 9 only, #12537)
+		//   .css('--customProperty) (#3144)
 		if ( computed ) {
 			ret = computed.getPropertyValue( name ) || computed[ name ];
 
@@ -35339,6 +35695,7 @@
 		// except "table", "table-cell", or "table-caption"
 		// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 		rdisplayswap = /^(none|table(?!-c[ea]).+)/,
+		rcustomProp = /^--/,
 		cssShow = { position: "absolute", visibility: "hidden", display: "block" },
 		cssNormalTransform = {
 			letterSpacing: "0",
@@ -35366,6 +35723,16 @@
 				return name;
 			}
 		}
+	}
+
+	// Return a property mapped along what jQuery.cssProps suggests or to
+	// a vendor prefixed property.
+	function finalPropName( name ) {
+		var ret = jQuery.cssProps[ name ];
+		if ( !ret ) {
+			ret = jQuery.cssProps[ name ] = vendorPropName( name ) || name;
+		}
+		return ret;
 	}
 
 	function setPositiveNumber( elem, value, subtract ) {
@@ -35428,43 +35795,30 @@
 
 	function getWidthOrHeight( elem, name, extra ) {
 
-		// Start with offset property, which is equivalent to the border-box value
-		var val,
-			valueIsBorderBox = true,
+		// Start with computed style
+		var valueIsBorderBox,
 			styles = getStyles( elem ),
+			val = curCSS( elem, name, styles ),
 			isBorderBox = jQuery.css( elem, "boxSizing", false, styles ) === "border-box";
 
-		// Support: IE <=11 only
-		// Running getBoundingClientRect on a disconnected node
-		// in IE throws an error.
-		if ( elem.getClientRects().length ) {
-			val = elem.getBoundingClientRect()[ name ];
+		// Computed unit is not pixels. Stop here and return.
+		if ( rnumnonpx.test( val ) ) {
+			return val;
 		}
 
-		// Some non-html elements return undefined for offsetWidth, so check for null/undefined
-		// svg - https://bugzilla.mozilla.org/show_bug.cgi?id=649285
-		// MathML - https://bugzilla.mozilla.org/show_bug.cgi?id=491668
-		if ( val <= 0 || val == null ) {
+		// Check for style in case a browser which returns unreliable values
+		// for getComputedStyle silently falls back to the reliable elem.style
+		valueIsBorderBox = isBorderBox &&
+			( support.boxSizingReliable() || val === elem.style[ name ] );
 
-			// Fall back to computed then uncomputed css if necessary
-			val = curCSS( elem, name, styles );
-			if ( val < 0 || val == null ) {
-				val = elem.style[ name ];
-			}
-
-			// Computed unit is not pixels. Stop here and return.
-			if ( rnumnonpx.test( val ) ) {
-				return val;
-			}
-
-			// Check for style in case a browser which returns unreliable values
-			// for getComputedStyle silently falls back to the reliable elem.style
-			valueIsBorderBox = isBorderBox &&
-				( support.boxSizingReliable() || val === elem.style[ name ] );
-
-			// Normalize "", auto, and prepare for extra
-			val = parseFloat( val ) || 0;
+		// Fall back to offsetWidth/Height when value is "auto"
+		// This happens for inline elements with no explicit setting (gh-3571)
+		if ( val === "auto" ) {
+			val = elem[ "offset" + name[ 0 ].toUpperCase() + name.slice( 1 ) ];
 		}
+
+		// Normalize "", auto, and prepare for extra
+		val = parseFloat( val ) || 0;
 
 		// Use the active box-sizing model to add/subtract irrelevant styles
 		return ( val +
@@ -35529,10 +35883,15 @@
 			// Make sure that we're working with the right name
 			var ret, type, hooks,
 				origName = jQuery.camelCase( name ),
+				isCustomProp = rcustomProp.test( name ),
 				style = elem.style;
 
-			name = jQuery.cssProps[ origName ] ||
-				( jQuery.cssProps[ origName ] = vendorPropName( origName ) || origName );
+			// Make sure that we're working with the right name. We don't
+			// want to query the value if it is a CSS custom property
+			// since they are user-defined.
+			if ( !isCustomProp ) {
+				name = finalPropName( origName );
+			}
 
 			// Gets hook for the prefixed version, then unprefixed version
 			hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
@@ -35568,7 +35927,11 @@
 				if ( !hooks || !( "set" in hooks ) ||
 					( value = hooks.set( elem, value, extra ) ) !== undefined ) {
 
-					style[ name ] = value;
+					if ( isCustomProp ) {
+						style.setProperty( name, value );
+					} else {
+						style[ name ] = value;
+					}
 				}
 
 			} else {
@@ -35587,11 +35950,15 @@
 
 		css: function( elem, name, extra, styles ) {
 			var val, num, hooks,
-				origName = jQuery.camelCase( name );
+				origName = jQuery.camelCase( name ),
+				isCustomProp = rcustomProp.test( name );
 
-			// Make sure that we're working with the right name
-			name = jQuery.cssProps[ origName ] ||
-				( jQuery.cssProps[ origName ] = vendorPropName( origName ) || origName );
+			// Make sure that we're working with the right name. We don't
+			// want to modify the value if it is a CSS custom property
+			// since they are user-defined.
+			if ( !isCustomProp ) {
+				name = finalPropName( origName );
+			}
 
 			// Try prefixed name followed by the unprefixed name
 			hooks = jQuery.cssHooks[ name ] || jQuery.cssHooks[ origName ];
@@ -35616,6 +35983,7 @@
 				num = parseFloat( val );
 				return extra === true || isFinite( num ) ? num || 0 : val;
 			}
+
 			return val;
 		}
 	} );
@@ -35715,7 +36083,7 @@
 					map = {},
 					i = 0;
 
-				if ( jQuery.isArray( name ) ) {
+				if ( Array.isArray( name ) ) {
 					styles = getStyles( elem );
 					len = name.length;
 
@@ -35853,13 +36221,18 @@
 
 
 	var
-		fxNow, timerId,
+		fxNow, inProgress,
 		rfxtypes = /^(?:toggle|show|hide)$/,
 		rrun = /queueHooks$/;
 
-	function raf() {
-		if ( timerId ) {
-			window.requestAnimationFrame( raf );
+	function schedule() {
+		if ( inProgress ) {
+			if ( document.hidden === false && window.requestAnimationFrame ) {
+				window.requestAnimationFrame( schedule );
+			} else {
+				window.setTimeout( schedule, jQuery.fx.interval );
+			}
+
 			jQuery.fx.tick();
 		}
 	}
@@ -36086,7 +36459,7 @@
 			name = jQuery.camelCase( index );
 			easing = specialEasing[ name ];
 			value = props[ index ];
-			if ( jQuery.isArray( value ) ) {
+			if ( Array.isArray( value ) ) {
 				easing = value[ 1 ];
 				value = props[ index ] = value[ 0 ];
 			}
@@ -36145,12 +36518,19 @@
 
 				deferred.notifyWith( elem, [ animation, percent, remaining ] );
 
+				// If there's more to do, yield
 				if ( percent < 1 && length ) {
 					return remaining;
-				} else {
-					deferred.resolveWith( elem, [ animation ] );
-					return false;
 				}
+
+				// If this was an empty animation, synthesize a final progress notification
+				if ( !length ) {
+					deferred.notifyWith( elem, [ animation, 1, 0 ] );
+				}
+
+				// Resolve the animation and report its conclusion
+				deferred.resolveWith( elem, [ animation ] );
+				return false;
 			},
 			animation = deferred.promise( {
 				elem: elem,
@@ -36215,6 +36595,13 @@
 			animation.opts.start.call( elem, animation );
 		}
 
+		// Attach callbacks from options
+		animation
+			.progress( animation.opts.progress )
+			.done( animation.opts.done, animation.opts.complete )
+			.fail( animation.opts.fail )
+			.always( animation.opts.always );
+
 		jQuery.fx.timer(
 			jQuery.extend( tick, {
 				elem: elem,
@@ -36223,11 +36610,7 @@
 			} )
 		);
 
-		// attach callbacks from options
-		return animation.progress( animation.opts.progress )
-			.done( animation.opts.done, animation.opts.complete )
-			.fail( animation.opts.fail )
-			.always( animation.opts.always );
+		return animation;
 	}
 
 	jQuery.Animation = jQuery.extend( Animation, {
@@ -36278,8 +36661,8 @@
 			easing: fn && easing || easing && !jQuery.isFunction( easing ) && easing
 		};
 
-		// Go to the end state if fx are off or if document is hidden
-		if ( jQuery.fx.off || document.hidden ) {
+		// Go to the end state if fx are off
+		if ( jQuery.fx.off ) {
 			opt.duration = 0;
 
 		} else {
@@ -36471,7 +36854,7 @@
 		for ( ; i < timers.length; i++ ) {
 			timer = timers[ i ];
 
-			// Checks the timer has not already been removed
+			// Run the timer and safely remove it when done (allowing for external removal)
 			if ( !timer() && timers[ i ] === timer ) {
 				timers.splice( i--, 1 );
 			}
@@ -36485,30 +36868,21 @@
 
 	jQuery.fx.timer = function( timer ) {
 		jQuery.timers.push( timer );
-		if ( timer() ) {
-			jQuery.fx.start();
-		} else {
-			jQuery.timers.pop();
-		}
+		jQuery.fx.start();
 	};
 
 	jQuery.fx.interval = 13;
 	jQuery.fx.start = function() {
-		if ( !timerId ) {
-			timerId = window.requestAnimationFrame ?
-				window.requestAnimationFrame( raf ) :
-				window.setInterval( jQuery.fx.tick, jQuery.fx.interval );
+		if ( inProgress ) {
+			return;
 		}
+
+		inProgress = true;
+		schedule();
 	};
 
 	jQuery.fx.stop = function() {
-		if ( window.cancelAnimationFrame ) {
-			window.cancelAnimationFrame( timerId );
-		} else {
-			window.clearInterval( timerId );
-		}
-
-		timerId = null;
+		inProgress = null;
 	};
 
 	jQuery.fx.speeds = {
@@ -36625,7 +36999,7 @@
 			type: {
 				set: function( elem, value ) {
 					if ( !support.radioValue && value === "radio" &&
-						jQuery.nodeName( elem, "input" ) ) {
+						nodeName( elem, "input" ) ) {
 						var val = elem.value;
 						elem.setAttribute( "type", value );
 						if ( val ) {
@@ -37056,7 +37430,7 @@
 				} else if ( typeof val === "number" ) {
 					val += "";
 
-				} else if ( jQuery.isArray( val ) ) {
+				} else if ( Array.isArray( val ) ) {
 					val = jQuery.map( val, function( value ) {
 						return value == null ? "" : value + "";
 					} );
@@ -37115,7 +37489,7 @@
 								// Don't return options that are disabled or in a disabled optgroup
 								!option.disabled &&
 								( !option.parentNode.disabled ||
-									!jQuery.nodeName( option.parentNode, "optgroup" ) ) ) {
+									!nodeName( option.parentNode, "optgroup" ) ) ) {
 
 							// Get the specific value for the option
 							value = jQuery( option ).val();
@@ -37167,7 +37541,7 @@
 	jQuery.each( [ "radio", "checkbox" ], function() {
 		jQuery.valHooks[ this ] = {
 			set: function( elem, value ) {
-				if ( jQuery.isArray( value ) ) {
+				if ( Array.isArray( value ) ) {
 					return ( elem.checked = jQuery.inArray( jQuery( elem ).val(), value ) > -1 );
 				}
 			}
@@ -37462,7 +37836,7 @@
 	function buildParams( prefix, obj, traditional, add ) {
 		var name;
 
-		if ( jQuery.isArray( obj ) ) {
+		if ( Array.isArray( obj ) ) {
 
 			// Serialize array item.
 			jQuery.each( obj, function( i, v ) {
@@ -37514,7 +37888,7 @@
 			};
 
 		// If an array was passed in, assume that it is an array of form elements.
-		if ( jQuery.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
+		if ( Array.isArray( a ) || ( a.jquery && !jQuery.isPlainObject( a ) ) ) {
 
 			// Serialize the form elements
 			jQuery.each( a, function() {
@@ -37560,7 +37934,7 @@
 					return null;
 				}
 
-				if ( jQuery.isArray( val ) ) {
+				if ( Array.isArray( val ) ) {
 					return jQuery.map( val, function( val ) {
 						return { name: elem.name, value: val.replace( rCRLF, "\r\n" ) };
 					} );
@@ -38985,13 +39359,6 @@
 
 
 
-	/**
-	 * Gets a window from an element
-	 */
-	function getWindow( elem ) {
-		return jQuery.isWindow( elem ) ? elem : elem.nodeType === 9 && elem.defaultView;
-	}
-
 	jQuery.offset = {
 		setOffset: function( elem, options, i ) {
 			var curPosition, curLeft, curCSSTop, curTop, curOffset, curCSSLeft, calculatePosition,
@@ -39056,13 +39423,14 @@
 					} );
 			}
 
-			var docElem, win, rect, doc,
+			var doc, docElem, rect, win,
 				elem = this[ 0 ];
 
 			if ( !elem ) {
 				return;
 			}
 
+			// Return zeros for disconnected and hidden (display: none) elements (gh-2310)
 			// Support: IE <=11 only
 			// Running getBoundingClientRect on a
 			// disconnected node in IE throws an error
@@ -39072,20 +39440,14 @@
 
 			rect = elem.getBoundingClientRect();
 
-			// Make sure element is not hidden (display: none)
-			if ( rect.width || rect.height ) {
-				doc = elem.ownerDocument;
-				win = getWindow( doc );
-				docElem = doc.documentElement;
+			doc = elem.ownerDocument;
+			docElem = doc.documentElement;
+			win = doc.defaultView;
 
-				return {
-					top: rect.top + win.pageYOffset - docElem.clientTop,
-					left: rect.left + win.pageXOffset - docElem.clientLeft
-				};
-			}
-
-			// Return zeros for disconnected and hidden elements (gh-2310)
-			return rect;
+			return {
+				top: rect.top + win.pageYOffset - docElem.clientTop,
+				left: rect.left + win.pageXOffset - docElem.clientLeft
+			};
 		},
 
 		position: function() {
@@ -39111,7 +39473,7 @@
 
 				// Get correct offsets
 				offset = this.offset();
-				if ( !jQuery.nodeName( offsetParent[ 0 ], "html" ) ) {
+				if ( !nodeName( offsetParent[ 0 ], "html" ) ) {
 					parentOffset = offsetParent.offset();
 				}
 
@@ -39158,7 +39520,14 @@
 
 		jQuery.fn[ method ] = function( val ) {
 			return access( this, function( elem, method, val ) {
-				var win = getWindow( elem );
+
+				// Coalesce documents and windows
+				var win;
+				if ( jQuery.isWindow( elem ) ) {
+					win = elem;
+				} else if ( elem.nodeType === 9 ) {
+					win = elem.defaultView;
+				}
 
 				if ( val === undefined ) {
 					return win ? win[ prop ] : elem[ method ];
@@ -39267,7 +39636,16 @@
 		}
 	} );
 
+	jQuery.holdReady = function( hold ) {
+		if ( hold ) {
+			jQuery.readyWait++;
+		} else {
+			jQuery.ready( true );
+		}
+	};
+	jQuery.isArray = Array.isArray;
 	jQuery.parseJSON = JSON.parse;
+	jQuery.nodeName = nodeName;
 
 
 
@@ -39324,14 +39702,13 @@
 
 
 
-
 	return jQuery;
 	} );
 
 
-/***/ },
+/***/ }),
 /* 161 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -39371,14 +39748,14 @@
 		compile: _coffeekrakenCompileServer2.default.compile
 	}, 's-codemirror');
 
-/***/ },
+/***/ }),
 /* 162 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
 	var _compile = __webpack_require__(163);
@@ -39391,15 +39768,31 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * @name  	compileServer
+	 * Expose the compile server API
+	 * ### Available functions
+	 * - ```setup``` : Setup the compile server JS api
+	 * - ```compile``` : Send some code to the compile server and get the response easily
+	 * @example 		js
+	 * compileServer.setup({
+	 *  	// some options here...
+	 * });
+	 * compileServer.compile(myCoolCode, 'js').then((compiledCode) => {
+	 *  	// do something here...
+	 * });
+	 *
+	 * @author 		Olivier Bossel <olivier.bossel@gmail.com>
+	 */
 	var api = {
-		setup: _setup2.default,
-		compile: _compile2.default
+	  setup: _setup2.default,
+	  compile: _compile2.default
 	};
 	exports.default = api;
 
-/***/ },
+/***/ }),
 /* 163 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -39422,6 +39815,18 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Compile some code
+	 * @param 		{String} 			code 			The code to compile
+	 * @param 		{String} 			language 		The language of the code to compile like. (sass,scss,js,javascript,coffee,coffeescript,typescript,ts,stylus,styl)
+	 * @param 		{Object} 			[options={}] 	Some option to pass to the according compilation package bellow. (sass,scss = node-sass / js,coffee,ts = webpack with loaders / stylus = stylus)
+	 * @example 		js
+	 * const compileServer = require('coffeekraken-compile-server');
+	 * compileServer.compile(myCoolCode, 'js').then((compiledCode) => {
+	 *  	// do something here...
+	 * });
+	 * @author  	Olivier Bossel <olivier.bossel@gmail.com>
+	 */
 	function compile(code, language) {
 		var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
@@ -39450,9 +39855,9 @@
 		});
 	}
 
-/***/ },
+/***/ }),
 /* 164 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -39489,9 +39894,9 @@
 		});
 	}
 
-/***/ },
+/***/ }),
 /* 165 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -39839,9 +40244,9 @@
 
 	exports.default = SAjax;
 
-/***/ },
+/***/ }),
 /* 166 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -39868,9 +40273,9 @@
 
 	exports.default = SObject;
 
-/***/ },
+/***/ }),
 /* 167 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var EventEmitter = __webpack_require__(168).EventEmitter,
 	    queryString = __webpack_require__(169);
@@ -40022,9 +40427,9 @@
 	module.exports = Ajax;
 
 
-/***/ },
+/***/ }),
 /* 168 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	// Copyright Joyent, Inc. and other Node contributors.
 	//
@@ -40330,9 +40735,9 @@
 	}
 
 
-/***/ },
+/***/ }),
 /* 169 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		query-string
@@ -40402,9 +40807,9 @@
 	})();
 
 
-/***/ },
+/***/ }),
 /* 170 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var root_1 = __webpack_require__(171);
@@ -40549,28 +40954,34 @@
 	exports.Observable = Observable;
 	//# sourceMappingURL=Observable.js.map
 
-/***/ },
+/***/ }),
 /* 171 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {"use strict";
-	/**
-	 * window: browser in DOM main thread
-	 * self: browser in WebWorker
-	 * global: Node.js/other
-	 */
-	exports.root = (typeof window == 'object' && window.window === window && window
-	    || typeof self == 'object' && self.self === self && self
-	    || typeof global == 'object' && global.global === global && global);
-	if (!exports.root) {
-	    throw new Error('RxJS could not find any global context (window, self, global)');
-	}
+	// CommonJS / Node have global context exposed as "global" variable.
+	// We don't want to include the whole node.d.ts this this compilation unit so we'll just fake
+	// the global "global" var for now.
+	var __window = typeof window !== 'undefined' && window;
+	var __self = typeof self !== 'undefined' && typeof WorkerGlobalScope !== 'undefined' &&
+	    self instanceof WorkerGlobalScope && self;
+	var __global = typeof global !== 'undefined' && global;
+	var _root = __window || __global || __self;
+	exports.root = _root;
+	// Workaround Closure Compiler restriction: The body of a goog.module cannot use throw.
+	// This is needed when used with angular/tsickle which inserts a goog.module statement.
+	// Wrap in IIFE
+	(function () {
+	    if (!_root) {
+	        throw new Error('RxJS could not find any global context (window, self, global)');
+	    }
+	})();
 	//# sourceMappingURL=root.js.map
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
-/***/ },
+/***/ }),
 /* 172 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var Subscriber_1 = __webpack_require__(173);
@@ -40593,9 +41004,9 @@
 	exports.toSubscriber = toSubscriber;
 	//# sourceMappingURL=toSubscriber.js.map
 
-/***/ },
+/***/ }),
 /* 173 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var __extends = (this && this.__extends) || function (d, b) {
@@ -40813,15 +41224,17 @@
 	        }
 	    };
 	    SafeSubscriber.prototype.complete = function () {
+	        var _this = this;
 	        if (!this.isStopped) {
 	            var _parentSubscriber = this._parentSubscriber;
 	            if (this._complete) {
+	                var wrappedComplete = function () { return _this._complete.call(_this._context); };
 	                if (!_parentSubscriber.syncErrorThrowable) {
-	                    this.__tryOrUnsub(this._complete);
+	                    this.__tryOrUnsub(wrappedComplete);
 	                    this.unsubscribe();
 	                }
 	                else {
-	                    this.__tryOrSetError(_parentSubscriber, this._complete);
+	                    this.__tryOrSetError(_parentSubscriber, wrappedComplete);
 	                    this.unsubscribe();
 	                }
 	            }
@@ -40860,9 +41273,9 @@
 	}(Subscriber));
 	//# sourceMappingURL=Subscriber.js.map
 
-/***/ },
+/***/ }),
 /* 174 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	function isFunction(x) {
@@ -40871,9 +41284,9 @@
 	exports.isFunction = isFunction;
 	//# sourceMappingURL=isFunction.js.map
 
-/***/ },
+/***/ }),
 /* 175 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var isArray_1 = __webpack_require__(176);
@@ -41069,17 +41482,17 @@
 	}
 	//# sourceMappingURL=Subscription.js.map
 
-/***/ },
+/***/ }),
 /* 176 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	exports.isArray = Array.isArray || (function (x) { return x && typeof x.length === 'number'; });
 	//# sourceMappingURL=isArray.js.map
 
-/***/ },
+/***/ }),
 /* 177 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	function isObject(x) {
@@ -41088,9 +41501,9 @@
 	exports.isObject = isObject;
 	//# sourceMappingURL=isObject.js.map
 
-/***/ },
+/***/ }),
 /* 178 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var errorObject_1 = __webpack_require__(179);
@@ -41112,18 +41525,18 @@
 	;
 	//# sourceMappingURL=tryCatch.js.map
 
-/***/ },
+/***/ }),
 /* 179 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	// typeof any so that it we don't have to cast when comparing a result to the error object
 	exports.errorObject = { e: {} };
 	//# sourceMappingURL=errorObject.js.map
 
-/***/ },
+/***/ }),
 /* 180 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	var __extends = (this && this.__extends) || function (d, b) {
@@ -41151,9 +41564,9 @@
 	exports.UnsubscriptionError = UnsubscriptionError;
 	//# sourceMappingURL=UnsubscriptionError.js.map
 
-/***/ },
+/***/ }),
 /* 181 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 	exports.empty = {
@@ -41164,9 +41577,9 @@
 	};
 	//# sourceMappingURL=Observer.js.map
 
-/***/ },
+/***/ }),
 /* 182 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var root_1 = __webpack_require__(171);
@@ -41179,9 +41592,9 @@
 	exports.$$rxSubscriber = exports.rxSubscriber;
 	//# sourceMappingURL=rxSubscriber.js.map
 
-/***/ },
+/***/ }),
 /* 183 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 	var root_1 = __webpack_require__(171);
@@ -41210,9 +41623,9 @@
 	exports.$$observable = exports.observable;
 	//# sourceMappingURL=observable.js.map
 
-/***/ },
+/***/ }),
 /* 184 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -41233,9 +41646,9 @@
 		return string;
 	}
 
-/***/ },
+/***/ }),
 /* 185 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -41254,9 +41667,9 @@
 		return html;
 	}
 
-/***/ },
+/***/ }),
 /* 186 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
@@ -41395,24 +41808,40 @@
 
 	exports.default = SAjaxRequest;
 
-/***/ },
+/***/ }),
 /* 187 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
+	/**
+	 * @name  	settings
+	 * Describe the available settings
+	 * @type  		{Object}
+	 * @example 	js
+	 * // available settings
+	 * {
+	 * 	// the api base url
+	 * 	apiUrl : 'http://localhost:4000',
+	 * 	// a queryString to append to each request
+	 * 	queryString : 'myVar=hello&myOtherVar=world'
+	 * }
+	 *
+	 * @author 	Olivier Bossel <olivier.bossel@gmail.com>
+	 */
+
 	var settings = {
-		apiUrl: 'http://localhost:4000',
-		queryString: ''
+	  apiUrl: 'http://localhost:4000',
+	  queryString: ''
 	};
 	exports.default = settings;
 
-/***/ },
+/***/ }),
 /* 188 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -41448,9 +41877,9 @@
 		});
 	}
 
-/***/ },
+/***/ }),
 /* 189 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -41487,14 +41916,14 @@
 		});
 	}
 
-/***/ },
+/***/ }),
 /* 190 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.default = setup;
 
@@ -41508,15 +41937,29 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * Setup the compiler
+	 * @param 		{Object} 		[settings={}] 			The new settings
+	 * @example 	js
+	 * // possible settings
+	 * compileServer.setup({
+	 * 		// the api base url
+	 * 		apiUrl : 'http://localhost:4000',
+	 * 		// a queryString to append to each request
+	 * 		queryString : 'myVar=hello&myOtherVar=world'
+	 * });
+	 *
+	 * @author  	Olivier Bossel <olivier.bossel@gmail.com>
+	 */
 	function setup() {
-		var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var settings = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-		(0, _extend2.default)(_settings2.default, settings);
+	  (0, _extend2.default)(_settings2.default, settings);
 	}
 
-/***/ },
+/***/ }),
 /* 191 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -41532,19 +41975,19 @@
 
 	var _coffeekrakenSDialogComponent2 = _interopRequireDefault(_coffeekrakenSDialogComponent);
 
-	var _coffeekrakenSShareComponent = __webpack_require__(261);
+	var _coffeekrakenSShareComponent = __webpack_require__(260);
 
 	var _coffeekrakenSShareComponent2 = _interopRequireDefault(_coffeekrakenSShareComponent);
 
-	var _coffeekrakenSNotificationComponent = __webpack_require__(265);
+	var _coffeekrakenSNotificationComponent = __webpack_require__(264);
 
 	var _coffeekrakenSNotificationComponent2 = _interopRequireDefault(_coffeekrakenSNotificationComponent);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/***/ },
+/***/ }),
 /* 192 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -41558,9 +42001,9 @@
 
 	exports.default = _SInteractiveDemoComponent2.default.define('s-interactive-demo', _SInteractiveDemoComponent2.default);
 
-/***/ },
+/***/ }),
 /* 193 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -41574,11 +42017,11 @@
 
 	var _SWebComponent3 = _interopRequireDefault(_SWebComponent2);
 
-	var _throttle = __webpack_require__(70);
+	var _throttle = __webpack_require__(71);
 
 	var _throttle2 = _interopRequireDefault(_throttle);
 
-	var _prependChild = __webpack_require__(73);
+	var _prependChild = __webpack_require__(74);
 
 	var _prependChild2 = _interopRequireDefault(_prependChild);
 
@@ -41595,14 +42038,15 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	/**
-	 * @class 	SInteractiveDemoComponent 	SWebComponent
+	 * @name 		SInteractiveDemoComponent
+	 * @extends 	SWebComponent
 	 * Provide a nice webcomponent to display interactive html/css/js demo (codepen like).
 	 * @example 	html
 	 * <s-interactive-demo>
-	 * 	<s-codemirror id="html" language="html">
+	 * 	<s-codemirror language="html">
 	 *  	<h1>My Cool demo</h1>
 	 *  </s-codemirror>
-	 * 	<s-codemirror id="css" language="css">
+	 * 	<s-codemirror language="css">
 	 *  	h1 {
 	 *  		color : red
 	 *  	}
@@ -41799,9 +42243,14 @@
 
 				// get the iframe body reference
 				this._iframeRefs.body = this._iframeRefs.document.body;
+				this._iframeRefs.html = this._iframeRefs.document.querySelector('html');
 
 				// append wrapper
 				this._iframeRefs.body.appendChild(this._iframeRefs.wrapper);
+
+				// set classes
+				this._iframeRefs.body.classList.add('' + this._componentNameDash);
+				this._iframeRefs.html.classList.add('' + this._componentNameDash);
 
 				// inject resources
 				this._injectResourcesInsidePreview();
@@ -42015,6 +42464,7 @@
 	     * Specify the layout wanted between vertical and horizontal
 	     * @prop
 	     * @type 		{String}
+	     * @values 		top | right | bottom | left | vertical | horizontal
 	     */
 					layout: 'horizontal',
 
@@ -42052,9 +42502,9 @@
 
 	exports.default = SInteractiveDemoComponent;
 
-/***/ },
+/***/ }),
 /* 194 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var createFind = __webpack_require__(195),
 	    findIndex = __webpack_require__(235);
@@ -42100,9 +42550,9 @@
 	module.exports = find;
 
 
-/***/ },
+/***/ }),
 /* 195 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseIteratee = __webpack_require__(196),
 	    isArrayLike = __webpack_require__(39),
@@ -42131,9 +42581,9 @@
 	module.exports = createFind;
 
 
-/***/ },
+/***/ }),
 /* 196 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseMatches = __webpack_require__(197),
 	    baseMatchesProperty = __webpack_require__(228),
@@ -42168,9 +42618,9 @@
 	module.exports = baseIteratee;
 
 
-/***/ },
+/***/ }),
 /* 197 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseIsMatch = __webpack_require__(198),
 	    getMatchData = __webpack_require__(225),
@@ -42196,9 +42646,9 @@
 	module.exports = baseMatches;
 
 
-/***/ },
+/***/ }),
 /* 198 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Stack = __webpack_require__(122),
 	    baseIsEqual = __webpack_require__(199);
@@ -42264,9 +42714,9 @@
 	module.exports = baseIsMatch;
 
 
-/***/ },
+/***/ }),
 /* 199 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseIsEqualDeep = __webpack_require__(200),
 	    isObjectLike = __webpack_require__(47);
@@ -42298,9 +42748,9 @@
 	module.exports = baseIsEqual;
 
 
-/***/ },
+/***/ }),
 /* 200 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Stack = __webpack_require__(122),
 	    equalArrays = __webpack_require__(201),
@@ -42387,9 +42837,9 @@
 	module.exports = baseIsEqualDeep;
 
 
-/***/ },
+/***/ }),
 /* 201 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var SetCache = __webpack_require__(202),
 	    arraySome = __webpack_require__(205),
@@ -42476,11 +42926,11 @@
 	module.exports = equalArrays;
 
 
-/***/ },
+/***/ }),
 /* 202 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var MapCache = __webpack_require__(84),
+	var MapCache = __webpack_require__(85),
 	    setCacheAdd = __webpack_require__(203),
 	    setCacheHas = __webpack_require__(204);
 
@@ -42509,9 +42959,9 @@
 	module.exports = SetCache;
 
 
-/***/ },
+/***/ }),
 /* 203 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/** Used to stand-in for `undefined` hash values. */
 	var HASH_UNDEFINED = '__lodash_hash_undefined__';
@@ -42534,9 +42984,9 @@
 	module.exports = setCacheAdd;
 
 
-/***/ },
+/***/ }),
 /* 204 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if `value` is in the array cache.
@@ -42554,9 +43004,9 @@
 	module.exports = setCacheHas;
 
 
-/***/ },
+/***/ }),
 /* 205 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * A specialized version of `_.some` for arrays without support for iteratee
@@ -42583,9 +43033,9 @@
 	module.exports = arraySome;
 
 
-/***/ },
+/***/ }),
 /* 206 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Checks if a `cache` value for `key` exists.
@@ -42602,9 +43052,9 @@
 	module.exports = cacheHas;
 
 
-/***/ },
+/***/ }),
 /* 207 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var Symbol = __webpack_require__(18),
 	    Uint8Array = __webpack_require__(135),
@@ -42720,9 +43170,9 @@
 	module.exports = equalByTag;
 
 
-/***/ },
+/***/ }),
 /* 208 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Converts `map` to its key-value pairs.
@@ -42744,9 +43194,9 @@
 	module.exports = mapToArray;
 
 
-/***/ },
+/***/ }),
 /* 209 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Converts `set` to an array of its values.
@@ -42768,9 +43218,9 @@
 	module.exports = setToArray;
 
 
-/***/ },
+/***/ }),
 /* 210 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getAllKeys = __webpack_require__(211);
 
@@ -42863,9 +43313,9 @@
 	module.exports = equalObjects;
 
 
-/***/ },
+/***/ }),
 /* 211 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseGetAllKeys = __webpack_require__(212),
 	    getSymbols = __webpack_require__(214),
@@ -42885,9 +43335,9 @@
 	module.exports = getAllKeys;
 
 
-/***/ },
+/***/ }),
 /* 212 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var arrayPush = __webpack_require__(213),
 	    isArray = __webpack_require__(48);
@@ -42911,9 +43361,9 @@
 	module.exports = baseGetAllKeys;
 
 
-/***/ },
+/***/ }),
 /* 213 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Appends the elements of `values` to `array`.
@@ -42937,9 +43387,9 @@
 	module.exports = arrayPush;
 
 
-/***/ },
+/***/ }),
 /* 214 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var arrayFilter = __webpack_require__(215),
 	    stubArray = __webpack_require__(216);
@@ -42973,9 +43423,9 @@
 	module.exports = getSymbols;
 
 
-/***/ },
+/***/ }),
 /* 215 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * A specialized version of `_.filter` for arrays without support for
@@ -43004,9 +43454,9 @@
 	module.exports = arrayFilter;
 
 
-/***/ },
+/***/ }),
 /* 216 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * This method returns a new empty array.
@@ -43033,9 +43483,9 @@
 	module.exports = stubArray;
 
 
-/***/ },
+/***/ }),
 /* 217 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var arrayLikeKeys = __webpack_require__(43),
 	    baseKeys = __webpack_require__(218),
@@ -43076,9 +43526,9 @@
 	module.exports = keys;
 
 
-/***/ },
+/***/ }),
 /* 218 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isPrototype = __webpack_require__(57),
 	    nativeKeys = __webpack_require__(219);
@@ -43112,9 +43562,9 @@
 	module.exports = baseKeys;
 
 
-/***/ },
+/***/ }),
 /* 219 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var overArg = __webpack_require__(140);
 
@@ -43124,12 +43574,12 @@
 	module.exports = nativeKeys;
 
 
-/***/ },
+/***/ }),
 /* 220 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var DataView = __webpack_require__(221),
-	    Map = __webpack_require__(100),
+	    Map = __webpack_require__(101),
 	    Promise = __webpack_require__(222),
 	    Set = __webpack_require__(223),
 	    WeakMap = __webpack_require__(224),
@@ -43188,9 +43638,9 @@
 	module.exports = getTag;
 
 
-/***/ },
+/***/ }),
 /* 221 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(14),
 	    root = __webpack_require__(19);
@@ -43201,9 +43651,9 @@
 	module.exports = DataView;
 
 
-/***/ },
+/***/ }),
 /* 222 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(14),
 	    root = __webpack_require__(19);
@@ -43214,9 +43664,9 @@
 	module.exports = Promise;
 
 
-/***/ },
+/***/ }),
 /* 223 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(14),
 	    root = __webpack_require__(19);
@@ -43227,9 +43677,9 @@
 	module.exports = Set;
 
 
-/***/ },
+/***/ }),
 /* 224 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(14),
 	    root = __webpack_require__(19);
@@ -43240,9 +43690,9 @@
 	module.exports = WeakMap;
 
 
-/***/ },
+/***/ }),
 /* 225 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isStrictComparable = __webpack_require__(226),
 	    keys = __webpack_require__(217);
@@ -43270,9 +43720,9 @@
 	module.exports = getMatchData;
 
 
-/***/ },
+/***/ }),
 /* 226 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(23);
 
@@ -43291,9 +43741,9 @@
 	module.exports = isStrictComparable;
 
 
-/***/ },
+/***/ }),
 /* 227 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * A specialized version of `matchesProperty` for source values suitable
@@ -43317,17 +43767,17 @@
 	module.exports = matchesStrictComparable;
 
 
-/***/ },
+/***/ }),
 /* 228 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseIsEqual = __webpack_require__(199),
-	    get = __webpack_require__(76),
+	    get = __webpack_require__(77),
 	    hasIn = __webpack_require__(229),
-	    isKey = __webpack_require__(79),
+	    isKey = __webpack_require__(80),
 	    isStrictComparable = __webpack_require__(226),
 	    matchesStrictComparable = __webpack_require__(227),
-	    toKey = __webpack_require__(110);
+	    toKey = __webpack_require__(111);
 
 	/** Used to compose bitmasks for value comparisons. */
 	var COMPARE_PARTIAL_FLAG = 1,
@@ -43356,9 +43806,9 @@
 	module.exports = baseMatchesProperty;
 
 
-/***/ },
+/***/ }),
 /* 229 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseHasIn = __webpack_require__(230),
 	    hasPath = __webpack_require__(231);
@@ -43396,9 +43846,9 @@
 	module.exports = hasIn;
 
 
-/***/ },
+/***/ }),
 /* 230 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * The base implementation of `_.hasIn` without support for deep paths.
@@ -43415,16 +43865,16 @@
 	module.exports = baseHasIn;
 
 
-/***/ },
+/***/ }),
 /* 231 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var castPath = __webpack_require__(78),
+	var castPath = __webpack_require__(79),
 	    isArguments = __webpack_require__(45),
 	    isArray = __webpack_require__(48),
 	    isIndex = __webpack_require__(41),
 	    isLength = __webpack_require__(40),
-	    toKey = __webpack_require__(110);
+	    toKey = __webpack_require__(111);
 
 	/**
 	 * Checks if `path` exists on `object`.
@@ -43460,14 +43910,14 @@
 	module.exports = hasPath;
 
 
-/***/ },
+/***/ }),
 /* 232 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseProperty = __webpack_require__(233),
 	    basePropertyDeep = __webpack_require__(234),
-	    isKey = __webpack_require__(79),
-	    toKey = __webpack_require__(110);
+	    isKey = __webpack_require__(80),
+	    toKey = __webpack_require__(111);
 
 	/**
 	 * Creates a function that returns the value at `path` of a given object.
@@ -43498,9 +43948,9 @@
 	module.exports = property;
 
 
-/***/ },
+/***/ }),
 /* 233 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * The base implementation of `_.property` without support for deep paths.
@@ -43518,11 +43968,11 @@
 	module.exports = baseProperty;
 
 
-/***/ },
+/***/ }),
 /* 234 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	var baseGet = __webpack_require__(77);
+	var baseGet = __webpack_require__(78);
 
 	/**
 	 * A specialized version of `baseProperty` which supports deep paths.
@@ -43540,9 +43990,9 @@
 	module.exports = basePropertyDeep;
 
 
-/***/ },
+/***/ }),
 /* 235 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var baseFindIndex = __webpack_require__(236),
 	    baseIteratee = __webpack_require__(196),
@@ -43601,9 +44051,9 @@
 	module.exports = findIndex;
 
 
-/***/ },
+/***/ }),
 /* 236 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * The base implementation of `_.findIndex` and `_.findLastIndex` without
@@ -43631,9 +44081,9 @@
 	module.exports = baseFindIndex;
 
 
-/***/ },
+/***/ }),
 /* 237 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var toFinite = __webpack_require__(238);
 
@@ -43673,9 +44123,9 @@
 	module.exports = toInteger;
 
 
-/***/ },
+/***/ }),
 /* 238 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var toNumber = __webpack_require__(239);
 
@@ -43721,12 +44171,12 @@
 	module.exports = toFinite;
 
 
-/***/ },
+/***/ }),
 /* 239 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(23),
-	    isSymbol = __webpack_require__(80);
+	    isSymbol = __webpack_require__(81);
 
 	/** Used as references for various `Number` constants. */
 	var NAN = 0 / 0;
@@ -43793,9 +44243,9 @@
 	module.exports = toNumber;
 
 
-/***/ },
+/***/ }),
 /* 240 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -43809,9 +44259,9 @@
 
 	exports.default = _SCodemirrorComponent2.default.define('s-codemirror', _SCodemirrorComponent2.default);
 
-/***/ },
+/***/ }),
 /* 241 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -43827,7 +44277,7 @@
 
 	var _SWebComponent3 = _interopRequireDefault(_SWebComponent2);
 
-	var _throttle = __webpack_require__(70);
+	var _throttle = __webpack_require__(71);
 
 	var _throttle2 = _interopRequireDefault(_throttle);
 
@@ -43859,7 +44309,6 @@
 	 * @extends 	SWebComponent
 	 * Webcomponent wrapper for the codemirror editor library.
 	 *
-	 * @styleguide 		Objects / Codemirror
 	 * @example 	html
 	 * <s-codemirror language="html">
 	 * 	<h1>
@@ -44409,9 +44858,9 @@
 
 	exports.default = SInteractiveDemoPartComponent;
 
-/***/ },
+/***/ }),
 /* 242 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
@@ -44439,6 +44888,12 @@
 	            default: obj
 	        };
 	    }
+
+	    var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+	        return typeof obj;
+	    } : function (obj) {
+	        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	    };
 
 	    function _classCallCheck(instance, Constructor) {
 	        if (!(instance instanceof Constructor)) {
@@ -44520,6 +44975,7 @@
 	                this.action = typeof options.action === 'function' ? options.action : this.defaultAction;
 	                this.target = typeof options.target === 'function' ? options.target : this.defaultTarget;
 	                this.text = typeof options.text === 'function' ? options.text : this.defaultText;
+	                this.container = _typeof(options.container) === 'object' ? options.container : document.body;
 	            }
 	        }, {
 	            key: 'listenClick',
@@ -44543,6 +44999,7 @@
 	                    action: this.action(trigger),
 	                    target: this.target(trigger),
 	                    text: this.text(trigger),
+	                    container: this.container,
 	                    trigger: trigger,
 	                    emitter: this
 	                });
@@ -44613,9 +45070,9 @@
 	    module.exports = Clipboard;
 	});
 
-/***/ },
+/***/ }),
 /* 243 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (global, factory) {
 	    if (true) {
@@ -44693,6 +45150,7 @@
 	                var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
 	                this.action = options.action;
+	                this.container = options.container;
 	                this.emitter = options.emitter;
 	                this.target = options.target;
 	                this.text = options.text;
@@ -44721,7 +45179,7 @@
 	                this.fakeHandlerCallback = function () {
 	                    return _this.removeFake();
 	                };
-	                this.fakeHandler = document.body.addEventListener('click', this.fakeHandlerCallback) || true;
+	                this.fakeHandler = this.container.addEventListener('click', this.fakeHandlerCallback) || true;
 
 	                this.fakeElem = document.createElement('textarea');
 	                // Prevent zooming on iOS
@@ -44740,7 +45198,7 @@
 	                this.fakeElem.setAttribute('readonly', '');
 	                this.fakeElem.value = this.text;
 
-	                document.body.appendChild(this.fakeElem);
+	                this.container.appendChild(this.fakeElem);
 
 	                this.selectedText = (0, _select2.default)(this.fakeElem);
 	                this.copyText();
@@ -44749,13 +45207,13 @@
 	            key: 'removeFake',
 	            value: function removeFake() {
 	                if (this.fakeHandler) {
-	                    document.body.removeEventListener('click', this.fakeHandlerCallback);
+	                    this.container.removeEventListener('click', this.fakeHandlerCallback);
 	                    this.fakeHandler = null;
 	                    this.fakeHandlerCallback = null;
 	                }
 
 	                if (this.fakeElem) {
-	                    document.body.removeChild(this.fakeElem);
+	                    this.container.removeChild(this.fakeElem);
 	                    this.fakeElem = null;
 	                }
 	            }
@@ -44791,8 +45249,8 @@
 	        }, {
 	            key: 'clearSelection',
 	            value: function clearSelection() {
-	                if (this.target) {
-	                    this.target.blur();
+	                if (this.trigger) {
+	                    this.trigger.focus();
 	                }
 
 	                window.getSelection().removeAllRanges();
@@ -44846,9 +45304,9 @@
 	    module.exports = ClipboardAction;
 	});
 
-/***/ },
+/***/ }),
 /* 244 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	function select(element) {
 	    var selectedText;
@@ -44895,9 +45353,9 @@
 	module.exports = select;
 
 
-/***/ },
+/***/ }),
 /* 245 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	function E () {
 	  // Keep this empty so it's easier to inherit from
@@ -44967,9 +45425,9 @@
 	module.exports = E;
 
 
-/***/ },
+/***/ }),
 /* 246 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var is = __webpack_require__(247);
 	var delegate = __webpack_require__(248);
@@ -45068,9 +45526,9 @@
 	module.exports = listen;
 
 
-/***/ },
+/***/ }),
 /* 247 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	/**
 	 * Check if argument is a HTML element.
@@ -45123,9 +45581,9 @@
 	};
 
 
-/***/ },
+/***/ }),
 /* 248 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var closest = __webpack_require__(249);
 
@@ -45173,9 +45631,9 @@
 	module.exports = delegate;
 
 
-/***/ },
+/***/ }),
 /* 249 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	var DOCUMENT_NODE_TYPE = 9;
 
@@ -45201,7 +45659,10 @@
 	 */
 	function closest (element, selector) {
 	    while (element && element.nodeType !== DOCUMENT_NODE_TYPE) {
-	        if (element.matches(selector)) return element;
+	        if (typeof element.matches === 'function' &&
+	            element.matches(selector)) {
+	          return element;
+	        }
 	        element = element.parentNode;
 	    }
 	}
@@ -45209,9 +45670,9 @@
 	module.exports = closest;
 
 
-/***/ },
+/***/ }),
 /* 250 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*global define:false */
 	/**
@@ -46259,9 +46720,9 @@
 	}) (typeof window !== 'undefined' ? window : null, typeof  window !== 'undefined' ? document : null);
 
 
-/***/ },
+/***/ }),
 /* 251 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	var _codemirror = __webpack_require__(149);
 
@@ -46320,9 +46781,9 @@
 	    });
 	});
 
-/***/ },
+/***/ }),
 /* 252 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -46336,9 +46797,9 @@
 
 	exports.default = _SDialogComponent2.default.define('s-dialog', _SDialogComponent2.default);
 
-/***/ },
+/***/ }),
 /* 253 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -46372,7 +46833,7 @@
 
 	var _getAnimationProperties2 = _interopRequireDefault(_getAnimationProperties);
 
-	var _sendForm = __webpack_require__(259);
+	var _sendForm = __webpack_require__(258);
 
 	var _sendForm2 = _interopRequireDefault(_sendForm);
 
@@ -46409,25 +46870,6 @@
 	 *
 	 * @author 		Olivier Bossel <olivier.bossel@gmail.com>
 	 */
-
-	/**
-	 * @name 		Dialog
-	 * Create a simple dialog
-	 * @styleguide 		Blocks / Dialog
-	 * @example 	html
-	 * <s-dialog id="my-cool-dialog">
-	 * 	<h1 class="h1 m-b">
-	 * 		Hello World
-	 * 	</h1>
-	 * 	<p class="p">
-	 *  	Pellentesque vulputate fermentum leo, non efficitur risus fermentum at. Fusce maximus volutpat ipsum in tristique. Etiam neque massa, lobortis et libero et, hendrerit blandit risus. Praesent ultrices condimentum magna quis.
-	 * 	</p>
-	 * </s-dialog>
-	 * <a href="#my-cool-dialog" title="open my cool dialog">Open dialog</a>
-	 *
-	 * @author 		Olivier Bossel <olivier.bossel@gmail.com>
-	 */
-
 	var SDialogComponent = function (_SWebComponent) {
 		_inherits(SDialogComponent, _SWebComponent);
 
@@ -46464,7 +46906,7 @@
 				_get(SDialogComponent.prototype.__proto__ || Object.getPrototypeOf(SDialogComponent.prototype), 'componentMount', this).call(this);
 
 				// variables
-				this._content = null;
+				this._cachedContent = null;
 				this._html = null;
 				this._allowModalClose = false;
 
@@ -46501,7 +46943,7 @@
 						// send form
 						(0, _sendForm2.default)(e.target).then(function (response) {
 							// remove the cached content
-							_this2._content = null;
+							_this2._cachedContent = null;
 							// open the dialog
 							_this2.open((0, _strToHtml2.default)(response));
 						});
@@ -46528,6 +46970,15 @@
 							this.open();
 							break;
 					}
+				}
+
+				// if the opened property is true, open the dialog directly
+				if (this.props.opened) {
+					console.log('opennnn', this);
+					setTimeout(function () {
+						_this2.open();
+						_this2._open();
+					}, this.props.openTimeout);
 				}
 			}
 
@@ -46602,27 +47053,31 @@
 					_this5._reject = reject;
 
 					// get content from passed parameter or settings
-					content = content || _this5.props.content || _this5._triggerer.getAttribute('href');
+					content = content || _this5.props.content || _this5._triggerer ? _this5._triggerer.getAttribute('href') : null;
 
 					// try to load the content only if not already loaded
-					if (!_this5._content) {
+					if (!_this5._cachedContent) {
 
 						// try to get the content of the dialog
 						if (!content) {
 							// the content of the dialog is the element itself
-							_this5._content = _this5;
-							// console.log('im my content', this);
-							// this._content = this.innerHTML;
+							// we check if it contains only 1 HTMLElement, in that case we take it
+							// as the content, otherwise, we take the entire content in string format...
+							if (_this5.children.length === 1) {
+								_this5._cachedContent = _this5.children[0];
+							} else {
+								_this5._cachedContent = _this5.innerHTML;
+							}
 							// open
 							_this5.setProp('opened', true);
 						} else if (content.nodeName) {
 							// the content if an HTMLElement
-							_this5._content = content;
+							_this5._cachedContent = content;
 							// open
 							_this5.setProp('opened', true);
 						} else if (content.substr(0, 1) === '#') {
 							// the content of the dialog is an element in the page
-							_this5._content = document.querySelector(content);
+							_this5._cachedContent = document.querySelector(content);
 							// open
 							_this5.setProp('opened', true);
 						} else {
@@ -46633,7 +47088,7 @@
 							});
 							ajx.send().then(function (response) {
 								// set the content
-								_this5._content = response;
+								_this5._cachedContent = response;
 								// open
 								_this5.setProp('opened', true);
 							});
@@ -46657,8 +47112,6 @@
 			value: function _open() {
 				var _this6 = this;
 
-				console.warn('cccc');
-
 				// add the body class
 				document.body.classList.add(this._componentNameDash + '--opened');
 
@@ -46668,7 +47121,7 @@
 				// create the DOM structure
 				if (!this._template) {
 
-					this._html = (0, _strToHtml2.default)('\n\t\t\t\t<div class="' + this._componentNameDash + '">\n\t\t\t\t\t<div name="overlay" class="' + this._componentNameDash + '__overlay"></div>\n\t\t\t\t\t<div class="' + this._componentNameDash + '__aligner"></div>\n\t\t\t\t\t<div name="content" class="' + this._componentNameDash + '__content">\n\t\t\t\t\t\t<!-- content will be here... -->\n\t\t\t\t\t</div>\n\t\t\t\t\t<div name="close" class="' + this._componentNameDash + '__close"></div>\n\t\t\t\t</div>\n\t\t\t');
+					this._html = (0, _strToHtml2.default)('\n\t\t\t\t<div class="' + this._componentNameDash + ' ' + this._componentNameDash + '--' + this.props.type + '">\n\t\t\t\t\t<div name="overlay" class="' + this._componentNameDash + '__overlay"></div>\n\t\t\t\t\t<div class="' + this._componentNameDash + '__aligner"></div>\n\t\t\t\t\t<div name="content" class="' + this._componentNameDash + '__content">\n\t\t\t\t\t\t<!-- content will be here... -->\n\t\t\t\t\t</div>\n\t\t\t\t\t<div name="close" class="' + this._componentNameDash + '__close"></div>\n\t\t\t\t</div>\n\t\t\t');
 
 					this.refs = {
 						elm: this._html,
@@ -46699,11 +47152,11 @@
 						// close the dialog
 						_this6.close();
 					});
-					this.refs.content.addEventListener(this._componentNameDash + ':cancel', function (e) {
+					this.refs.content.addEventListener(this._componentNameDash + ':dismiss', function (e) {
 						var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 
 						// close the dialog
-						_this6.cancel(data);
+						_this6.dismiss(data);
 					});
 					this.refs.content.addEventListener(this._componentNameDash + ':ok', function (e) {
 						var data = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
@@ -46714,28 +47167,27 @@
 				}
 
 				// set the content into the content of the template
-				if (typeof this._content === 'string') {
-					this.refs.content.innerHTML = this._content;
-				} else if (this._content.nodeName !== undefined) {
-
+				if (typeof this._cachedContent === 'string') {
+					this.refs.content.innerHTML = this._cachedContent;
+				} else if (this._cachedContent.nodeName !== undefined) {
 					// try to save the position into dom to restore it on close
-					if (this._content.parentNode) {
+					if (this._cachedContent.parentNode && !this._domRestorePlaceholder) {
 						this._domRestorePlaceholder = document.createElement('div');
 						this._domRestorePlaceholder.setAttribute('s-dialog-restore-placeholder', true);
-						(0, _insertAfter2.default)(this._domRestorePlaceholder, this._content);
+						(0, _insertAfter2.default)(this._domRestorePlaceholder, this._cachedContent);
 					}
 
 					// append the content into the dialog
-					this.refs.content.appendChild(this._content);
+					this.refs.content.appendChild(this._cachedContent);
 				}
 
-				// try to find the s-dialog-ok and the s-dialog-cancel elements
+				// try to find the s-dialog-ok and the s-dialog-dismiss elements
 				var okElms = this.refs.content.querySelectorAll('[' + this._componentNameDash + '-ok]');
 				if (okElms.length) {
 					[].forEach.call(okElms, function (elm) {
-						if (!elm._SDialogCancelClickListener) {
+						if (!elm._SDialogDismissClickListener) {
 							var value = elm.getAttribute(_this6._componentNameDash + '-ok');
-							elm._SDialogCancelClickListener = true;
+							elm._SDialogDismissClickListener = true;
 							elm.addEventListener('click', function (e) {
 								_this6.ok(value);
 								e.stopPropagation();
@@ -46743,14 +47195,14 @@
 						}
 					});
 				}
-				var cancelElms = this.refs.content.querySelectorAll('[' + this._componentNameDash + '-cancel]');
-				if (cancelElms.length) {
-					[].forEach.call(cancelElms, function (elm) {
+				var dismissElms = this.refs.content.querySelectorAll('[' + this._componentNameDash + '-dismiss]');
+				if (dismissElms.length) {
+					[].forEach.call(dismissElms, function (elm) {
 						if (!elm._SDialogOkClickListener) {
-							var value = elm.getAttribute(_this6._componentNameDash + '-cancel');
+							var value = elm.getAttribute(_this6._componentNameDash + '-dismiss');
 							elm._SDialogOkClickListener = true;
 							elm.addEventListener('click', function (e) {
-								_this6.cancel(value);
+								_this6.dismiss(value);
 								e.stopPropagation();
 							});
 						}
@@ -46778,7 +47230,7 @@
 						if (this.props.modal) {
 							this.close(false);
 						} else {
-							this.cancel(null);
+							this.dismiss(null);
 						}
 						break;
 				}
@@ -46796,7 +47248,6 @@
 
 				// check if is a modal
 				if (this.props.modal && !this._allowModalClose && !force) return;
-
 				// close
 				this.setProp('opened', false);
 			}
@@ -46813,7 +47264,6 @@
 				// reset the hash
 				if (this.props.id) {
 					window.history.pushState(null, document.title, '' + (document.location.pathname || '') + (document.location.search || '') + '#');
-					// __dispatchEvent(window, 'hashchange');
 				}
 
 				// add the out class to the dialog
@@ -46841,9 +47291,10 @@
 					setTimeout(function () {
 
 						// restore the place of the content if is a placeholder
-						if (_this7._domRestorePlaceholder && _this7._content.nodeName) {
-							(0, _insertAfter2.default)(_this7._content, _this7._domRestorePlaceholder);
+						if (_this7._domRestorePlaceholder && _this7._cachedContent.nodeName) {
+							(0, _insertAfter2.default)(_this7._cachedContent, _this7._domRestorePlaceholder);
 							_this7._domRestorePlaceholder.parentNode.removeChild(_this7._domRestorePlaceholder);
+							_this7._domRestorePlaceholder = null;
 						}
 
 						// remove the out class
@@ -46864,6 +47315,9 @@
 						}
 					}, longestAnimationTime);
 				});
+
+				// callback
+				this.props.onClose && this.props.onClose();
 			}
 
 			/**
@@ -46883,18 +47337,21 @@
 						this._resolve(value);
 					}
 				} catch (e) {}
+				// events and callback
+				this.dispatchComponentEvent('ok', value);
+				this.props.onOk && this.props.onOk(value);
 				// close the dialog
 				this.close(true);
 			}
 
 			/**
-	   * Cancel the modal by rejecting the promise
+	   * Dismiss the modal by rejecting the promise
 	   * @param 		{Mixed} 		value 		The value to pass the the promise
 	   */
 
 		}, {
-			key: 'cancel',
-			value: function cancel() {
+			key: 'dismiss',
+			value: function dismiss() {
 				var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
 				if (!this.isOpened()) return;
@@ -46904,6 +47361,9 @@
 						this._reject(value);
 					}
 				} catch (e) {}
+				// events and callback
+				this.dispatchComponentEvent('dismiss', value);
+				this.props.onDismiss && this.props.onDismiss(value);
 				// close the dialog
 				this.close(true);
 			}
@@ -46966,6 +47426,13 @@
 					id: null,
 
 					/**
+	     * Type of the dialog. This will basically be set as a class on the dialog container like "s-dialog--{type}"
+	     * @prop
+	     * @type 	{String}
+	     */
+					type: 'default',
+
+					/**
 	     * Specify if the dialog is a modal or not
 	     * @prop
 	     * @type 	{Boolean}
@@ -46978,6 +47445,27 @@
 	     * @type 	{Function}
 	     */
 					onOpen: null,
+
+					/**
+	     * Callback when the modal closes
+	     * @prop
+	     * @type 	{Function}
+	     */
+					onClose: null,
+
+					/**
+	     * Callback when the modal is has been validated with an "ok" status
+	     * @prop
+	     * @type 	{Function}
+	     */
+					onOk: null,
+
+					/**
+	     * Callback when the modal has been dismissed
+	     * @prop
+	     * @type 	{Function}
+	     */
+					onDismiss: null,
 
 					/**
 	     * Specify if the modal is opened or not
@@ -47030,9 +47518,9 @@
 	SDialogComponent.counter = 0;
 	exports.default = SDialogComponent;
 
-/***/ },
+/***/ }),
 /* 254 */
-/***/ function(module, exports) {
+/***/ (function(module, exports) {
 
 	"use strict";
 
@@ -47063,9 +47551,9 @@
 	  }
 	}
 
-/***/ },
+/***/ }),
 /* 255 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -47077,15 +47565,15 @@
 
 	exports.default = style;
 
-	var _uncamelize = __webpack_require__(256);
+	var _uncamelize = __webpack_require__(60);
 
 	var _uncamelize2 = _interopRequireDefault(_uncamelize);
 
-	var _styleString2Object = __webpack_require__(257);
+	var _styleString2Object = __webpack_require__(256);
 
 	var _styleString2Object2 = _interopRequireDefault(_styleString2Object);
 
-	var _styleObject2String = __webpack_require__(258);
+	var _styleObject2String = __webpack_require__(257);
 
 	var _styleObject2String2 = _interopRequireDefault(_styleObject2String);
 
@@ -47129,35 +47617,9 @@
 	  return elm.style;
 	}
 
-/***/ },
+/***/ }),
 /* 256 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.default = uncamelize;
-	/**
-	 * Uncamelize a string
-	 */
-	function uncamelize(text) {
-		var separator = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '-';
-
-		// Replace all capital letters by separator followed by lowercase one
-		var res = '';
-		res = text.replace(/[A-Z]/g, function (letter) {
-			return separator + letter.toLowerCase();
-		});
-
-		// Remove first separator (to avoid _hello_world name)
-		return res.replace("/^" + separator + "/", '').trim();
-	}
-
-/***/ },
-/* 257 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -47209,9 +47671,9 @@
 	  return obj;
 	}
 
-/***/ },
-/* 258 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 257 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -47220,7 +47682,7 @@
 	});
 	exports.default = styleObject2String;
 
-	var _uncamelize = __webpack_require__(256);
+	var _uncamelize = __webpack_require__(60);
 
 	var _uncamelize2 = _interopRequireDefault(_uncamelize);
 
@@ -47260,9 +47722,9 @@
 	  return propertiesArray.join(' ');
 	}
 
-/***/ },
-/* 259 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 258 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -47275,7 +47737,7 @@
 
 	var _SAjax2 = _interopRequireDefault(_SAjax);
 
-	var _formSerialize = __webpack_require__(260);
+	var _formSerialize = __webpack_require__(259);
 
 	var _formSerialize2 = _interopRequireDefault(_formSerialize);
 
@@ -47326,9 +47788,9 @@
 		return promise;
 	}
 
-/***/ },
-/* 260 */
-/***/ function(module, exports) {
+/***/ }),
+/* 259 */
+/***/ (function(module, exports) {
 
 	// get successful control from form and assemble into object
 	// http://www.w3.org/TR/html401/interact/forms.html#h-17.13.2
@@ -47592,15 +48054,15 @@
 	module.exports = serialize;
 
 
-/***/ },
-/* 261 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 260 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _SShareComponent = __webpack_require__(262);
+	var _SShareComponent = __webpack_require__(261);
 
 	var _SShareComponent2 = _interopRequireDefault(_SShareComponent);
 
@@ -47608,9 +48070,9 @@
 
 	exports.default = _SShareComponent2.default.define('s-share', _SShareComponent2.default, 'a');
 
-/***/ },
-/* 262 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 261 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -47620,11 +48082,11 @@
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _SAnchorWebComponent2 = __webpack_require__(263);
+	var _SAnchorWebComponent2 = __webpack_require__(262);
 
 	var _SAnchorWebComponent3 = _interopRequireDefault(_SAnchorWebComponent2);
 
-	var _sharerNpm = __webpack_require__(264);
+	var _sharerNpm = __webpack_require__(263);
 
 	var _sharerNpm2 = _interopRequireDefault(_sharerNpm);
 
@@ -47641,7 +48103,6 @@
 	 * @extends 	SAnchorWebComponent
 	 * Easily create some share buttons to target facebook, twitter, linkedin, google+, etc...
 	 *
-	 * @styleguide  	Objects / Share
 	 * @example 	html
 	 * <a is="s-share" href="#" network="facebook" title="Share on facebook">
 	 * 	Share on facebook
@@ -47936,9 +48397,9 @@
 
 	exports.default = SShareComponent;
 
-/***/ },
-/* 263 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 262 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
@@ -47972,9 +48433,9 @@
 
 	exports.default = SAnchorWebComponent;
 
-/***/ },
-/* 264 */
-/***/ function(module, exports) {
+/***/ }),
+/* 263 */
+/***/ (function(module, exports) {
 
 	/**
 	 * @preserve
@@ -48248,9 +48709,9 @@
 	module.exports = Sharer;
 
 
-/***/ },
-/* 265 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ }),
+/* 264 */
+/***/ (function(module, exports, __webpack_require__) {
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -48264,5 +48725,5 @@
 
 	exports.default = _SNotificationComponent2.default.define('s-notification', _SNotificationComponent2.default);
 
-/***/ }
+/***/ })
 /******/ ]);
