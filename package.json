@@ -1,6 +1,6 @@
 {
   "name": "coffeekraken-code-playground",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Provide a nice code playground that let you play with some html, javascript (coffee, typescript, etc...) and css (sass, scss, stylus, etc...)",
   "homepage": "http://coffeekraken.io",
   "repository": {
@@ -20,7 +20,8 @@
     "assets.watch.css": "nodemon -w public/assets-src -e scss -x \"npm run assets.css\"",
     "assets.watch.js": "nodemon -w public/assets-src -e js -x \"npm run assets.js\"",
     "test": "coffeekraken-testing-stack",
-    "demo": "./bin/coffeekraken-code-playground"
+    "demo": "./bin/coffeekraken-code-playground",
+    "start": "concurrently --kill-others \"npm run assets.watch\" \"npm run demo\""
   },
   "keywords": [
     "code",
@@ -54,7 +55,7 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-es2015-loose": "^8.0.0",
     "babel-preset-stage-0": "^6.16.0",
-    "coffeekraken-testing-stack": "https://github.com/Coffeekraken/testing-stack.git#release/0.0.1",
+    "coffeekraken-testing-stack": "0.0.2",
     "concurrently": "^3.1.0",
     "node-sass": "^3.13.0",
     "nodemon": "^1.11.0",
@@ -65,15 +66,15 @@
   "dependencies": {
     "MD5": "^1.3.0",
     "codemirror": "^5.22.0",
-    "coffeekraken-compile-server": "https://github.com/Coffeekraken/compile-server.git#release/0.0.1",
-    "coffeekraken-gridle": "https://github.com/Coffeekraken/gridle.git#release/3.0.0",
-    "coffeekraken-s-atv-card-component": "https://github.com/Coffeekraken/s-atv-card-component.git#release/0.0.1",
-    "coffeekraken-s-dialog-component": "https://github.com/Coffeekraken/s-dialog-component.git#release/0.0.1",
-    "coffeekraken-s-codemirror-component": "https://github.com/Coffeekraken/s-codemirror-component.git#release/0.0.1",
-    "coffeekraken-s-interactive-demo-component": "https://github.com/Coffeekraken/s-interactive-demo-component.git#release/0.0.1",
-    "coffeekraken-s-notification-component": "https://github.com/Coffeekraken/s-notification-component.git#release/0.0.1",
-    "coffeekraken-s-share-component": "https://github.com/Coffeekraken/s-share-component.git#release/0.0.1",
-    "coffeekraken-sugar": "https://github.com/Coffeekraken/sugar.git#release/0.0.1",
+    "coffeekraken-compile-server": "^0.0.2",
+    "coffeekraken-gridle": "3.0.0-rc.1",
+    "coffeekraken-s-atv-card-component": "^0.0.2",
+    "coffeekraken-s-dialog-component": "^0.0.2",
+    "coffeekraken-s-codemirror-component": "^0.0.2",
+    "coffeekraken-s-interactive-demo-component": "^0.0.2",
+    "coffeekraken-s-notification-component": "^0.0.2",
+    "coffeekraken-s-share-component": "^0.0.2",
+    "coffeekraken-sugar": "^0.0.2",
     "cookie-session": "^2.0.0-beta.1",
     "cryptr": "^2.0.0",
     "express": "^4.14.0",

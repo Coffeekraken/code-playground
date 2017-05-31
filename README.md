@@ -31,21 +31,37 @@ Provide a nice code playground that let you play with some html, javascript (cof
 
 ![Carpenter screenshot](/.resources/code-playground-screenshot.png)
 
+## Features
 
-* **Demo**: [http://components.coffeekraken.io](http://components.coffeekraken.io)
-* Homepage: [http://coffeekraken.io](http://coffeekraken.io)
-* Source: [https://github.com/coffeekraken/code-playground](https://github.com/coffeekraken/code-playground)
-* Twitter: [https://twitter.com/coffeekrakenio](https://twitter.com/coffeekrakenio)
+- Nice web interface to play with your code live
+- Support sass/stylus/es6/coffeescript/typescript compilation through the [compile-server package](https://github.com/coffeekraken/compile-server)
+- Nicely display information from the ```package.json``` file
+- Support multiple "apps" that run on the same code-playground server
+- Support multiple layouts like : top / right / bottom / left / vertical / horizontal
 
-## Quick start
+## Table of content
 
-### Install
+1. **Demo**: [http://components.coffeekraken.io](http://components.coffeekraken.io)
+2. [Install](#readme-install)
+3. [Get Started](#readme-get-started)
+4. [Documentation](#readme-documentation)
+5. [Browsers support](#readme-browsers-support)
+6. [Contribute](#readme-contribute)
+7. [Who are Coffeekraken?](#readme-who-are-coffeekraken)
+8. [Licence](#readme-license)
+
+
+<a name="readme-install"></a>
+## Install
 
 ```
-npm install git+ssh://git@github.com/coffeekraken/code-playground#0.0.1 --save
+npm install coffeekraken-code-playground --save-dev
 ```
 
-### Create config file
+<a name="readme-get-started"></a>
+## Get Started
+
+#### Config file
 
 Create a ```code-playground.config.js``` file at the root of your project like this one:
 
@@ -78,7 +94,7 @@ module.exports = {
 
 See [documentation](doc/) for full ```code-playground.config.js``` file reference
 
-### Add an NPM script
+#### Add an NPM script
 
 Add in your ```package.json``` file a demo script like so:
 
@@ -90,7 +106,7 @@ Add in your ```package.json``` file a demo script like so:
 }
 ```
 
-### Launch your code-playground
+#### Launch your code-playground
 
 Launch the NPM script to start your code-playground server like so:
 
@@ -98,21 +114,15 @@ Launch the NPM script to start your code-playground server like so:
 npm run demo
 ```
 
-## Features
-
-- Nice web interface to play with your code live
-- Support sass/stylus/es6/coffeescript/typescript compilation through the [compile-server package](https://github.com/coffeekraken/compile-server)
-- Nicely display information from the ```package.json``` file
-- Support multiple "apps" that run on the same code-playground server
-- Support multiple layouts like : top / right / bottom / left / vertical / horizontal
-
+<a name="readme-documentation"></a>
 ## Documentation
 
 - [code-playground.config.js file reference](doc/code-playground.config.md)
 - [query string parameters availables](doc/query-string.md)
 - [CLI](doc/cli.md)
 
-## Browser support
+<a id="readme-browsers-support"></a>
+## Browsers support
 
 | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/edge.png" alt="IE / Edge" width="16px" height="16px" /></br>IE / Edge | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/firefox.png" alt="Firefox" width="16px" height="16px" /></br>Firefox | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/chrome.png" alt="Chrome" width="16px" height="16px" /></br>Chrome | <img src="https://raw.githubusercontent.com/godban/browsers-support-badges/master/src/images/safari.png" alt="Safari" width="16px" height="16px" /></br>Safari |
 | --------- | --------- | --------- | --------- |
@@ -120,6 +130,28 @@ npm run demo
 
 > As browsers are automatically updated, we will keep as reference the last two versions of each but this component can work on older ones as well.
 
+> The webcomponent API (custom elements, shadowDOM, etc...) is not supported in some older browsers like IE10, etc... In order to make them work, you will need to integrate the [corresponding polyfill](https://www.webcomponents.org/polyfills).
+
+<a id="readme-contribute"></a>
+## Contribute
+
+This is an open source project and will ever be! You are more that welcomed to contribute to his development and make it more awesome every day.
+To do so, you have several possibilities:
+
+1. [Share the love ❤️](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-share-the-love)
+2. [Declare issues](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-declare-issues)
+3. [Fix issues](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-fix-issues)
+4. [Add features](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-add-features)
+5. [Build web component](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md#contribute-build-web-component)
+
+<a id="readme-who-are-coffeekraken"></a>
+## Who are Coffeekraken
+
+We try to be **some cool guys** that build **some cool tools** to make our (and yours hopefully) **every day life better**.  
+
+#### [More on who we are](https://github.com/Coffeekraken/coffeekraken/blob/master/who-are-we.md)
+
+<a id="readme-license"></a>
 ## License
 
-The code is available under the [MIT license](LICENSE.txt).
+The code is available under the [MIT license](LICENSE.txt). This mean that you can use, modify, or do whatever you want with it. This mean also that it is shipped to you for free, so don't be a hater and if you find some issues, etc... feel free to [contribute](https://github.com/Coffeekraken/coffeekraken/blob/master/contribute.md) instead of sharing your frustrations on social networks like an asshole...
