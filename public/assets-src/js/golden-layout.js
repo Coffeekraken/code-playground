@@ -111,6 +111,7 @@ switch(layout) {
 
 
 [].forEach.call(document.querySelectorAll('template'), (editor) => {
+	if ( ! editor.id) return;
 	editorsContent.push({
 		type : 'component',
 		componentName : editor.id,
@@ -137,6 +138,7 @@ myLayout.registerComponent('preview', (container, componentState) => {
 	container.getElement().get(0).appendChild(interactiveDemoElm.querySelector('[s-interactive-demo-preview]'));
 });
 [].forEach.call(document.querySelectorAll('template'), (editor) => {
+	if ( ! editor.id) return;
 	myLayout.registerComponent(editor.id, (container, componentState) => {
 		container.getElement().append(document.importNode(editor.content, true));
 	});
