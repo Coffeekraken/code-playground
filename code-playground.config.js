@@ -5,7 +5,7 @@ module.exports = {
 	// secret used to encrypt and decrypt vars
 	// like the req.query.cwd, etc...
 	// DON'T FORGET TO CHANGE THAT IN YOUR CONFIG
-	secret : '98fjwi38fhni8e8d8wj8ejv8x9dhh28',
+	secret : null,
 
 	// map some app names to some cwd on the server.
 	// by setting this up you will be able to target different apps on the same code-playground server
