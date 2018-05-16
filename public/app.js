@@ -7,7 +7,7 @@ const __express = require('express');
 const __expressHandlebars = require('express-handlebars');
 const __path = require('path');
 const __fs = require('fs');
-const __md5 = require('MD5');
+const __md5 = require('md5');
 const __Cryptr = require('cryptr');
 const __cookieSession = require('cookie-session');
 
