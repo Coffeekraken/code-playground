@@ -7,6 +7,7 @@ const __express = require('express');
 const __expressHandlebars = require('express-handlebars');
 const __path = require('path');
 const __fs = require('fs');
+const __url = require('url');
 const __md5 = require('md5');
 const __Cryptr = require('cryptr');
 const __cookieSession = require('cookie-session');
@@ -122,10 +123,11 @@ module.exports = function(config) {
 			next();
 			return;
 		}
-		if (__fs.existsSync(req.config.pwd + req.url)) {
-			return res.sendFile(req.config.pwd + req.url);
-		} else if (__fs.existsSync(__path.resolve(__dirname + '/../') + req.url)) {
-			return res.sendFile(__path.resolve(__dirname + '/../') + req.url);
+		const url = __url.parse(req.url).pathname;
+		if (__fs.existsSync(req.config.pwd + url)) {
+			return res.sendFile(req.config.pwd + url);
+		} else if (__fs.existsSync(__path.resolve(__dirname + '/../') + url)) {
+			return res.sendFile(__path.resolve(__dirname + '/../') + url);
 		}
 		next();
 	});
