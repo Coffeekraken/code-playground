@@ -1,6 +1,6 @@
 {
   "name": "coffeekraken-code-playground",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Provide a nice code playground that let you play with some html, javascript (coffee, typescript, etc...) and css (sass, scss, stylus, etc...)",
   "homepage": "http://coffeekraken.io",
   "repository": {
