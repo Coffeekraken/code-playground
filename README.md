@@ -1,9 +1,9 @@
 # Coffeekraken Code Playground <img src="/.resources/coffeekraken-logo.jpg" height="25px" />
 
 <p>
-	<a href="https://travis-ci.org/Coffeekraken/code-playground">
+	<!-- <a href="https://travis-ci.org/Coffeekraken/code-playground">
 		<img src="https://img.shields.io/travis/Coffeekraken/code-playground.svg?style=flat-square" />
-	</a>
+	</a> -->
 	<a href="https://www.npmjs.com/package/coffeekraken-code-playground">
 		<img src="https://img.shields.io/npm/v/coffeekraken-code-playground.svg?style=flat-square" />
 	</a>

@@ -16,6 +16,7 @@ module.exports = function(config) {
 
 	// creating the app
 	const app = __express();
+	let request = null;
 
 	// handlebars
 	app.engine('handlebars', __expressHandlebars({
@@ -40,6 +41,12 @@ module.exports = function(config) {
 	if (config.secret) {
 		cryptr = new __Cryptr(config.secret);
 	}
+
+	// expose the request to the global scope
+	app.use((req, res, next) => {
+		request = req;
+		next();
+	});
 
 	// protect
 	app.use((req, res, next) => {
@@ -78,17 +85,6 @@ module.exports = function(config) {
 				throw `The app ${app} is not defined in the code-playground.config.js file...`
 			}
 			pwd = apps[app];
-		} else if (req.query.cwd) {
-			if (cryptr) {
-				if ( req.query.cwd.match(/\//)) {
-					// a secret is provided but the pwd passed is not an encrypted string
-					throw `The passed req.query.cwd parameter is not a valid one...`;
-				} else {
-					pwd = cryptr.decrypt(req.query.cwd);
-				}
-			} else {
-				pwd = req.query.cwd;
-			}
 		} else if (req.session.pwd) {
 			pwd = req.session.pwd;
 		} else if (req.config.cwd) {
@@ -107,7 +103,7 @@ module.exports = function(config) {
 		) {
 			// either the pwd passed does not exist, or no code-playground.config.js file
 			// has been found at this emplacement...
-			throw `The passed req.query.cwd parameter is not a valid one...`;
+			throw `The passed pwd "${pwd}" parameter is not a valid one...`;
 		}
 
 		// set pwd in config
@@ -166,9 +162,10 @@ module.exports = function(config) {
 		next();
 	});
 
-	// read config if a req.query.cwd is passed
+	// read config if an app is passed
+	// and merge this config with the one that we have already
 	app.use((req, res, next) => {
-		if ( ! req.query.cwd && ! req.query.app && ! req.path.split('/')[1]) {
+		if ( ! req.query.app && ! req.path.split('/')[1]) {
 			next();
 			return;
 		}
@@ -188,7 +185,9 @@ module.exports = function(config) {
 		next();
 	});
 
-	// package json
+	// read the package.json file of the pwd
+	// and set it in the request object to pass it
+	// to the next handler
 	app.use((req, res, next) => {
 
 		let packageJson;
@@ -217,10 +216,7 @@ module.exports = function(config) {
 			req.config.editors.html.title = req.config.editors.html.title || req.config.editors.html.language;
 			if (req.config.editors.html.file && __fs.existsSync(req.config.pwd + '/' + req.config.editors.html.file)) {
 				req.config.editors.html.data = __fs.readFileSync(req.config.pwd + '/' + req.config.editors.html.file, 'utf8');
-			} else {
-				req.config.editors.html.data = req.config.editors.html.data;
 			}
-			req.config.editors.html.aceept = req.config.editors.html.accept;
 			req.config.editors.html.updateOn = req.config.editors.html.updateOn || (req.config.editors.html.language !== 'html') ? 'run' : null;
 		}
 		if (req.config.editors.css) {
@@ -228,10 +224,7 @@ module.exports = function(config) {
 			req.config.editors.css.title = req.config.editors.css.title || req.config.editors.css.language;
 			if (req.config.editors.css.file && __fs.existsSync(req.config.pwd + '/' + req.config.editors.css.file)) {
 				req.config.editors.css.data = __fs.readFileSync(req.config.pwd + '/' + req.config.editors.css.file, 'utf8');
-			} else {
-				req.config.editors.css.data = req.config.editors.css.data;
 			}
-			req.config.editors.css.aceept = req.config.editors.css.accept;
 			req.config.editors.css.updateOn = req.config.editors.css.updateOn || (req.config.editors.css.language !== 'css') ? 'run' : null;
 		}
 		if (req.config.editors.js) {
@@ -239,10 +232,7 @@ module.exports = function(config) {
 			req.config.editors.js.title = req.config.editors.js.title || req.config.editors.js.language;
 			if (req.config.editors.js.file && __fs.existsSync(req.config.pwd + '/' + req.config.editors.js.file)) {
 				req.config.editors.js.data = __fs.readFileSync(req.config.pwd + '/' + req.config.editors.js.file, 'utf8');
-			} else {
-				req.config.editors.js.data = req.config.editors.js.data;
 			}
-			req.config.editors.js.aceept = req.config.editors.js.accept;
 			req.config.editors.js.updateOn = req.config.editors.js.updateOn || 'run';
 		}
 
@@ -262,7 +252,8 @@ module.exports = function(config) {
 				html : req.config.editors.html,
 				css : req.config.editors.css,
 				js : req.config.editors.js
-			}
+			},
+			gtm : req.config.gtm
 		});
 	});
 
@@ -272,5 +263,9 @@ module.exports = function(config) {
 	app.listen(config.port, function () {
 		console.log('Code Playground : ✓ running on port ' + config.port + '!');
 		console.log(`Code Playground : access interface on http://localhost:${config.port}`);
+	});
+
+	process.on('exit', function() {
+		if (request) request.session = null;
 	});
 }

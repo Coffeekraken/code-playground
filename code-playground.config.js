@@ -27,6 +27,9 @@ module.exports = {
 	// layout to use (top, right, bottom, left, vertical, horizontal)
 	layout : 'right',
 
+	// google tag manager id
+	gtm : null,
+
 	// compile server options
 	// see https://github.com/coffekraken/compile-server for full options reference
 	compileServer : {
@@ -68,6 +71,7 @@ module.exports = {
 			language : 'sass', // available : css / sass / scss / stylus
 			data : `
 				@import 'node_modules/coffeekraken-sugar/index';
+				@import 'node_modules/coffeekraken-s-typography-component/index';
 				@include s-init();
 				@include s-classes();
 				@include s-typography-classes();

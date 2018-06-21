@@ -53,6 +53,7 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^6.2.10",
     "babel-preset-env": "^1.6.1",
+    "coffeekraken-s-typography-component": "^1.0.1",
     "coffeekraken-testing-stack": "0.0.2",
     "concurrently": "^3.1.0",
     "node-sass": "^3.13.0",
