@@ -32,6 +32,9 @@ module.exports = {
 	// layout to use (top, right, bottom, left, vertical, horizontal)
 	layout : 'right',
 
+	// google tag manager id
+	gtm : null,
+
 	// compile server options
 	// see https://github.com/coffekraken/compile-server for full options reference
 	compileServer : {
