@@ -48,7 +48,7 @@ module.exports = function(config) {
 		next();
 	});
 
-	// protect
+	// // protect
 	app.use((req, res, next) => {
 		if (/^\/assets\//.test(req.url)) return;
 		if (req.url.match('favicon.ico')) return;
@@ -59,12 +59,6 @@ module.exports = function(config) {
 	// attach config to request
 	app.use((req, res, next) => {
 		req.config = __clone(config);
-
-		// layout parameter
-		if (req.query.layout) {
-			req.config.layout = req.query.layout;
-		}
-
 		next();
 	});
 
@@ -119,11 +113,15 @@ module.exports = function(config) {
 			next();
 			return;
 		}
+
 		const url = __url.parse(req.url).pathname;
-		if (__fs.existsSync(req.config.pwd + url)) {
-			return res.sendFile(req.config.pwd + url);
-		} else if (__fs.existsSync(__path.resolve(__dirname + '/../') + url)) {
-			return res.sendFile(__path.resolve(__dirname + '/../') + url);
+
+		if (url && url !== '/') {
+			if (__fs.existsSync(req.config.pwd + url)) {
+				return res.sendFile(req.config.pwd + url);
+			} else if (__fs.existsSync(__path.resolve(__dirname + '/../') + url)) {
+				return res.sendFile(__path.resolve(__dirname + '/../') + url);
+			}
 		}
 		next();
 	});
@@ -204,6 +202,14 @@ module.exports = function(config) {
 			req.packageJson = packageJson;
 		}
 		// next
+		next();
+	});
+
+	app.use(function(req, res, next) {
+		// layout parameter
+		if (req.query.layout) {
+			req.config.layout = req.query.layout;
+		}
 		next();
 	});
 

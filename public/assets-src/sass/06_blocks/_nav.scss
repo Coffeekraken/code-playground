@@ -8,9 +8,15 @@
 /**
  * @name 	Nav justified
  */
-@include s-component('nav') {
-	@include s-nav-justify-classes-bare();
-	@include s-nav-inline-classes-bare();
+// @include s-component('nav') {
+// 	@include s-nav-justify-classes-bare();
+// 	@include s-nav-inline-classes-bare();
+// }
+.nav {
+
+	.nav__item {
+		display: inline-block;
+	}
 }
 
 
@@ -18,7 +24,7 @@
  * Header nav
  */
 .nav--topbar {
-	@extend .nav--inline;
+	// @extend .nav--inline;
 
 	.nav__item {
 

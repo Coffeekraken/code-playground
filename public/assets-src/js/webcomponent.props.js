@@ -29,3 +29,6 @@ SWebComponent.setDefaultProps({
 	theme : 'material',
 	compile: compileServer.compile
 }, 's-codemirror');
+SWebComponent.setDefaultProps({
+	driver: 'fontawesome'
+}, 's-icon');

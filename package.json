@@ -11,17 +11,24 @@
   "bin": {
     "coffeekraken-code-playground": "./bin/coffeekraken-code-playground"
   },
+  "watch": {
+    "assets:css": {
+      "paths": "public/assets-src/**/*.scss"
+    },
+    "assets:js": {
+      "paths": "public/assets-src/**/*.js"
+    },
+    "assets:img": {
+      "paths": "public/assets-src/img/**/*"
+    }
+  },
   "scripts": {
-    "assets": "npm run assets.css && npm run assets.js && npm run assets.img",
-    "assets.css": "node-sass public/assets-src/sass/style.scss public/assets/css/style.css --include-path node_modules --output-style compact",
-    "assets.js": "webpack",
-    "assets.img": "imagemin public/assets-src/img/* --out-dir=public/assets/img",
-    "assets.watch": "concurrently --kill-others \"npm run assets.watch.css\" \"npm run assets.watch.js\"",
-    "assets.watch.css": "nodemon -w public/assets-src -e scss -x \"npm run assets.css\"",
-    "assets.watch.js": "nodemon -w public/assets-src -e js -x \"npm run assets.js\"",
-    "test": "coffeekraken-testing-stack",
+    "assets": "npm run assets:css && npm run assets:js && npm run assets:img",
+    "assets:css": "node-sass public/assets-src/sass/style.scss public/assets/css/style.css --include-path node_modules --output-style compact",
+    "assets:js": "webpack",
+    "assets:img": "imagemin public/assets-src/img/* --out-dir=public/assets/img",
     "demo": "./bin/coffeekraken-code-playground",
-    "start": "concurrently --kill-others \"npm run assets.watch\" \"npm run demo\""
+    "start": "coffeekraken-scripts-stack demo -i start"
   },
   "keywords": [
     "code",
@@ -49,39 +56,39 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-loader": "^6.2.10",
-    "babel-preset-env": "^1.6.1",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
     "coffeekraken-s-typography-component": "^1.0.1",
-    "coffeekraken-testing-stack": "0.0.2",
-    "concurrently": "^3.1.0",
-    "node-sass": "^3.13.0",
-    "nodemon": "^1.11.0",
-    "open": "0.0.5",
-    "vinyl-named": "^1.1.0",
-    "webpack": "^1.14.0"
+    "coffeekraken-scripts-stack": "^1.0.3",
+    "node-sass": "^4.11.0",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.1.2"
   },
   "dependencies": {
-    "md5": "^2.2.1",
-    "codemirror": "^5.22.0",
-    "coffeekraken-compile-server": "^1.0.0",
+    "codemirror": "^5.42.2",
+    "coffeekraken-compile-server": "^1.0.8",
     "coffeekraken-gridle": "^3.0.0",
     "coffeekraken-s-atv-card-component": "^1.0.0",
+    "coffeekraken-s-button-component": "^1.0.1",
+    "coffeekraken-s-codemirror-component": "^1.0.3",
     "coffeekraken-s-dialog-component": "^1.0.0",
-    "coffeekraken-s-codemirror-component": "^1.0.0",
-    "coffeekraken-s-interactive-demo-component": "^1.0.0",
+    "coffeekraken-s-drawer-component": "^1.0.2",
+    "coffeekraken-s-dropdown-component": "^1.0.2",
+    "coffeekraken-s-icon-component": "^1.0.3",
+    "coffeekraken-s-interactive-demo-component": "^1.0.3",
     "coffeekraken-s-notification-component": "^1.0.0",
     "coffeekraken-s-share-component": "^1.0.0",
+    "coffeekraken-s-tooltip-component": "^1.0.4",
     "coffeekraken-sugar": "^1.0.0",
     "cookie-session": "^2.0.0-beta.1",
     "cryptr": "^2.0.0",
-    "express": "^4.14.0",
+    "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
-    "golden-layout": "^1.5.7",
+    "golden-layout": "^1.5.9",
     "imagemin-cli": "^3.0.0",
-    "lodash": "^4.17.2",
-    "node-parallel": "^0.1.6",
-    "webcomponents.js": "^0.7.23"
+    "lodash": "^4.17.11",
+    "md5": "^2.2.1"
   }
 }
