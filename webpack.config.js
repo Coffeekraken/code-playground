@@ -1,13 +1,16 @@
+const path = require('path')
+
 module.exports = {
+	mode: 'development',
 	entry: {
 		'public/assets/js/app.js' : './public/assets-src/js/app.js'
 	},
 	output: {
-		path: '.',
+		path: path.resolve('.'),
 		filename: '[name]',
 	},
 	module: {
-		loaders: [{
+		rules: [{
 			test: /\.js$/,
 			exclude: /(bower_components|node_modules)/,
 			loader: 'babel-loader'

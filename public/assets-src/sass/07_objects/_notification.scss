@@ -1,4 +1,5 @@
 @import 'node_modules/coffeekraken-s-notification-component/index';
+
 @include s-notification-classes(
 	$colors : default primary secondary success error
 );
