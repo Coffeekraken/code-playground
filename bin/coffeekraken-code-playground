@@ -9,7 +9,7 @@ const app = require('commander');
 (function() {
 
 	app
-		.version('0.0.1')
+		.version(require('../package.json').version)
 		.option('-p --port [port]', 'Port on which to start the server', /^\S+$/i)
 		.option('-d --cwd [cwd]', 'Change the working directory', /^\S+$/i)
 		.option('-c --config [config]', 'Configuration file to load', /^\S+$/i)
@@ -33,6 +33,7 @@ const app = require('commander');
 	const finalConfig = __merge({}, defaultConfig, config);
 
 	for(let key in app._events) {
+		key = key.replace('option:','')
 		if (app[key] !== undefined) {
 			if (typeof(app[key]) === 'function') {
 				finalConfig[key] = app[key]();
@@ -56,6 +57,9 @@ const app = require('commander');
 		inlineCompileServerArgs.push(`--${key}`);
 		inlineCompileServerArgs.push(`${finalConfig.compileServer[key]}`);
 	}
+
+	console.log(inlineCompileServerArgs)
+
 	const ls = spawn(`coffeekraken-compile-server`, inlineCompileServerArgs);
 	ls.stdout.on('data', (data) => {
 	  console.log(data.toString());
