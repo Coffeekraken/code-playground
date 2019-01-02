@@ -24,8 +24,11 @@ module.exports = {
 	// title
 	title : 'Code Playground',
 
-	// layout to use (top, right, bottom, left, vertical, horizontal)
-	layout : 'right',
+	// layout to use (top, right, bottom, left, vertical, horizontal, embed)
+	layout : 'embed',
+
+	// google tag manager id
+	gtm : null,
 
 	// compile server options
 	// see https://github.com/coffekraken/compile-server for full options reference
@@ -34,6 +37,12 @@ module.exports = {
 		// compile server port
 		port : 4000
 
+	},
+
+	apps : {
+		's-atv-card-component': __dirname + '/node_modules/coffeekraken-s-atv-card-component',
+		's-typography-component': __dirname + '/node_modules/coffeekraken-s-typography-component',
+		's-drawer-component': __dirname + '/node_modules/coffeekraken-s-drawer-component'
 	},
 
 	// editors
@@ -68,6 +77,7 @@ module.exports = {
 			language : 'sass', // available : css / sass / scss / stylus
 			data : `
 				@import 'node_modules/coffeekraken-sugar/index';
+				@import 'node_modules/coffeekraken-s-typography-component/index';
 				@include s-init();
 				@include s-classes();
 				@include s-typography-classes();

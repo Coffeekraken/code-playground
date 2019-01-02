@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+	{{#if gtm}}
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121182084-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', '{{gtm}}');
+		</script>
+	{{/if}}
+
 	<title>{{title}}</title>
 	{{#if packageJson.description}}
 		<meta name="description" content="{{packageJson.description}}" />
@@ -12,8 +24,6 @@
 		<link rel="canonical" href="{{packageJson.repository.url}}" />
 	{{/if}}
 	<link rel="stylesheet" href="/assets/css/style.css" />
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-	<link type="text/css" rel="stylesheet" href="https://golden-layout.com/files/latest/css/goldenlayout-base.css" />
 </head>
 <body>
 
@@ -32,7 +42,7 @@
 				<div class="dropdown dropdown--primary">
 					<h1 class="h5 header__title">
 						{{#if apps}}
-							&nbsp;<i style="font-size:.8em" class="fa fa-caret-down"></i>&nbsp;
+							&nbsp;<s-icon icon="fas fa-caret-down"></s-icon>&nbsp;
 						{{/if}}
 						{{title}}
 						{{#if packageJson.version}}
@@ -60,7 +70,8 @@
 						<li class="nav__item">
 							<s-dialog>
 								<a class="nav__link" href="#description" title="Description" target="_blank">
-									<i class="fa fa-info-circle"></i>&nbsp;&nbsp;About
+									<s-icon icon="fas fa-info-circle"></s-icon>
+									&nbsp;&nbsp;About
 								</a>
 							</s-dialog>
 							<div class="hidden">
@@ -91,15 +102,17 @@
 
 										{{#if packageJson.homepage}}
 											<a href="{{packageJson.homepage}}" class="btn m-r-small" target="_blank">
-												<i class="fa fa-globe"></i>&nbsp;&nbsp;Go to website
+												<s-icon icon="fas fa-globe"></s-icon>
+												&nbsp;&nbsp;Go to website
 											</a>
 										{{/if}}
 										{{#if packageJson.repository}}
 											<a href="{{packageJson.repository.url}}" class="btn m-r-small" target="_blank">
-												<i class="fa fa-github"></i>&nbsp;&nbsp;View repository
+												<s-icon icon="fab fa-github"></s-icon>
+												&nbsp;&nbsp;View repository
 											</a>
 										{{/if}}
-										<a class="btn btn--primary" s-dialog-ok>
+										<a class="btn btn--primary m-r" s-dialog-ok>
 											Close
 										</a>
 										<ul class="list list--contributors m-b pull-right">
@@ -123,27 +136,24 @@
 						<li class="nav__item">
 							<div class="dropdown dropdown--primary">
 								<a class="nav__link" title="Share">
-									<i class="fa fa-share"></i> &nbsp;Share
+									<s-icon icon="fas fa-share"></s-icon>
+									&nbsp;Share
 								</a>
 								<ul class="dropdown__menu">
 									<li class="dropdown__item">
 										<a is="s-share" href="{{packageJson.repository.url}}" network="facebook" title="Share on facebook">
-											<i class="fa fa-facebook"></i> Facebook
+											<s-icon icon="fab fa-facebook"></s-icon>
+											Facebook
 										</a>
 									</li>
 									<li class="dropdown__item">
 										<a is="s-share" href="{{packageJson.repository.url}}" network="twitter" title="Share on twitter">
-											<i class="fa fa-twitter"></i> Twitter
-										</a>
-									</li>
-									<li class="dropdown__item">
-										<a is="s-share" href="{{packageJson.repository.url}}" network="googleplus" title="Share on googleplus">
-											<i class="fa fa-google-plus"></i> Google+
+											<s-icon icon="fab fa-twitter"></s-icon> Twitter
 										</a>
 									</li>
 									<li class="dropdown__item">
 										<a is="s-share" href="{{packageJson.repository.url}}" network="linkedin" title="Share on linkedin">
-											<i class="fa fa-linkedin"></i> LinkedIn
+											<s-icon icon="fab fa-linkedin"></s-icon> LinkedIn
 										</a>
 									</li>
 								</ul>
@@ -153,14 +163,15 @@
 					{{#if packageJson.homepage}}
 						<li class="nav__item">
 							<a class="nav__link" href="{{packageJson.homepage}}" title="Go to website" target="_blank">
-								<i class="fa fa-globe"></i>&nbsp;&nbsp;Website
+								<s-icon icon="fas fa-globe"></s-icon>
+								&nbsp;&nbsp;Website
 							</a>
 						</li>
 					{{/if}}
 					{{#if packageJson.repository}}
 						<li class="nav__item">
 							<a class="nav__link" href="{{packageJson.repository.url}}" title="Repository" target="_blank">
-								<i class="fa fa-github"></i>&nbsp;&nbsp;Repository
+								<s-icon icon="fab fa-github"></s-icon>&nbsp;&nbsp;Repository
 							</a>
 						</li>
 					{{/if}}

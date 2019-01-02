@@ -106,9 +106,22 @@ switch(layout) {
 		}];
 		editorsContent = config.content[0].content[0].content;
 	break;
+	case 'embed':
+	config.content = [{
+		type : "column",
+		content : [{
+			type: 'component',
+			componentName: 'preview',
+			componentState : { label : 'preview' }
+		}, {
+			type : "row",
+			content : [],
+			height: 0
+		}]
+	}];
+	editorsContent = config.content[0].content[1].content;
+	break;
 }
-
-
 
 [].forEach.call(document.querySelectorAll('template'), (editor) => {
 	if ( ! editor.id) return;
