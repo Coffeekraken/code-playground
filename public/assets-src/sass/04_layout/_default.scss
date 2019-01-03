@@ -10,8 +10,10 @@ body {
 	overflow:hidden;
 	flex-flow: column nowrap;
 }
-main {
-	flex: 1 1 100%;
+div[s-drawer-content] {
+	display: flex;
+	flex-flow: column nowrap;
+	height: 100vh;
 }
 	.footer,
 	.header {

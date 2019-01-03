@@ -25,7 +25,7 @@ module.exports = {
 	title : 'Code Playground',
 
 	// layout to use (top, right, bottom, left, vertical, horizontal, embed)
-	layout : 'embed',
+	layout : 'right',
 
 	// google tag manager id
 	gtm : null,
@@ -39,11 +39,11 @@ module.exports = {
 
 	},
 
-	apps : {
-		's-atv-card-component': __dirname + '/node_modules/coffeekraken-s-atv-card-component',
-		's-typography-component': __dirname + '/node_modules/coffeekraken-s-typography-component',
-		's-drawer-component': __dirname + '/node_modules/coffeekraken-s-drawer-component'
-	},
+	// apps : {
+	// 	's-atv-card-component': __dirname + '/node_modules/coffeekraken-s-atv-card-component',
+	// 	's-typography-component': __dirname + '/node_modules/coffeekraken-s-typography-component',
+	// 	's-drawer-component': __dirname + '/node_modules/coffeekraken-s-drawer-component'
+	// },
 
 	// editors
 	editors : {
@@ -104,11 +104,6 @@ module.exports = {
 		},
 
 		// js editor
-		js : {
-			language : 'js', // available : js / coffeescript / typescript
-			data : `
-				import 'webcomponents.js/webcomponents-lite'
-			`
-		}
+		js : null
 	}
 }

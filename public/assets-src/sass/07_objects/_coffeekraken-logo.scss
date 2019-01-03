@@ -21,7 +21,7 @@
 }
 .coffeekraken-logo--dialog {
 	@include s-coffeekraken-logo(
-		$color : s-color(white),
-		$accent : s-color(primary)
+		$color : s-color(secondary),
+		$accent : s-color(white)
 	);
 }
