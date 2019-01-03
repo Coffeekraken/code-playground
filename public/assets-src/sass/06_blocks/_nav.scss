@@ -41,4 +41,20 @@
 			}
 		}
 	}
+
+	@include g-state((
+		max-width: 800px
+	)) {
+		.nav__item--about {
+			display: none;
+		}
+	}
+	@include g-state((
+		max-width: 700px
+	)) {
+		.nav__item--website {
+			display: none;
+		}
+	}
+
 }

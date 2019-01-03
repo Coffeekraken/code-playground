@@ -4,7 +4,7 @@
 
 	{{#if gtm}}
 		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-121182084-1"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id={{gtm}}"></script>
 		<script>
 			window.dataLayer = window.dataLayer || [];
 			function gtag(){dataLayer.push(arguments);}
@@ -27,198 +27,208 @@
 </head>
 <body>
 
-	<header class="header">
-		<div class="row row-align-middle">
-			<div class="gr-adapt bkg-primary">
-				{{#if logo}}
-					<img style="height:25px;" class="inline-block" src="/{{logo}}" />
-				{{else}}
-					<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
-						<div style="width:80px;" class="coffeekraken-logo coffeekraken-logo--white"></div>
-					</a>
-				{{/if}}
-			</div>
-			<div class="gr-adapt">
-				<div class="dropdown dropdown--primary">
-					<h1 class="h5 header__title">
-						{{#if apps}}
-							&nbsp;<s-icon icon="fas fa-caret-down"></s-icon>&nbsp;
-						{{/if}}
-						{{title}}
-						{{#if packageJson.version}}
-							<span class="small">{{packageJson.version}}</span>
-						{{/if}}
-					</h1>
-					{{#if apps}}
-						<ul class="dropdown__menu">
-							{{#each apps}}
-								<li class="dropdown__item">
-									<a href="/app/{{@key}}" title="{{this.config.title}}">
-										{{this.config.title}} <span class="s-small">{{this.packageJson.version}}</span>
-									</a>
-								</li>
-							{{/each}}
-						</ul>
+	{{#if apps}}
+		<s-drawer name="apps" close-on-click="false" class="drawer drawer--sidemenu">
+			<s-custom-scrollbar>
+				<ul class="sidemenu">
+					{{#each apps}}
+						<li class="sidemenu__item">
+							<a href="/app/{{@key}}" title="{{this.config.title}}" {{#isCurrentUrl @key}} class="active" {{/isCurrentUrl}}>
+								{{this.config.title}} <span class="s-small">{{this.packageJson.version}}</span>
+							</a>
+						</li>
+					{{/each}}
+				</ul>
+			</s-custom-scrollbar>
+		</s-drawer>
+	{{/if}}
+
+	<div s-drawer-content>
+		<header class="header">
+			<div class="row row-align-middle">
+				<div class="gr-adapt bkg-primary">
+					{{#if logo}}
+						<img style="height:25px;" class="inline-block" src="/{{logo}}" />
+					{{else}}
+						<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
+							<div style="width:80px;" class="coffeekraken-logo coffeekraken-logo--white"></div>
+						</a>
 					{{/if}}
 				</div>
-			</div>
-			<div class="gr-grow">
-			</div>
-			<div class="gr-adapt">
-				<ul class="nav nav--topbar">
-					{{#if packageJson.description}}
-						<li class="nav__item">
-							<s-dialog>
-								<a class="nav__link" href="#description" title="Description" target="_blank">
-									<s-icon icon="fas fa-info-circle"></s-icon>
-									&nbsp;&nbsp;About
-								</a>
-							</s-dialog>
-							<div class="hidden">
-								<div id="description">
-									<figure class="ratio-5-1">
-										<img class="abs-cover" src="http://coffeekraken.io/dist/img/header-bkg.jpg" />
-										<div style="width:150px; position:absolute; top:50%; left:40px; transform:translateY(-50%); max-width:none;">
-											{{#if logo}}
-												<img style="height:45px;" class="inline-block" src="/{{logo}}" />
-											{{else}}
-												<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
-													<div style="width:150px; max-width:none;" class="coffeekraken-logo coffeekraken-logo--dialog"></div>
+				<div class="gr-adapt">
+					<div class="dropdown dropdown--primary">
+						<h1 class="h5 header__title">
+							{{#if apps}}
+								<label for="apps">
+									&nbsp;<s-icon icon="fas fa-bars"></s-icon>&nbsp;
+								</label>
+							{{/if}}
+							{{title}}
+							{{#if packageJson.version}}
+								<span class="small">{{packageJson.version}}</span>
+							{{/if}}
+						</h1>
+					</div>
+				</div>
+				<div class="gr-grow">
+				</div>
+				<div class="gr-adapt">
+					<ul class="nav nav--topbar">
+						{{#if packageJson.description}}
+							<li class="nav__item nav__item--about">
+								<s-dialog>
+									<a class="nav__link" href="#description" title="Description" target="_blank">
+										<s-icon icon="fas fa-info-circle"></s-icon>
+										&nbsp;&nbsp;About
+									</a>
+								</s-dialog>
+								<div class="hidden">
+									<div id="description">
+										<figure class="ratio-5-1">
+											<img class="abs-cover" src="http://coffeekraken.io/dist/img/header-bkg.jpg" />
+											<div style="width:150px; position:absolute; top:50%; left:40px; transform:translateY(-50%); max-width:none;">
+												{{#if logo}}
+													<img style="height:45px;" class="inline-block" src="/{{logo}}" />
+												{{else}}
+													<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
+														<div style="width:150px; max-width:none;" class="coffeekraken-logo coffeekraken-logo--dialog"></div>
+													</a>
+												{{/if}}
+											</div>
+										</figure>
+										<div class="p-bigger">
+
+											<h1 class="h3 m-b">
+												{{title}}
+												{{#if packageJson.version}}
+													<span class="small">{{packageJson.version}}</span>
+												{{/if}}
+											</h1>
+											<p class="p p--lead m-b">
+												{{packageJson.description}}
+											</p>
+
+											{{#if packageJson.homepage}}
+												<a href="{{packageJson.homepage}}" class="btn m-r-small" target="_blank">
+													<s-icon icon="fas fa-globe"></s-icon>
+													&nbsp;&nbsp;Go to website
 												</a>
 											{{/if}}
+											{{#if packageJson.repository}}
+												<a href="{{packageJson.repository.url}}" class="btn m-r-small" target="_blank">
+													<s-icon icon="fab fa-github"></s-icon>
+													&nbsp;&nbsp;View repository
+												</a>
+											{{/if}}
+											<a class="btn btn--primary m-r" s-dialog-ok>
+												Close
+											</a>
+											<ul class="list list--contributors m-b pull-right">
+												{{#each packageJson.contributors}}
+												<li class="list__item relative">
+													<a class="block" href="{{this.url}}" title="{{this.name}}" target="_blank">
+														<img src="{{this.gravatar}}" />
+													</a>
+													<div class="tooltip tooltip--secondary tooltip--t">
+														{{this.name}}
+													</div>
+												</li>
+												{{/each}}
+											</ul>
 										</div>
-									</figure>
-									<div class="p-bigger">
-
-										<h1 class="h3 m-b">
-											{{title}}
-											{{#if packageJson.version}}
-												<span class="small">{{packageJson.version}}</span>
-											{{/if}}
-										</h1>
-										<p class="p p--lead m-b">
-											{{packageJson.description}}
-										</p>
-
-										{{#if packageJson.homepage}}
-											<a href="{{packageJson.homepage}}" class="btn m-r-small" target="_blank">
-												<s-icon icon="fas fa-globe"></s-icon>
-												&nbsp;&nbsp;Go to website
-											</a>
-										{{/if}}
-										{{#if packageJson.repository}}
-											<a href="{{packageJson.repository.url}}" class="btn m-r-small" target="_blank">
-												<s-icon icon="fab fa-github"></s-icon>
-												&nbsp;&nbsp;View repository
-											</a>
-										{{/if}}
-										<a class="btn btn--primary m-r" s-dialog-ok>
-											Close
-										</a>
-										<ul class="list list--contributors m-b pull-right">
-											{{#each packageJson.contributors}}
-											<li class="list__item relative">
-												<a class="block" href="{{this.url}}" title="{{this.name}}" target="_blank">
-													<img src="{{this.gravatar}}" />
-												</a>
-												<div class="tooltip tooltip--secondary tooltip--t">
-													{{this.name}}
-												</div>
-											</li>
-											{{/each}}
-										</ul>
 									</div>
 								</div>
-							</div>
-						</li>
-					{{/if}}
-					{{#if packageJson.repository}}
-						<li class="nav__item">
-							<div class="dropdown dropdown--primary">
-								<a class="nav__link" title="Share">
-									<s-icon icon="fas fa-share"></s-icon>
-									&nbsp;Share
+							</li>
+						{{/if}}
+						{{#if packageJson.repository}}
+							<li class="nav__item nav__item--share">
+								<div class="dropdown dropdown--primary">
+									<a class="nav__link" title="Share">
+										<s-icon icon="fas fa-share"></s-icon>
+										&nbsp;Share
+									</a>
+									<ul class="dropdown__menu">
+										<li class="dropdown__item">
+											<a is="s-share" href="{{packageJson.repository.url}}" network="facebook" title="Share on facebook">
+												<s-icon icon="fab fa-facebook"></s-icon>
+												Facebook
+											</a>
+										</li>
+										<li class="dropdown__item">
+											<a is="s-share" href="{{packageJson.repository.url}}" network="twitter" title="Share on twitter">
+												<s-icon icon="fab fa-twitter"></s-icon> Twitter
+											</a>
+										</li>
+										<li class="dropdown__item">
+											<a is="s-share" href="{{packageJson.repository.url}}" network="linkedin" title="Share on linkedin">
+												<s-icon icon="fab fa-linkedin"></s-icon> LinkedIn
+											</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						{{/if}}
+						{{#if packageJson.homepage}}
+							<li class="nav__item nav__item--website">
+								<a class="nav__link" href="{{packageJson.homepage}}" title="Go to website" target="_blank">
+									<s-icon icon="fas fa-globe"></s-icon>
+									&nbsp;&nbsp;Website
 								</a>
-								<ul class="dropdown__menu">
-									<li class="dropdown__item">
-										<a is="s-share" href="{{packageJson.repository.url}}" network="facebook" title="Share on facebook">
-											<s-icon icon="fab fa-facebook"></s-icon>
-											Facebook
-										</a>
-									</li>
-									<li class="dropdown__item">
-										<a is="s-share" href="{{packageJson.repository.url}}" network="twitter" title="Share on twitter">
-											<s-icon icon="fab fa-twitter"></s-icon> Twitter
-										</a>
-									</li>
-									<li class="dropdown__item">
-										<a is="s-share" href="{{packageJson.repository.url}}" network="linkedin" title="Share on linkedin">
-											<s-icon icon="fab fa-linkedin"></s-icon> LinkedIn
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-					{{/if}}
-					{{#if packageJson.homepage}}
-						<li class="nav__item">
-							<a class="nav__link" href="{{packageJson.homepage}}" title="Go to website" target="_blank">
-								<s-icon icon="fas fa-globe"></s-icon>
-								&nbsp;&nbsp;Website
-							</a>
-						</li>
-					{{/if}}
-					{{#if packageJson.repository}}
-						<li class="nav__item">
-							<a class="nav__link" href="{{packageJson.repository.url}}" title="Repository" target="_blank">
-								<s-icon icon="fab fa-github"></s-icon>&nbsp;&nbsp;Repository
-							</a>
-						</li>
-					{{/if}}
-				</ul>
-			</div>
-		</div>
-	</header>
-
-	{{#each editors}}
-		{{#if this}}
-			<template id="{{ this.language }}">
-				<s-codemirror
-					{{#if this.accept }} accept="{{this.accept}}" {{/if}}
-					{{#if this.updateOn }} update-on="{{this.updateOn}}" {{/if}}
-					update-timeout="2000"
-					id="{{this.language}}"
-					title="{{this.title}}"
-					language="{{ this.language }}">
-					<template>
-						{{{this.data}}}
-					</template>
-				</s-codemirror>
-			</template>
-		{{/if}}
-	{{/each}}
-
-	<s-interactive-demo layout="{{ config.layout }}" display-toggles="false">
-		<div s-interactive-demo-preview></div>
-	</s-interactive-demo>
-
-	<footer class="footer">
-		<div class="row row-align-middle">
-			<div class="gr-6">
-				<div class="s-small">
-					Copyright &copy; <a href="http://coffeekraken.io" class="link" title="Coffeekraken">Coffeekraken</a> - Powered by <a class="link" href="https://github.com/coffeekraken/carpenter" target="_blank">Carpenter</a>
-				</div>
-				<div class="s-small">
-					Distributed under <a href="https://opensource.org/licenses/MIT" class="link" title="MIT license">MIT license</a>
+							</li>
+						{{/if}}
+						{{#if packageJson.repository}}
+							<li class="nav__item nav__item--repository">
+								<a class="nav__link" href="{{packageJson.repository.url}}" title="Repository" target="_blank">
+									<s-icon icon="fab fa-github"></s-icon>&nbsp;&nbsp;Repository
+								</a>
+							</li>
+						{{/if}}
+					</ul>
 				</div>
 			</div>
-			<div class="gr-6 t-right">
-				<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
-					<div style="width:60px;" class="coffeekraken-logo coffeekraken-logo--footer"></div>
-				</a>
+		</header>
+
+		{{#each editors}}
+			{{#if this}}
+				<template id="{{ this.language }}">
+					<s-codemirror
+						{{#if this.accept }} accept="{{this.accept}}" {{/if}}
+						{{#if this.updateOn }} update-on="{{this.updateOn}}" {{/if}}
+						update-timeout="2000"
+						id="{{this.language}}"
+						title="{{this.title}}"
+						language="{{ this.language }}">
+						<template>
+							{{{this.data}}}
+						</template>
+					</s-codemirror>
+				</template>
+			{{/if}}
+		{{/each}}
+
+		<s-interactive-demo layout="{{ config.layout }}" display-toggles="false">
+			<div s-interactive-demo-preview></div>
+		</s-interactive-demo>
+
+		<footer class="footer">
+			<div class="row row-align-middle">
+				<div class="gr-6">
+					<div class="s-small">
+						Copyright &copy; <a href="http://coffeekraken.io" class="link" title="Coffeekraken">Coffeekraken</a> - Powered by <a class="link" href="https://github.com/coffeekraken/code-playground" target="_blank">Code Playground</a>
+					</div>
+					<div class="s-small">
+						Distributed under <a href="https://opensource.org/licenses/MIT" class="link" title="MIT license">MIT license</a>
+					</div>
+				</div>
+				<div class="gr-6 t-right">
+					<a href="http://coffeekraken.io" title="Coffeekraken.io" target="_blank">
+						<div style="width:60px;" class="coffeekraken-logo coffeekraken-logo--footer"></div>
+					</a>
+				</div>
 			</div>
-		</div>
-	</footer>
+		</footer>
+
+	</div>
 
 	<script>
 		window.app = {

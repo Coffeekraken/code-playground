@@ -29,7 +29,7 @@
 
 <p class="lead">Provide a nice code playground that let you play with some html, javascript (coffee, typescript, etc...) and css (sass, scss, stylus, etc...)</p>
 
-![Carpenter screenshot](/.resources/code-playground-screenshot.png)
+[![View demo](http://components.coffeekraken.io/assets/img/view-demo.png)](http://components.coffeekraken.io/app/s-atv-card-component)
 
 ## Features
 
@@ -37,7 +37,7 @@
 - Support sass/stylus/es6/coffeescript/typescript compilation through the [compile-server package](https://github.com/coffeekraken/compile-server)
 - Nicely display information from the ```package.json``` file
 - Support multiple "apps" that run on the same code-playground server
-- Support multiple layouts like : top / right / bottom / left / vertical / horizontal
+- Support multiple layouts like : top / right / bottom / left / vertical / horizontal / embed
 
 ## Table of content
 

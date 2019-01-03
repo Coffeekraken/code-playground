@@ -116,7 +116,7 @@ switch(layout) {
 		}, {
 			type : "row",
 			content : [],
-			height: 0
+			height: 10
 		}]
 	}];
 	editorsContent = config.content[0].content[1].content;

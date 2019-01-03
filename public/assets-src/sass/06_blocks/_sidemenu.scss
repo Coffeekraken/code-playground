@@ -1,0 +1,21 @@
+.sidemenu {
+}
+
+.sidemenu__item {
+  a {
+    display: block;
+    padding: s-lnf(padding-horizontal) s-lnf(padding-vertical) * 1.5;
+    color: s-color(white);
+    border-bottom: s-color(white, -opacity 0.1) 1px solid;
+    border-right: 0 s-color(primary) solid;
+    text-decoration: none;
+
+    @include s-transition(fast);
+
+    &.active,
+    &:hover {
+      background: s-color(secondary, -lighten 5%);
+      border-right: s-rem(5px) s-color(primary) solid;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@import 'node_modules/coffeekraken-s-drawer-component/index';
+
+@include s-drawer-classes(
+	$name: 'apps',
+	$side: 'left',
+	$type: push
+);
+
+label[for="apps"] {
+	cursor: pointer;
+}
+.drawer {
+
+}
+.drawer--sidemenu {
+	background-color: s-color(secondary);
+
+	s-custom-scrollbar {
+		height: 100%;
+		padding-bottom: s-space(bigger) * 2;
+	}
+}
