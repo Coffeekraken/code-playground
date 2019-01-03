@@ -27,7 +27,7 @@
 	</a>
 </p>
 
-Provide a nice code playground that let you play with some html, javascript (coffee, typescript, etc...) and css (sass, scss, stylus, etc...)
+<p class="lead">Provide a nice code playground that let you play with some html, javascript (coffee, typescript, etc...) and css (sass, scss, stylus, etc...)</p>
 
 ![Carpenter screenshot](/.resources/code-playground-screenshot.png)
 
