@@ -7,7 +7,7 @@ const __fs = require('fs');
 const __url = require('url');
 const __md5 = require('md5');
 const __Cryptr = require('cryptr');
-// const __cookieSession = require('cookie-session');
+const __cookieSession = require('cookie-session');
 
 module.exports = function(config) {
 
@@ -27,11 +27,11 @@ module.exports = function(config) {
 	app.use('/assets', __express.static(__dirname + '/assets'));
 
 	// cookie session
-	// app.set('trust proxy', 1)
-	// app.use(__cookieSession({
-	// 	name : 'session',
-	// 	secret : 'coffeekraken-code-playground'
-	// }));
+	app.set('trust proxy', 1)
+	app.use(__cookieSession({
+		name : 'session',
+		secret : 'coffeekraken-code-playground'
+	}));
 
 	// cryptr instance
  	let cryptr;
@@ -76,10 +76,8 @@ module.exports = function(config) {
 				throw `The app ${app} is not defined in the code-playground.config.js file...`
 			}
 			pwd = apps[app];
-		// }
-		// else if (req.session.pwd) {
-		// 	console.log('PWD', req.session.pwd)
-		// 	pwd = req.session.pwd;
+		} else if (req.session.pwd && req.url !== '/') {
+			pwd = req.session.pwd;
 		} else if (req.config.cwd) {
 			pwd = req.config.cwd;
 		}
@@ -88,7 +86,7 @@ module.exports = function(config) {
 		pwd = pwd.replace('~', process.env.HOME);
 
 		// save in session
-		// req.session.pwd = pwd;
+		req.session.pwd = pwd;
 
 		// check that the PWD is valid
 		if ( ! __fs.existsSync(pwd)
@@ -278,7 +276,7 @@ module.exports = function(config) {
 		console.log(`Code Playground : access interface on http://localhost:${config.port}`);
 	});
 
-	// process.on('exit', function() {
-	// 	if (request) request.session = null;
-	// });
+	process.on('exit', function() {
+		if (request) request.session = null;
+	});
 }
