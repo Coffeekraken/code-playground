@@ -10,6 +10,11 @@ require('./webcomponent.props.js');
 require('./webcomponent.imports.js');
 import SNotificationComponent from 'coffeekraken-s-notification-component/dist/class'
 
+// clear transmations on body
+setTimeout(() => {
+	document.body.classList.remove('clear-transmations')
+}, 500)
+
 // codemirror aliases
 const CodeMirror = require('codemirror');
 CodeMirror.modes.js = CodeMirror.modes.javascript;
