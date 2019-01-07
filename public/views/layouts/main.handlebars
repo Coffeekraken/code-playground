@@ -70,6 +70,29 @@
 						</h1>
 					</div>
 				</div>
+				{{#if demos}}
+					<div class="gr-adapt">
+						<div class="dropdown dropdown--primary">
+							<span class="demos-dropdown">
+								Demos&nbsp;&nbsp;<s-icon icon="fas fa-caret-down"></s-icon>
+							</span>
+							<div class="dropdown__menu">
+								<div class="dropdown__item">
+									<a href="?" title="{{this.title}}">
+										Default
+									</a>
+								</div>
+								{{#each demos}}
+									<div class="dropdown__item">
+										<a href="?demo={{@key}}" title="{{this.title}}">
+											{{this.title}}
+										</a>
+									</div>
+								{{/each}}
+							</div>
+						</div>
+					</div>
+				{{/if}}
 				<div class="gr-grow">
 				</div>
 				<div class="gr-adapt">

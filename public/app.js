@@ -76,7 +76,7 @@ module.exports = function(config) {
 				throw `The app ${app} is not defined in the code-playground.config.js file...`
 			}
 			pwd = apps[app];
-		} else if (req.session.pwd && req.url !== '/') {
+		} else if (req.session.pwd && isApp) {
 			pwd = req.session.pwd;
 		} else if (req.config.cwd) {
 			pwd = req.config.cwd;
@@ -160,6 +160,7 @@ module.exports = function(config) {
 	// read config if an app is passed
 	// and merge this config with the one that we have already
 	app.use((req, res, next) => {
+
 		if ( ! req.query.app && ! req.path.split('/')[1]) {
 			next();
 			return;
@@ -173,12 +174,36 @@ module.exports = function(config) {
 		delete _config.apps;
 		delete _config.compileServer.port;
 
+		delete req.config.demos;
+
 		// merge configs
 		req.config = __merge(req.config, _config);
 
 		// next
 		next();
 	});
+
+	// if is a demo to display, we merge the config.editors with the
+	// config.demos[demo].editors
+	app.use((req, res, next) => {
+		if ( ! req.query.demo) {
+			next()
+			return
+		}
+
+		const demo = req.query.demo
+		const demoObj = req.config.demos[demo]
+
+		if ( ! demoObj) {
+			throw `The demo requested "${demo}" does not exist...`
+		}
+
+		// merge this with the editors
+		req.config.editors = __merge({}, req.config.editors, demoObj.editors)
+
+		// next
+		next()
+	})
 
 	// read the package.json file of the pwd
 	// and set it in the request object to pass it
@@ -212,7 +237,6 @@ module.exports = function(config) {
 
 	// global route
 	app.get(/.*/, function (req, res) {
-
 		// editors
 		if (req.config.editors.html) {
 			req.config.editors.html.language = req.config.editors.html.language || 'html';
@@ -251,6 +275,7 @@ module.exports = function(config) {
 			pwd : (cryptr) ? cryptr.encrypt(req.config.pwd) : req.config.pwd,
 			packageJson : req.packageJson,
 			compileServerSettings : JSON.stringify(req.config.compileServer),
+			demos: req.config.demos || null,
 			editors : {
 				html : req.config.editors.html,
 				css : req.config.editors.css,
