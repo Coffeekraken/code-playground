@@ -17,6 +17,7 @@ const app = require('commander');
 
 	// extend config
 	const defaultConfig = require(__dirname + '/../code-playground.config');
+	delete defaultConfig.demos // delete the demos properties cause it's a per app prop and does not have to be merged
 	let config = {};
 	if (app.config) {
 		app.config = __path.resolve(app.config);
@@ -57,8 +58,6 @@ const app = require('commander');
 		inlineCompileServerArgs.push(`--${key}`);
 		inlineCompileServerArgs.push(`${finalConfig.compileServer[key]}`);
 	}
-
-	console.log(inlineCompileServerArgs)
 
 	const ls = spawn(`coffeekraken-compile-server`, inlineCompileServerArgs);
 	ls.stdout.on('data', (data) => {
