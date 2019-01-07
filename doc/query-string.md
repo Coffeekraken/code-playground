@@ -23,6 +23,30 @@ Set the working directory for the code-playground to look for the ```code-playgr
 > If you have specify the ```config.secret``` config, this parameter has to be passed encrypted and will be decrypted by the server. This is made in order to not expose your server folder structure to the public.
 > The encryption/decryption is made with the [cryptr npm package](https://www.npmjs.com/package/cryptr).
 
+## demo
+
+Specify the demo in the current app that you want to display. The demo need to be registered through the ```config.demos``` config like so:
+
+```
+...?demo=demo1
+```
+
+```js
+module.exports = {
+	demos: {
+		demo1: {
+			title: 'Demo #1',
+			editors: {
+				html: {
+					language: 'html',
+					data: `<h1>My cool demo</h1>`
+				}
+			}
+		}
+	}
+}
+```
+
 ## app
 
 Specify the app that you want to target. The app has to be registered through the ```config.apps``` config like so:

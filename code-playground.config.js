@@ -39,13 +39,15 @@ module.exports = {
 
 	},
 
+	// apps
+	// app-id : app-pwd
 	apps: {
 		's-atv-card-component': __dirname + '/node_modules/coffeekraken-s-atv-card-component',
 		's-typography-component': __dirname + '/node_modules/coffeekraken-s-typography-component',
 		's-drawer-component': __dirname + '/node_modules/coffeekraken-s-drawer-component'
 	},
 
-	// demos
+	// additional demos
 	demos: {
 		'demo1': {
 			title: 'Demo #1',
