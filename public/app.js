@@ -29,7 +29,7 @@ module.exports = function(config) {
 	// cookie session
 	app.set('trust proxy', 1)
 	app.use(__cookieSession({
-		name : 'session',
+		name : 'code-playground-'+__md5(config.title),
 		secret : 'coffeekraken-code-playground'
 	}));
 
@@ -76,7 +76,7 @@ module.exports = function(config) {
 				throw `The app ${app} is not defined in the code-playground.config.js file...`
 			}
 			pwd = apps[app];
-		} else if (req.session.pwd && isApp) {
+		} else if (req.session.pwd) {
 			pwd = req.session.pwd;
 		} else if (req.config.cwd) {
 			pwd = req.config.cwd;
